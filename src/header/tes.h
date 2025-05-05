@@ -2,8 +2,5 @@
 #define TES_H
 #include <stdio.h>
 
-void tes() {
-    printf("Hello, World TES!\n");
-}
-
+void tes();
 #endif
