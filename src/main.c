@@ -1,10 +1,10 @@
 // Include any necessary headers
 #include <stdio.h>
-#include "header/tes.h"
+#include <MainMenu.h>
 
 int main() {
     // Your code goes here
-    printf("Hello, World!\n");
-    tes();
+    scanf("%s", Role);
+    MainMenu();
     return 0;
 }

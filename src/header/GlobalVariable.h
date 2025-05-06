@@ -1,0 +1,1 @@
+extern char Role[30];
