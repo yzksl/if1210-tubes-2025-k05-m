@@ -7,6 +7,7 @@
 #define LINKEDLIST_H
 
 #include "Boolean.h"
+#include "DatatypeEnums.h"
 
 /*  Kamus Umum */
 /* Linked List Terminology */
@@ -21,13 +22,14 @@
 typedef struct LinkedListNode {
     int id; // ID dari data (jika ada)
     char name[50]; // Nama dari data (jika ada)
-    void *data;
-    struct LinkedListNode *next;
+    Datatype; // Tipe data
+    void *data; // Isi utama node
+    struct LinkedListNode *next; // Address node berikutnya
 } LinkedListNode;
 
 typedef struct LinkedList {
-    LinkedListNode *head;
-    int size;
+    LinkedListNode *head; // Address node pertama
+    int size; // Jumlah elemen (node) dalam linked list
 } LinkedList;
 /* Jika l adalah LinkedList, cara deklarasi dan akses: */
 /* Deklarasi: l : LinkedList*/
@@ -39,6 +41,7 @@ typedef struct LinkedList {
 #define DATA(node) (node).data
 #define ID(node) (node).id
 #define NAME(node) (node).name
+#define DATATYPE(node) (node).datatype
 
 /* ********** KONSTRUKTOR ********** */
 /* Konstruktor: create list kosong */
@@ -46,7 +49,7 @@ void CreateLL(LinkedList *l);
 /* I.S. l sembarang */
 /* F.S. Terbentuk list l kosong dengan size 0, head point to NULL */
 LinkedListNode* CreateLLNode(void *data);
-/* Mengirimkan pointer ke Node */
+/* Mengirimkan pointer ke Node */ 
 
 /* ********** SELEKTOR (TAMBAHAN) ********** */
 LinkedListNode getLLNodeById(LinkedList l, int id);
