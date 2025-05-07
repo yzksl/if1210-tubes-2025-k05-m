@@ -11,19 +11,17 @@
 
 /*  Kamus Umum */
 /* Linked List Terminology */
-/* Linked List Single: Struktur data dinamis yang terdiri dari node, masing-masing berisi sebuah pointer ke data, dan pointer ke node selanjutnya. Berbeda dengan list biasa yang menggunakan index, keberadaan suatu elemen (node) dalam linked list tergantung pada node sebelumnya yang point ke elemen tersebut. */
+/* Linked List Single: Struktur data dinamis yang terdiri dari node, masing-masing berisi data, dan pointer ke node selanjutnya. Berbeda dengan list biasa yang menggunakan index, keberadaan suatu elemen (node) dalam linked list tergantung pada node sebelumnya yang point ke elemen tersebut. */
 /* Node: Elemen dalam linked list yang berisi nilai, dan suatu pointer ke node selanjutnya. */
 /* Head: Node pertama dalam linked list */
 /* Tail: Node terakhir dalam linked list, dimana pointer ke node selanjutnya berisi NULL */
 /* Next: Pointer dalam node yang menunjuk ke node berikutnya */
-/* Data: Informasi yang disimpan dalam node, sebuah pointer */
+/* Data: Informasi yang disimpan dalam node, dalam kasus ini id dan nama pasien */
 
 /*  Definisi elemen dan koleksi objek*/
 typedef struct LinkedListNode {
-    int id; // ID dari data (jika ada)
-    char name[50]; // Nama dari data (jika ada)
-    Datatype; // Tipe data
-    void *data; // Isi utama node
+    int id; // ID dari pasien
+    char name[50]; // Nama dari pasien
     struct LinkedListNode *next; // Address node berikutnya
 } LinkedListNode;
 
@@ -38,18 +36,25 @@ typedef struct LinkedList {
 /* ********** SELEKTOR ********** */
 #define HEAD(l) (l).head
 #define SIZE(l) (l).size
-#define DATA(node) (node).data
 #define ID(node) (node).id
 #define NAME(node) (node).name
-#define DATATYPE(node) (node).datatype
 
 /* ********** KONSTRUKTOR ********** */
 /* Konstruktor: create list kosong */
 void CreateLL(LinkedList *l);
 /* I.S. l sembarang */
 /* F.S. Terbentuk list l kosong dengan size 0, head point to NULL */
-LinkedListNode* CreateLLNode(void *data);
+/* Konstruktor: create node dengan id dan nama pasien */
+LinkedListNode* CreateLLNode(int id, char name[50]);
 /* Mengirimkan pointer ke Node */ 
+/* Konstruktor: sambungkan address node yang diterima ke node sebelumnya */
+void PutNodeInLastLL(LinkedListNode* NodeAddress, LinkedList* l);
+/* I.S. l terdefinisi, bisa kosong atau bisa sudah ada isi */
+/* F.S. l memiliki node yang di parameter di bagian tail */
+/* Konstruktor: sisihkan node ke posisi-pos dalam linked list */
+void PutNodeInBetweenLL(LinkedListNode* NodeAddress, LinkedList* l, int pos);
+/* I.S. l terdefinisi, memiliki setidaknya 2 node */
+/* F.S. l memiliki node yang di parameter sebagai node di posisi ke-pos */
 
 /* ********** SELEKTOR (TAMBAHAN) ********** */
 LinkedListNode getLLNodeById(LinkedList l, int id);
