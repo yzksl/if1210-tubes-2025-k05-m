@@ -1,17 +1,18 @@
-/* MODUL CIRCULAR ADT QUEUE */
-/* Berisi definisi dan semua primitif pemrosesan ADT Circular Queue */
-/* Circular Queue berdasarkan linked list (bukan list) sirkuler */
-/* Banyaknya elemen didefinisikan dengan pointer head dan tail, memori statik namun dapat ditentukan saat pembuatan sebuah queue */
+/* MODUL ADT QUEUE */
+/* Berisi definisi dan semua primitif pemrosesan ADT Queue */
+/* Queue berdasarkan linked list (bukan list) */
+/* Banyaknya elemen didefinisikan dengan posisi "indeks" front dan rear, memori dinamis namun tidak melewati kapasitas queue */
+/* Queue menggunakan konsep FIFO (First In First Out) */
+/* Setiap proses penambahan (enqueue) elemen (node) ke queue, node tersebut di malloc dan ditambahkan di indeks terakhir, dan pointer rear menunjukkan address node tersebut. Setiap pengurangan node, node di index pertama di free, dan pointer front menunjukkan address node selanjutnya. */
 
-#ifndef CIRCULAR_QUEUE_H
-#define CIRCULAR_QUEUE_H
+#ifndef QUEUE_H
+#define QUEUE_H
 
 #include "Boolean.h"
-#include "DatatypeEnums.h"
 #include "LinkedList.h"
 
 /*  Kamus Umum */
-// -
+/* - */
 
 /* Definisi elemen dan koleksi objek */
 typedef struct {
@@ -43,12 +44,12 @@ typedef struct {
 /* Konstruktor: menambahkan node ke queue */
 void enQueue(Queue* q, LinkedListNode* node);
 /* I.S. q terdefinisi, mungkin kosong */
-/* F.S. Jika size < capacity, elemen terakhir q adalah node, size bertambah satu. Jika sama, maka dikeluaran "ANTRIAN PENUH" */
+/* F.S. Jika size < capacity, elemen terakhir q adalah node, size bertambah satu. Rear diupdate untuk memiliki nilai address node tersebut. Jika sama, maka dikeluaran "ANTRIAN PENUH" */
 
 /* ********** DEALOKATOR ********** */
 void deQueue(Queue* q);
 /* I.S. q terdefinisi */
-/* F.S. Jika tidak kosong, elemen terakhir di free. Jika kosong, dikeluarkan "ANTRIAN KOSONG" */
+/* F.S. Jika tidak kosong, elemen front di free. Front diupdate untuk memiliki nilai address node selanjutnya. Jika kosong, dikeluarkan "ANTRIAN KOSONG" */
 void freeQueue(Queue* q);
 /* I.S. q terdefinisi, mungkin memiliki beberapa node */
 /* F.S. semua node di free, tidak ada node dalam queue, all pointers point to NULL */
@@ -78,6 +79,8 @@ char* getNameByIdx(const Queue* q, int idx);
 
 /* ********** TEST KOSONG/PENUH ********** */
 boolean isQueueEmpty(const Queue* q);
-
+/* Mengembalikan true jika queue kosong, false jika tidak kosong */
+boolean isQueueFull(const Queue* q);
+/* Mengembalikan true jika queue penuh, faalse jika tidak penuh*/
 
 #endif
