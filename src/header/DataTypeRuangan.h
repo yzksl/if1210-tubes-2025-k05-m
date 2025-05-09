@@ -12,7 +12,7 @@ typedef struct {
 typedef struct {
     int nRow; // Jumlah barisan
     int nColumn; // Jumlah Colom
-        int kapasitasRuangan; // Kapasitas Maksimal Pasien dalam ruangan
+    int kapasitasRuangan; // Kapasitas Maksimal Pasien dalam ruangan
     DataTypeRuangan Ruangan[MAX_CAPACITY][MAX_CAPACITY]; // Matriks denah
 } DataTypeDenah; // Tipe data untuk denah
 

@@ -42,7 +42,7 @@ void PutNodeInIdxLL(LinkedList* l, LinkedListNode* NodeAddress, int idx) {
         NodeAddress->next = afternode;
         l->size += 1;
     } else if (idx == l->size) {
-        putNodeInLastLL(l, NodeAddress);
+        PutNodeInLastLL(l, NodeAddress);
     } else {
         printf("POSISI INVALID\n");
     }

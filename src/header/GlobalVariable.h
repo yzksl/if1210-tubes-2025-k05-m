@@ -2,4 +2,4 @@
 
 extern char Role[30];
 
-extern DataTypeDenah denahRumahSakit;
+extern DataTypeDenah globalDenahRumahSakit; // Global Variable Denah

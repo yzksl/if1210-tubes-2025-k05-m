@@ -2,4 +2,4 @@
 
 char Role[30]="Null";
 
-DataTypeDenah denahRumahSakit;
+DataTypeDenah globalDenahRumahSakit;
