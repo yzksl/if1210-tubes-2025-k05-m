@@ -7,8 +7,8 @@ memori list dinamik */
 #ifndef DYNAMICLIST_H
 #define DYNAMICLIST_H
 
-#include "Boolean.h"
-#include "DatatypeEnums.h"
+#include <Boolean.h>
+#include <DatatypeEnums.h>
 
 /*  Kamus Umum */
 #define IDX_MIN 0

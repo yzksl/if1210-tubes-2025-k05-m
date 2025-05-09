@@ -1,5 +1,5 @@
-#include "../header/LinkedList.h"
-#include "../header/Boolean.h"
+#include <LinkedList.h>
+#include <Boolean.h>
 #include <stdlib.h>
 #include <string.h>
 

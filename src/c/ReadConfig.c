@@ -1,4 +1,5 @@
 #include <ReadConfig.h>
+#include <GlobalVariable.h>
 // Realisasi header ReadConfig
 
 int scanNumber(FILE* file){
@@ -21,36 +22,44 @@ void readConfig(){
     nRow = scanNumber(configFile); // Membaca nilai baris
     nColumn = scanNumber(configFile); // Membaca nilai kolom
 
-    // ADT Matrix constructor (Ditambah saat udah dibuat selanjutnya)
+    denahRumahSakit.nRow=nRow; // Memasuki banyak baris
+
+    denahRumahSakit.nColumn=nColumn; // Memasuki banyak kolom
     
     fgetc(configFile); // skip \n
 
     maxPasien = scanNumber(configFile); // Membaca nilai maximal banyak pasien
 
-    fgetc(configFile); // skip \n
+    denahRumahSakit.kapasitasRuangan = maxPasien; // Memasukan jumlah maksimal pasien
 
-    int matriksSementara[nRow][nColumn][maxPasien+1]; // Matriks sementara untuk testing
+    fgetc(configFile); // skip \n
 
     for (int row=0; row<nRow; row++){ // Mengiterasi barisan
         for (int column=0; column<nColumn; column++){
-            
-            matriksSementara[nRow][nColumn][0] = scanNumber(configFile); // Scan id dokter di ruang ngan tersebut
 
-            for (int id=1; id<=maxPasien; id++){
+            denahRumahSakit.Ruangan[row][column].idDokter = scanNumber(configFile); // Scan id dokter di ruang ngan tersebut
+
+            for (int id=0; id<maxPasien; id++){
+
+                int count=0; // Inisialisasi perhitungan jumlah pasien
 
                 int temp=scanNumber(configFile); // Scan id-id pasien
 
                 if (temp=0){
+                    denahRumahSakit.Ruangan[row][column].nEffPasien = 0; // Menulis banyak pasien sebagai nol
                     fgetc(configFile); // Skip \n
-                    break; // memutus loop jika pasien kosong
+                    break; // memutus loop karena pasien kosong
                 }
                 
                 else if (temp='\n'){
-                    matriksSementara[nRow][nColumn][id] = 0;
+                    denahRumahSakit.Ruangan[row][column].nEffPasien = count; // Menuliskan banyak pasien
                     break; // memutus loop jika sudah list semua pasien
                 }
 
-                else matriksSementara[nRow][nColumn][id] = temp; // Meletakan id pasien di list pasien
+                else{
+                    denahRumahSakit.Ruangan[row][column].idPasien[id] = temp; // Meletakan id pasien di list pasien
+                    count++; // Menghitung jumlah pasien
+                }
             }
         }
     }

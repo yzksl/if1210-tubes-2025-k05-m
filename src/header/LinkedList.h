@@ -6,8 +6,8 @@
 #ifndef LINKEDLIST_H
 #define LINKEDLIST_H
 
-#include "Boolean.h"
-#include "DatatypeEnums.h"
+#include <Boolean.h>
+#include <DatatypeEnums.h>
 
 /*  Kamus Umum */
 /* Linked List Terminology */
