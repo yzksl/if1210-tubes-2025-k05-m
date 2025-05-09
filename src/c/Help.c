@@ -2,7 +2,7 @@
 
 // Realisasi Header Help
 
-void HelpPasien(){
+void helpPasien(){
     printf("==============================\n\n==============================\n");
     printf(
         "Terimakasih telah memanggil fungsi Help\n"
@@ -17,7 +17,7 @@ void HelpPasien(){
     );
 }
 
-void HelpDokter(){
+void helpDokter(){
     printf("==============================\n\n==============================\n");
     printf(
         "Terimakasih telah memanggil fungsi Help\n"
@@ -32,7 +32,7 @@ void HelpDokter(){
     );
 }
 
-void HelpManager(){
+void helpManager(){
     printf("==============================\n\n==============================\n");
     printf(
         "Terimakasih telah memanggil fungsi Help\n"
@@ -47,7 +47,7 @@ void HelpManager(){
     );
 }
 
-void HelpBelumLogin(){
+void helpBelumLogin(){
     printf("==============================\n\n==============================\n");
     printf(
         "Terimakasih telah memanggil fungsi Help\n"

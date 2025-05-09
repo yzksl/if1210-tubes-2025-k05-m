@@ -4,22 +4,22 @@
 
 // Realisasi Header Main Menu
 
-void MainMenu(){
+void mainMenu(){
     printf("==============================\n\n==============================\n");
-    if (strcmp(Role, "Pasien")==0) MenuPasien();
-    else if (strcmp(Role, "Dokter")==0) MenuDokter();
-    else if (strcmp(Role, "Manager")==0) MenuManager();
-    else if (strcmp(Role, "BelumLogin")==0) MenuBelumLogin();
+    if (strcmp(Role, "Pasien")==0) menuPasien();
+    else if (strcmp(Role, "Dokter")==0) menuDokter();
+    else if (strcmp(Role, "Manager")==0) menuManager();
+    else if (strcmp(Role, "BelumLogin")==0) menuBelumLogin();
     else exit(0); // Untuk Testing Bukan Permanen
 }
 
-void MenuPasien(){
+void menuPasien(){
     char input[20]; // variable yang menyimpan input user
     printf("Halo %s\nSilahkan masukan fungsi yang anda ingin jalankan\nMasukan HELP untuk memunculkan list fungsi-fungsi yang valid\n", Role/*Nama*/);
     while(1){
         printf(">>> ");
         scanf("%s", input);
-        if (strcmp(input, "HELP")==0) HelpPasien();
+        if (strcmp(input, "HELP")==0) helpPasien();
         else if (strcmp(input, "LOGOUT")==0) /*Logout*/;
         else if (strcmp(input, "EXIT")==0) /*Exit*/;
         // Fungsi lanjutan yang belum ditulis
@@ -32,13 +32,13 @@ void MenuPasien(){
     
 }
 
-void MenuDokter(){
+void menuDokter(){
     char input[20]; // variable yang menyimpan input user
     printf("Halo Dokter %s. Silahkan masukan fungsi yang anda ingin jalankan.\nMasukan HELP untuk memunculkan list fungsi-fungsi yang valid.\n", Role/*Nama*/);
     while(1){
         printf(">>> ");
         scanf("%s", input);
-        if (strcmp(input, "HELP")==0) HelpDokter();
+        if (strcmp(input, "HELP")==0) helpDokter();
         else if (strcmp(input, "LOGOUT")==0) /*Logout*/;
         else if (strcmp(input, "EXIT")==0) /*Exit*/;
         // Fungsi lanjutan yang belum ditulis
@@ -50,13 +50,13 @@ void MenuDokter(){
     }
 }
 
-void MenuManager(){
+void menuManager(){
     char input[20]; // variable yang menyimpan input user
     printf("Halo Manager %s. Silahkan masukan fungsi yang anda ingin jalankan.\nMasukan HELP untuk memunculkan list fungsi-fungsi yang valid.\n", Role/*Nama*/);
     while(1){
         printf(">>> ");
         scanf("%s", input);
-        if (strcmp(input, "HELP")==0) HelpManager();
+        if (strcmp(input, "HELP")==0) helpManager();
         else if (strcmp(input, "LOGOUT")==0) /*Logout*/;
         else if (strcmp(input, "EXIT")==0) /*Exit*/;
         // Fungsi lanjutan yang belum ditulis
@@ -68,13 +68,13 @@ void MenuManager(){
     }
 }
 
-void MenuBelumLogin(){
+void menuBelumLogin(){
     char input[20]; // variable yang menyimpan input user
     printf("Anda belum masuk ke suatu akun.\nMasukan HELP untuk memunculkan list fungsi-fungsi yang valid.\n", Role/*Nama*/);
     while(1){
         printf(">>> ");
         scanf("%s", input);
-        if (strcmp(input, "HELP")==0) HelpBelumLogin();
+        if (strcmp(input, "HELP")==0) helpBelumLogin();
         else if (strcmp(input, "LOGIN")==0) /*Login*/;
         else if (strcmp(input, "REGISTER")==0) /*Register*/;
         else if (strcmp(input, "EXIT")==0) /*Exit*/;
