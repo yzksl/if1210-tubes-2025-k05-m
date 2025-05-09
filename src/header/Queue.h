@@ -59,28 +59,30 @@ LinkedListNode* getFrontAddr(const Queue* q);
 /* Mengembalikan address node pertama dalam queue */
 LinkedListNode* getLastAddr(const Queue* q);
 /* Mengembalikan address node terakhir dalam queue */
-int getFrontID(const Queue* q);
-/* Mengembalikan ID dari node pertama */
-char* getFrontName(const Queue* q);
-/* Mengembalikan nama dari node pertama */
-int getLastID(const Queue* q);
-/* Mengemblikan ID dari node terakhir */
-char* getFrontName(const Queue *q);
-/* Mengembalikan nama dari node terakhir */
 LinkedListNode* getNodeAddrByIdx(const Queue* q, int idx);
 /* Mengembalikan address dari node di index ke-idx dalam queue */
 /* Front: index 0, rear: index size - 1 */
-LinkedListNode* getNodeAddrByID(const Queue* q, int id);
-/* Mengembalikan address dari node dengan id tertentu */
-int getIDByIdx(const Queue* q, int idx);
-/* Mengembalikan id dari node di index ke-idx */
-char* getNameByIdx(const Queue* q, int idx);
-/* Mengembalikan nama dari node di index ke-idx */
 
 /* ********** TEST KOSONG/PENUH ********** */
 boolean isQueueEmpty(const Queue* q);
 /* Mengembalikan true jika queue kosong, false jika tidak kosong */
 boolean isQueueFull(const Queue* q);
 /* Mengembalikan true jika queue penuh, faalse jika tidak penuh*/
+
+/* ********** DELETED FUNCTIONS ********** */
+// int getFrontID(const Queue* q);
+// /* Mengembalikan ID dari node pertama */
+// char* getFrontName(const Queue* q);
+// /* Mengembalikan nama dari node pertama */
+// int getLastID(const Queue* q);
+// /* Mengemblikan ID dari node terakhir */
+// char* getFrontName(const Queue *q);
+// /* Mengembalikan nama dari node terakhir */
+// LinkedListNode* getNodeAddrByID(const Queue* q, int id);
+// /* Mengembalikan address dari node dengan id tertentu */
+// int getIDByIdx(const Queue* q, int idx);
+// /* Mengembalikan id dari node di index ke-idx */
+// char* getNameByIdx(const Queue* q, int idx);
+// /* Mengembalikan nama dari node di index ke-idx */
 
 #endif
