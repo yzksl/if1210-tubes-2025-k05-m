@@ -4,8 +4,10 @@
 
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 #include <Boolean.h>
 #include <GlobalVariable.h>
+#include <Help.h>
 
 void mainMenu(); // Prosedur untuk membuka Main Menu dengan ketentuan role user
 

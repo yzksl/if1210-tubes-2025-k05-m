@@ -1,6 +1,4 @@
 #include <MainMenu.h>
-#include <Help.h>
-#include <stdlib.h>
 
 // Realisasi Header Main Menu
 
