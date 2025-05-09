@@ -4,8 +4,8 @@
 
 #include <stdio.h>
 
-int ScanNumber(FILE* file); // Fungsi untuk mengscan nomor dalam suatu file
+int scanNumber(FILE* file); // Fungsi untuk mengscan nomor dalam suatu file
 
-void ReadConfig(); // Prosedur untuk membaca file config
+void readConfig(); // Prosedur untuk membaca file config
 
 #endif
