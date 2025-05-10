@@ -7,7 +7,7 @@
 #define LINKEDLIST_H
 
 #include "Boolean.h"
-#include "DatatypeEnums.h"
+#include "StructsInHospital.h"
 
 /*  Kamus Umum */
 /* Linked List Terminology */
