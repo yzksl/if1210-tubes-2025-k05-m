@@ -8,7 +8,6 @@
 #define DYNAMIC_LIST_H
 
 #include "Boolean.h"
-#include "DatatypeEnums.h"
 #include "StructsInHospital.h"
 
 /*  Kamus Umum */
@@ -65,27 +64,6 @@ GenericData* createGD(void* data, DataType type);
 /* dan mengembalikan address dari GenericData tersebut */
 
 /* ********** DEALOKATOR ********** */
-<<<<<<< HEAD
-void dealocateListDin(ListDin *l);
-/* I.S. l terdefinisi, buffer ada beberapa nilai (pointer ke patient/doctor/etc); */
-/* F.S. (l) dikembalikan ke system, CAPACITY(l)=0; NEFF(l)=0 */
-
-/* ********** SELEKTOR (TAMBAHAN) ********** */
-int listDinLength(ListDin l);
-/* Mengirimkan banyaknya elemen efektif list */
-
-/* *** Selektor INDEKS *** */
-int getFirstIdx(ListDin l);
-/* Jika list tidak kosong, mengembalikan index pertama. Jika list kosong, dikeluarkan "LIST KOSONG" dan mengembalikan IDX_UNDEF */
-int getLastIdx(ListDin l);
-/* Jika list tidak kosong, mengembalikan indeks elemen l terakhir. Jika list kosong, dikeluarkan "LIST KOSONG" dan mengembalikan IDX_UNDEF */
-
-/* ********** Test Indeks yang valid ********** */
-boolean isListDinIdxValid(ListDin l, int i);
-/* Mengirimkan true jika i adalah indeks yang valid utk kapasitas list l */
-/* yaitu antara indeks yang terdefinisi utk container*/
-boolean isListDinIdxEff(ListDin l, int i);
-=======
 void dealocateLD(ListDin *l);
 /* I.S. l terdefinisi, mungkin kosong */
 /* F.S. Semua elemen difree dan pointer ke NULL CAPACITY(l)=0; NEFF(l)=0 */
@@ -121,56 +99,19 @@ boolean isLDIdxValid(const ListDin* l, int i);
 /* Mengirimkan true jika i adalah indeks yang valid utk kapasitas list l */
 /* yaitu antara indeks yang terdefinisi utk container*/
 boolean isLDIdxEff(const ListDin* l, int i);
->>>>>>> b883cdcc4a265f7e517813a290d872aba2660891
 /* Mengirimkan true jika i adalah indeks yang terdefinisi utk list */
 /* yaitu antara 0..NEFF(l) */
 
 /* ********** TEST KOSONG/PENUH ********** */
 /* *** Test list kosong *** */
-<<<<<<< HEAD
-boolean isListDinEmpty(ListDin l);
-/* Mengirimkan true jika list l kosong, mengirimkan false jika tidak */
-/* *** Test list penuh *** */
-boolean isListDinFull(ListDin l);
-=======
 boolean isLDEmpty(ListDin l);
 /* Mengirimkan true jika list l kosong, mengirimkan false jika tidak */
 /* *** Test list penuh *** */
 boolean isLDFull(ListDin l);
->>>>>>> b883cdcc4a265f7e517813a290d872aba2660891
 /* Mengirimkan true jika list l penuh, mengirimkan false jika tidak */
 
 /* ********** MENAMBAH DAN MENGHAPUS ELEMEN DI AKHIR ********** */
 /* *** Menambahkan elemen terakhir *** */
-<<<<<<< HEAD
-void insertLast(ListDin *l, ElType val);
-/* Proses: Menambahkan val sebagai elemen terakhir list */
-/* I.S. List l boleh kosong, tetapi tidak penuh */
-/* F.S. val adalah elemen terakhir l yang baru */
-/* ********** MENGHAPUS ELEMEN ********** */
-void deleteLast(ListDin *l, ElType *val);
-/* Proses : Menghapus elemen terakhir list */
-/* I.S. List tidak kosong */
-/* F.S. val adalah nilai elemen terakhir l sebelum penghapusan, */
-/*      Banyaknya elemen list berkurang satu */
-/*      List l mungkin menjadi kosong */
-
-/* ********* MENGUBAH UKURAN ARRAY ********* */
-void expandListDin(ListDin *l, int num);
-/* Proses : Menambahkan capacity l sebanyak num */
-/* I.S. List sudah terdefinisi */
-/* F.S. Ukuran list bertambah sebanyak num */
-
-void shrinkListDin(ListDin *l, int num);
-/* Proses : Mengurangi capacity sebanyak num */
-/* I.S. List sudah terdefinisi, ukuran capacity > num, dan nEff < capacity - num. */
-/* F.S. Ukuran list berkurang sebanyak num. */
-
-void compressListDin(ListDin *l);
-/* Proses : Mengubah capacity sehingga nEff = capacity */
-/* I.S. List tidak kosong */
-/* F.S. Ukuran nEff = capacity */
-=======
 void insertLastLD(ListDin *l, ElType val);
 /* I.S. l terdefinisi, mungkin penuh */
 /* F.S. Jika tidak penuh, val adalah elemen terakhir l yang baru. Jika penuh, maka dikeluarkan "LIST PENUH" */
@@ -196,7 +137,6 @@ void compressLD(ListDin *l);
 /* I.S. l terdefinisi, mungkin kosong */
 /* F.S. Jika tidak, ukuran nEff = capcity. Jika iya, dikeluarkan "LIST KOSONG" */
 /* PERHATIAN: mungkin memori akan kekurangan untuk alokasi, sehingga prosedur tidak dapat berjalan sesuai fungsi. Jika hal tersebut terjadi, maka akan dikeluarkan "GAGAL REALOKASI MEMORI" */
->>>>>>> b883cdcc4a265f7e517813a290d872aba2660891
 
 /* ********* DELETED FUNCTIONS ********* */
 /* PERTIMBANGAN: sorting dan searching dilakukan oleh f07 dan selanjutnya dalam file masing-masing */
