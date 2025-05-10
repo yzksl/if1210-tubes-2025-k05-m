@@ -55,70 +55,68 @@ typedef struct {
 
 /* ********** KONSTRUKTOR ********** */
 /* Konstruktor : create list kosong  */
-void CreateListDin(ListDin *l, int capacity);
+void CreateLD(ListDin *l, int capacity);
 /* I.S. l sembarang, capacity > 0 */
 /* F.S. Terbentuk list dinamis l kosong dengan kapasitas capacity */
 
 /* ********** DEALOKATOR ********** */
-void dealocateListDin(ListDin *l);
-/* I.S. l terdefinisi, buffer ada beberapa nilai (pointer ke patient/doctor/etc); */
-/* F.S. (l) dikembalikan ke system, CAPACITY(l)=0; NEFF(l)=0 */
+void dealocateLD(ListDin *l);
+/* I.S. l terdefinisi, mungkin kosong */
+/* F.S. semua elemen difree dan pointer ke NULL CAPACITY(l)=0; NEFF(l)=0 */   
 
 /* ********** SELEKTOR (TAMBAHAN) ********** */
-int listDinLength(ListDin l);
+int lengthLD(const ListDin* l);
 /* Mengirimkan banyaknya elemen efektif list */
 
 /* *** Selektor INDEKS *** */
-int getFirstIdx(ListDin l);
-/* Jika list tidak kosong, mengembalikan index pertama. Jika list kosong, dikeluarkan "LIST KOSONG" dan mengembalikan IDX_UNDEF */
-int getLastIdx(ListDin l);
-/* Jika list tidak kosong, mengembalikan indeks elemen l terakhir. Jika list kosong, dikeluarkan "LIST KOSONG" dan mengembalikan IDX_UNDEF */
+int getLDFirstIdx(const ListDin* l);
+/* Mengembalikan index pertama */
+int getLDLastIdx(const ListDin* l);
+/* Mengembalikan index elemen efektif terakhir */
 
 /* ********** Test Indeks yang valid ********** */
-boolean isListDinIdxValid(ListDin l, int i);
+boolean isLDIdxValid(const ListDin* l, int i);
 /* Mengirimkan true jika i adalah indeks yang valid utk kapasitas list l */
 /* yaitu antara indeks yang terdefinisi utk container*/
-boolean isListDinIdxEff(ListDin l, int i);
+boolean isLDIdxEff(const ListDin* l, int i);
 /* Mengirimkan true jika i adalah indeks yang terdefinisi utk list */
 /* yaitu antara 0..NEFF(l) */
 
 /* ********** TEST KOSONG/PENUH ********** */
 /* *** Test list kosong *** */
-boolean isListDinEmpty(ListDin l);
+boolean isLDEmpty(ListDin l);
 /* Mengirimkan true jika list l kosong, mengirimkan false jika tidak */
 /* *** Test list penuh *** */
-boolean isListDinFull(ListDin l);
+boolean isLDFull(ListDin l);
 /* Mengirimkan true jika list l penuh, mengirimkan false jika tidak */
 
 /* ********** MENAMBAH DAN MENGHAPUS ELEMEN DI AKHIR ********** */
 /* *** Menambahkan elemen terakhir *** */
-void insertLast(ListDin *l, ElType val);
-/* Proses: Menambahkan val sebagai elemen terakhir list */
-/* I.S. List l boleh kosong, tetapi tidak penuh */
-/* F.S. val adalah elemen terakhir l yang baru */
+void insertLastLD(ListDin *l, ElType val);
+/* I.S. l terdefinisi, mungkin penuh */
+/* F.S. Jika tidak penuh, val adalah elemen terakhir l yang baru. Jika penuh, maka dikeluarkan "LIST PENUH" */
 /* ********** MENGHAPUS ELEMEN ********** */
-void deleteLast(ListDin *l, ElType *val);
-/* Proses : Menghapus elemen terakhir list */
-/* I.S. List tidak kosong */
-/* F.S. val adalah nilai elemen terakhir l sebelum penghapusan, */
-/*      Banyaknya elemen list berkurang satu */
-/*      List l mungkin menjadi kosong */
+void deleteLastLD(ListDin *l);
+/* I.S. l terdefinisi, mungkin kosong */
+/* F.S. Jika tidak kosong, maka elemen terakhir di-free dan pointernya ke null */
+/*      Banyaknya elemen list berkurang satu, l mungkin menjadi kosong */
+/*      Jika kosong, maka dikeluarkan "LIST KOSONG" */
 
 /* ********* MENGUBAH UKURAN ARRAY ********* */
-void expandListDin(ListDin *l, int num);
-/* Proses : Menambahkan capacity l sebanyak num */
+void expandLD(ListDin *l, int num);
 /* I.S. List sudah terdefinisi */
 /* F.S. Ukuran list bertambah sebanyak num */
+/* PERHATIAN: mungkin memori akan kekurangan untuk alokasi, sehingga prosedur tidak dapat berjalan sesuai fungsi. Jika hal tersebut terjadi, maka akan dikeluarkan "GAGAL REALOKASI MEMORI" */
 
-void shrinkListDin(ListDin *l, int num);
-/* Proses : Mengurangi capacity sebanyak num */
-/* I.S. List sudah terdefinisi, ukuran capacity > num, dan nEff < capacity - num. */
-/* F.S. Ukuran list berkurang sebanyak num. */
+void shrinkLD(ListDin *l, int num);
+/* I.S. l terdefinisi, mungkin kapasitas < num atau nEff > capacity - num */
+/* F.S. Jika tidak, ukuran list berkurang sebanyak num. Jika iya, dikeluarkan "INVALID NUM" */
+/* PERHATIAN: mungkin memori akan kekurangan untuk alokasi, sehingga prosedur tidak dapat berjalan sesuai fungsi. Jika hal tersebut terjadi, maka akan dikeluarkan "GAGAL REALOKASI MEMORI" */
 
-void compressListDin(ListDin *l);
-/* Proses : Mengubah capacity sehingga nEff = capacity */
-/* I.S. List tidak kosong */
-/* F.S. Ukuran nEff = capacity */
+void compressLD(ListDin *l);
+/* I.S. l terdefinisi, mungkin kosong */
+/* F.S. Jika tidak, ukuran nEff = capcity. Jika iya, dikeluarkan "LIST KOSONG" */
+/* PERHATIAN: mungkin memori akan kekurangan untuk alokasi, sehingga prosedur tidak dapat berjalan sesuai fungsi. Jika hal tersebut terjadi, maka akan dikeluarkan "GAGAL REALOKASI MEMORI" */
 
 /* ********* DELETED FUNCTIONS ********* */
 /* PERTIMBANGAN: sorting dan searching dilakukan oleh f07 dan selanjutnya dalam file masing-masing */
