@@ -27,6 +27,7 @@ typedef struct {
     char username[50];
     char password[50];
     DataType DATA_TYPE_PATIENT;
+    char riwayatPenyakit[50];
     Stack perut;
     int inventory[MAX_SIZE];
     float kondisiTubuh[KONDISI_TUBUH_SIZE];
@@ -55,5 +56,13 @@ typedef struct {
     int id;         /* id obat */
     char name[50];  /* nama obat */
 } Obat;
+
+/* Penyakit */
+#define THRESHOLD_SIZE 20
+typedef struct {
+    int id;
+    char name[50];
+    float threshold[THRESHOLD_SIZE];    /* treshold sakit/tidak disimpan disini (lihat contoh file user.csv) */
+} Penyakit;
 
 #endif
