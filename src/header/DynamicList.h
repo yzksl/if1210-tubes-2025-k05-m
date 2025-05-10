@@ -9,6 +9,7 @@
 
 #include "Boolean.h"
 #include "DatatypeEnums.h"
+#include "StructsInHospital.h"
 
 /*  Kamus Umum */
 #define IDX_MIN 0
@@ -50,16 +51,21 @@ typedef struct {
 #define BUFFER(l) (l).buffer
 #define CAPACITY(l) (l).capacity
 #define GETPOINTER(l, i) ((l).buffer[i])
-#define GETELMT(l, i) (*(((l).buffer[i])->data))
-#define GETTYPE(l, i) (((l).buffer[i])->type)
+// #define GETELMT(l, i) (*(((l).buffer[i])->data))
+// #define GETTYPE(l, i) (((l).buffer[i])->type)
 
 /* ********** KONSTRUKTOR ********** */
 /* Konstruktor : create list kosong  */
-void CreateListDin(ListDin *l, int capacity);
+void createLD(ListDin *l, int capacity);
 /* I.S. l sembarang, capacity > 0 */
 /* F.S. Terbentuk list dinamis l kosong dengan kapasitas capacity */
+/* Konstruktor : create GenericData */
+GenericData* createGD(void* data, DataType type);
+/* Membuat suatu GenericData dengan pointer generik ke data dan type dari data tersebut */
+/* dan mengembalikan address dari GenericData tersebut */
 
 /* ********** DEALOKATOR ********** */
+<<<<<<< HEAD
 void dealocateListDin(ListDin *l);
 /* I.S. l terdefinisi, buffer ada beberapa nilai (pointer ke patient/doctor/etc); */
 /* F.S. (l) dikembalikan ke system, CAPACITY(l)=0; NEFF(l)=0 */
@@ -79,19 +85,64 @@ boolean isListDinIdxValid(ListDin l, int i);
 /* Mengirimkan true jika i adalah indeks yang valid utk kapasitas list l */
 /* yaitu antara indeks yang terdefinisi utk container*/
 boolean isListDinIdxEff(ListDin l, int i);
+=======
+void dealocateLD(ListDin *l);
+/* I.S. l terdefinisi, mungkin kosong */
+/* F.S. Semua elemen difree dan pointer ke NULL CAPACITY(l)=0; NEFF(l)=0 */
+void dealocateGD(GenericData* gd);
+/* I.S. gd terdefinisi */
+/* F.S. Data dalam gd di-free, type menjadi unknown, data point to NULL */
+
+/* ********** SELEKTOR (TAMBAHAN) ********** */
+int lengthLD(const ListDin* l);
+/* Mengembalikan banyaknya elemen efektif list */
+DataType getDataTypeGD(const GenericData* gd);
+/* Mengembalikan type dari gd */
+GenericData* getGDbyIdx(const ListDin* l, int idx);
+/* Mengembalikan address dari GenericData pada index idx. Jika tidak efektif, maka dikeluarkan "INVALID IDX" dan mengembalikan NULL */
+Patient* getPatientInGD(const GenericData* gd);
+/* Jika type memang Patient, nilai dalam data dengan casting patient alias mengembalikan address dari patient di gd */
+/* Jika type bukan Patient, maka dikeluarkan "BUKAN PASIEN" */
+Doctor* getDoctorInGD(const GenericData* gd);
+/* Jika type memang Doctor, nilai dalam data dengan casting patient alias mengembalikan address dari patient di gd */
+/* Jika type bukan Doctor, maka dikeluarkan "BUKAN PASIEN" */
+Manager* getManagerInGD(const GenericData* gd);
+/* Jika type memang Manager, nilai dalam data dengan casting patient alias mengembalikan address dari patient di gd */
+/* Jika type bukan Manager, maka dikeluarkan "BUKAN PASIEN" */
+
+/* *** Selektor INDEKS *** */
+int getLDFirstIdx(const ListDin* l);
+/* Mengembalikan index pertama */
+int getLDLastIdx(const ListDin* l);
+/* Mengembalikan index elemen efektif terakhir */
+
+/* ********** Test Indeks yang valid ********** */
+boolean isLDIdxValid(const ListDin* l, int i);
+/* Mengirimkan true jika i adalah indeks yang valid utk kapasitas list l */
+/* yaitu antara indeks yang terdefinisi utk container*/
+boolean isLDIdxEff(const ListDin* l, int i);
+>>>>>>> b883cdcc4a265f7e517813a290d872aba2660891
 /* Mengirimkan true jika i adalah indeks yang terdefinisi utk list */
 /* yaitu antara 0..NEFF(l) */
 
 /* ********** TEST KOSONG/PENUH ********** */
 /* *** Test list kosong *** */
+<<<<<<< HEAD
 boolean isListDinEmpty(ListDin l);
 /* Mengirimkan true jika list l kosong, mengirimkan false jika tidak */
 /* *** Test list penuh *** */
 boolean isListDinFull(ListDin l);
+=======
+boolean isLDEmpty(ListDin l);
+/* Mengirimkan true jika list l kosong, mengirimkan false jika tidak */
+/* *** Test list penuh *** */
+boolean isLDFull(ListDin l);
+>>>>>>> b883cdcc4a265f7e517813a290d872aba2660891
 /* Mengirimkan true jika list l penuh, mengirimkan false jika tidak */
 
 /* ********** MENAMBAH DAN MENGHAPUS ELEMEN DI AKHIR ********** */
 /* *** Menambahkan elemen terakhir *** */
+<<<<<<< HEAD
 void insertLast(ListDin *l, ElType val);
 /* Proses: Menambahkan val sebagai elemen terakhir list */
 /* I.S. List l boleh kosong, tetapi tidak penuh */
@@ -119,6 +170,33 @@ void compressListDin(ListDin *l);
 /* Proses : Mengubah capacity sehingga nEff = capacity */
 /* I.S. List tidak kosong */
 /* F.S. Ukuran nEff = capacity */
+=======
+void insertLastLD(ListDin *l, ElType val);
+/* I.S. l terdefinisi, mungkin penuh */
+/* F.S. Jika tidak penuh, val adalah elemen terakhir l yang baru. Jika penuh, maka dikeluarkan "LIST PENUH" */
+/* ********** MENGHAPUS ELEMEN ********** */
+void deleteLastLD(ListDin *l);
+/* I.S. l terdefinisi, mungkin kosong */
+/* F.S. Jika tidak kosong, maka elemen terakhir di-free dan pointernya ke null */
+/*      Banyaknya elemen list berkurang satu, l mungkin menjadi kosong */
+/*      Jika kosong, maka dikeluarkan "LIST KOSONG" */
+
+/* ********* MENGUBAH UKURAN ARRAY ********* */
+void expandLD(ListDin *l, int num);
+/* I.S. List sudah terdefinisi */
+/* F.S. Ukuran list bertambah sebanyak num */
+/* PERHATIAN: mungkin memori akan kekurangan untuk alokasi, sehingga prosedur tidak dapat berjalan sesuai fungsi. Jika hal tersebut terjadi, maka akan dikeluarkan "GAGAL REALOKASI MEMORI" */
+
+void shrinkLD(ListDin *l, int num);
+/* I.S. l terdefinisi, mungkin kapasitas < num atau nEff > capacity - num */
+/* F.S. Jika tidak, ukuran list berkurang sebanyak num. Jika iya, dikeluarkan "INVALID NUM" */
+/* PERHATIAN: mungkin memori akan kekurangan untuk alokasi, sehingga prosedur tidak dapat berjalan sesuai fungsi. Jika hal tersebut terjadi, maka akan dikeluarkan "GAGAL REALOKASI MEMORI" */
+
+void compressLD(ListDin *l);
+/* I.S. l terdefinisi, mungkin kosong */
+/* F.S. Jika tidak, ukuran nEff = capcity. Jika iya, dikeluarkan "LIST KOSONG" */
+/* PERHATIAN: mungkin memori akan kekurangan untuk alokasi, sehingga prosedur tidak dapat berjalan sesuai fungsi. Jika hal tersebut terjadi, maka akan dikeluarkan "GAGAL REALOKASI MEMORI" */
+>>>>>>> b883cdcc4a265f7e517813a290d872aba2660891
 
 /* ********* DELETED FUNCTIONS ********* */
 /* PERTIMBANGAN: sorting dan searching dilakukan oleh f07 dan selanjutnya dalam file masing-masing */
