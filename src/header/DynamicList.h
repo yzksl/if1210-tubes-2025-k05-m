@@ -1,9 +1,15 @@
 /* MODUL DYNAMIC LIST UNTUK DATABASE LOGIK USER */
 /* Digunakan untuk database logik dari seluruh anggota hospital (pasien, dokter, manager) */
 /* Berisi definisi dan semua primitif pemrosesan ADT List Dinamik */
+/* MODUL DYNAMIC LIST UNTUK DATABASE LOGIK USER */
+/* Digunakan untuk database logik dari seluruh anggota hospital (pasien, dokter, manager) */
+/* Berisi definisi dan semua primitif pemrosesan ADT List Dinamik */
 /* Penempatan elemen selalu rapat kiri */
 /* Banyaknya elemen efektif didefinisikan dengan nEff (eksplisit) */
+/* Banyaknya elemen efektif didefinisikan dengan nEff (eksplisit) */
 
+#ifndef DYNAMIC_LIST_H
+#define DYNAMIC_LIST_H
 #ifndef DYNAMIC_LIST_H
 #define DYNAMIC_LIST_H
 
@@ -37,6 +43,7 @@ typedef struct {
 /* Jika l adalah : ListDin, cara deklarasi dan akses: */
 /* Deklarasi : l : ListDin */
 /* Maka cara akses:
+    memakai fungsi selektor, atau...
     memakai fungsi selektor, atau...
     l.nEff      untuk mengetahui banyaknya elemen
     l.buffer    untuk mengakses seluruh nilai elemen list

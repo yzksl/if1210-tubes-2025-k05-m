@@ -9,11 +9,17 @@ void createLD(ListDin *l, int capacity) {
     if (capacity < 1) {
         printf("KAPASITAS INVALID\n");
         return;
-    } else {
-        l->capacity = capacity;
-        l->nEff = 0;
-        BUFFER(*l) = (ElType* )malloc(l->capacity * sizeof(ElType));
     }
+
+    ElType* newBuffer = (ElType* )malloc(l->capacity * sizeof(ElType));
+    if (newBuffer == NULL) {
+        printf("GAGAL REALOKASI MEMORI\n");
+        return;
+    }
+
+    l->buffer = newBuffer;
+    l->capacity = capacity;
+    l->nEff = 0;
 }
 
 void dealocateLD(ListDin *l) {
