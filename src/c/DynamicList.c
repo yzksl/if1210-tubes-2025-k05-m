@@ -39,11 +39,15 @@ void dealocateLD(ListDin *l) {
 /* I.S. l terdefinisi */
 /* F.S. semua elemen difree dan pointer ke NULL CAPACITY(l)=0; NEFF(l)=0 */   
     for (int i = 0; i < l->nEff; ++i) {
-        free(l->buffer[i]);
-        /* l-> buffer [i] = NULL; is not needed, will be dealocated anyway. Slows down program */
+        if (l->buffer[i] != NULL) {
+            free(l->buffer[i]);
+            /* l-> buffer [i] = NULL; is not needed, will be dealocated anyway. Slows down program */
+        }
     }
-    free(l->buffer);
-    l->buffer = NULL;
+    if (l->buffer != NULL) {
+        free(l->buffer);
+        l->buffer = NULL;
+    }
     l->capacity = 0;
     l->nEff = 0;
 }
@@ -51,10 +55,14 @@ void dealocateLD(ListDin *l) {
 void dealocateGD(GenericData* gd) {
 /* I.S. gd terdefinisi */
 /* F.S. Data dalam gd di-free, type menjadi unknown, data point to NULL */
-    free(gd->data);
-    // gd->data = NULL;
-    // gd->type = DATA_TYPE_UNKNOWN;
-    free(gd);
+    if (gd != NULL) {
+        if (gd->data != NULL) {
+            free(gd->data);
+        }
+        free(gd);
+        // gd->data = NULL;
+        // gd->type = DATA_TYPE_UNKNOWN;
+    }
 }
 
 int lengthLD(const ListDin* l) {
@@ -159,8 +167,10 @@ void deleteLastLD(ListDin *l) {
         printf("LIST KOSONG\n");
         return;
     }
-    free(l->buffer[l->nEff-1]);
-    l->buffer[l->nEff-1] = NULL;
+    if (l->buffer[l->nEff-1] != NULL) {
+        free(l->buffer[l->nEff-1]);
+        l->buffer[l->nEff-1] = NULL;
+    }
     l->nEff -= 1;
 }
 
