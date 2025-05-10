@@ -27,7 +27,7 @@ typedef struct {
     int id;
     char username[50];
     char password[50];
-    DataType DATA_TYPE_PATIENT;
+    DataType type;
     char riwayatPenyakit[50];
     Stack perut;
     int inventory[INVENTORY_SIZE];
@@ -39,7 +39,7 @@ typedef struct {
     int id;
     char username[50];
     char password[50];
-    DataType DATA_TYPE_DOCTOR;
+    DataType type;
     char name[50];
     char spesialisasi[50];
 } Doctor;
@@ -49,7 +49,7 @@ typedef struct {
     int id;
     char username[50];
     char password[50];
-    DataType DATA_TYPE_MANAGER;
+    DataType type;
 } Manager;
 
 /* Obat */
@@ -70,20 +70,26 @@ typedef struct {
 /* Konstruktor Patient */
 Patient* createPatient();
 /* Membuat sebuah Patient di heap, komponen-komponen zero-filled. Mengembalikan address dari data tersebut dalam heap */
-Patient* createPatientWithData(int id, char username[50], char password[50], char riwayatPenyakit[50], int inventory[INVENTORY_SIZE], float kondisiTubuh[KONDISI_TUBUH_SIZE]);
+/* PERHATIAN: mungkin alokasi memori dapat gagal. Jika iya, dikeluarkan ALOKASI MEMORI GAGAL */
+Patient* createPatientWithData(const int id, const char username[50], const char password[50], const char riwayatPenyakit[50], const int inventory[INVENTORY_SIZE], float kondisiTubuh[KONDISI_TUBUH_SIZE]);
 /* Membuat sebuah Patient di heap dengan komponen-komponen dalam parameter */
+/* PERHATIAN: mungkin alokasi memori dapat gagal. Jika iya, dikeluarkan ALOKASI MEMORI GAGAL */
 
 /* Konstruktor Doctor */
 Doctor* createDoctor();
 /* Membuat sebuah Doctor di heap, komponen-komponen zero-filled. Mengembalikan address dari data tersebut dalam heap */
-Doctor* createDoctorWithData(int id, char username[50], char password[50], char name[50], char spesialisasi[50]);
+/* PERHATIAN: mungkin alokasi memori dapat gagal. Jika iya, dikeluarkan ALOKASI MEMORI GAGAL */
+Doctor* createDoctorWithData(const int id, const char username[50], const char password[50], const char name[50], const char spesialisasi[50]);
 /* Membuat sebuah Doctor di heap dengan komponen-komponen dalam parameter */
+/* PERHATIAN: mungkin alokasi memori dapat gagal. Jika iya, dikeluarkan ALOKASI MEMORI GAGAL */
 
 /* Konstruktor Manager */
 Manager* createManager();
 /* Membuat sebuah Manager di heap, komponen-komponen zero-filled. Mengembalikan address dari data tersebut dalam heap */
-Manager* createManagerWithData(int id, char username[50]);
+/* PERHATIAN: mungkin alokasi memori dapat gagal. Jika iya, dikeluarkan ALOKASI MEMORI GAGAL */
+Manager* createManagerWithData(const int id, const char username[50], const char password[50]);
 /* Membuat sebuah Manager di heap dengan komponen-komponen dalam parameter */
+/* PERHATIAN: mungkin alokasi memori dapat gagal. Jika iya, dikeluarkan ALOKASI MEMORI GAGAL */
 
 /* ********** DEALOKATOR ********** */
 /* Untuk Patient, Doctor, Manager, dealokasi diatur oleh GenericData */
