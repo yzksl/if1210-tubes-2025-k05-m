@@ -22,6 +22,19 @@ void createLD(ListDin *l, int capacity) {
     l->nEff = 0;
 }
 
+GenericData* createGD(void* data, DataType type) {
+/* Membuat suatu GenericData UNTUK DATA DALAM HEAP dengan pointer generik ke data dan type dari data tersebut dan mengembalikan address dari GenericData tersebut */
+/* PERHATIAN: mungkin memori akan kekurangan untuk alokasi, sehingga prosedur tidak dapat berjalan sesuai fungsi. Jika hal tersebut terjadi, maka akan dikeluarkan "GAGAL REALOKASI MEMORI" */
+    GenericData* newGD = (GenericData*)malloc(sizeof(GenericData));
+    if (newGD == NULL) {
+        printf("GAGAL REALOKASI MEMORI\n");
+        return NULL;
+    }
+    newGD->data = data;
+    newGD->type = type;
+    return newGD;
+}
+
 void dealocateLD(ListDin *l) {
 /* I.S. l terdefinisi */
 /* F.S. semua elemen difree dan pointer ke NULL CAPACITY(l)=0; NEFF(l)=0 */   

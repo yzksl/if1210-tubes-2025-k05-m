@@ -65,8 +65,8 @@ void createLD(ListDin *l, int capacity);
 /* F.S. Terbentuk list dinamis l kosong dengan kapasitas capacity */
 /* Konstruktor : create GenericData */
 GenericData* createGD(void* data, DataType type);
-/* Membuat suatu GenericData dengan pointer generik ke data dan type dari data tersebut */
-/* dan mengembalikan address dari GenericData tersebut */
+/* Membuat suatu GenericData UNTUK DATA DALAM HEAP dengan pointer generik ke data dan type dari data tersebut dan mengembalikan address dari GenericData tersebut */
+/* PERHATIAN: mungkin memori akan kekurangan untuk alokasi, sehingga prosedur tidak dapat berjalan sesuai fungsi. Jika hal tersebut terjadi, maka akan dikeluarkan "GAGAL REALOKASI MEMORI" */
 
 /* ********** DEALOKATOR ********** */
 void dealocateLD(ListDin *l);
