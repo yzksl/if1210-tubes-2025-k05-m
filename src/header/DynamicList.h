@@ -14,7 +14,6 @@
 #define DYNAMIC_LIST_H
 
 #include "Boolean.h"
-#include "DatatypeEnums.h"
 #include "StructsInHospital.h"
 
 /*  Kamus Umum */
