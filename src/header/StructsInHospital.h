@@ -22,6 +22,7 @@ typedef enum {
 
 /* Patient */
 #define KONDISI_TUBUH_SIZE 12
+#define INVENTORY_SIZE 10
 typedef struct {
     int id;
     char username[50];
@@ -29,7 +30,7 @@ typedef struct {
     DataType DATA_TYPE_PATIENT;
     char riwayatPenyakit[50];
     Stack perut;
-    int inventory[MAX_SIZE];
+    int inventory[INVENTORY_SIZE];
     float kondisiTubuh[KONDISI_TUBUH_SIZE];
 } Patient;
 
@@ -64,5 +65,27 @@ typedef struct {
     char name[50];
     float threshold[THRESHOLD_SIZE];    /* treshold sakit/tidak disimpan disini (lihat contoh file user.csv) */
 } Penyakit;
+
+/* ********** KONSTRUKTOR ********** */
+/* Konstruktor Patient */
+Patient* createPatient();
+/* Membuat sebuah Patient di heap, komponen-komponen zero-filled. Mengembalikan address dari data tersebut dalam heap */
+Patient* createPatientWithData(int id, char username[50], char password[50], char riwayatPenyakit[50], int inventory[INVENTORY_SIZE], float kondisiTubuh[KONDISI_TUBUH_SIZE]);
+/* Membuat sebuah Patient di heap dengan komponen-komponen dalam parameter */
+
+/* Konstruktor Doctor */
+Doctor* createDoctor();
+/* Membuat sebuah Doctor di heap, komponen-komponen zero-filled. Mengembalikan address dari data tersebut dalam heap */
+Doctor* createDoctorWithData(int id, char username[50], char password[50], char name[50], char spesialisasi[50]);
+/* Membuat sebuah Doctor di heap dengan komponen-komponen dalam parameter */
+
+/* Konstruktor Manager */
+Manager* createManager();
+/* Membuat sebuah Manager di heap, komponen-komponen zero-filled. Mengembalikan address dari data tersebut dalam heap */
+Manager* createManagerWithData(int id, char username[50]);
+/* Membuat sebuah Manager di heap dengan komponen-komponen dalam parameter */
+
+/* ********** DEALOKATOR ********** */
+/* Untuk Patient, Doctor, Manager, dealokasi diatur oleh GenericData */
 
 #endif
