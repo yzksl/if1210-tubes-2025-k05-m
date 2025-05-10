@@ -9,6 +9,7 @@
 
 #include "Boolean.h"
 #include "DatatypeEnums.h"
+#include "StructsInHospital.h"
 
 /*  Kamus Umum */
 #define IDX_MIN 0
@@ -50,23 +51,43 @@ typedef struct {
 #define BUFFER(l) (l).buffer
 #define CAPACITY(l) (l).capacity
 #define GETPOINTER(l, i) ((l).buffer[i])
-#define GETELMT(l, i) (*(((l).buffer[i])->data))
-#define GETTYPE(l, i) (((l).buffer[i])->type)
+// #define GETELMT(l, i) (*(((l).buffer[i])->data))
+// #define GETTYPE(l, i) (((l).buffer[i])->type)
 
 /* ********** KONSTRUKTOR ********** */
 /* Konstruktor : create list kosong  */
-void CreateLD(ListDin *l, int capacity);
+void createLD(ListDin *l, int capacity);
 /* I.S. l sembarang, capacity > 0 */
 /* F.S. Terbentuk list dinamis l kosong dengan kapasitas capacity */
+/* Konstruktor : create GenericData */
+GenericData* createGD(void* data, DataType type);
+/* Membuat suatu GenericData dengan pointer generik ke data dan type dari data tersebut */
+/* dan mengembalikan address dari GenericData tersebut */
 
 /* ********** DEALOKATOR ********** */
 void dealocateLD(ListDin *l);
 /* I.S. l terdefinisi, mungkin kosong */
-/* F.S. semua elemen difree dan pointer ke NULL CAPACITY(l)=0; NEFF(l)=0 */   
+/* F.S. Semua elemen difree dan pointer ke NULL CAPACITY(l)=0; NEFF(l)=0 */
+void dealocateGD(GenericData* gd);
+/* I.S. gd terdefinisi */
+/* F.S. Data dalam gd di-free, type menjadi unknown, data point to NULL */
 
 /* ********** SELEKTOR (TAMBAHAN) ********** */
 int lengthLD(const ListDin* l);
-/* Mengirimkan banyaknya elemen efektif list */
+/* Mengembalikan banyaknya elemen efektif list */
+DataType getDataTypeGD(const GenericData* gd);
+/* Mengembalikan type dari gd */
+GenericData* getGDbyIdx(const ListDin* l, int idx);
+/* Mengembalikan address dari GenericData pada index idx. Jika tidak efektif, maka dikeluarkan "INVALID IDX" dan mengembalikan NULL */
+Patient* getPatientInGD(const GenericData* gd);
+/* Jika type memang Patient, nilai dalam data dengan casting patient alias mengembalikan address dari patient di gd */
+/* Jika type bukan Patient, maka dikeluarkan "BUKAN PASIEN" */
+Doctor* getDoctorInGD(const GenericData* gd);
+/* Jika type memang Doctor, nilai dalam data dengan casting patient alias mengembalikan address dari patient di gd */
+/* Jika type bukan Doctor, maka dikeluarkan "BUKAN PASIEN" */
+Manager* getManagerInGD(const GenericData* gd);
+/* Jika type memang Manager, nilai dalam data dengan casting patient alias mengembalikan address dari patient di gd */
+/* Jika type bukan Manager, maka dikeluarkan "BUKAN PASIEN" */
 
 /* *** Selektor INDEKS *** */
 int getLDFirstIdx(const ListDin* l);

@@ -2,7 +2,7 @@
 #include "../header/DynamicList.h"
 #include "../header/Boolean.h"
 
-void CreateLD(ListDin *l, int capacity) {
+void createLD(ListDin *l, int capacity) {
 /* I.S. l sembarang, capacity > 0 */
 /* F.S. Terbentuk list dinamis l kosong dengan kapasitas capacity */
 /* PERHATIAN: mungkin memori akan kekurangan untuk alokasi, sehingga prosedur tidak dapat berjalan sesuai fungsi. Jika hal tersebut terjadi, maka akan dikeluarkan "GAGAL REALOKASI MEMORI" */
@@ -30,7 +30,7 @@ void dealocateLD(ListDin *l) {
 }
 
 int lengthLD(const ListDin* l) {
-/* Mengirimkan banyaknya elemen efektif list. 0 jika kosong */
+/* Mengembalikan banyaknya elemen efektif list. 0 jika kosong */
     return l->nEff;
 }
 
@@ -104,6 +104,7 @@ void expandLD(ListDin *l, int num) {
     ElType* newBuffer = realloc(l->buffer, (l->capacity + num)*sizeof(ElType));
     if (newBuffer == NULL) {
         printf("GAGAL REALOKASI MEMORI\n");
+        return;
     }
 
     l->buffer = newBuffer;
@@ -122,6 +123,7 @@ void shrinkLD(ListDin *l, int num) {
     ElType* newBuffer = realloc(l->buffer, (l->capacity - num)*sizeof(ElType));
     if (newBuffer == NULL) {
         printf("GAGAL REALOKASI MEMORI\n");
+        return;
     }
     
     l->buffer = newBuffer;
