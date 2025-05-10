@@ -35,9 +35,62 @@ void dealocateLD(ListDin *l) {
     l->nEff = 0;
 }
 
+void dealocateGD(GenericData* gd) {
+/* I.S. gd terdefinisi */
+/* F.S. Data dalam gd di-free, type menjadi unknown, data point to NULL */
+    free(gd->data);
+    // gd->data = NULL;
+    // gd->type = DATA_TYPE_UNKNOWN;
+    free(gd);
+}
+
 int lengthLD(const ListDin* l) {
 /* Mengembalikan banyaknya elemen efektif list. 0 jika kosong */
     return l->nEff;
+}
+
+DataType getDataTypeGD(const GenericData* gd) {
+/* Mengembalikan type dari gd */
+    return gd->type;
+}
+
+GenericData* getGDbyIdx(const ListDin* l, int idx){
+/* Mengembalikan address dari GenericData pada index idx. Jika tidak efektif, maka dikeluarkan "INVALID IDX" dan mengembalikan NULL */
+    if (idx >= l->nEff || idx < 0) {
+        printf("INVALID IDX\n");
+        return NULL;
+    }
+    return l->buffer[idx];
+}
+
+Patient* getPatientInGD(const GenericData* gd){
+/* Jika type memang Patient, nilai dalam data dengan casting patient alias mengembalikan address dari patient di gd */
+/* Jika type bukan Patient, maka dikeluarkan "BUKAN PASIEN" */
+    if (gd->type != DATA_TYPE_PATIENT) {
+        printf("BUKAN PASIEN\n");
+        return NULL;
+    }
+    return (Patient*)gd->data;
+}
+
+Doctor* getDoctorInGD(const GenericData* gd) {
+/* Jika type memang Doctor, nilai dalam data dengan casting patient alias mengembalikan address dari patient di gd */
+/* Jika type bukan Doctor, maka dikeluarkan "BUKAN DOKTER" */
+    if (gd->type != DATA_TYPE_DOCTOR) {
+        printf("BUKAN DOKTER\n");
+        return NULL;
+    }
+    return (Doctor*)gd->data;
+}
+
+Manager* getManagerInGD(const GenericData* gd) {
+/* Jika type memang Manager, nilai dalam data dengan casting patient alias mengembalikan address dari patient di gd */
+/* Jika type bukan Manager, maka dikeluarkan "BUKAN MANAGER" */
+    if (gd->type != DATA_TYPE_MANAGER) {
+        printf("BUKAN MANAGER\n");
+        return NULL;
+    }
+    return (Manager*)gd->data;
 }
 
 int getLDFirstIdx(const ListDin* l) {

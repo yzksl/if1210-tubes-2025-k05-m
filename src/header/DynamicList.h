@@ -88,10 +88,10 @@ Patient* getPatientInGD(const GenericData* gd);
 /* Jika type bukan Patient, maka dikeluarkan "BUKAN PASIEN" */
 Doctor* getDoctorInGD(const GenericData* gd);
 /* Jika type memang Doctor, nilai dalam data dengan casting patient alias mengembalikan address dari patient di gd */
-/* Jika type bukan Doctor, maka dikeluarkan "BUKAN PASIEN" */
+/* Jika type bukan Doctor, maka dikeluarkan "BUKAN DOKTER" */
 Manager* getManagerInGD(const GenericData* gd);
 /* Jika type memang Manager, nilai dalam data dengan casting patient alias mengembalikan address dari patient di gd */
-/* Jika type bukan Manager, maka dikeluarkan "BUKAN PASIEN" */
+/* Jika type bukan Manager, maka dikeluarkan "BUKAN MANAGER" */
 
 /* *** Selektor INDEKS *** */
 int getLDFirstIdx(const ListDin* l);
