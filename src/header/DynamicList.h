@@ -10,8 +10,6 @@
 
 #ifndef DYNAMIC_LIST_H
 #define DYNAMIC_LIST_H
-#ifndef DYNAMIC_LIST_H
-#define DYNAMIC_LIST_H
 
 #include "Boolean.h"
 #include "StructsInHospital.h"
