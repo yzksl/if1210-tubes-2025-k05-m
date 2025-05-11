@@ -40,7 +40,7 @@ void dealocateLD(ListDin *l) {
 /* F.S. semua elemen difree dan pointer ke NULL CAPACITY(l)=0; NEFF(l)=0 */   
     for (int i = 0; i < l->nEff; ++i) {
         if (l->buffer[i] != NULL) {
-            free(l->buffer[i]);
+            dealocateGD(l->buffer[i]);
             /* l-> buffer [i] = NULL; is not needed, will be dealocated anyway. Slows down program */
         }
     }
@@ -136,20 +136,20 @@ boolean isLDIdxEff(const ListDin* l, int i) {
     return(i >= 0 && i < l->nEff);
 }
 
-boolean isLDEmpty(ListDin l) {
+boolean isLDEmpty(const ListDin* l) {
 /* Mengirimkan true jika list l kosong, mengirimkan false jika tidak */
-    return(l.nEff == 0);    
+    return(l->nEff == 0);    
 }
 
-boolean isLDFull(ListDin l) {
+boolean isLDFull(const ListDin* l) {
 /* Mengirimkan true jika list l penuh, mengirimkan false jika tidak */
-    return(l.nEff == l.capacity);
+    return(l->nEff == l->capacity);
 }
 
 void insertLastLD(ListDin *l, ElType val) {
 /* I.S. l terdefinisi, mungkin penuh */
 /* F.S. Jika tidak penuh, val adalah elemen terakhir l yang baru. Jika penuh, maka dikeluarkan "LIST PENUH" */
-    if (isFull(*l)) {
+    if (isLDFull(l)) {
         printf("LIST PENUH\n");
         return;
     } else {
