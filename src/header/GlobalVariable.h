@@ -1,5 +1,8 @@
+// Global variable antar file
+#include <stdlib.h>
+#include <DynamicList.h>
 #include <DataTypeRuangan.h>
 
-extern char Role[30];
+extern GenericData globalCurrentUser; 
 
 extern DataTypeDenah globalDenahRumahSakit; // Global Variable Denah

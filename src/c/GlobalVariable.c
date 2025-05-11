@@ -1,5 +1,5 @@
 #include <GlobalVariable.h>
 
-char Role[30]="Null";
+GenericData globalCurrentUser = {.data=NULL, .type=DATA_TYPE_UNKNOWN};
 
 DataTypeDenah globalDenahRumahSakit;

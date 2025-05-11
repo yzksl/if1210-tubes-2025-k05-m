@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "readconfig.h": "c",
+        "boolean.h": "c"
+    }
+}
