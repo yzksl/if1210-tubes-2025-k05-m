@@ -40,7 +40,7 @@ void dealocateLD(ListDin *l) {
 /* F.S. semua elemen difree dan pointer ke NULL CAPACITY(l)=0; NEFF(l)=0 */   
     for (int i = 0; i < l->nEff; ++i) {
         if (l->buffer[i] != NULL) {
-            free(l->buffer[i]);
+            dealocateGD(l->buffer[i]);
             /* l-> buffer [i] = NULL; is not needed, will be dealocated anyway. Slows down program */
         }
     }
