@@ -38,6 +38,11 @@ void processUserCSV(const char* filename, ListDin* userDatabase) {
 
     char line[MAX_LINE_LENGTH];
     while (fgets(line, sizeof(line), file)) {
+        // check and expand if full
+        if (isLDFull(userDatabase)) {
+            expandLD(userDatabase, 10); // expand by 10 slots
+        }
+
         // split line into fields 
         CSVRow row = parseCSVLine(line);
         
@@ -114,4 +119,6 @@ void processUserCSV(const char* filename, ListDin* userDatabase) {
         }
     }
     fclose(file);
+    // compress list dynamic after finishing
+    compressLD(userDatabase);
 }
