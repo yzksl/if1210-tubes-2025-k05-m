@@ -11,8 +11,8 @@
 #ifndef DYNAMIC_LIST_H
 #define DYNAMIC_LIST_H
 
-#include "Boolean.h"
-#include "StructsInHospital.h"
+#include <Boolean.h>
+#include <StructsInHospital.h>
 
 /*  Kamus Umum */
 #define IDX_MIN 0

@@ -1,1 +1,3 @@
-char Role[30]="Null";
+#include <GlobalVariable.h>
+
+GenericData globalCurrentUser = {.data=NULL, .type=DATA_TYPE_UNKNOWN};
