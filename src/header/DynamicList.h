@@ -109,10 +109,10 @@ boolean isLDIdxEff(const ListDin* l, int i);
 
 /* ********** TEST KOSONG/PENUH ********** */
 /* *** Test list kosong *** */
-boolean isLDEmpty(ListDin l);
+boolean isLDEmpty(const ListDin* l);
 /* Mengirimkan true jika list l kosong, mengirimkan false jika tidak */
 /* *** Test list penuh *** */
-boolean isLDFull(ListDin l);
+boolean isLDFull(const ListDin* l);
 /* Mengirimkan true jika list l penuh, mengirimkan false jika tidak */
 
 /* ********** MENAMBAH DAN MENGHAPUS ELEMEN DI AKHIR ********** */
