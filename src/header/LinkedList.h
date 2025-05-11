@@ -8,6 +8,7 @@
 
 #include <Boolean.h>
 #include <StructsInHospital.h>
+#include <stdio.h>
 
 /*  Kamus Umum */
 /* Linked List Terminology */

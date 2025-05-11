@@ -13,6 +13,7 @@
 
 #include <Boolean.h>
 #include <StructsInHospital.h>
+#include <stdio.h>
 
 /*  Kamus Umum */
 #define IDX_MIN 0

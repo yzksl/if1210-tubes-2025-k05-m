@@ -3,3 +3,5 @@
 GenericData globalCurrentUser = {.data=NULL, .type=DATA_TYPE_UNKNOWN};
 
 DataTypeDenah globalDenahRumahSakit;
+
+ListDin globalUserDataBase;

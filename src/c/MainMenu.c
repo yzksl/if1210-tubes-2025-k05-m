@@ -16,6 +16,8 @@ void menuPasien(){
         printf(">>> ");
         scanf("%s", input);
         if (strcmp(input, "HELP")==0) helpPasien();
+        else if (strcmp(input, "LIHAT_DENAH")==0) lihatDenah();
+        else if (strcmp(input, "LIHAT_RUANGAN")==0) lihatRuangan();
         else if (strcmp(input, "LOGOUT")==0) break/*Logout*/;
         else if (strcmp(input, "EXIT")==0) /*Exit*/;
         // Fungsi lanjutan yang belum ditulis
@@ -31,6 +33,8 @@ void menuDokter(){
         printf(">>> ");
         scanf("%s", input);
         if (strcmp(input, "HELP")==0) helpDokter();
+        else if (strcmp(input, "LIHAT_DENAH")==0) lihatDenah();
+        else if (strcmp(input, "LIHAT_RUANGAN")==0) lihatRuangan();
         else if (strcmp(input, "LOGOUT")==0) break/*Logout*/;
         else if (strcmp(input, "EXIT")==0) /*Exit*/;
         // Fungsi lanjutan yang belum ditulis
@@ -45,6 +49,8 @@ void menuManager(){
         printf(">>> ");
         scanf("%s", input);
         if (strcmp(input, "HELP")==0) helpManager();
+        else if (strcmp(input, "LIHAT_DENAH")==0) lihatDenah();
+        else if (strcmp(input, "LIHAT_RUANGAN")==0) lihatRuangan();
         else if (strcmp(input, "LOGOUT")==0) break/*Logout*/;
         else if (strcmp(input, "EXIT")==0) /*Exit*/;
         // Fungsi lanjutan yang belum ditulis
@@ -59,6 +65,8 @@ void menuBelumLogin(){
         printf(">>> ");
         scanf("%s", input);
         if (strcmp(input, "HELP")==0) helpBelumLogin();
+        else if (strcmp(input, "LIHAT_DENAH")==0) lihatDenah();
+        else if (strcmp(input, "LIHAT_RUANGAN")==0) lihatRuangan();
         else if (strcmp(input, "LOGIN")==0) break/*Login*/;
         else if (strcmp(input, "REGISTER")==0) break/*Register*/;
         else if (strcmp(input, "EXIT")==0) /*Exit*/;

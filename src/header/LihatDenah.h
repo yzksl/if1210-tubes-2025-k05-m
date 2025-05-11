@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <GlobalVariable.h>
+#include <FindAccount.h>
 
 void lihatDenah(); // Menampilkan Denah Rumah Sakit
 

@@ -2,15 +2,15 @@
 #include <stdio.h>
 #include <MainMenu.h>
 #include <ReadConfig.h>
+#include <ReadCSV.h>
 
 int main() {
     // Your code goes here
-
-    ReadConfig();
-    // while(1){ // Untuk Testing bukan permanen
-    // printf("Role : ");
-    // scanf("%s", Role);
-    // MainMenu();
-    // }
+    createLD(&globalUserDataBase, 20);
+    readConfig();
+    char filename[]="file/user.csv";
+    processUserCSV(filename, &globalUserDataBase);
+    mainMenu();
+    dealocateLD(&globalUserDataBase);
     return 0;
 }

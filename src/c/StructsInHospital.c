@@ -17,7 +17,7 @@ Patient* createPatient() {
     return p;
 }
 
-Patient* createPatientWithData(const int id, const char username[50], const char password[50], const char riwayatPenyakit[50], const int inventory[INVENTORY_SIZE], const float kondisiTubuh[KONDISI_TUBUH_SIZE]) {
+Patient* createPatientWithData(const int id, const char username[50], const char password[50], const char riwayatPenyakit[50], const int inventory[INVENTORY_SIZE], float kondisiTubuh[KONDISI_TUBUH_SIZE]){
 /* Membuat sebuah Patient di heap dengan komponen-komponen dalam parameter */
 /* PERHATIAN: mungkin alokasi memori dapat gagal. Jika iya, dikeluarkan ALOKASI MEMORI GAGAL */
     Patient* p = (Patient*)malloc(sizeof(Patient));

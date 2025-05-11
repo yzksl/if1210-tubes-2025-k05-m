@@ -49,14 +49,15 @@ void lihatRuangan(){
     int idDokter = globalDenahRumahSakit.Ruangan[rowRuangan][columnRuangan].idDokter;
 
     if (idDokter==0) printf("Dokter     : -\n");
-    else printf("Dokter     : %d\n", idDokter/*Variable Sementara*/);
+    else printf("Dokter     : %s\n", getAccountName(idDokter, DATA_TYPE_DOCTOR)/*Variable Sementara*/);
 
     printf("Pasien di dalam ruangan :\n");
 
     int jumlahPasien=globalDenahRumahSakit.Ruangan[rowRuangan][columnRuangan].nEffPasien;
 
+
     if (jumlahPasien==0) printf("  Tidak ada pasien di dalam ruangan saat ini.\n");
-    else for (int i=0; i<jumlahPasien; i++) printf("  %d. %d\n", i+1, globalDenahRumahSakit.Ruangan[rowRuangan][columnRuangan].idPasien[i]/*Variable Sementara*/);
+    else for (int i=0; i<jumlahPasien; i++) printf("  %d. %s\n", i+1, getAccountName(globalDenahRumahSakit.Ruangan[rowRuangan][columnRuangan].idPasien[i], DATA_TYPE_PATIENT)/*Variable Sementara*/);
 
     printf("------------------------------\n");
 }

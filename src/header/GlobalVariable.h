@@ -6,3 +6,5 @@
 extern GenericData globalCurrentUser; 
 
 extern DataTypeDenah globalDenahRumahSakit; // Global Variable Denah
+
+extern ListDin globalUserDataBase;
