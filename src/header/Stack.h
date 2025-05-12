@@ -10,7 +10,7 @@
 #define STACK_H
 
 #include "Boolean.h"
-#include "Obat.h"
+#include "StructsInHospital.h"
 
 /*  Kamus Umum */
 #define MAX_SIZE 100
