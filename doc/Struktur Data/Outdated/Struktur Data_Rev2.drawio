@@ -1,0 +1,413 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:136.0) Gecko/20100101 Firefox/136.0" version="27.0.3">
+  <diagram name="Page-1" id="8-VR7iJMcNqdX3meWGVy">
+    <mxGraphModel dx="2496" dy="2684" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="qRzVWy2TUR5vVs1TbLW0-101" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="80" y="-120" width="1000" height="1520" as="geometry" />
+        </mxCell>
+        <mxCell id="5JmlB6ZkHaXfLRglVu9s-21" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="610" y="1045" width="470" height="355" as="geometry" />
+        </mxCell>
+        <mxCell id="qRzVWy2TUR5vVs1TbLW0-126" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="qRzVWy2TUR5vVs1TbLW0-5" target="qRzVWy2TUR5vVs1TbLW0-29" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="qRzVWy2TUR5vVs1TbLW0-5" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="360" y="280" width="210" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="qRzVWy2TUR5vVs1TbLW0-124" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="qRzVWy2TUR5vVs1TbLW0-2" target="qRzVWy2TUR5vVs1TbLW0-29" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="220" y="355" />
+              <mxPoint x="220" y="260" />
+              <mxPoint x="713" y="260" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="qRzVWy2TUR5vVs1TbLW0-2" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="100" y="280" width="210" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="qRzVWy2TUR5vVs1TbLW0-3" value="Patient" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="175" y="290" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="qRzVWy2TUR5vVs1TbLW0-4" value="Doctor" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="435" y="290" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="qRzVWy2TUR5vVs1TbLW0-127" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="qRzVWy2TUR5vVs1TbLW0-8" target="qRzVWy2TUR5vVs1TbLW0-27" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1070" y="355" />
+              <mxPoint x="1070" y="745" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="qRzVWy2TUR5vVs1TbLW0-8" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="850" y="280" width="210" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="qRzVWy2TUR5vVs1TbLW0-9" value="Manager" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="925" y="290" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="qRzVWy2TUR5vVs1TbLW0-10" value="&lt;div&gt;id ruangan : integer&lt;/div&gt;&lt;div&gt;queue : queue&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="100" y="480" width="210" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="qRzVWy2TUR5vVs1TbLW0-11" value="&lt;div&gt;id: int&lt;/div&gt;&lt;div&gt;Kondisi tubuh: ?&lt;/div&gt;&lt;div&gt;inventory: list&lt;/div&gt;&lt;div&gt;perut: stack&lt;/div&gt;&lt;div&gt;username: string&lt;/div&gt;&lt;div&gt;password: string&lt;/div&gt;&lt;div&gt;banarich: ?&lt;/div&gt;&lt;div&gt;role: datatype enum&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="120" y="320" width="165" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="qRzVWy2TUR5vVs1TbLW0-13" value="usernames: list of string" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="360" y="480" width="210" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="qRzVWy2TUR5vVs1TbLW0-14" value="unique usernames" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="435" y="490" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="qRzVWy2TUR5vVs1TbLW0-15" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="610" y="480" width="210" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="qRzVWy2TUR5vVs1TbLW0-16" value="Perut" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="685" y="490" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="qRzVWy2TUR5vVs1TbLW0-17" value="&lt;div&gt;array of float&lt;/div&gt;&lt;div&gt;(ingat-ingat indexnya menunjukkan kondisi apa)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="850" y="480" width="210" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="qRzVWy2TUR5vVs1TbLW0-18" value="Kondisi tubuh" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="925" y="490" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="qRzVWy2TUR5vVs1TbLW0-142" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="1" source="qRzVWy2TUR5vVs1TbLW0-21" target="qRzVWy2TUR5vVs1TbLW0-138" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="90" y="745" />
+              <mxPoint x="90" y="1030" />
+              <mxPoint x="715" y="1030" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="5BP1AZB2ItsZewCRuCtk-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="1" source="qRzVWy2TUR5vVs1TbLW0-21" target="qRzVWy2TUR5vVs1TbLW0-15" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="qRzVWy2TUR5vVs1TbLW0-21" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="100" y="670" width="210" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="qRzVWy2TUR5vVs1TbLW0-22" value="Obat" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="175" y="680" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="qRzVWy2TUR5vVs1TbLW0-147" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="qRzVWy2TUR5vVs1TbLW0-23" target="qRzVWy2TUR5vVs1TbLW0-143" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="465" y="830" />
+              <mxPoint x="955" y="830" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="qRzVWy2TUR5vVs1TbLW0-23" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="360" y="670" width="210" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="qRzVWy2TUR5vVs1TbLW0-24" value="Penyakit" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="435" y="680" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="qRzVWy2TUR5vVs1TbLW0-129" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="qRzVWy2TUR5vVs1TbLW0-25" target="qRzVWy2TUR5vVs1TbLW0-35" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="715" y="840" />
+              <mxPoint x="320" y="840" />
+              <mxPoint x="320" y="935" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="qRzVWy2TUR5vVs1TbLW0-25" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="610" y="670" width="210" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="qRzVWy2TUR5vVs1TbLW0-26" value="Obat untuk menyembuhkan penyakit" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="685" y="680" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="qRzVWy2TUR5vVs1TbLW0-27" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="850" y="670" width="210" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="qRzVWy2TUR5vVs1TbLW0-28" value="Denah hospital" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="925" y="680" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="qRzVWy2TUR5vVs1TbLW0-29" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="607.5" y="280" width="210" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="qRzVWy2TUR5vVs1TbLW0-30" value="GenericData" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="682.5" y="290" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="qRzVWy2TUR5vVs1TbLW0-31" value="Antrian" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="185" y="500" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="qRzVWy2TUR5vVs1TbLW0-32" value="list of Ruangan" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="872.5" y="720" width="165" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="qRzVWy2TUR5vVs1TbLW0-33" value="Matrix" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="985" y="680" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="qRzVWy2TUR5vVs1TbLW0-34" value="&lt;div&gt;1.ID Penyakit, integer&lt;/div&gt;&lt;div&gt;2. Urut id obat: array of integer&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="630" y="720" width="165" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="qRzVWy2TUR5vVs1TbLW0-35" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="100" y="860" width="210" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="qRzVWy2TUR5vVs1TbLW0-36" value="Daftar Obat untuk menyembuhkan penyakit" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="172.5" y="880" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="qRzVWy2TUR5vVs1TbLW0-37" value="daftar: array of obat untuk menyembuhkan penyakit map" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="120" y="910" width="165" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="qRzVWy2TUR5vVs1TbLW0-38" value="Map" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="760" y="680" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="qRzVWy2TUR5vVs1TbLW0-39" value="list" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="250" y="870" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="qRzVWy2TUR5vVs1TbLW0-40" value="&lt;div&gt;data : (void*) dari address Patient/Doctor/Manager&lt;/div&gt;&lt;div&gt;type : datatype (enum)&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="630" y="330" width="165" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="qRzVWy2TUR5vVs1TbLW0-41" value="&lt;div&gt;1. ID penyakit: integer&lt;/div&gt;&lt;div&gt;2. nama penyakit: string&lt;/div&gt;&lt;div&gt;3. maxmin kondisi tubuh : array of float&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="382.5" y="710" width="165" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="qRzVWy2TUR5vVs1TbLW0-43" value="list" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="985" y="490" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="qRzVWy2TUR5vVs1TbLW0-45" value="obat-obat : obat" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="632.5" y="530" width="165" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="qRzVWy2TUR5vVs1TbLW0-46" value="stack" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="745" y="490" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="qRzVWy2TUR5vVs1TbLW0-48" value="struct" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="757.5" y="290" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="qRzVWy2TUR5vVs1TbLW0-51" value="struct" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="245" y="490" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="qRzVWy2TUR5vVs1TbLW0-52" value="set" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="510" y="500" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="qRzVWy2TUR5vVs1TbLW0-53" value="&lt;div&gt;id : int&lt;/div&gt;&lt;div&gt;username : string&lt;/div&gt;&lt;div&gt;password : string&lt;/div&gt;&lt;div&gt;role : datatype enum&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="872.5" y="320" width="165" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="qRzVWy2TUR5vVs1TbLW0-64" value="struct" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="510" y="680" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="qRzVWy2TUR5vVs1TbLW0-65" value="struct" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="1000" y="290" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="qRzVWy2TUR5vVs1TbLW0-66" value="struct" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="245" y="290" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="qRzVWy2TUR5vVs1TbLW0-77" value="&lt;div&gt;id obat : int&lt;/div&gt;&lt;div&gt;nama obat: string&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="122.5" y="710" width="165" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="qRzVWy2TUR5vVs1TbLW0-78" value="struct" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="245" y="680" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="qRzVWy2TUR5vVs1TbLW0-79" value="struct" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="495" y="290" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="qRzVWy2TUR5vVs1TbLW0-80" value="&lt;div&gt;id: int&lt;br&gt;username: string&lt;/div&gt;&lt;div&gt;password: string&lt;/div&gt;&lt;div&gt;(mungkin) nama : string&lt;/div&gt;&lt;div&gt;(mungkin) spesialisasi: string&lt;/div&gt;&lt;div&gt;role: datatype enum&lt;/div&gt;&lt;div&gt;(mungkin) id ruangan : int&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="382.5" y="320" width="165" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="qRzVWy2TUR5vVs1TbLW0-92" value="&lt;div&gt;JIKA FUNGSI ADA PERTIMBANGAN DATA STRUKTUR LAIN (ESPECIALLY YANG BERSIFAT STRUCT),&lt;/div&gt;&lt;div&gt;BILANG AJA DI GRUP YAK&lt;/div&gt;&lt;div&gt;CONTOH: MAP USERNAME -&amp;gt; PASSWORD&lt;/div&gt;&lt;div&gt;MAP LAINNYA&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="100" y="90" width="960" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="qRzVWy2TUR5vVs1TbLW0-93" value="DATA STRUCTURE KHUSUS PROGRAM" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=40;" parent="1" vertex="1">
+          <mxGeometry x="100" y="-100" width="960" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="qRzVWy2TUR5vVs1TbLW0-128" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.25;exitY=0;exitDx=0;exitDy=0;entryX=0.848;entryY=1.027;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="qRzVWy2TUR5vVs1TbLW0-15" target="qRzVWy2TUR5vVs1TbLW0-2" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="qRzVWy2TUR5vVs1TbLW0-130" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="360" y="860" width="210" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="qRzVWy2TUR5vVs1TbLW0-131" value="&lt;div&gt;Dokter atnrian?&#39;&lt;/div&gt;&lt;div&gt;F14&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="435" y="870" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="qRzVWy2TUR5vVs1TbLW0-132" value="Map" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="505" y="870" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="qRzVWy2TUR5vVs1TbLW0-133" value="&lt;div&gt;id dokter : int&lt;/div&gt;&lt;div&gt;id ruangan/antrian(?) : int&lt;/div&gt;&lt;div&gt;LEAVE TO FUNCTION PERSON&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="382.5" y="900" width="165" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="qRzVWy2TUR5vVs1TbLW0-138" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="610" y="860" width="210" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="qRzVWy2TUR5vVs1TbLW0-139" value="Database obat" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="685" y="870" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="qRzVWy2TUR5vVs1TbLW0-140" value="list" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="755" y="870" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="qRzVWy2TUR5vVs1TbLW0-141" value="obat2: array of obat" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="632.5" y="900" width="165" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="qRzVWy2TUR5vVs1TbLW0-143" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="850" y="860" width="210" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="qRzVWy2TUR5vVs1TbLW0-144" value="Database penyakit" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="925" y="870" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="qRzVWy2TUR5vVs1TbLW0-145" value="list" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="995" y="870" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="qRzVWy2TUR5vVs1TbLW0-146" value="penyakit2 : array of penyakit" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="872.5" y="900" width="165" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="qRzVWy2TUR5vVs1TbLW0-149" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.852;entryY=1.017;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="qRzVWy2TUR5vVs1TbLW0-17" target="qRzVWy2TUR5vVs1TbLW0-2" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="5JmlB6ZkHaXfLRglVu9s-6" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="100" y="1050" width="210" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="5JmlB6ZkHaXfLRglVu9s-7" value="Ruangan" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="175" y="1060" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="5JmlB6ZkHaXfLRglVu9s-8" value="struct" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="250" y="1060" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="5JmlB6ZkHaXfLRglVu9s-9" value="&lt;div&gt;id : int&lt;/div&gt;&lt;div&gt;kapasitas : integer&lt;/div&gt;&lt;div&gt;id pasien : array of integer&lt;/div&gt;&lt;div&gt;id doctor : integer&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="122.5" y="1090" width="165" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="5JmlB6ZkHaXfLRglVu9s-10" value="&lt;div&gt;id : int&lt;/div&gt;&lt;div&gt;kapasitas : integer&lt;/div&gt;&lt;div&gt;id pasien : array of integer&lt;/div&gt;&lt;div&gt;id doctor : integer&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="382.5" y="1090" width="165" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="5JmlB6ZkHaXfLRglVu9s-11" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="360" y="1050" width="210" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="5JmlB6ZkHaXfLRglVu9s-12" value="CSVRow" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="435" y="1060" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="5JmlB6ZkHaXfLRglVu9s-13" value="struct" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="510" y="1060" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="5JmlB6ZkHaXfLRglVu9s-14" value="&lt;div&gt;fields: Matrix (array of array of character)&lt;/div&gt;&lt;div&gt;fieldcount : int&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="382.5" y="1090" width="165" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="5JmlB6ZkHaXfLRglVu9s-15" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="640" y="1080" width="430" height="310" as="geometry" />
+        </mxCell>
+        <mxCell id="5JmlB6ZkHaXfLRglVu9s-16" value="&lt;font style=&quot;font-size: 36px;&quot;&gt;Type Name&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="742.5" y="1130" width="245" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="5JmlB6ZkHaXfLRglVu9s-17" value="&lt;font style=&quot;font-size: 24px;&quot;&gt;Data type&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="945" y="1100" width="110" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="5JmlB6ZkHaXfLRglVu9s-18" value="&lt;div&gt;&lt;font style=&quot;font-size: 24px;&quot;&gt;Used in...&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font size=&quot;3&quot;&gt;x&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font size=&quot;3&quot;&gt;y&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font size=&quot;3&quot;&gt;z&lt;/font&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="650" y="1130" width="110" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="5JmlB6ZkHaXfLRglVu9s-23" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="1110" y="-120" width="282.5" height="1520" as="geometry" />
+        </mxCell>
+        <mxCell id="5JmlB6ZkHaXfLRglVu9s-19" value="&lt;div&gt;&lt;font style=&quot;font-size: 24px;&quot;&gt;elements/components of &amp;lt;type name&amp;gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 24px;&quot;&gt;element name : data type&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 24px;&quot;&gt;...&lt;/font&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="725" y="1200" width="295" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="qRzVWy2TUR5vVs1TbLW0-54" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="1137.25" y="90" width="210" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="qRzVWy2TUR5vVs1TbLW0-55" value="Linked list Node" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="1212.25" y="100" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="qRzVWy2TUR5vVs1TbLW0-56" value="&lt;div&gt;id : int&lt;/div&gt;&lt;div&gt;name : string&lt;/div&gt;&lt;div&gt;Next: *(linked list node) {address of linked list node}&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="1159.75" y="140" width="165" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="qRzVWy2TUR5vVs1TbLW0-57" value="&lt;div&gt;linked list&lt;/div&gt;&lt;div&gt;(single)&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="1287.25" y="100" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="qRzVWy2TUR5vVs1TbLW0-58" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="1139.75" y="1240" width="210" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="qRzVWy2TUR5vVs1TbLW0-59" value="queue" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="1214.75" y="1250" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="qRzVWy2TUR5vVs1TbLW0-60" value="&lt;div&gt;front: * (linked list node)&lt;/div&gt;&lt;div&gt;rear: * (linked list node)&lt;/div&gt;&lt;div&gt;size : int&lt;/div&gt;&lt;div&gt;capacity : int&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="1162.25" y="1290" width="165" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="qRzVWy2TUR5vVs1TbLW0-61" value="queue + linked list" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="1289.75" y="1250" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="qRzVWy2TUR5vVs1TbLW0-62" value="&lt;div&gt;- antrian queue&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="1152.25" y="100" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="qRzVWy2TUR5vVs1TbLW0-63" value="- antrian" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="1154.75" y="1250" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="qRzVWy2TUR5vVs1TbLW0-67" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="1139.75" y="850" width="210" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="qRzVWy2TUR5vVs1TbLW0-68" value="Matrix" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="1214.75" y="860" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="qRzVWy2TUR5vVs1TbLW0-69" value="array of array of ruangan" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="1162.25" y="900" width="165" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="qRzVWy2TUR5vVs1TbLW0-70" value="Matrix" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="1289.75" y="860" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="qRzVWy2TUR5vVs1TbLW0-71" value="- denah hospital" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="1154.75" y="860" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="qRzVWy2TUR5vVs1TbLW0-72" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="1139.75" y="1040" width="210" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="qRzVWy2TUR5vVs1TbLW0-73" value="Stack" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="1214.75" y="1050" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="qRzVWy2TUR5vVs1TbLW0-74" value="&lt;div&gt;Data (obat id) : array of int&lt;/div&gt;&lt;div&gt;Top index of array : int&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="1162.25" y="1090" width="165" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="qRzVWy2TUR5vVs1TbLW0-75" value="Stack" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="1289.75" y="1050" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="qRzVWy2TUR5vVs1TbLW0-76" value="- perut" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="1154.75" y="1050" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="qRzVWy2TUR5vVs1TbLW0-81" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="1137.25" y="280" width="210" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="qRzVWy2TUR5vVs1TbLW0-82" value="MAP" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="1212.25" y="290" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="qRzVWy2TUR5vVs1TbLW0-83" value="&lt;div&gt;id : int (key)&lt;/div&gt;&lt;div&gt;value : int (value)&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="1159.75" y="330" width="165" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="qRzVWy2TUR5vVs1TbLW0-84" value="map" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="1287.25" y="290" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="qRzVWy2TUR5vVs1TbLW0-85" value="&lt;div&gt;- obat-penyakit&lt;/div&gt;&lt;div&gt;-antrian dokter&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="1152.25" y="300" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="qRzVWy2TUR5vVs1TbLW0-86" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="1137.25" y="475" width="210" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="qRzVWy2TUR5vVs1TbLW0-87" value="List" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="1212.25" y="485" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="qRzVWy2TUR5vVs1TbLW0-88" value="&lt;div&gt;array: array of *void&lt;/div&gt;&lt;div&gt;Neff : int&lt;/div&gt;&lt;div&gt;capacity : int&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="1200.25" y="540" width="165" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="qRzVWy2TUR5vVs1TbLW0-89" value="static list" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="1287.25" y="485" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="qRzVWy2TUR5vVs1TbLW0-90" value="&lt;div&gt;- daftar penyakit, obat &lt;br&gt;&lt;/div&gt;&lt;div&gt;daftar obat-penyakit&lt;/div&gt;&lt;div&gt;-kondisi tubuh&lt;/div&gt;&lt;div&gt;inventory&lt;/div&gt;&lt;div&gt;threshold penyakit&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="1139.75" y="520" width="85" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="qRzVWy2TUR5vVs1TbLW0-95" value="ADT" style="rounded=0;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=31;" parent="1" vertex="1">
+          <mxGeometry x="1137.25" y="-100" width="210" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="5JmlB6ZkHaXfLRglVu9s-1" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1137.25" y="660" width="210" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="5JmlB6ZkHaXfLRglVu9s-2" value="List" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="1212.25" y="670" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="5JmlB6ZkHaXfLRglVu9s-3" value="&lt;div&gt;buffer: array of (*GenericData) {addresses of genericdata}&lt;/div&gt;&lt;div&gt;nEff : integer&lt;/div&gt;&lt;div&gt;capacity : integer&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="1159.75" y="710" width="165" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="5JmlB6ZkHaXfLRglVu9s-4" value="dinamik" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="1287.25" y="670" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="5JmlB6ZkHaXfLRglVu9s-5" value="- database user" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="1152.25" y="670" width="60" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
