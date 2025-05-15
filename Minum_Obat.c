@@ -7,12 +7,13 @@ void PrintObat(){
     if(!diobatin){
         printf("Belum ada obat tersedia\n");
     }
-    printf("\n============ DAFTAR OBAT ============");
-    int i;
-    while(i = 1, i< nEff, i++){
-        printf("%d, %s", i, inventory[i+1]);
+    else{
+        printf("\n============ DAFTAR OBAT ============");
+        int i;
+        while(i = 1, i< nEff, i++){
+            printf("%d. %s", i, inventory[i]);
 
-    }
+        }}
 }
 
 int MinumObat(){
@@ -22,10 +23,12 @@ int MinumObat(){
     }
     else{
         printf("\nGLEKGLEKGLEK... %s berhasil diminum!!!\n", inventory[pilihan]);
-        for(int i = pilihan; i<nEff; i++){
-            inventory[i] = inventory[i+1];
-        }
-        nEff--;
+        createStack(Stack* perut);
+        pushStack(Stack* perut, Obat o);
     }
-
+    
+    for(int i = pilihan; i<nEff; i++){
+        inventory[i] = inventory[i+1];
+    }
+    nEff--;
 }
