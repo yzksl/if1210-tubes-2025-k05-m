@@ -4,12 +4,12 @@
 #include <string.h>
 
 /* REALISASI FUNGSI DAN PROSEDUR */
-void CreateLL(LinkedList *l) {
+void createLL(LinkedList *l) {
     l->head = NULL;
     l->size = 0;
 }
 
-LinkedListNode* CreateLLNode(int id, char name[50]) {
+LinkedListNode* createLLNode(int id, char name[50]) {
     // Allocate memory for node
     LinkedListNode* node;
     node = (LinkedListNode*)malloc(sizeof(LinkedListNode));
@@ -20,7 +20,7 @@ LinkedListNode* CreateLLNode(int id, char name[50]) {
     return node;
 }
 
-void PutNodeInLastLL(LinkedList* l, LinkedListNode* NodeAdress) {
+void putNodeInLastLL(LinkedList* l, LinkedListNode* NodeAdress) {
     if (l->size == 0) {
         l->head = NodeAdress;
     }
@@ -31,7 +31,7 @@ void PutNodeInLastLL(LinkedList* l, LinkedListNode* NodeAdress) {
     l->size += 1;    
 }
 
-void PutNodeInIdxLL(LinkedList* l, LinkedListNode* NodeAddress, int idx) {
+void putNodeInIdxLL(LinkedList* l, LinkedListNode* NodeAddress, int idx) {
     if (idx == 0) {
         NodeAddress->next = l->head;
         l->head = NodeAddress;
@@ -103,7 +103,7 @@ boolean isLLEmpty(LinkedList l) {
 //     return (!(node.id && ));
 // }
 
-void FreeLL(LinkedList* l) {
+void freeLL(LinkedList* l) {
     LinkedListNode* current = l->head;
     // get address of next node, free current, update current to next node, repeat
     while (current != NULL) {
@@ -115,7 +115,7 @@ void FreeLL(LinkedList* l) {
     l->size = 0;
 }
 
-void FreeNodeLL(LinkedList* l, LinkedListNode* node) {
+void freeNodeLL(LinkedList* l, LinkedListNode* node) {
     // if node is head
     if (l->head == node) {
         l->head = node->next;
