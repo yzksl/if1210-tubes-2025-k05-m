@@ -51,10 +51,10 @@ typedef struct {
     Definisi elemen terakhir yang terdefinisi: l.buffer[i] dengan i=l.capacity */
 
 /* ********** SELEKTOR ********** */
-#define NEFF(l) (l).nEff
-#define BUFFER(l) (l).buffer
-#define CAPACITY(l) (l).capacity
-#define GETPOINTER(l, i) ((l).buffer[i])
+#define DLNEFF(l) (l).nEff
+#define DLBUFFER(l) (l).buffer
+#define DLCAPACITY(l) (l).capacity
+#define DLGETPOINTER(l, i) ((l).buffer[i])
 // #define GETELMT(l, i) (*(((l).buffer[i])->data))
 // #define GETTYPE(l, i) (((l).buffer[i])->type)
 
