@@ -17,17 +17,10 @@
 #define IDX_UNDEF -1
 
 /* Definisi elemen dan koleksi objek */
-<<<<<<< Updated upstream
-typedef struct {
-    Obat obat[OBAT_MAX_SIZE]; /* statik list rata kiri dengan kapasitas 100, berisi type Obat */
-    int top;            /* index elemen paling atas dari stack (elemen efektif terakhir dalam list) */
-} Stack;
-=======
 // typedef struct {
 //     Obat obat[OBAT_MAX_SIZE]; /* statik list rata kiri dengan kapasitas 100, berisi type Obat */
 //     int top;            /* index elemen paling atas dari stack (elemen efektif terakhir dalam list) */
 // } Stack;
->>>>>>> Stashed changes
 /* Jika s adalah : Stack, cara deklarasi dan akses: */
 /* Deklarasi : s : Stack */
 /* Maka cara akses: 
