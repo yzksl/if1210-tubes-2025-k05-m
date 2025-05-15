@@ -1,8 +1,9 @@
 #include <stdlib.h>
 #include <string.h>
+#include <stdio.h>
 #include "../header/Boolean.h"
-#include "../header/StructsInHospital.h"
 #include "../header/Stack.h"
+#include "../header/StructsInHospital.h"
 
 Patient* createPatient() {
 /* Membuat sebuah Patient di heap, komponen-komponen zero-filled. Mengembalikan address dari data tersebut dalam heap */
@@ -21,7 +22,7 @@ Patient* createPatientWithData( const int id,
                                 const char username[STR_MAX_SIZE],
                                 const char password[STR_MAX_SIZE],
                                 const char riwayatPenyakit[STR_MAX_SIZE],
-                                Stack perut,
+                                // Stack perut,
                                 const int inventory[INVENTORY_SIZE],
                                 const float kondisiTubuh[KONDISI_TUBUH_SIZE]) {
 /* Membuat sebuah Patient di heap dengan komponen-komponen dalam parameter */
@@ -35,6 +36,7 @@ Patient* createPatientWithData( const int id,
     strcpy(p->username, username);
     strcpy(p->password, password);
     strcpy(p->riwayatPenyakit, riwayatPenyakit);
+    // memcpy(p->perut, perut)
     memcpy(p->kondisiTubuh, kondisiTubuh, KONDISI_TUBUH_SIZE*sizeof(float));
     memcpy(p->inventory, inventory, sizeof(int));
     p->type = DATA_TYPE_PATIENT;

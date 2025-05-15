@@ -1,19 +1,28 @@
 #ifndef STRUCTS_IN_HOSPITAL_H
 #define STRUCTS_IN_HOSPITAL_H
 
-// Forward declarations (no #include needed)
-typedef struct Stack Stack;
-typedef struct Queue Queue;
-
-
 /* MODUL ADT SEDERHANA */
 /* Berisi beberapa definisi dan primitif pemrosesan dari beberapa tipe data bentukan */
 /* Terdapat tipe data Pasien, Dokter, Manager, Obat, Penyakit, dll */
 
 /*  Kamus Umum */
-#define STR_MAX_SIZE 100
+#define OBAT_MAX_SIZE 100
+#define IDX_UNDEF -1
+#define STR_MAX_SIZE 50
 
 /* Definisi elemen dan koleksi objek */
+/* Obat */
+typedef struct {
+    int id;         /* id obat */
+    char name[STR_MAX_SIZE];  /* nama obat */
+} Obat;
+
+// declaration for stack
+typedef struct {
+    Obat obat[OBAT_MAX_SIZE]; /* statik list rata kiri dengan kapasitas 100, berisi type Obat */
+    int top;            /* index elemen paling atas dari stack (elemen efektif terakhir dalam list) */
+} Stack;
+
 /* DATATYPE ENUMS */
 typedef enum {
     DATA_TYPE_UNKNOWN,  /* indikator tidak diketahui */
@@ -54,12 +63,6 @@ typedef struct {
     DataType type;
 } Manager;
 
-/* Obat */
-typedef struct {
-    int id;         /* id obat */
-    char name[STR_MAX_SIZE];  /* nama obat */
-} Obat;
-
 /* Penyakit */
 #define THRESHOLD_SIZE 18
 typedef struct {
@@ -67,6 +70,7 @@ typedef struct {
     char name[STR_MAX_SIZE];
     float threshold[THRESHOLD_SIZE];    /* treshold sakit/tidak disimpan disini (lihat contoh file user.csv) */
 } Penyakit;
+
 
 /* ********** KONSTRUKTOR ********** */
 /* Konstruktor Patient */
@@ -79,7 +83,7 @@ Patient* createPatientWithData( const int id,
                                 const char riwayatPenyakit[STR_MAX_SIZE],
                                 // Stack perut,
                                 const int inventory[INVENTORY_SIZE],
-                                float kondisiTubuh[KONDISI_TUBUH_SIZE]);
+                                const float kondisiTubuh[KONDISI_TUBUH_SIZE]);
 /* Membuat sebuah Patient di heap dengan komponen-komponen dalam parameter */
 /* PERHATIAN: mungkin alokasi memori dapat gagal. Jika iya, dikeluarkan ALOKASI MEMORI GAGAL */
 
