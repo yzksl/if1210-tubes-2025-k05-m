@@ -3,8 +3,8 @@
 #include <string.h>
 #include "../header/DynamicList.h"
 #include "../header/Boolean.h"
-#include "../header/Boolean.h"
 #include "../header/ReadCSV.h"
+#include "../header/StructsInHospital.h"
 
 CSVRow parseCSVLine(const char* line) {
     CSVRow row = {0};
