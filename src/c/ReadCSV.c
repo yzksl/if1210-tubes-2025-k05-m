@@ -1,10 +1,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+<<<<<<< HEAD
 #include <DynamicList.h>
 #include <Boolean.h>
 #include <Boolean.h>
 #include <ReadCSV.h>
+=======
+#include "../header/DynamicList.h"
+#include "../header/Boolean.h"
+#include "../header/ReadCSV.h"
+#include "../header/StructsInHospital.h"
+>>>>>>> 90a1a1919f887e88c1c29beca3f0d5554519b75d
 
 CSVRow parseCSVLine(const char* line) {
     CSVRow row = {0};
@@ -37,7 +44,14 @@ void processUserCSV(const char* filename, ListDin* userDatabase) {
     }
 
     char line[MAX_LINE_LENGTH];
+    fgets(line, sizeof(line), file); // unprocess first row (column indicators)
+
     while (fgets(line, sizeof(line), file)) {
+        // check and expand if full
+        if (isLDFull(userDatabase)) {
+            expandLD(userDatabase, 10); // expand by 10 slots
+        }
+
         // split line into fields 
         CSVRow row = parseCSVLine(line);
         
@@ -56,26 +70,12 @@ void processUserCSV(const char* filename, ListDin* userDatabase) {
         memset(emptyInventory, 0, sizeof(emptyInventory));
         GenericData* gd = NULL;
         // extract role based fields
+        /* FOR PATIENT */
         if (strcmp(role, "pasien") == 0 && row.fieldCount >= NUM_OF_COL_PATIENT) {
-            // float kondisiTubuh[KONDISI_TUBUH_SIZE] = {
-            //     atof(row.fields[5]),   // suhuTubuh
-            //     atof(row.fields[6]),   // tekananDarahSistolik
-            //     atof(row.fields[7]),   // tekananDarahDiastolik
-            //     atof(row.fields[8]),   // detakJantung
-            //     atof(row.fields[9]),   // saturasiOksigen
-            //     atof(row.fields[10]),  // kadarGulaDarah
-            //     atof(row.fields[11]),  // beratBadan
-            //     atof(row.fields[12]),  // tinggiBadan
-            //     atof(row.fields[13]),  // kadarKolesterol
-            //     atof(row.fields[14]),  // kadarKolesterolLDL
-            //     atof(row.fields[15])   // trombosit
-            // };
-
             float kondisiTubuh[KONDISI_TUBUH_SIZE];
             for (int i = 0; i < KONDISI_TUBUH_SIZE; ++i) {
                 kondisiTubuh[i] = atof(row.fields[5 + i]);
-            }
-            
+            } 
             Patient* p = createPatientWithData(
                 id,
                 username,
@@ -86,14 +86,24 @@ void processUserCSV(const char* filename, ListDin* userDatabase) {
             );
             gd = createGD(p, DATA_TYPE_PATIENT);
         }
+        /* FOR DOCTOR */
         else if (strcmp(role, "dokter") == 0) {
-            Doctor* d = createDoctorWithData(id, username, password, "", "");
+            // this part will change later, for now just use empty string
+            // to fill the name and spesialisasi
+            char name[50];
+            memset(name, 0, sizeof(name));
+            char spesialisasi[50];
+            memset(spesialisasi, 0, sizeof(spesialisasi));
+
+            Doctor* d = createDoctorWithData(id, username, password, name, spesialisasi);
             gd = createGD(d, DATA_TYPE_DOCTOR);
         }
+        /* FOR MANAGER */
         else if (strcmp(role, "manager") == 0) {
             Manager* m = createManagerWithData(id, username, password);
             gd = createGD(m, DATA_TYPE_MANAGER);
         }
+        /* UNKONWN */
         else {
             printf("ERROR: ROLE TIDAK DIKENALI: %s, ID: %d\n", role, id);
             continue;
@@ -114,4 +124,6 @@ void processUserCSV(const char* filename, ListDin* userDatabase) {
         }
     }
     fclose(file);
+    // compress list dynamic after finishing
+    compressLD(userDatabase);
 }

@@ -13,14 +13,21 @@
 #include <StructsInHospital.h>
 
 /*  Kamus Umum */
-#define MAX_SIZE 100
+#define OBAT_MAX_SIZE 100
 #define IDX_UNDEF -1
 
 /* Definisi elemen dan koleksi objek */
+<<<<<<< HEAD
 typedef struct {
     // Obat obat[MAX_SIZE]; /* statik list rata kiri dengan kapasitas 100, berisi type Obat */
     int top;            /* index elemen paling atas dari stack (elemen efektif terakhir dalam list) */
 } Stack;
+=======
+// typedef struct {
+//     Obat obat[OBAT_MAX_SIZE]; /* statik list rata kiri dengan kapasitas 100, berisi type Obat */
+//     int top;            /* index elemen paling atas dari stack (elemen efektif terakhir dalam list) */
+// } Stack;
+>>>>>>> 90a1a1919f887e88c1c29beca3f0d5554519b75d
 /* Jika s adalah : Stack, cara deklarasi dan akses: */
 /* Deklarasi : s : Stack */
 /* Maka cara akses: 
@@ -28,7 +35,7 @@ typedef struct {
     elemen top: s.obat[s.top] atau dengan fungsi/macro selektor */
 /* Definisi:
     stack kosong: top = IDX_UNDEF = -1
-    stack penuh: top = MAX_SIZE - 1 = 99 
+    stack penuh: top = OBAT_MAX_SIZE - 1 = 99 
     stack dengan satu elemen: top = 0, s.obat[s.top] terdefinisi */
 
 /* ********** SELEKTOR ********** */

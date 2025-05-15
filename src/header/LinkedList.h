@@ -6,9 +6,13 @@
 #ifndef LINKEDLIST_H
 #define LINKEDLIST_H
 
+<<<<<<< HEAD
 #include <Boolean.h>
 #include <StructsInHospital.h>
 #include <stdio.h>
+=======
+#include "Boolean.h"
+>>>>>>> 90a1a1919f887e88c1c29beca3f0d5554519b75d
 
 /*  Kamus Umum */
 /* Linked List Terminology */
@@ -35,26 +39,26 @@ typedef struct LinkedList {
 /* Maka cara akses: menggunakan fungsi-fungsi dibawah...*/
 
 /* ********** SELEKTOR ********** */
-#define HEAD(l) (l).head
-#define SIZE(l) (l).size
-#define ID(node) (node).id
-#define NAME(node) (node).name
-#define NEXT(node) (node).next
+#define LLHEAD(l) (l).head
+#define LLSIZE(l) (l).size
+#define LLID(node) (node).id
+#define LLNAME(node) (node).name
+#define LLNEXT(node) (node).next
 
 /* ********** KONSTRUKTOR ********** */
 /* Konstruktor: create list kosong */
-void CreateLL(LinkedList *l);
+void createLL(LinkedList *l);
 /* I.S. l sembarang */
 /* F.S. Terbentuk list l kosong dengan size 0, head point to NULL */
 /* Konstruktor: create node dengan id dan nama pasien */
-LinkedListNode* CreateLLNode(int id, char name[50]);
+LinkedListNode* createLLNode(int id, char name[50]);
 /* Mengirimkan pointer ke Node */ 
 /* Konstruktor: sambungkan address node yang diterima ke node sebelumnya */
-void PutNodeInLastLL(LinkedList* l, LinkedListNode* NodeAddress);
+void putNodeInLastLL(LinkedList* l, LinkedListNode* NodeAddress);
 /* I.S. l terdefinisi, bisa kosong atau bisa sudah ada isi */
 /* F.S. l memiliki node yang di parameter di bagian tail */
 /* Konstruktor: sisihkan node ke posisi-pos dalam linked list */
-void PutNodeInIdxLL(LinkedList* l, LinkedListNode* NodeAddress, int idx);
+void putNodeInIdxLL(LinkedList* l, LinkedListNode* NodeAddress, int idx);
 /* I.S. l terdefinisi, memiliki setidaknya 1 node */
 /* F.S. l memiliki node yang di parameter sebagai node di posisi ke-pos. Jika pos invalid (>size), maka akan keluar "POSISI TIDAK VALID". Jika idx = size, panggil function puTNodeInLastLL */
 
@@ -75,10 +79,10 @@ boolean isLLEmpty(LinkedList l);
 
 /* ********** DEALOKATOR ********** */
 /* Dealokator: dealokasi memori dari seluruh linked list */
-void FreeLL(LinkedList* l);
+void freeLL(LinkedList* l);
 /* I.S. l terdefinisi, memiliki node-node */
 /* F.S. l kosong, header point to NULL, seluruh node didealokasi juga */
-void FreeNodeLL(LinkedList* l, LinkedListNode* node);
+void freeNodeLL(LinkedList* l, LinkedListNode* node);
 /* I.S. l terdefinisi, memiliki setidaknya satu nilai */
 /* F.S. l terdefinisi, mungkin kosong, node sudah didealokasi */
 

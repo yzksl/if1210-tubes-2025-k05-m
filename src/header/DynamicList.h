@@ -52,10 +52,10 @@ typedef struct {
     Definisi elemen terakhir yang terdefinisi: l.buffer[i] dengan i=l.capacity */
 
 /* ********** SELEKTOR ********** */
-#define NEFF(l) (l).nEff
-#define BUFFER(l) (l).buffer
-#define CAPACITY(l) (l).capacity
-#define GETPOINTER(l, i) ((l).buffer[i])
+#define DLNEFF(l) (l).nEff
+#define DLBUFFER(l) (l).buffer
+#define DLCAPACITY(l) (l).capacity
+#define DLGETPOINTER(l, i) ((l).buffer[i])
 // #define GETELMT(l, i) (*(((l).buffer[i])->data))
 // #define GETTYPE(l, i) (((l).buffer[i])->type)
 
@@ -110,10 +110,10 @@ boolean isLDIdxEff(const ListDin* l, int i);
 
 /* ********** TEST KOSONG/PENUH ********** */
 /* *** Test list kosong *** */
-boolean isLDEmpty(ListDin l);
+boolean isLDEmpty(const ListDin* l);
 /* Mengirimkan true jika list l kosong, mengirimkan false jika tidak */
 /* *** Test list penuh *** */
-boolean isLDFull(ListDin l);
+boolean isLDFull(const ListDin* l);
 /* Mengirimkan true jika list l penuh, mengirimkan false jika tidak */
 
 /* ********** MENAMBAH DAN MENGHAPUS ELEMEN DI AKHIR ********** */
