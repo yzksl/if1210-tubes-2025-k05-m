@@ -2,6 +2,7 @@
 #include "../header/Boolean.h"
 #include <stdlib.h>
 #include <string.h>
+#include <stdio.h>
 
 /* REALISASI FUNGSI DAN PROSEDUR */
 void CreateLL(LinkedList *l) {
