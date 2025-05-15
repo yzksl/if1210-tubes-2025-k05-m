@@ -151,7 +151,7 @@ boolean isLDFull(const ListDin* l) {
 void insertLastLD(ListDin *l, ElType val) {
 /* I.S. l terdefinisi, mungkin penuh */
 /* F.S. Jika tidak penuh, val adalah elemen terakhir l yang baru. Jika penuh, maka dikeluarkan "LIST PENUH" */
-    if (isFull(l)) {
+    if (isLDFull(l)) {
         printf("LIST PENUH\n");
         return;
     } else {

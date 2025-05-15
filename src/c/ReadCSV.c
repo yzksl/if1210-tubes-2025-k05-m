@@ -1,17 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-<<<<<<< HEAD
 #include <DynamicList.h>
 #include <Boolean.h>
-#include <Boolean.h>
 #include <ReadCSV.h>
-=======
-#include "../header/DynamicList.h"
-#include "../header/Boolean.h"
-#include "../header/ReadCSV.h"
-#include "../header/StructsInHospital.h"
->>>>>>> 90a1a1919f887e88c1c29beca3f0d5554519b75d
+#include <StructsInHospital.h>
 
 CSVRow parseCSVLine(const char* line) {
     CSVRow row = {0};
@@ -121,7 +114,9 @@ void processUserCSV(const char* filename, ListDin* userDatabase) {
             if (userDatabase->nEff == temp) {
                 dealocateGD(gd);
             }
+            
         }
+        
     }
     fclose(file);
     // compress list dynamic after finishing

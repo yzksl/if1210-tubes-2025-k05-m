@@ -6,13 +6,9 @@
 #ifndef LINKEDLIST_H
 #define LINKEDLIST_H
 
-<<<<<<< HEAD
 #include <Boolean.h>
 #include <StructsInHospital.h>
 #include <stdio.h>
-=======
-#include "Boolean.h"
->>>>>>> 90a1a1919f887e88c1c29beca3f0d5554519b75d
 
 /*  Kamus Umum */
 /* Linked List Terminology */
