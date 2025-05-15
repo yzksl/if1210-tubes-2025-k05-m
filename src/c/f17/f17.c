@@ -3,9 +3,13 @@
 #include <string.h>
 #include "f17.h"
 
-void createStack(Stack* perut){
-    perut->top = NULL;
-}
+
+//kalau program dijalankan, pindahin dulu data ke inventory
+//setelah itu, hapus data dari stack(perut)
+inputprogram()
+popStack(Stack* s);
+
 void pushStack(Stack* s, Obat o){
     
 }
+
