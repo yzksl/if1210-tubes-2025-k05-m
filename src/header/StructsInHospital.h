@@ -78,26 +78,26 @@ typedef struct {
 /* Database Obat */
 typedef struct {
     Obat contents[OBAT_MAX_SIZE];
-    int Neff;
+    int nEff;
 } ObatDatabase;
 
 /* Database Penyakit */
 typedef struct {
     Penyakit contents[PENYAKIT_MAX_SIZE];
-    int Neff;
+    int nEff;
 } PenyakitDatabase;
 
 /* Obat Penyakit */
 typedef struct {
     int idPenyakit;
     int idObat[OBAT_PENYAKIT_MAX_SIZE];
-    int Neff;
+    int nEff;
 } ObatPenyakit;
 
 /* Database Obat Penyakit */
 typedef struct {
-    ObatPenyakit* contents[PENYAKIT_MAX_SIZE];
-    int Neff;
+    ObatPenyakit contents[PENYAKIT_MAX_SIZE];
+    int nEff;
 } ObatPenyakitDatabase;
 
 /* ********** KONSTRUKTOR ********** */
