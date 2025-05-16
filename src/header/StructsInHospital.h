@@ -4,11 +4,15 @@
 /* MODUL ADT SEDERHANA */
 /* Berisi beberapa definisi dan primitif pemrosesan dari beberapa tipe data bentukan */
 /* Terdapat tipe data Pasien, Dokter, Manager, Obat, Penyakit, dll */
+/* Database user menggunakan DynamicList, sedangkan database lainnya menggunakan list statik */
+/* Pertimbangannya adalah user dapat ditambah sejalan program sedangkan yang lainnya tidak, contohnya obat dan penyakit */
 
 /*  Kamus Umum */
 #define OBAT_MAX_SIZE 100
 #define IDX_UNDEF -1
 #define STR_MAX_SIZE 50
+#define PENYAKIT_MAX_SIZE 100
+#define OBAT_PENYAKIT_MAX_SIZE 10
 
 /* Definisi elemen dan koleksi objek */
 /* Obat */
@@ -71,6 +75,30 @@ typedef struct {
     float threshold[THRESHOLD_SIZE];    /* treshold sakit/tidak disimpan disini (lihat contoh file user.csv) */
 } Penyakit;
 
+/* Database Obat */
+typedef struct {
+    Obat contents[OBAT_MAX_SIZE];
+    int Neff;
+} ObatDatabase;
+
+/* Database Penyakit */
+typedef struct {
+    Penyakit contents[PENYAKIT_MAX_SIZE];
+    int Neff;
+} PenyakitDatabase;
+
+/* Obat Penyakit */
+typedef struct {
+    int idPenyakit;
+    int idObat[OBAT_PENYAKIT_MAX_SIZE];
+    int Neff;
+} ObatPenyakit;
+
+/* Database Obat Penyakit */
+typedef struct {
+    ObatPenyakit* contents[PENYAKIT_MAX_SIZE];
+    int Neff;
+} ObatPenyakitDatabase;
 
 /* ********** KONSTRUKTOR ********** */
 /* Konstruktor Patient */
