@@ -1,9 +1,9 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
-#include <Boolean.h>
-#include <Stack.h>
-#include <StructsInHospital.h>
+#include "../header/Boolean.h"
+#include "../header/Stack.h"
+#include "../header/StructsInHospital.h"
 
 Patient* createPatient() {
 /* Membuat sebuah Patient di heap, komponen-komponen zero-filled. Mengembalikan address dari data tersebut dalam heap */

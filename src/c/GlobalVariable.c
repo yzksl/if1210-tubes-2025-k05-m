@@ -1,7 +1,22 @@
-#include <GlobalVariable.h>
+// Global variable antar file
+#include <stdlib.h>
+#include "../header/DynamicList.h"
+#include "../header/StructsInHospital.h"
+#include <string.h>
+#include "../header/GlobalVariable.h"
 
-GenericData globalCurrentUser = {.data=NULL, .type=DATA_TYPE_UNKNOWN};
+// ... = {0} artinya mengisi seluruh komponen data dalam variabel tsb dengan nilai kosong
 
-DataTypeDenah globalDenahRumahSakit;
+// databases
+ListDin globalUserDatabase = {0};
+ObatDatabase globalObatDatabase = {0};
+PenyakitDatabase globalPenyakitDatabase = {0};
+ObatPenyakitDatabase globalOPDatabase = {0};
 
-ListDin globalUserDataBase;
+// current user
+GenericData* globalCurrentUserGD = {0};
+Patient* globalCurrentPatient = {0};
+Doctor* globalCurrentDoctor = {0};
+Manager* globalCurrentManager = {0};
+
+// extern DataTypeDenah globalDenahRumahSakit; 

@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <LihatUser.h>
+#include "LihatUser.h"
 
 //masih menggunakan ADT pribadi dan fungsi 'strtok'
 //masih menggunakan logaritma pengcopy-an file ke dalam array yang harusnya sudah tidak perlu
