@@ -6,9 +6,7 @@
 #include "header/ReadCSV.h"
 #include "header/StructsInHospital.h"
 #include "header/GlobalVariable.h"
-// di run dengan gcc -o main .\main.c .\c\GlobalVariable.c .\c\StructsInHospital.c .\c\DynamicList.c .\c\ReadCSV.c
-// .\main.exe
-// belum dicoba di wsl dan makefile jujur
+// di run dengan makefile
 
 int main(){
     /* di globalvariable.c ada deklarasi variable2 global, cek ya */
