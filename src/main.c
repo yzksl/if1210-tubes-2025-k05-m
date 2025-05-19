@@ -6,7 +6,7 @@
 
 int main() {
     // Your code goes here
-    createLD(&globalUserDataBase, 20);
+    createLD(&globalUserDataBase, 22);
     readConfig();
     char filename[]="file/user.csv";
     processUserCSV(filename, &globalUserDataBase);
