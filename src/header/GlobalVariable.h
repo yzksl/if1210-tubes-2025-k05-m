@@ -1,3 +1,6 @@
+#ifndef GLOBAL_VAR_H
+#define GLOBAL_VAR_H
+
 // Global variable antar file
 #include <stdlib.h>
 #include "DynamicList.h"
@@ -10,6 +13,11 @@ extern PenyakitDatabase globalPenyakitDatabase;
 extern ObatPenyakitDatabase globalOPDatabase;
 
 // current user
-extern GenericData globalCurrentUser; 
+extern GenericData* globalCurrentUserGD; 
+extern Patient* globalCurrentPatient;
+extern Doctor* globalCurrentDoctor;
+extern Manager* globalCurrentManager;
 
 // extern DataTypeDenah globalDenahRumahSakit; 
+
+#endif
