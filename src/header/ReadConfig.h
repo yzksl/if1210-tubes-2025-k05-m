@@ -3,7 +3,7 @@
 #define READCONFIG_h
 
 #include <stdio.h>
-#include <DataTypeRuangan.h>
+#include "DataTypeRuangan.h"
 
 int scanNumber(FILE* file); // Fungsi untuk mengscan nomor dalam suatu file
 

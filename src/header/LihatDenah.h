@@ -2,8 +2,9 @@
 #define LIHATDENAH_H
 
 #include <stdio.h>
-#include <GlobalVariable.h>
-#include <FindAccount.h>
+#include <ctype.h>
+#include "GlobalVariable.h"
+#include "FindAccount.h"
 
 void lihatDenah(); // Menampilkan Denah Rumah Sakit
 

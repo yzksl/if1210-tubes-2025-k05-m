@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include "DynamicList.h"
 #include "StructsInHospital.h"
+#include "DataTypeRuangan.h"
 
 // databases
 extern ListDin globalUserDatabase;
@@ -18,6 +19,6 @@ extern Patient* globalCurrentPatient;
 extern Doctor* globalCurrentDoctor;
 extern Manager* globalCurrentManager;
 
-// extern DataTypeDenah globalDenahRumahSakit; 
+extern DataTypeDenah globalDenahRumahSakit; 
 
 #endif

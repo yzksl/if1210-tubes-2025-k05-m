@@ -1,4 +1,5 @@
-#include <LihatDenah.h>
+#include "../header/LihatDenah.h"
+#include "../header/GlobalVariable.h"
 
 void lihatDenah(){
     printf(" "); //spasi di awal

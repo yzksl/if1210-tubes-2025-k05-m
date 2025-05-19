@@ -1,5 +1,5 @@
-#include <ReadConfig.h>
-#include <GlobalVariable.h>
+#include "../header/ReadConfig.h"
+#include "../header/GlobalVariable.h"
 // Realisasi header ReadConfig
 
 int scanNumber(FILE* file){

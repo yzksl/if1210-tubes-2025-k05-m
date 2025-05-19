@@ -1,17 +1,18 @@
-#include <MainMenu.h>
+#include "../header/MainMenu.h"
+#include "../header/GlobalVariable.h"
 
 // Realisasi Header Main Menu
 
 void mainMenu(){
-    if (globalCurrentUser.type==DATA_TYPE_PATIENT) menuPasien();
-    else if (globalCurrentUser.type==DATA_TYPE_DOCTOR) menuDokter();
-    else if (globalCurrentUser.type==DATA_TYPE_MANAGER) menuManager();
-    else if (globalCurrentUser.type==DATA_TYPE_UNKNOWN) menuBelumLogin();
+    if (globalCurrentUserGD->type==DATA_TYPE_PATIENT) menuPasien();
+    else if (globalCurrentUserGD->type==DATA_TYPE_DOCTOR) menuDokter();
+    else if (globalCurrentUserGD->type==DATA_TYPE_MANAGER) menuManager();
+    else if (globalCurrentUserGD->type==DATA_TYPE_UNKNOWN) menuBelumLogin();
 }
 
 void menuPasien(){
     char input[20]; // variable yang menyimpan input user
-    printf("Halo %s\nSilahkan masukan fungsi yang anda ingin jalankan\nMasukan HELP untuk memunculkan list fungsi-fungsi yang valid\n", (*(Patient*)globalCurrentUser.data).username/*Nama*/);
+    printf("Halo %s\nSilahkan masukan fungsi yang anda ingin jalankan\nMasukan HELP untuk memunculkan list fungsi-fungsi yang valid\n", (*(Patient*)globalCurrentUserGD->data).username/*Nama*/);
     while(1){
         printf(">>> ");
         scanf("%s", input);
@@ -28,7 +29,7 @@ void menuPasien(){
 
 void menuDokter(){
     char input[20]; // variable yang menyimpan input user
-    printf("Halo Dokter %s. Silahkan masukan fungsi yang anda ingin jalankan.\nMasukan HELP untuk memunculkan list fungsi-fungsi yang valid.\n", (*(Doctor*)globalCurrentUser.data).username/*Nama*/);
+    printf("Halo Dokter %s. Silahkan masukan fungsi yang anda ingin jalankan.\nMasukan HELP untuk memunculkan list fungsi-fungsi yang valid.\n", (*(Doctor*)globalCurrentUserGD->data).username/*Nama*/);
     while(1){
         printf(">>> ");
         scanf("%s", input);
@@ -44,7 +45,7 @@ void menuDokter(){
 
 void menuManager(){
     char input[20]; // variable yang menyimpan input user
-    printf("Halo Manager %s. Silahkan masukan fungsi yang anda ingin jalankan.\nMasukan HELP untuk memunculkan list fungsi-fungsi yang valid.\n", (*(Manager*)globalCurrentUser.data).username/*Nama*/);
+    printf("Halo Manager %s. Silahkan masukan fungsi yang anda ingin jalankan.\nMasukan HELP untuk memunculkan list fungsi-fungsi yang valid.\n", (*(Manager*)globalCurrentUserGD->data).username/*Nama*/);
     while(1){
         printf(">>> ");
         scanf("%s", input);
