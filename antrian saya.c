@@ -8,9 +8,9 @@ void AntrianSaya(){
     }
     else{
         printf("\nStatus antrian Anda:\n");
-        printf("Dokter: %s\n", );
-        printf("Ruangan: %s\n", );
-        printf("Posisi antrian: %d dari %d\n", ,);
+        printf("Dokter: %s\n", nama_dokter);
+        printf("Ruangan: %s\n", kode_ruangan);
+        printf("Posisi antrian: %d dari %d\n", no_antrian,total_antrian);
 
     }
 }
