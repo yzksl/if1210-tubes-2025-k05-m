@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "Minum_Obat.h"
 
 
 void PrintObat(){
@@ -8,22 +9,26 @@ void PrintObat(){
         printf("Belum ada obat tersedia\n");
     }
     else{
-        printf("\n============ DAFTAR OBAT ============");
+        printf("\n============ DAFTAR OBAT ============\n");
         int i;
         while(i = 1, i< nEff, i++){
-            printf("%d. %s", i, inventory[i]);
+            printf("%d. %s\n", i, inventory[i-1]);
 
         }}
 }
 
-int MinumObat(){
+void MinumObat(){
+    int pilihan;
     scanf("Pilih Obat untuk diminum: %d", &pilihan);
     if(pilihan<=0 || pilihan >nEff){
-        printf("Pilihan nomor tidak tersedia!");
+        printf("Pilihan nomor tidak tersedia!\n");
     }
     else{
-        printf("\nGLEKGLEKGLEK... %s berhasil diminum!!!\n", inventory[pilihan]);
-        createStack(Stack* perut);
+        char nama_obat[10] = inventory[pilihan];
+        printf("\nGLEKGLEKGLEK... %s berhasil diminum!!!\n", nama_obat);
+        createStack(Stack* perut){
+
+        }
         pushStack(Stack* perut, Obat o);
     }
     

@@ -1,2 +1,4 @@
+#include "Stack.h"
+
 void PrintObat();
-int MinumObat();
+void MinumObat();
