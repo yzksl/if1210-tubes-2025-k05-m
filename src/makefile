@@ -13,18 +13,21 @@
 
 # ---------------------- Example makefile for a C project ----------------------
 
+TARGET_DIR = build
+SRC_DIR = c
+
 # This is variable that specifies the compiler to use.
 CC = gcc
 # This is variable that specifies the compiler flags to use.
-CFLAGS = -g -Wall
+CFLAGS = -g -Wall -Iheader
 # This is variable that specifies the source files to compile.
-SRCS = $(wildcard *.c)
+SRCS = $(wildcard $(SRC_DIR)/*.c) main.c
 # This is variable that specifies the object files to create.
-OBJS = $(SRCS:.c=.o)
+OBJS = $(patsubst $(SRC_DIR)/%.c,$(TARGET_DIR)/%.o,$(filter $(SRC_DIR)/%.c,$(SRCS))) \
+       $(TARGET_DIR)/main.o
 # This is variable that specifies the name of the executable file.
 TARGET = main
 # This is variable that specifies target compile directory.
-TARGET_DIR = build
 
 
 # TODO: Explore best practices for makefiles
@@ -32,29 +35,25 @@ TARGET_DIR = build
 # HINT: Specify output directory for object files and executable (e.g. build/) and ignore the build directory in the git repository
 
 
-# This is default target that is used to compile the project.
-main: main.c
-	@echo "Compiling the project..."
-	@echo "Compiling source files..."
-	@$(MAKE) compile
+# Default target
+all: $(TARGET_DIR)/$(TARGET)
+
+$(TARGET_DIR)/$(TARGET): $(OBJS)
 	@echo "Linking object files..."
-	@$(MAKE) link
-	@echo "Build complete."
+	$(CC) $(LDFLAGS) $^ -o $@
+	@echo "Build complete. Executable: $@"
 
-# This target is used to compile all the source files in the src directory.
-# The -g option is used to generate debug information.
-# The -Wall option is used to enable all compiler warnings.
-# The -c option is used to compile the source files without linking them.
-# *.c: compile all C source files in the current directory
-compile:
-	mkdir -p build
-	$(CC) $(CFLAGS) -c $(SRCS) -o $(TARGET_DIR)/$(OBJS)
+# Rule for utility .c files in c/ directory
+$(TARGET_DIR)/%.o: $(SRC_DIR)/%.c
+	@mkdir -p $(@D)
+	@echo "Compiling $<..."
+	$(CC) $(CFLAGS) -c $< -o $@
 
-
-# This target is used to link the object files and create the executable.
-# The -o option specifies the output file name.
-link:
-	$(CC) $(CFLAGS) -o $(TARGET) $(TARGET_DIR)/$(OBJS)
+# Special rule for main.c in root directory
+$(TARGET_DIR)/main.o: main.c
+	@mkdir -p $(TARGET_DIR)
+	@echo "Compiling $<..."
+	$(CC) $(CFLAGS) -c $< -o $@
 
 # This target is used to compile all the source files in the src directory and link them together.
 clean:

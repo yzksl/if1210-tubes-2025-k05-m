@@ -1,6 +1,8 @@
 #include <stdlib.h>
 #include "../header/DynamicList.h"
+#include "../header/StructsInHospital.h"
 #include "../header/Boolean.h"
+#include <stdio.h>
 
 void createLD(ListDin *l, int capacity) {
 /* I.S. l sembarang, capacity > 0 */
