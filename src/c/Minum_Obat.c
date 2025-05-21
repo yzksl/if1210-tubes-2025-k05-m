@@ -4,7 +4,10 @@
 #include "Minum_Obat.h"
 
 
+int inventory[10]; //hanya untuk dummy, aslinya dibuat oleh f12
+int nEff;//dummy, nEff dari inventory
 void PrintObat(){
+    boolean diobatin = true; // hanya untuk dummy, aslinya ada di f12
     if(!diobatin){
         printf("Belum ada obat tersedia\n");
     }
@@ -24,12 +27,12 @@ void MinumObat(){
         printf("Pilihan nomor tidak tersedia!\n");
     }
     else{
-        char nama_obat[10] = inventory[pilihan];
+        Obat nama_obat[10] = inventory[pilihan];
         printf("\nGLEKGLEKGLEK... %s berhasil diminum!!!\n", nama_obat);
-        createStack(Stack* perut){
-
-        }
-        pushStack(Stack* perut, Obat o);
+        Stack perut;
+        createStack(&perut);
+        Obat o = *nama_obat;//Obat o adalah nama obat di inventory yang dipilih
+        pushStack(&perut, o);
     }
     
     for(int i = pilihan; i<nEff; i++){
