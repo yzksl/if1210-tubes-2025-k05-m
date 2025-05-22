@@ -7,6 +7,25 @@
 #include "../header/StructsInHospital.h"
 #include "../header/GlobalVariable.h"
 
+// csv files that will be read:
+static const char *filenameList[] = {
+    "user.csv",
+    "obat.csv",
+    "penyakit.csv",
+    "obat_penyakit.csv",
+    NULL
+};
+
+static const char* filenamePathList[] = {
+    "file/user.csv",
+    "file/obat.csv",
+    "file/penyakit.csv",
+    "file/obat_penyakit.csv",
+    NULL
+};
+
+static boolean isAllReadSuccessfully;
+
 CSVRow parseCSVLine(const char* line) {
     CSVRow row = {0};
     int fieldIdx = 0;
@@ -31,9 +50,23 @@ CSVRow parseCSVLine(const char* line) {
 }
 
 void processCSV(const char* filename) {
+    // find filename
+    boolean isFilenameFound = false;
+    for (int i = 0; filenamePathList[i] != NULL; ++i) {
+        if (strcmp(filename, filenamePathList[i]) == 0) {
+            isFilenameFound = true;
+            break;
+        }
+    }
+    if (!isFilenameFound) {
+        printf("ERROR: TIDAK DITEMUKAN FILE %s\n", filename);
+        isAllReadSuccessfully = false;
+        return;
+    }
     FILE* file = fopen(filename, "r");
     if (file == NULL) {
         printf("ERROR DALAM MEMBUKA FILE %s\n", filename);
+        isAllReadSuccessfully = false;
         return;
     }
 
@@ -103,12 +136,14 @@ void processCSV(const char* filename) {
             /* UNKONWN */
             else {
                 printf("ERROR: ROLE TIDAK DIKENALI: %s, ID: %d\n", role, id);
+                isAllReadSuccessfully = false;
                 continue;
             }
 
             // add to database
             if (gd == NULL)  {
                 printf("ERROR ON PROCESSING DATA WITH ID %d\n", id);
+                isAllReadSuccessfully = false;
             }
             else {
                 int temp = globalUserDatabase.nEff;
@@ -126,7 +161,7 @@ void processCSV(const char* filename) {
     }
     
     /* PROCESS OBAT.CSV */
-    if (strcmp(filename, "file/obat.csv") == 0) {
+    else if (strcmp(filename, "file/obat.csv") == 0) {
         globalObatDatabase.nEff = 0;
         int i = 0;
         while (fgets(line, sizeof(line), file)) {
@@ -154,7 +189,7 @@ void processCSV(const char* filename) {
     }
     
     /* PROCESS PENYAKIT.CSV */
-    if (strcmp(filename, "file/penyakit.csv") == 0) {
+    else if (strcmp(filename, "file/penyakit.csv") == 0) {
         globalPenyakitDatabase.nEff = 0;
         int i = 0;
         while (fgets(line, sizeof(line), file)) {
@@ -185,7 +220,7 @@ void processCSV(const char* filename) {
     }
     
     /* PROCESS OBAT_PENYAKIT.CSV */
-    if (strcmp(filename, "file/obat_penyakit.csv") == 0) {
+    else if (strcmp(filename, "file/obat_penyakit.csv") == 0) {
         globalOPDatabase.nEff = 0;
         int i = 0;
         while (fgets(line, sizeof(line), file)) {
@@ -230,5 +265,27 @@ void processCSV(const char* filename) {
         }
         printf("LOADED OBAT PENYAKIT DATABASE!\n");
     }
+    else {
+        printf("ERROR: FILE %s NOT FOUND\n", filename);
+        isAllReadSuccessfully = false;
+    }
     fclose(file);
+}
+
+void processAllCSVInFolder(const char* folderPath) {
+    printf("Loading...\n");
+    isAllReadSuccessfully = true;
+    // call processCSV with param folderPath/each filename in filenameList array
+    char path[MAX_PATH_LENGTH];
+    for (int i = 0; filenameList[i] != NULL; ++i) {
+        snprintf(path, sizeof(path), "%s/%s", folderPath, filenameList[i]);
+        processCSV(path);
+    }
+    if (isAllReadSuccessfully) {
+        printf("Finished Loading!\n");
+        printf("Selamat datang di rumah sakit Niemons!\n");
+    } else {
+        printf("ERROR: TERDAPAT DATA YANG TIDAK DIBACA\n");
+        exit(1);
+    }
 }
