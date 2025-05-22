@@ -6,6 +6,7 @@
 #include "header/ReadCSV.h"
 #include "header/StructsInHospital.h"
 #include "header/GlobalVariable.h"
+#include "WriteCSV.h"
 /* di run dengan makefile */ 
 /* ./build/main file */
 
@@ -79,6 +80,7 @@ int main(int argc, char** argv){
         }
         printf("\n");
     }
+    writeToCSV("file/user.csv");
     printf("CLEANING UP...\n");
     dealocateLD(&globalUserDatabase);
     printf("GOODBYE!\n");
