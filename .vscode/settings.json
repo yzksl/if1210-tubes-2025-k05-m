@@ -1,9 +1,0 @@
-{
-    "files.associations": {
-        "readconfig.h": "c",
-        "boolean.h": "c",
-        "mainmenu.h": "c",
-        "findaccount.h": "c",
-        "globalvariable.h": "c"
-    }
-}

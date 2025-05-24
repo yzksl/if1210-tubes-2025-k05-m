@@ -12,6 +12,7 @@
 #include "DynamicList.h"
 #include "Boolean.h"
 
+#define MAX_PATH_LENGTH 50
 #define MAX_LINE_LENGTH 1024
 #define MAX_FIELDS 22
 #define MAX_FIELD_LENGTH 50
@@ -31,5 +32,9 @@ CSVRow parseCSVLine(const char* line);
 
 void processCSV(const char* filename);
 /* Proses: membaca seluruh line dalam filename csv. Menggunakan parseCSVLine untuk split data. Kemudian dibuat data Patient, Doctor, atau Manager dalam heap, dan dimasukkan ke dalam database, atau obat/penyakit/obatpenyakit and stuff. Database user di-expand dan di-shrink sesuai keadaan data akhir secara otomatis */
+
+void processAllCSVInFolder(const char* folderPath);
+/* Proses: membaca seluruh csv yang ada dalam folder yang diinput di terminal. Jika terdapat error, maka akan keluar dari program */
+/* Contoh: ./build/main file, akan membuka csv-csv yang ada di folder file*/
 
 #endif
