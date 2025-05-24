@@ -156,10 +156,10 @@ int main(int argc, char** argv){
     Patient* p = getPatientInGD(gd2);
     expandSet(&usernames, 1);
     addToSet(&usernames, p->username); // duplikat, maka tidak akan ditambah
-    printf("\nTHAT'S ALL FOR SET!\n");
+    printf("THAT'S ALL FOR SET!\n");
 
-    writeToCSV("file/user.csv");
     printf("CLEANING UP...\n");
+    saveCSV();
     dealocateLD(&globalUserDatabase);
     printf("GOODBYE!\n");
     return 0;
