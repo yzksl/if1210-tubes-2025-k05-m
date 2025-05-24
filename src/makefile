@@ -21,27 +21,26 @@ CC = gcc
 # This is variable that specifies the compiler flags to use.
 CFLAGS = -g -Wall -Iheader
 # This is variable that specifies the source files to compile.
-SRCS = $(wildcard $(SRC_DIR)/*.c) main.c
+SRCS = $(wildcard $(SRC_DIR)/*.c) main.c test.c
 # This is variable that specifies the object files to create.
 OBJS = $(patsubst $(SRC_DIR)/%.c,$(TARGET_DIR)/%.o,$(filter $(SRC_DIR)/%.c,$(SRCS))) \
-       $(TARGET_DIR)/main.o
-# This is variable that specifies the name of the executable file.
-TARGET = main
-# This is variable that specifies target compile directory.
+       $(TARGET_DIR)/main.o \
+       $(TARGET_DIR)/test.o
 
+# Default target - builds both programs
+all: main test
 
-# TODO: Explore best practices for makefiles
-# HINT: Do step by step compilation and linking (e.g. compile all .c files to .o files, then link them together to create the executable)
-# HINT: Specify output directory for object files and executable (e.g. build/) and ignore the build directory in the git repository
-
-
-# Default target
-all: $(TARGET_DIR)/$(TARGET)
-
-$(TARGET_DIR)/$(TARGET): $(OBJS)
-	@echo "Linking object files..."
+# This target builds the main program
+main: $(filter-out $(TARGET_DIR)/test.o,$(OBJS))
+	@echo "Linking main program..."
 	$(CC) $(LDFLAGS) $^ -o $@
-	@echo "Build complete. Executable: $@"
+	@echo "Main program built. Executable: $@"
+
+# This target builds the test program
+test: $(filter-out $(TARGET_DIR)/main.o,$(OBJS))
+	@echo "Linking test program..."
+	$(CC) $(LDFLAGS) $^ -o $@
+	@echo "Test program built. Executable: $@"
 
 # Rule for utility .c files in c/ directory
 $(TARGET_DIR)/%.o: $(SRC_DIR)/%.c
@@ -52,22 +51,19 @@ $(TARGET_DIR)/%.o: $(SRC_DIR)/%.c
 # Special rule for main.c in root directory
 $(TARGET_DIR)/main.o: main.c
 	@mkdir -p $(TARGET_DIR)
-	@echo "Compiling $<..."
+	@echo "Compiling main.c..."
 	$(CC) $(CFLAGS) -c $< -o $@
 
-# This target is used to compile all the source files in the src directory and link them together.
+# Special rule for test.c in root directory
+$(TARGET_DIR)/test.o: test.c
+	@mkdir -p $(TARGET_DIR)
+	@echo "Compiling test.c..."
+	$(CC) $(CFLAGS) -c $< -o $@
+
+# This target is used to clean up the build directory and remove all the object files and executables
 clean:
 	rm -rf build
-	rm -f $(TARGET)
-	rm -f *.o
-	rm -f *.out
-	rm -f *.exe
-	rm -f *.a
-	rm -f *.so
-	rm -f *.dll
-	rm -f *.dSYM
-	rm -f *.pdb
-	rm -f *.ilk
-	rm -f *.idb
-	rm -f *.lib
-	rm -f *.exp
+	rm -f main test
+	rm -f *.o *.out *.exe *.a *.so *.dll *.dSYM *.pdb *.ilk *.idb *.lib *.exp
+
+.PHONY: all clean main test
