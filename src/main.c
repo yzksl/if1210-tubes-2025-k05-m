@@ -9,6 +9,7 @@
 #include "WriteCSV.h"
 #include "LinkedList.h"
 #include "Queue.h"
+#include "Set.h"
 /* di run dengan makefile */ 
 /* ./build/main file */
 
@@ -132,6 +133,38 @@ int main(int argc, char** argv){
         printf("ID %d, nama %s\n", forTraverse->id, forTraverse->name);
         forTraverse = forTraverse->next;
     }
+
+    printf("NOW FOR SETTTTTTTTTTTTTTTTTT\n");
+    Set usernames;
+    createSet(&usernames, globalUserDatabase.nEff);
+    // copy usernames from globaluserdatabase to set
+    for (int i = 0; i < globalUserDatabase.nEff; ++i) {
+        // extract data from globaluserdatabase
+        GenericData* gd1 = getGDbyIdx(&globalUserDatabase, i);
+        if (gd1->type == DATA_TYPE_PATIENT) {
+            Patient* p = getPatientInGD(gd1);
+            addToSet(&usernames, p->username);
+        } else if (gd1->type == DATA_TYPE_DOCTOR) {
+            Doctor* d = getDoctorInGD(gd1);
+            addToSet(&usernames, d->username);
+        } else if (gd1->type == DATA_TYPE_MANAGER) {
+            Manager* m = getManagerInGD(gd1);
+            addToSet(&usernames, m->username);
+        }
+    }
+    // print set
+    printf("%s", usernames.buffer[0]);
+    for (int i = 1; i < usernames.nEff; ++i) {
+        printf(", %s", usernames.buffer[i]);
+    }
+    // check if can add duplicate value
+    printf("NOW CHECK IF I CAN ADD DUPLICATE VALUE (stewart)\n");
+    GenericData* gd2 = getGDbyIdx(&globalUserDatabase, 0);
+    // stewart itu patient
+    Patient* p = getPatientInGD(gd2);
+    expandSet(&usernames, 1);
+    addToSet(&usernames, p->username); // duplikat, maka tidak akan ditambah
+    printf("\nTHAT'S ALL FOR SET!\n");
 
     writeToCSV("file/user.csv");
     printf("CLEANING UP...\n");
