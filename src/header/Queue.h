@@ -44,7 +44,7 @@ typedef struct {
 
 /* Konstruktor: inisialisasi queue */
 /* I.S. q sembarang*/
-/* F.S. q dialokasikan memori dalam heap, kapasitas sesuai capacity, q menjadi kosong */
+/* F.S. q kosong, kapasitas sesuai capacity, q menjadi kosong */
 void createQueue(Queue* q, int capacity);
 
 /* Konstruktor: menambahkan node ke queue */
