@@ -289,3 +289,15 @@ void processAllCSVInFolder(const char* folderPath) {
         exit(1);
     }
 }
+
+void loadCSV(int argc, char** argv) {
+    // create database dengan list dynamic
+    createLD(&globalUserDatabase, 20);
+    // baca csv-csv yang ada dalam folder yang ditentukan dalam input terminal
+    if (argc < 2) {
+        printf("ERROR: TIDAK ADA NAMA FOLDER YANG DIBERIKAN!\n");
+        exit(1);
+    } else {
+        processAllCSVInFolder(argv[1]);
+    }
+}
