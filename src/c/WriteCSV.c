@@ -1,38 +1,102 @@
 #include "WriteCSV.h"
 #include <stdio.h>
-#include "Boolean.h"
 #include "StructsInHospital.h"
 #include "GlobalVariable.h"
 #include <string.h>
 #include <stdlib.h>
 
 // csv files that will be written to:
-static const char* filenamePathList[] = {
-    "file/user.csv",
+static const char* filenameList[] = {
+    "user.csv",
+    "obat.csv",
+    "penyakit.csv",
+    "obat_penyakit.csv",
     NULL
 };
 
-void writeToCSV(const char* filename) {
-    // find filename
-    boolean isFilenameFound = false;
-    for (int i = 0; filenamePathList[i] != NULL; ++i) {
-        if (strcmp(filename, filenamePathList[i]) ==0) {
-            isFilenameFound = true;
-            break;
+void saveCSV() {
+    char path[256];
+    while (true) {
+        printf("Masukkan nama folder (contoh: data/hari_ini): ");
+        scanf("%s", path);
+
+        if (strstr(path, "\\")) {
+            printf("Gunakan forward slashes (/), bukan backslashes (\\)\n");
+        }
+        // prevent path traversal attacks
+        else if (strstr(path, "..") || strstr(path, "~")) {
+            printf("Path tidak boleh mengandung '..' atau '~'\n");
+        }
+        else {
+            break; // sudah valid
         }
     }
-    if (!isFilenameFound) {
-        printf("ERROR! TIDAK DITEMUKAN FILE %s\n", filename);
-        return;
+   
+    // create folder if dne
+    if (!doesFolderExist(path)) {
+        createDir(path);
     }
-    FILE* file = fopen(filename, "w");
+
+    // write to all csv
+    for (int i = 0; filenameList[i] != NULL; ++i) {
+        writeToCSV(path, filenameList[i]);
+    }
+
+    printf("Data berhasil disimpan di folder %s!\n", path);
+}
+
+boolean doesFolderExist(const char* path) {
+    char cmd[512];
+    #ifdef _WIN32
+        // convert to windows format (/ to \)
+        char winPath[512];
+        strcpy(winPath, path);
+        char temp = winPath[0];
+        for (int i = 0; i < 512 && winPath[i] != '\0'; ++i) {
+            if (winPath[i] == '/') {
+                winPath[i] = '\\';
+            }
+        }
+        snprintf(cmd, sizeof(cmd), "if exist \"%s\\\" exit 0", path);
+    #else
+        snprintf(cmd, sizeof(cmd), "test -d \"%s\" && exit 0", path);
+    #endif
+    return (system(cmd) == 0);
+}
+
+void createDir(char* path) {
+    char cmd[512];
+    // if else but for macro
+    #ifdef _WIN32
+        // convert to windows format (/ to \)
+        char winPath[512];
+        strcpy(winPath, path);
+        char temp = winPath[0];
+        for (int i = 0; i < 512 && winPath[i] != '\0'; ++i) {
+            if (winPath[i] == '/') {
+                winPath[i] = '\\';
+            }
+        }
+        snprintf(cmd, sizeof(cmd), "mkdir \"%s\" >nul 2>&1", winPath); // >nul 2&>1 is omit any messages sent by terminal
+    #else
+        snprintf(cmd, sizeof(cmd), "mkdir -p \"%s\" >/dev/null 2>&1", path);
+    #endif
+    system(cmd);
+}
+
+void writeToCSV(const char* folder, const char* filename) {
+    // merge folder and filename
+    char fullPath[512];
+    snprintf(fullPath, sizeof(fullPath), "%s/%s", folder, filename);
+    // overwrite or make file in mode write
+    FILE* file = fopen(fullPath, "w");
     if (file == NULL) {
-        printf("ERROR DALAM MEMBUKA FILE %s\n", filename);
+        printf("ERROR: GAGAL MEMBUKA FILE %s\n", fullPath);
         return;
     }
 
     /* WRITE USER.CSV */
-    if (strcmp(filename, "file/user.csv") == 0) {
+    if (strcmp(filename, "user.csv") == 0) {
         int numOfUsersDeleted = 0;
 
         // attribute row
@@ -82,6 +146,48 @@ void writeToCSV(const char* filename) {
             printf("Jumlah pengguna yang dihapus dari hospital Niemons: %d\n", numOfUsersDeleted);
         }
         printf("SAVED USER DATABASE!\n");
+    }
+
+    /* WRITE OBAT.CSV */
+    else if (strcmp(filename, "obat.csv") == 0) {
+        // attribute row
+        fprintf(file, "obat_id;nama_obat\n");
+
+        // write data
+        for (int i = 0; i < globalObatDatabase.nEff; ++i) {
+            fprintf(file, "%d;%s\n", globalObatDatabase.contents[i].id, globalObatDatabase.contents[i].name);
+        }
+        printf("SAVED OBAT DATABASE!\n");
+    }
+
+    /* WRITE PENYAKIT.CSV */
+    else if (strcmp(filename, "penyakit.csv") == 0) {
+        // attribute row
+        fprintf(file, "id;nama_penyakit;suhu_tubuh_min;suhu_tubuh_max;tekanan_darah_sistolik_min;tekanan_darah_sistolik_max;tekanan_darah_diastolik_min;tekanan_darah_diastolik_max;detak_jantung_min;detak_jantung_max;saturasi_oksigen_min;saturasi_oksigen_max;kadar_gula_darah_min;kadar_gula_darah_max;berat_badan_min;berat_badan_max;tinggi_badan_min;tinggi_badan_max;kadar_kolesterol_min;kadar_kolesterol_max;trombosit_min;trombosit_max\n");
+
+        // write data
+        for (int i = 0; i < globalPenyakitDatabase.nEff; ++i) {
+            fprintf(file, "%d;%s", globalPenyakitDatabase.contents[i].id, globalPenyakitDatabase.contents[i].name);
+            for (int j = 0; j < THRESHOLD_SIZE; ++j) {
+                fprintf(file, ";%.1f", globalPenyakitDatabase.contents[i].threshold[j]);
+            }
+            fprintf(file, "\n");
+        }
+        printf("SAVED PENYAKIT DATABASE!\n");
+    }
+
+    /* WRITE OBAT_PENYAKIT.CSV */
+    else if (strcmp(filename, "obat_penyakit.csv") == 0) {
+        // attribute row
+        fprintf(file, "obat_id;penyakit_id;urutan_minum\n");
+
+        // write data
+        for (int i = 0; i < globalOPDatabase.nEff; ++i) {
+            for (int j = 0; j < globalOPDatabase.contents[i].nEff; ++j) {
+                fprintf(file, "%d;%d;%d\n", globalOPDatabase.contents[i].idObat[j], globalOPDatabase.contents[i].idPenyakit, (j+1));
+            }
+        }
+        printf("SAVED OBAT PENYAKIT DATABASE!\n");
     }
     
     fclose(file);

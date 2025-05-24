@@ -31,9 +31,11 @@ typedef struct {
 
 /* D03 Load: Fungsi yang akan dipanggil di main/menu */
 /* Membaca seluruh data dari seluruh file CSV dari folder yang ditentukan dari masukan terminal ke dalam variabel-variabel logik */
+/* I.S. Seluruh database terdefinisi namun belum memiliki data. File-file mungkin ada dalam folder tujuan yang dimasukkan oleh terminal */
+/* F.S. Jika ada, maka dibaca seluruh file-file ke dalam database. Jika tidak ada, maka akan mengeluarkan sebuah error message dan keluar dari program */
 void loadCSV(int argc, char** argv);
 
-/* *** FUNGSI-FUNGSI dasar *** */
+/* *** FUNGSI-FUNGSI DASAR *** */
 /* Fungsi untuk split data dari suatu line dalam csv. Data tersebut dimasukkan ke dalam komponen CSVRow */
 CSVRow parseCSVLine(const char* line);
 
