@@ -7,6 +7,8 @@
 #include "header/StructsInHospital.h"
 #include "header/GlobalVariable.h"
 #include "WriteCSV.h"
+#include "LinkedList.h"
+#include "Queue.h"
 /* di run dengan makefile */ 
 /* ./build/main file */
 
@@ -80,6 +82,57 @@ int main(int argc, char** argv){
         }
         printf("\n");
     }
+
+    for (int i = 0; i < globalUserDatabase.nEff; ++i) {
+        GenericData* gd = getGDbyIdx(&globalUserDatabase, i);
+        if (gd->type == DATA_TYPE_PATIENT) {
+            Patient* orang = getPatientInGD(gd);
+            printf("ID: %d, NAMA PASIEN: %s\n", orang->id, orang->username);
+        } else if (gd->type == DATA_TYPE_DOCTOR) {
+            Doctor* orang = getDoctorInGD(gd);
+            printf("ID: %d, NAMA DOKTER: %s\n", orang->id, orang->username);
+        } else if (gd->type == DATA_TYPE_MANAGER) {
+            Manager* orang = getManagerInGD(gd);
+            printf("ID: %d, NAMA MANAGER: %s\n", orang->id, orang->username);
+        } else {
+            printf("USER ERROR\n");
+        }
+    }
+
+    Queue antrian;
+    createQueue(&antrian, 4);
+
+    // masukkan 4 orang awal ke dalam queue
+    for (int i = 0; i < 4; ++i) {
+        GenericData* gd = getGDbyIdx(&globalUserDatabase, i);
+        Patient* patientDalamAntrian = getPatientInGD(gd);
+        LinkedListNode* orang = createLLNode(patientDalamAntrian->id, patientDalamAntrian->username);
+        enQueue(&antrian, orang);
+    }
+    // print orang2 dalam antrian
+    LinkedListNode* forTraverse = antrian.front;
+    printf("Orang dalam antrian:\n");
+    while (forTraverse != NULL) {
+        printf("ID %d, nama %s\n", forTraverse->id, forTraverse->name);
+        forTraverse = forTraverse->next;
+    }
+    // contoh dequeue
+    printf("Orang ini akan masuk ruangan: %s\n", antrian.front->name);
+    deQueue(&antrian);
+    //conoh enqueue
+    printf("Dan orang ini akan masuk antrian: ");
+    GenericData *gd = getGDbyIdx(&globalUserDatabase, 8); // misal, pasti pasien
+    Patient* pAkanMasukAntrian = getPatientInGD(gd);
+    LinkedListNode* orang = createLLNode(pAkanMasukAntrian->id, pAkanMasukAntrian->username);
+    enQueue(&antrian, orang);
+    printf("%s\n", pAkanMasukAntrian->username);
+    printf("Sekarang, orang dalam antrian:\n");
+    forTraverse = antrian.front;
+    while (forTraverse != NULL) {
+        printf("ID %d, nama %s\n", forTraverse->id, forTraverse->name);
+        forTraverse = forTraverse->next;
+    }
+
     writeToCSV("file/user.csv");
     printf("CLEANING UP...\n");
     dealocateLD(&globalUserDatabase);
