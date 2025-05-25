@@ -36,7 +36,7 @@ typedef enum {
 } DataType;
 
 /* Patient */
-#define KONDISI_TUBUH_SIZE 11
+#define KONDISI_TUBUH_SIZE 10
 #define INVENTORY_SIZE 10
 typedef struct {
     int id;
@@ -68,7 +68,7 @@ typedef struct {
 } Manager;
 
 /* Penyakit */
-#define THRESHOLD_SIZE 18
+#define THRESHOLD_SIZE 20
 typedef struct {
     int id;
     char name[STR_MAX_SIZE];
