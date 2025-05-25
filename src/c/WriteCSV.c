@@ -35,6 +35,7 @@ void saveCSV() {
    
     // create folder if dne
     if (!doesFolderExist(path)) {
+        printf("Membuat folder %s ...\n", path);
         createDir(path);
     }
 
@@ -90,7 +91,7 @@ void writeToCSV(const char* folder, const char* filename) {
     char fullPath[MAX_PATH_LENGTH];
     snprintf(fullPath, sizeof(fullPath), "%s/%s", folder, filename);
     // overwrite or make file in mode write
-    FILE* file = fopen(fullPath, "w");
+    FILE* file = fopen(fullPath, "wb"); // wb is write in binary to prevent line ending conversion from lf to crlf
     if (file == NULL) {
         printf("ERROR: GAGAL MEMBUKA FILE %s\n", fullPath);
         return;
@@ -101,7 +102,7 @@ void writeToCSV(const char* folder, const char* filename) {
         int numOfUsersDeleted = 0;
 
         // attribute row
-        fprintf(file, "id;username;password;role;riwayat_penyakit;suhu_tubuh;tekanan_darah_sistolik;tekanan_darah_diastolik;detak_jantung;saturasi_oksigen;kadar_gula_darah;berat_badan;tinggi_badan;kadar_kolesterol;kadar_kolesterol_ldl;trombosit\n");
+        fprintf(file, "id;username;password;role;riwayat_penyakit;suhu_tubuh;tekanan_darah_sistolik;tekanan_darah_diastolik;detak_jantung;saturasi_oksigen;kadar_gula_darah;berat_badan;tinggi_badan;kadar_kolesterol;trombosit\n");
     
         // write data
         for (int i = 0; i < globalUserDatabase.nEff; ++i) {
@@ -114,7 +115,16 @@ void writeToCSV(const char* folder, const char* filename) {
 
                 fprintf(file, "%d;%s;%s;pasien;%s", p->id, p->username, p->password, p->riwayatPenyakit);
                 for (int j = 0; j < KONDISI_TUBUH_SIZE; ++j) {
-                    fprintf(file, ";%.1f", p->kondisiTubuh[j]);
+                    if (p->kondisiTubuh[j] - UNDEF_INT_DATA < 0.001) {
+                        // don't put number if undef, just put empty field
+                        fprintf(file, ";");
+                    }
+                    else if (p->kondisiTubuh[j] == (int)p->kondisiTubuh[j]) {
+                        fprintf(file, ";%.0f", p->kondisiTubuh[j]);
+                    }
+                    else {
+                        fprintf(file, ";%.1f", p->kondisiTubuh[j]);
+                    }
                 }
                 fprintf(file, "\n");
             }
@@ -123,7 +133,7 @@ void writeToCSV(const char* folder, const char* filename) {
             else if (gdDataType == DATA_TYPE_DOCTOR) {
                 Doctor* d = getDoctorInGD(gd);
                 
-                fprintf(file, "%d;%s;%s;dokter;;;;;;;;;;;;;\n",
+                fprintf(file, "%d;%s;%s;dokter;;;;;;;;;;;\n",
                     d->id, d->username, d->password);
             }
 
@@ -131,7 +141,7 @@ void writeToCSV(const char* folder, const char* filename) {
             else if (gdDataType == DATA_TYPE_MANAGER) {
                 Manager* m = getManagerInGD(gd);
 
-                fprintf(file, "%d;%s;%s;manager;;;;;;;;;;;;;\n",
+                fprintf(file, "%d;%s;%s;manager;;;;;;;;;;;\n",
                     m->id, m->username, m->password);              
             }
 
@@ -170,7 +180,12 @@ void writeToCSV(const char* folder, const char* filename) {
         for (int i = 0; i < globalPenyakitDatabase.nEff; ++i) {
             fprintf(file, "%d;%s", globalPenyakitDatabase.contents[i].id, globalPenyakitDatabase.contents[i].name);
             for (int j = 0; j < THRESHOLD_SIZE; ++j) {
-                fprintf(file, ";%.1f", globalPenyakitDatabase.contents[i].threshold[j]);
+                if (globalPenyakitDatabase.contents[i].threshold[j] == (int)globalPenyakitDatabase.contents[i].threshold[j]) {
+                    fprintf(file, ";%.0f", globalPenyakitDatabase.contents[i].threshold[j]);
+                }
+                else {
+                    fprintf(file, ";%.1f", globalPenyakitDatabase.contents[i].threshold[j]);
+                }
             }
             fprintf(file, "\n");
         }
