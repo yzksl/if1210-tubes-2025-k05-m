@@ -16,8 +16,12 @@ int scanNumber(FILE* file){
     
 }
 
-void readConfig(){
-    FILE *configFile = fopen("file/config.txt", "r"); // Membuka file config
+void readConfig(const char* path){
+    // merge folder and filename
+    char fullPath[MAX_PATH_LENGTH];
+    // folder pasti ada karena ketentuan spesifikasi
+    snprintf(fullPath, sizeof(fullPath), "%s/%s", path, "config.txt");
+    FILE *configFile = fopen(fullPath, "r"); // Membuka file config
 
     int nRow, nColumn, maxPasien, maxAntrian; // Inisialisasi variable
 
@@ -41,7 +45,7 @@ void readConfig(){
     for (int row=0; row<nRow; row++){ // Mengiterasi barisan
         for (int column=0; column<nColumn; column++){
 
-            globalDenahRumahSakit.Ruangan[row][column].idAntrian.capacity = maxAntrian;
+            createQueue(&globalDenahRumahSakit.Ruangan[row][column].idAntrian, maxAntrian);
 
             globalDenahRumahSakit.Ruangan[row][column].idDokter = scanNumber(configFile); // Scan id dokter di ruang ngan tersebut
 
@@ -76,7 +80,10 @@ void readConfig(){
                 }
                 else{
                     if (id<maxPasien) globalDenahRumahSakit.Ruangan[row][column].idPasien[id] = temp; // Meletakan id pasien di list pasien
-                    else 
+                    else{
+                        LinkedListNode* node = createLLNode(temp, "");
+                        enQueue(&globalDenahRumahSakit.Ruangan[row][column].idAntrian, node);
+                    }
                     count++; // Menghitung jumlah pasien
                     if (id==(maxPasien+maxAntrian-1)){ // Kondisi jika ini merupakan itirasi terakhir
                         globalDenahRumahSakit.Ruangan[row][column].idAntrian.size = count-maxPasien;    // Menuliskan banyak pasien

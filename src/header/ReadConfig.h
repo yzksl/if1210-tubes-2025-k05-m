@@ -2,6 +2,8 @@
 #ifndef READCONFIG_h
 #define READCONFIG_h
 
+#define MAX_PATH_LENGTH 256
+
 #include <stdio.h>
 #include "DataTypeRuangan.h"
 

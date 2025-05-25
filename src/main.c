@@ -9,6 +9,7 @@
 #include "header/MainMenu.h"
 #include "header/ReadConfig.h"
 #include "header/ReadCSV.h"
+#include "header/PrintArt.h"
 // di run dengan gcc -o main .\main.c .\c\GlobalVariable.c .\c\StructsInHospital.c .\c\DynamicList.c .\c\ReadCSV.c
 // .\main.exe
 // belum dicoba di wsl dan makefile jujur
@@ -31,8 +32,8 @@ int main(int argc, char** argv){
     // anggap login ke orang di index ke-2 (misal aja), dan kita tahu lebih dahulu bahwa dia pasien maka yang akan dijalankan adalah menu pasien (misal)
     globalCurrentUserGD = getGDbyIdx(&globalUserDatabase, 0);
     DataType currentUserType = getDataTypeGD(globalCurrentUserGD);
-    readConfig();
-    printf("====================\n\n====================\n");
+    readConfig(argv[1]);
+    printStart();
     mainMenu();
     printf("====================\n\n====================\n");
     printf("CLEANING UP...\n");
