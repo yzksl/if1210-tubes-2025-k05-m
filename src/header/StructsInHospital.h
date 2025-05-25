@@ -13,6 +13,7 @@
 #define STR_MAX_SIZE 50
 #define PENYAKIT_MAX_SIZE 100
 #define OBAT_PENYAKIT_MAX_SIZE 10
+#define UNDEF_INT_DATA -99
 
 /* Definisi elemen dan koleksi objek */
 /* Obat */
@@ -36,7 +37,7 @@ typedef enum {
 } DataType;
 
 /* Patient */
-#define KONDISI_TUBUH_SIZE 11
+#define KONDISI_TUBUH_SIZE 10
 #define INVENTORY_SIZE 10
 typedef struct {
     int id;
@@ -68,7 +69,7 @@ typedef struct {
 } Manager;
 
 /* Penyakit */
-#define THRESHOLD_SIZE 18
+#define THRESHOLD_SIZE 20
 typedef struct {
     int id;
     char name[STR_MAX_SIZE];
