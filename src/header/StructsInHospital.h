@@ -13,6 +13,7 @@
 #define STR_MAX_SIZE 50
 #define PENYAKIT_MAX_SIZE 100
 #define OBAT_PENYAKIT_MAX_SIZE 10
+#define UNDEF_INT_DATA -99;
 
 /* Definisi elemen dan koleksi objek */
 /* Obat */
