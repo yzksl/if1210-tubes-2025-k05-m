@@ -7,8 +7,7 @@
 int inventory[10]; //hanya untuk dummy, aslinya dibuat oleh f12
 int nEff;//dummy, nEff dari inventory
 void PrintObat(){
-    boolean diobatin = true; // hanya untuk dummy, aslinya ada di f12
-    if(!diobatin){
+    if( p.inventory == NULL){
         printf("Belum ada obat tersedia\n");
     }
     else{
