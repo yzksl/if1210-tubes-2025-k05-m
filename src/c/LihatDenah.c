@@ -31,11 +31,11 @@ void lihatDenah(){
     }
 }
 
-void lihatRuangan(int ruangan){
+void lihatRuangan(int row, int column){
     char nomorRuangan[256]; // inisialisasi variable untuk membaca nomor ruangan
     int rowRuangan, columnRuangan; // inisialisasi variable row ruangan dan column ruangan
 
-    if (ruangan==-1){
+    if (row==-1||column==-1){
         scanf(" %s", nomorRuangan);
 
         rowRuangan = nomorRuangan[0] - 'A'; // mendapatakan row ruangan
@@ -49,8 +49,8 @@ void lihatRuangan(int ruangan){
         }
         printf("\n--- Detail Ruangan %s ---\n", nomorRuangan);
     } else {
-        rowRuangan = ruangan/globalDenahRumahSakit.nColumn;
-        columnRuangan = ruangan-rowRuangan*globalDenahRumahSakit.nColumn;
+        rowRuangan = row;
+        columnRuangan = column;
 
         snprintf(nomorRuangan, sizeof(nomorRuangan), "%c%d", rowRuangan+'A', columnRuangan+1);
 
@@ -74,7 +74,7 @@ void lihatRuangan(int ruangan){
     if (jumlahPasien==0) printf("  Tidak ada pasien di dalam ruangan saat ini.\n");
     else for (int i=0; i<jumlahPasien; i++) printf("  %d. %s\n", i+1, getAccountName(globalDenahRumahSakit.Ruangan[rowRuangan][columnRuangan].idPasien[i], DATA_TYPE_PATIENT));
 
-    if (ruangan==-1) printf("------------------------------\n");
+    if (row==-1||column==-1) printf("------------------------------\n");
 }
 
 void lihatSemuaAntrian(){
@@ -84,7 +84,7 @@ void lihatSemuaAntrian(){
         for (int column=0; column<globalDenahRumahSakit.nColumn; column++){
             if (globalDenahRumahSakit.Ruangan[row][column].idDokter==0) continue;
 
-            lihatRuangan(row*globalDenahRumahSakit.nColumn+column);
+            lihatRuangan(row, column);
 
             printf("Pasien di antrian:\n");
 

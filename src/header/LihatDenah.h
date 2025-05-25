@@ -8,7 +8,7 @@
 
 void lihatDenah(); // Menampilkan Denah Rumah Sakit
 
-void lihatRuangan(int ruangan); // Menampilkan Kondisi Ruangan
+void lihatRuangan(int row, int column); // Menampilkan Kondisi Ruangan
 
 void lihatSemuaAntrian(); // Menampilkan Rincian di Seluruh Ruangan yang tidak kosong
 

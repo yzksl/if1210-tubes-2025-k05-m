@@ -19,7 +19,7 @@ void menuPasien(){
         scanf("%s", input);
         if (strcmp(input, "HELP")==0) helpPasien();
         else if (strcmp(input, "LIHAT_DENAH")==0) lihatDenah();
-        else if (strcmp(input, "LIHAT_RUANGAN")==0) lihatRuangan(-1);
+        else if (strcmp(input, "LIHAT_RUANGAN")==0) lihatRuangan(-1, -1);
         else if (strcmp(input, "LOGOUT")==0) break/*Logout*/;
         else if (strcmp(input, "EXIT")==0) exitFromHospital();
         // Fungsi lanjutan yang belum ditulis
@@ -37,7 +37,7 @@ void menuDokter(){
         scanf("%s", input);
         if (strcmp(input, "HELP")==0) helpDokter();
         else if (strcmp(input, "LIHAT_DENAH")==0) lihatDenah();
-        else if (strcmp(input, "LIHAT_RUANGAN")==0) lihatRuangan(-1);
+        else if (strcmp(input, "LIHAT_RUANGAN")==0) lihatRuangan(-1, -1);
         else if (strcmp(input, "LIHAT_SEMUA_ANTRIAN")==0) lihatSemuaAntrian();
         else if (strcmp(input, "LOGOUT")==0) break/*Logout*/;
         else if (strcmp(input, "EXIT")==0) exitFromHospital();
@@ -55,7 +55,7 @@ void menuManager(){
         scanf("%s", input);
         if (strcmp(input, "HELP")==0) helpManager();
         else if (strcmp(input, "LIHAT_DENAH")==0) lihatDenah();
-        else if (strcmp(input, "LIHAT_RUANGAN")==0) lihatRuangan(-1);
+        else if (strcmp(input, "LIHAT_RUANGAN")==0) lihatRuangan(-1, -1);
         else if (strcmp(input, "LOGOUT")==0) break/*Logout*/;
         else if (strcmp(input, "EXIT")==0) exitFromHospital();
         // Fungsi lanjutan yang belum ditulis
@@ -71,7 +71,7 @@ void menuBelumLogin(){
         scanf("%s", input);
         if (strcmp(input, "HELP")==0) helpBelumLogin();
         else if (strcmp(input, "LIHAT_DENAH")==0) lihatDenah();
-        else if (strcmp(input, "LIHAT_RUANGAN")==0) lihatRuangan(-1);
+        else if (strcmp(input, "LIHAT_RUANGAN")==0) lihatRuangan(-1, -1);
         else if (strcmp(input, "LOGIN")==0) break/*Login*/;
         else if (strcmp(input, "REGISTER")==0) break/*Register*/;
         else if (strcmp(input, "EXIT")==0) exitFromHospital();
