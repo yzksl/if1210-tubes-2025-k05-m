@@ -7,20 +7,27 @@
 
 //setelah program dijalankan, pindahin dulu data ke inventory
 //setelah itu, hapus data dari stack(perut)
-Patient p;
-Obat o;
-void MinumPenawar(){
-    Stack *perut;  //dummy, perut asli sudah dibuat di f16
-    if(isStackEmpty(perut)){
-        printf("Perut kosong!! Belum ada obat yang dimakan.\n");
-    }
-    else{
-        o = popStack(&perut);  //mungkin syntaxnya masih salah
 
-        printf("Uwekkk!!! %s keluar dan kembali ke inventory\n", o.name);
-        int nEff;
-        globalCurrentPatient-> inventory[nEff] = o.id;  //bingung syntaxnya bagaimana
-        nEff++;
+void minumPenawar(){
+    if(isStackEmpty(&globalCurrentPatient->perut)){
+        printf("\nPerut kosong, belum ada obat yang diminum.\n"); //kalau ternyata tidak perlu tidak apa
+        return;
+    }
+
+    //obat yang akan dikembalikan ke inventory disimpan dalam variabel
+    Obat backToInventory = popStack(&globalCurrentPatient->perut);
+
+    //ini program agar obat kembali ke inventory
+    boolean toInventory = false;
+    for (int i = 0; i < INVENTORY_SIZE; i++) {
+        if (globalCurrentPatient->inventory[i] == -1) {
+            globalCurrentPatient->inventory[i] = backToInventory.id;
+            toInventory = true;
+            break;
+        }
+    }
+    if(toInventory){
+        printf("Uwekkk!!! %s keluar dan kembali ke inventory.\n", backToInventory.name);
     }
 }
 
