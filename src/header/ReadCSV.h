@@ -12,29 +12,41 @@
 #include "DynamicList.h"
 #include "Boolean.h"
 
-#define MAX_PATH_LENGTH 50
+/*  KAMUS UMUM */
+#define MAX_PATH_LENGTH 256
 #define MAX_LINE_LENGTH 1024
 #define MAX_FIELDS 22
 #define MAX_FIELD_LENGTH 50
-#define NUM_OF_COL_PATIENT 16
+#define NUM_OF_COL_PATIENT 15
 #define NUM_OF_COL_GENERIC_USER 4
 #define NUM_OF_COL_OBAT 2
 #define NUM_OF_COL_PENYAKIT 22
 #define NUM_OF_COL_OP 3
 
+/*  Definisi elemen dan koleksi objek*/
 typedef struct {
     char fields[MAX_FIELDS][MAX_FIELD_LENGTH];
     int fieldCount;
 } CSVRow;
 
-CSVRow parseCSVLine(const char* line);
+/* D03 Load: Fungsi yang akan dipanggil di main/menu */
+/* Membaca seluruh data dari seluruh file CSV dari folder yang ditentukan dari masukan terminal ke dalam variabel-variabel logik */
+/* I.S. Seluruh database terdefinisi namun belum memiliki data. File-file mungkin ada dalam folder tujuan yang dimasukkan oleh terminal, dan pasti memiliki data valid */
+/* F.S. Jika ada, maka dibaca seluruh file-file ke dalam database. Jika tidak ada, maka akan mengeluarkan sebuah error message dan keluar dari program */
+void loadCSV(int argc, char** argv);
+
+/* *** FUNGSI-FUNGSI DASAR *** */
+/* Mengecek jika file terdapat dalam folder yang diberikan dalam input terminal */
+boolean isFileInPath(const char* path);
+
 /* Fungsi untuk split data dari suatu line dalam csv. Data tersebut dimasukkan ke dalam komponen CSVRow */
+CSVRow parseCSVLine(const char* line);
 
-void processCSV(const char* filename);
 /* Proses: membaca seluruh line dalam filename csv. Menggunakan parseCSVLine untuk split data. Kemudian dibuat data Patient, Doctor, atau Manager dalam heap, dan dimasukkan ke dalam database, atau obat/penyakit/obatpenyakit and stuff. Database user di-expand dan di-shrink sesuai keadaan data akhir secara otomatis */
+void processCSV(const char* folder, const char* filename);
 
-void processAllCSVInFolder(const char* folderPath);
 /* Proses: membaca seluruh csv yang ada dalam folder yang diinput di terminal. Jika terdapat error, maka akan keluar dari program */
-/* Contoh: ./build/main file, akan membuka csv-csv yang ada di folder file*/
+/* Contoh: ./main file, akan membuka csv-csv yang ada di folder file*/
+void processAllCSVInFolder(const char* folderPath);
 
 #endif

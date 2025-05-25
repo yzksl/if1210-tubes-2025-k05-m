@@ -1,0 +1,11 @@
+id;username;password;role;riwayat_penyakit;suhu_tubuh;tekanan_darah_sistolik;tekanan_darah_diastolik;detak_jantung;saturasi_oksigen;kadar_gula_darah;berat_badan;tinggi_badan;kadar_kolesterol;kadar_kolesterol_ldl;trombosit
+1;stewart;pass11;pasien;Anemia;36.1;92.0;77.0;66.0;93.7;127.0;52.4;177.0;193.0;54.0;328.0
+2;gro;pass22;pasien;COVID-19;36.6;126.0;85.0;67.0;96.5;175.0;45.7;156.0;235.0;139.0;212.0
+3;kebin;pass33;pasien;Diabetes Mellitus;36.4;96.0;68.0;94.0;92.3;162.0;64.1;158.0;240.0;63.0;380.0
+4;pop;pass44;pasien;COVID-19;36.9;110.0;85.0;73.0;98.7;152.0;62.8;157.0;184.0;152.0;390.0
+5;neronimo;pass55;dokter;;;;;;;;;;;;;
+6;ciciko;pass66;dokter;;;;;;;;;;;;;
+7;zeru;pass77;manager;;;;;;;;;;;;;
+8;minonette;pass88;pasien;Diabetes Mellitus;36.7;93.0;87.0;63.0;97.8;136.0;77.0;172.0;227.0;64.0;380.0
+9;tobo;pass99;pasien;COVID-19;36.8;114.0;74.0;61.0;94.6;100.0;80.6;173.0;152.0;139.0;386.0
+10;ropik;pass110;pasien;Anemia;36.2;103.0;87.0;65.0;96.6;102.0;72.3;184.0;150.0;91.0;292.0

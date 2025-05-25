@@ -13,7 +13,7 @@ void createLD(ListDin *l, int capacity) {
         return;
     }
 
-    ElType* newBuffer = (ElType* )malloc(l->capacity * sizeof(ElType));
+    ElType* newBuffer = (ElType* )malloc(capacity * sizeof(ElType));
     if (newBuffer == NULL) {
         printf("GAGAL REALOKASI MEMORI\n");
         return;
@@ -182,6 +182,10 @@ void expandLD(ListDin *l, int num) {
 /* PERHATIAN: mungkin memori akan kekurangan untuk alokasi, sehingga prosedur tidak dapat berjalan sesuai fungsi. Jika hal tersebut terjadi, maka akan dikeluarkan "GAGAL REALOKASI MEMORI" */
     if (num <= 0) {
         printf("INVALID NUM\n");
+        return;
+    }
+    if (l->buffer == NULL) {
+        printf("ERROR: LIST TIDAK ADA\n");
         return;
     }
 
