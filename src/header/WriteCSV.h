@@ -10,7 +10,8 @@
 #include "ReadCSV.h"
 
 /*  KAMUS UMUM */
-/* - */
+#define MAX_CMD_LENGTH 512
+
 /*  Definisi elemen dan koleksi objek*/
 /* - */
 
