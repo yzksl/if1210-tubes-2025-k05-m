@@ -6,6 +6,24 @@
 #include "../header/ReadCSV.h"
 #include "../header/StructsInHospital.h"
 #include "../header/GlobalVariable.h"
+#include "Set.h"
+
+void loadCSV(int argc, char** argv) {
+    // create database dengan list dynamic
+    createLD(&globalUserDatabase, 20);
+    createSet(&globalUsernames, 20);
+    // baca csv-csv yang ada dalam folder yang ditentukan dalam input terminal
+    if (argc < 2) {
+        printf("ERROR: TIDAK ADA NAMA FOLDER YANG DIBERIKAN!\n");
+        exit(1);
+    } else {
+        if (!isFileInPath(argv[1])) {
+            printf("ERROR: FILE ATAU FOLDER TIDAK DITEMUKAN\n");
+            exit(1);
+        }
+        processAllCSVInFolder(argv[1]);
+    }
+}
 
 // csv files that will be read:
 static const char *filenameList[] = {
@@ -16,15 +34,33 @@ static const char *filenameList[] = {
     NULL
 };
 
-static const char* filenamePathList[] = {
-    "file/user.csv",
-    "file/obat.csv",
-    "file/penyakit.csv",
-    "file/obat_penyakit.csv",
-    NULL
-};
+// static const char* filenamePathList[] = {
+//     "file/user.csv",
+//     "file/obat.csv",
+//     "file/penyakit.csv",
+//     "file/obat_penyakit.csv",
+//     NULL
+// };
 
 static boolean isAllReadSuccessfully;
+
+boolean isFileInPath(const char* path) {
+    for (int i = 0; filenameList[i] != NULL; ++i) {
+        // merge folder and filename
+        char fullPath[MAX_PATH_LENGTH];
+        snprintf(fullPath, sizeof(fullPath), "%s/%s", path, filenameList[i]);
+
+        // try opening file in path
+        FILE* file = fopen(fullPath, "r");
+        if (file == NULL) {
+            isAllReadSuccessfully = false;
+            return false;
+        }
+        // close file if successfully read to check next one
+        fclose(file);
+    }
+    return true;
+}
 
 CSVRow parseCSVLine(const char* line) {
     CSVRow row = {0};
@@ -32,6 +68,10 @@ CSVRow parseCSVLine(const char* line) {
     int charIdx = 0;
 
     for (int i = 0; line[i] != '\0' && fieldIdx < MAX_FIELDS; i++) {
+        if (line[i] == '\r') {
+            /* skip clrf \r */
+            continue;
+        }
         if (line[i] == ';' || line[i] == '\n') {
             // end of field
             row.fields[fieldIdx][charIdx] = '\0';
@@ -49,23 +89,15 @@ CSVRow parseCSVLine(const char* line) {
     return row;
 }
 
-void processCSV(const char* filename) {
-    // find filename
-    boolean isFilenameFound = false;
-    for (int i = 0; filenamePathList[i] != NULL; ++i) {
-        if (strcmp(filename, filenamePathList[i]) == 0) {
-            isFilenameFound = true;
-            break;
-        }
-    }
-    if (!isFilenameFound) {
-        printf("ERROR: TIDAK DITEMUKAN FILE %s\n", filename);
-        isAllReadSuccessfully = false;
-        return;
-    }
-    FILE* file = fopen(filename, "r");
+void processCSV(const char* folder, const char* filename) {
+    // merge folder and filename
+    char fullPath[MAX_PATH_LENGTH];
+    // folder pasti ada karena ketentuan spesifikasi
+    snprintf(fullPath, sizeof(fullPath), "%s/%s", folder, filename);
+
+    FILE* file = fopen(fullPath, "r");
     if (file == NULL) {
-        printf("ERROR DALAM MEMBUKA FILE %s\n", filename);
+        printf("ERROR DALAM MEMBUKA FILE %s\n", fullPath);
         isAllReadSuccessfully = false;
         return;
     }
@@ -74,8 +106,7 @@ void processCSV(const char* filename) {
     fgets(line, sizeof(line), file); // unprocess first row (column indicators)
 
     /* PROCESS USER.CSV*/
-    if (strcmp(filename, "file/user.csv") == 0) {
-        createLD(&globalUserDatabase, 20);
+    if (strcmp(filename, "user.csv") == 0) {
         while (fgets(line, sizeof(line), file)) {
             // check and expand if full
             if (isLDFull(&globalUserDatabase)) {
@@ -95,7 +126,14 @@ void processCSV(const char* filename) {
             char* username = row.fields[1];
             char* password = row.fields[2];
             char* role = row.fields[3];
-            
+
+            // add username into set
+            if (isSetFull(&globalUsernames)) {
+                expandSet(&globalUsernames, 10);
+            }
+            addToSet(&globalUsernames, username);
+
+            // declare emptyInventory here because somehow not allowed to declare in the if in patient
             int emptyInventory[INVENTORY_SIZE];
             memset(emptyInventory, 0, sizeof(emptyInventory));
             GenericData* gd = NULL;
@@ -157,11 +195,12 @@ void processCSV(const char* filename) {
         }
         // compress list dynamic after finishing
         compressLD(&globalUserDatabase);
+        compressSet(&globalUsernames);
         printf("LOADED USER DATABASE!\n");
     }
     
     /* PROCESS OBAT.CSV */
-    else if (strcmp(filename, "file/obat.csv") == 0) {
+    else if (strcmp(filename, "obat.csv") == 0) {
         globalObatDatabase.nEff = 0;
         int i = 0;
         while (fgets(line, sizeof(line), file)) {
@@ -189,7 +228,7 @@ void processCSV(const char* filename) {
     }
     
     /* PROCESS PENYAKIT.CSV */
-    else if (strcmp(filename, "file/penyakit.csv") == 0) {
+    else if (strcmp(filename, "penyakit.csv") == 0) {
         globalPenyakitDatabase.nEff = 0;
         int i = 0;
         while (fgets(line, sizeof(line), file)) {
@@ -220,7 +259,7 @@ void processCSV(const char* filename) {
     }
     
     /* PROCESS OBAT_PENYAKIT.CSV */
-    else if (strcmp(filename, "file/obat_penyakit.csv") == 0) {
+    else if (strcmp(filename, "obat_penyakit.csv") == 0) {
         globalOPDatabase.nEff = 0;
         int i = 0;
         while (fgets(line, sizeof(line), file)) {
@@ -276,10 +315,8 @@ void processAllCSVInFolder(const char* folderPath) {
     printf("Loading...\n");
     isAllReadSuccessfully = true;
     // call processCSV with param folderPath/each filename in filenameList array
-    char path[MAX_PATH_LENGTH];
     for (int i = 0; filenameList[i] != NULL; ++i) {
-        snprintf(path, sizeof(path), "%s/%s", folderPath, filenameList[i]);
-        processCSV(path);
+        processCSV(folderPath, filenameList[i]);
     }
     if (isAllReadSuccessfully) {
         printf("Finished Loading!\n");
@@ -287,17 +324,5 @@ void processAllCSVInFolder(const char* folderPath) {
     } else {
         printf("ERROR: TERDAPAT DATA YANG TIDAK DIBACA\n");
         exit(1);
-    }
-}
-
-void loadCSV(int argc, char** argv) {
-    // create database dengan list dynamic
-    createLD(&globalUserDatabase, 20);
-    // baca csv-csv yang ada dalam folder yang ditentukan dalam input terminal
-    if (argc < 2) {
-        printf("ERROR: TIDAK ADA NAMA FOLDER YANG DIBERIKAN!\n");
-        exit(1);
-    } else {
-        processAllCSVInFolder(argv[1]);
     }
 }
