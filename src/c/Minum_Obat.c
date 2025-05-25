@@ -3,39 +3,60 @@
 #include <string.h>
 #include "Minum_Obat.h"
 
+//procedure ini agar inventory rata kiri
+void goToLeft(Patient* p) {
+    int temp[INVENTORY_SIZE];
+    int idx = 0;
 
-int inventory[10]; //hanya untuk dummy, aslinya dibuat oleh f12
-int nEff;//dummy, nEff dari inventory
-void PrintObat(){
-    if( p.inventory == NULL){
-        printf("Belum ada obat tersedia\n");
+    for (int i = 0; i < INVENTORY_SIZE; i++) {
+        if (p->inventory[i] != -1) {
+            temp[idx++] = p->inventory[i];
+        }
     }
-    else{
-        printf("\n============ DAFTAR OBAT ============\n");
-        int i;
-        while(i = 1, i< nEff, i++){
-            printf("%d. %s\n", i, inventory[i-1]);
 
-        }}
+    for (int i = 0; i < INVENTORY_SIZE; i++) {
+        if (i < idx) {
+            p->inventory[i] = temp[i];
+        } else {
+            p->inventory[i] = -1;
+        }
+    }
 }
 
-void MinumObat(){
+void minumObat(){
+    printf("\n============ DAFTAR OBAT ============\n");
+    int jlhObat = 0;
+    for(int i = 0; i<INVENTORY_SIZE;++i){
+        if(globalCurrentPatient->inventory[i] != IDX_UNDEF){
+            Obat o = globalObatDatabase.contents[globalCurrentPatient->inventory[i]];
+            printf("%d. %s\n", jlhObat+1, o.name);
+            jlhObat++;
+        }
+        else{
+            break;
+        }
+    }
+    if(jlhObat = 0){
+        printf("Belum ada obat dalam inventory Anda. Tolong minta obat dengan command NGOBATIN!!!\n");
+        return;
+    }
     int pilihan;
-    scanf("Pilih Obat untuk diminum: %d", &pilihan);
-    if(pilihan<=0 || pilihan >nEff){
-        printf("Pilihan nomor tidak tersedia!\n");
+    scanf("\nPilih Obat untuk diminum: %d", &pilihan);
+
+    if(pilihan<1 || pilihan >jlhObat){
+        printf("\nPilihan nomor tidak tersedia!\n");
+        return;
     }
-    else{
-        Obat nama_obat[10] = inventory[pilihan];
-        printf("\nGLEKGLEKGLEK... %s berhasil diminum!!!\n", nama_obat);
-        Stack perut;
-        createStack(&perut);
-        Obat o = *nama_obat;//Obat o adalah nama obat di inventory yang dipilih
-        pushStack(&perut, o);
-    }
-    
-    for(int i = pilihan; i<nEff; i++){
-        inventory[i] = inventory[i+1];
-    }
-    nEff--;
+
+    int idx = pilihan-1; //indexnya mulai dari 0
+    int idObat = globalCurrentPatient->inventory[idx];
+    Obat iniObat = globalObatDatabase.contents[idObat]; //disini masih dengan anggapan idObat == idx idObat
+
+    pushStack(&(globalCurrentPatient->perut), iniObat);
+    globalCurrentPatient->inventory[idx] = IDX_UNDEF; //dihapus dari list inventory
+
+    goToLeft(globalCurrentPatient);
+
+    printf("\nGLEKGLEKGLEK... %s berhasil diminum!!!\n", iniObat.name);
 }
+
