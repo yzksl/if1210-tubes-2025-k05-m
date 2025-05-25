@@ -12,6 +12,7 @@ ListDin globalUserDatabase = {0};
 ObatDatabase globalObatDatabase = {0};
 PenyakitDatabase globalPenyakitDatabase = {0};
 ObatPenyakitDatabase globalOPDatabase = {0};
+Set globalUsernames = {0};
 
 // current user
 GenericData* globalCurrentUserGD = {0};

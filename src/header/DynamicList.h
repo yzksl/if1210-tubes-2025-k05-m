@@ -60,88 +60,88 @@ typedef struct {
 
 /* ********** KONSTRUKTOR ********** */
 /* Konstruktor : create list kosong  */
-void createLD(ListDin *l, int capacity);
 /* I.S. l sembarang, capacity > 0 */
 /* F.S. Terbentuk list dinamis l kosong dengan kapasitas capacity */
+void createLD(ListDin *l, int capacity);
 /* Konstruktor : create GenericData */
-GenericData* createGD(void* data, DataType type);
 /* Membuat suatu GenericData UNTUK DATA DALAM HEAP dengan pointer generik ke data dan type dari data tersebut dan mengembalikan address dari GenericData tersebut */
 /* PERHATIAN: mungkin memori akan kekurangan untuk alokasi, sehingga prosedur tidak dapat berjalan sesuai fungsi. Jika hal tersebut terjadi, maka akan dikeluarkan "GAGAL REALOKASI MEMORI" */
+GenericData* createGD(void* data, DataType type);
 
 /* ********** DEALOKATOR ********** */
-void dealocateLD(ListDin *l);
 /* I.S. l terdefinisi, mungkin kosong */
 /* F.S. Semua elemen difree dan pointer ke NULL CAPACITY(l)=0; NEFF(l)=0 */
-void dealocateGD(GenericData* gd);
+void dealocateLD(ListDin *l);
 /* I.S. gd terdefinisi */
 /* F.S. Data dalam gd di-free, type menjadi unknown, data point to NULL */
+void dealocateGD(GenericData* gd);
 
 /* ********** SELEKTOR (TAMBAHAN) ********** */
-int lengthLD(const ListDin* l);
 /* Mengembalikan banyaknya elemen efektif list */
-DataType getDataTypeGD(const GenericData* gd);
+int lengthLD(const ListDin* l);
 /* Mengembalikan type dari gd */
-GenericData* getGDbyIdx(const ListDin* l, int idx);
+DataType getDataTypeGD(const GenericData* gd);
 /* Mengembalikan address dari GenericData pada index idx. Jika tidak efektif, maka dikeluarkan "INVALID IDX" dan mengembalikan NULL */
-Patient* getPatientInGD(const GenericData* gd);
+GenericData* getGDbyIdx(const ListDin* l, int idx);
 /* Jika type memang Patient, nilai dalam data dengan casting patient alias mengembalikan address dari patient di gd */
 /* Jika type bukan Patient, maka dikeluarkan "BUKAN PASIEN" */
-Doctor* getDoctorInGD(const GenericData* gd);
+Patient* getPatientInGD(const GenericData* gd);
 /* Jika type memang Doctor, nilai dalam data dengan casting patient alias mengembalikan address dari patient di gd */
 /* Jika type bukan Doctor, maka dikeluarkan "BUKAN DOKTER" */
-Manager* getManagerInGD(const GenericData* gd);
+Doctor* getDoctorInGD(const GenericData* gd);
 /* Jika type memang Manager, nilai dalam data dengan casting patient alias mengembalikan address dari patient di gd */
 /* Jika type bukan Manager, maka dikeluarkan "BUKAN MANAGER" */
+Manager* getManagerInGD(const GenericData* gd);
 
 /* *** Selektor INDEKS *** */
-int getLDFirstIdx(const ListDin* l);
 /* Mengembalikan index pertama */
-int getLDLastIdx(const ListDin* l);
+int getLDFirstIdx(const ListDin* l);
 /* Mengembalikan index elemen efektif terakhir */
+int getLDLastIdx(const ListDin* l);
 
 /* ********** Test Indeks yang valid ********** */
-boolean isLDIdxValid(const ListDin* l, int i);
 /* Mengirimkan true jika i adalah indeks yang valid utk kapasitas list l */
 /* yaitu antara indeks yang terdefinisi utk container*/
-boolean isLDIdxEff(const ListDin* l, int i);
+boolean isLDIdxValid(const ListDin* l, int i);
 /* Mengirimkan true jika i adalah indeks yang terdefinisi utk list */
 /* yaitu antara 0..NEFF(l) */
+boolean isLDIdxEff(const ListDin* l, int i);
 
 /* ********** TEST KOSONG/PENUH ********** */
 /* *** Test list kosong *** */
-boolean isLDEmpty(const ListDin* l);
 /* Mengirimkan true jika list l kosong, mengirimkan false jika tidak */
+boolean isLDEmpty(const ListDin* l);
 /* *** Test list penuh *** */
-boolean isLDFull(const ListDin* l);
 /* Mengirimkan true jika list l penuh, mengirimkan false jika tidak */
+boolean isLDFull(const ListDin* l);
 
 /* ********** MENAMBAH DAN MENGHAPUS ELEMEN DI AKHIR ********** */
 /* *** Menambahkan elemen terakhir *** */
-void insertLastLD(ListDin *l, ElType val);
 /* I.S. l terdefinisi, mungkin penuh */
 /* F.S. Jika tidak penuh, val adalah elemen terakhir l yang baru. Jika penuh, maka dikeluarkan "LIST PENUH" */
+void insertLastLD(ListDin *l, ElType val);
 /* ********** MENGHAPUS ELEMEN ********** */
-void deleteLastLD(ListDin *l);
 /* I.S. l terdefinisi, mungkin kosong */
 /* F.S. Jika tidak kosong, maka elemen terakhir di-free dan pointernya ke null */
 /*      Banyaknya elemen list berkurang satu, l mungkin menjadi kosong */
 /*      Jika kosong, maka dikeluarkan "LIST KOSONG" */
+void deleteLastLD(ListDin *l);
 
 /* ********* MENGUBAH UKURAN ARRAY ********* */
-void expandLD(ListDin *l, int num);
 /* I.S. List sudah terdefinisi */
 /* F.S. Ukuran list bertambah sebanyak num */
 /* PERHATIAN: mungkin memori akan kekurangan untuk alokasi, sehingga prosedur tidak dapat berjalan sesuai fungsi. Jika hal tersebut terjadi, maka akan dikeluarkan "GAGAL REALOKASI MEMORI" */
+void expandLD(ListDin *l, int num);
 
-void shrinkLD(ListDin *l, int num);
 /* I.S. l terdefinisi, mungkin kapasitas < num atau nEff > capacity - num */
 /* F.S. Jika tidak, ukuran list berkurang sebanyak num. Jika iya, dikeluarkan "INVALID NUM" */
 /* PERHATIAN: mungkin memori akan kekurangan untuk alokasi, sehingga prosedur tidak dapat berjalan sesuai fungsi. Jika hal tersebut terjadi, maka akan dikeluarkan "GAGAL REALOKASI MEMORI" */
+void shrinkLD(ListDin *l, int num);
 
-void compressLD(ListDin *l);
 /* I.S. l terdefinisi, mungkin kosong */
 /* F.S. Jika tidak, ukuran nEff = capcity. Jika iya, dikeluarkan "LIST KOSONG" */
 /* PERHATIAN: mungkin memori akan kekurangan untuk alokasi, sehingga prosedur tidak dapat berjalan sesuai fungsi. Jika hal tersebut terjadi, maka akan dikeluarkan "GAGAL REALOKASI MEMORI" */
+void compressLD(ListDin *l);
 
 /* ********* DELETED FUNCTIONS ********* */
 /* PERTIMBANGAN: sorting dan searching dilakukan oleh f07 dan selanjutnya dalam file masing-masing */
