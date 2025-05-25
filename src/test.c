@@ -10,6 +10,7 @@
 #include "LinkedList.h"
 #include "Queue.h"
 #include "Set.h"
+#include "Exit.h"
 /* di run dengan makefile */ 
 /* ./test file */
 
@@ -148,9 +149,6 @@ int main(int argc, char** argv){
     printf("THAT'S ALL FOR SET!\n");
 
     printf("CLEANING UP...\n");
-    saveCSV();
-    dealocateLD(&globalUserDatabase);
-    freeSet(&globalUsernames);
-    printf("GOODBYE!\n");
+    exitFromHospital();
     return 0;
 }
