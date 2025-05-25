@@ -19,7 +19,7 @@ int scanNumber(FILE* file){
 void readConfig(){
     FILE *configFile = fopen("file/config.txt", "r"); // Membuka file config
 
-    int nRow, nColumn, maxPasien; // Inisialisasi variable
+    int nRow, nColumn, maxPasien, maxAntrian; // Inisialisasi variable
 
     nRow = scanNumber(configFile); // Membaca nilai baris
     nColumn = scanNumber(configFile); // Membaca nilai kolom
@@ -32,12 +32,16 @@ void readConfig(){
 
     maxPasien = scanNumber(configFile); // Membaca nilai maximal banyak pasien
 
+    maxAntrian = scanNumber(configFile); // Membaca nilai maximal banyak pasien
+
     globalDenahRumahSakit.kapasitasRuangan = maxPasien; // Memasukan jumlah maksimal pasien
 
     fgetc(configFile); // skip \n
 
     for (int row=0; row<nRow; row++){ // Mengiterasi barisan
         for (int column=0; column<nColumn; column++){
+
+            globalDenahRumahSakit.Ruangan[row][column].idAntrian.capacity = maxAntrian;
 
             globalDenahRumahSakit.Ruangan[row][column].idDokter = scanNumber(configFile); // Scan id dokter di ruang ngan tersebut
 
@@ -49,25 +53,33 @@ void readConfig(){
 
             int count=0; // Inisialisasi perhitungan jumlah pasien
 
-            for (int id=0; id<maxPasien; id++){
+            for (int id=0; id<maxPasien+maxAntrian; id++){
 
                 int temp=scanNumber(configFile); // Scan id-id pasien
 
-                if (temp==0){
+                if (temp==0){ // Jika pasian tidak ada di ruangan
                     globalDenahRumahSakit.Ruangan[row][column].nEffPasien = 0; // Menulis banyak pasien sebagai nol
                     fgetc(configFile); // Skip \n
                     break; // memutus loop karena pasien kosong
                 }
                 
-                else if (temp==-1){
-                    globalDenahRumahSakit.Ruangan[row][column].nEffPasien = count; // Menuliskan banyak pasien
+                else if (temp==-1){ // Jika jumlah pasien kurang dari kapasitas ruangan
+                    if (id<=maxPasien){
+                        globalDenahRumahSakit.Ruangan[row][column].nEffPasien = count; // Menuliskan banyak pasien
+                        globalDenahRumahSakit.Ruangan[row][column].idAntrian.size = 0; // Menulis banyak antrian
+                    }
+                    else if (id>maxPasien){
+                        globalDenahRumahSakit.Ruangan[row][column].nEffPasien = maxPasien; // Menuliskan banyak pasien
+                        globalDenahRumahSakit.Ruangan[row][column].idAntrian.size = count-maxPasien; // Menulis banyak antrian
+                    }
                     break; // memutus loop jika sudah list semua pasien
                 }
                 else{
-                    globalDenahRumahSakit.Ruangan[row][column].idPasien[id] = temp; // Meletakan id pasien di list pasien
+                    if (id<maxPasien) globalDenahRumahSakit.Ruangan[row][column].idPasien[id] = temp; // Meletakan id pasien di list pasien
+                    else 
                     count++; // Menghitung jumlah pasien
-                    if (id==(maxPasien-1)){ // Kondisi jika ini merupakan itirasi terakhir
-                        globalDenahRumahSakit.Ruangan[row][column].nEffPasien = count;    // Menuliskan banyak pasien
+                    if (id==(maxPasien+maxAntrian-1)){ // Kondisi jika ini merupakan itirasi terakhir
+                        globalDenahRumahSakit.Ruangan[row][column].idAntrian.size = count-maxPasien;    // Menuliskan banyak pasien
                         fgetc(configFile); // Skip \n
                     }
                 }
