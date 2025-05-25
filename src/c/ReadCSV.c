@@ -142,7 +142,13 @@ void processCSV(const char* folder, const char* filename) {
             if (strcmp(role, "pasien") == 0 && row.fieldCount >= NUM_OF_COL_PATIENT) {
                 float kondisiTubuh[KONDISI_TUBUH_SIZE];
                 for (int i = 0; i < KONDISI_TUBUH_SIZE; ++i) {
-                    kondisiTubuh[i] = atof(row.fields[5 + i]);
+                    if (row.fields[5 + i][0] != '\0') {
+                        // field is not empty => has valid value
+                        kondisiTubuh[i] = atof(row.fields[5 + i]);
+                    } else {
+                        // field is empty, only has null terminate character
+                        kondisiTubuh[i] = UNDEF_INT_DATA;
+                    }
                 } 
                 Patient* p = createPatientWithData(
                     id,
