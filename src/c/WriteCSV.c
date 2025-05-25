@@ -4,6 +4,7 @@
 #include "GlobalVariable.h"
 #include <string.h>
 #include <stdlib.h>
+#include "ReadCSV.h"
 
 // csv files that will be written to:
 static const char* filenameList[] = {
@@ -15,7 +16,7 @@ static const char* filenameList[] = {
 };
 
 void saveCSV() {
-    char path[256];
+    char path[MAX_PATH_LENGTH];
     while (true) {
         printf("Masukkan nama folder (contoh: data/hari_ini): ");
         scanf("%s", path);
@@ -46,13 +47,13 @@ void saveCSV() {
 }
 
 boolean doesFolderExist(const char* path) {
-    char cmd[512];
+    char cmd[MAX_CMD_LENGTH];
     #ifdef _WIN32
         // convert to windows format (/ to \)
-        char winPath[512];
+        char winPath[MAX_PATH_LENGTH];
         strcpy(winPath, path);
         char temp = winPath[0];
-        for (int i = 0; i < 512 && winPath[i] != '\0'; ++i) {
+        for (int i = 0; i < MAX_PATH_LENGTH && winPath[i] != '\0'; ++i) {
             if (winPath[i] == '/') {
                 winPath[i] = '\\';
             }
@@ -65,14 +66,14 @@ boolean doesFolderExist(const char* path) {
 }
 
 void createDir(char* path) {
-    char cmd[512];
+    char cmd[MAX_CMD_LENGTH];
     // if else but for macro
     #ifdef _WIN32
         // convert to windows format (/ to \)
-        char winPath[512];
+        char winPath[MAX_PATH_LENGTH];
         strcpy(winPath, path);
         char temp = winPath[0];
-        for (int i = 0; i < 512 && winPath[i] != '\0'; ++i) {
+        for (int i = 0; i < MAX_PATH_LENGTH && winPath[i] != '\0'; ++i) {
             if (winPath[i] == '/') {
                 winPath[i] = '\\';
             }
@@ -86,7 +87,7 @@ void createDir(char* path) {
 
 void writeToCSV(const char* folder, const char* filename) {
     // merge folder and filename
-    char fullPath[512];
+    char fullPath[MAX_PATH_LENGTH];
     snprintf(fullPath, sizeof(fullPath), "%s/%s", folder, filename);
     // overwrite or make file in mode write
     FILE* file = fopen(fullPath, "w");
