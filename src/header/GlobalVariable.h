@@ -5,12 +5,14 @@
 #include <stdlib.h>
 #include "DynamicList.h"
 #include "StructsInHospital.h"
+#include "Set.h"
 
 // databases
 extern ListDin globalUserDatabase;
 extern ObatDatabase globalObatDatabase;
 extern PenyakitDatabase globalPenyakitDatabase;
 extern ObatPenyakitDatabase globalOPDatabase;
+extern Set globalUsernames;
 
 // current user
 extern GenericData* globalCurrentUserGD; 
