@@ -6,10 +6,12 @@
 #include "../header/ReadCSV.h"
 #include "../header/StructsInHospital.h"
 #include "../header/GlobalVariable.h"
+#include "Set.h"
 
 void loadCSV(int argc, char** argv) {
     // create database dengan list dynamic
     createLD(&globalUserDatabase, 20);
+    createSet(&globalUsernames, 20);
     // baca csv-csv yang ada dalam folder yang ditentukan dalam input terminal
     if (argc < 2) {
         printf("ERROR: TIDAK ADA NAMA FOLDER YANG DIBERIKAN!\n");
@@ -45,7 +47,7 @@ static boolean isAllReadSuccessfully;
 boolean isFileInPath(const char* path) {
     for (int i = 0; filenameList[i] != NULL; ++i) {
         // merge folder and filename
-        char fullPath[256];
+        char fullPath[MAX_PATH_LENGTH];
         snprintf(fullPath, sizeof(fullPath), "%s/%s", path, filenameList[i]);
 
         // try opening file in path
@@ -66,6 +68,10 @@ CSVRow parseCSVLine(const char* line) {
     int charIdx = 0;
 
     for (int i = 0; line[i] != '\0' && fieldIdx < MAX_FIELDS; i++) {
+        if (line[i] == '\r') {
+            /* skip clrf \r */
+            continue;
+        }
         if (line[i] == ';' || line[i] == '\n') {
             // end of field
             row.fields[fieldIdx][charIdx] = '\0';
@@ -84,22 +90,8 @@ CSVRow parseCSVLine(const char* line) {
 }
 
 void processCSV(const char* folder, const char* filename) {
-    // // find filename
-    // boolean isFilenameFound = false;
-    // for (int i = 0; filenamePathList[i] != NULL; ++i) {
-    //     if (strcmp(filename, filenamePathList[i]) == 0) {
-    //         isFilenameFound = true;
-    //         break;
-    //     }
-    // }
-    // if (!isFilenameFound) {
-    //     printf("ERROR: TIDAK DITEMUKAN FILE %s\n", filename);
-    //     isAllReadSuccessfully = false;
-    //     return;
-    // }
-
     // merge folder and filename
-    char fullPath[256];
+    char fullPath[MAX_PATH_LENGTH];
     // folder pasti ada karena ketentuan spesifikasi
     snprintf(fullPath, sizeof(fullPath), "%s/%s", folder, filename);
 
@@ -115,7 +107,6 @@ void processCSV(const char* folder, const char* filename) {
 
     /* PROCESS USER.CSV*/
     if (strcmp(filename, "user.csv") == 0) {
-        createLD(&globalUserDatabase, 20);
         while (fgets(line, sizeof(line), file)) {
             // check and expand if full
             if (isLDFull(&globalUserDatabase)) {
@@ -135,7 +126,14 @@ void processCSV(const char* folder, const char* filename) {
             char* username = row.fields[1];
             char* password = row.fields[2];
             char* role = row.fields[3];
-            
+
+            // add username into set
+            if (isSetFull(&globalUsernames)) {
+                expandSet(&globalUsernames, 10);
+            }
+            addToSet(&globalUsernames, username);
+
+            // declare emptyInventory here because somehow not allowed to declare in the if in patient
             int emptyInventory[INVENTORY_SIZE];
             memset(emptyInventory, 0, sizeof(emptyInventory));
             GenericData* gd = NULL;
@@ -197,6 +195,7 @@ void processCSV(const char* folder, const char* filename) {
         }
         // compress list dynamic after finishing
         compressLD(&globalUserDatabase);
+        compressSet(&globalUsernames);
         printf("LOADED USER DATABASE!\n");
     }
     

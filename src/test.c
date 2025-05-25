@@ -21,7 +21,7 @@ int main(int argc, char** argv){
     loadCSV(argc, argv);
     // jika seluruh file dibaca dengan baik, maka akan lanjut programnya. jika tidak, maka akan keluar dari program
     // anggap login ke orang di index ke-2 (misal aja), dan kita tahu lebih dahulu bahwa dia pasien maka yang akan dijalankan adalah menu pasien (misal)
-    globalCurrentUserGD = getGDbyIdx(&globalUserDatabase, 0);
+    globalCurrentUserGD = getGDbyIdx(&globalUserDatabase, 6);
     DataType currentUserType = getDataTypeGD(globalCurrentUserGD);
     // ambil langsung pointer ke data pasiennya aja, gausah genericdatanya untuk simplisitas. ini yang dijadikan global
     if (currentUserType == DATA_TYPE_PATIENT) {
@@ -42,6 +42,11 @@ int main(int argc, char** argv){
         strcpy(currentUserRP, globalCurrentPatient->riwayatPenyakit);
         float currentUserTK0 = globalCurrentPatient->kondisiTubuh[0]; // kondisi tubuh index 0, yaitu suhu tubuh in this case (cek line 1 user.csv)
         printf("ID: %d\nUsername: %s\nPassword: %s\nRiwayat Penyakit: %s\nSuhu Tubuh: %f\n", currentUserID, currentUserUsername, currentUserPassword, currentUserRP, currentUserTK0);
+        printf("Other kondisi tubuh:\n");
+        for (int z = 0; z < KONDISI_TUBUH_SIZE; ++z){
+            printf("%.1f ", globalCurrentPatient->kondisiTubuh[z]);
+        }
+        printf("\n");
     } else if (currentUserType == DATA_TYPE_DOCTOR) {
         globalCurrentDoctor = getDoctorInGD(globalCurrentUserGD);
         if (globalCurrentDoctor) {
@@ -96,7 +101,7 @@ int main(int argc, char** argv){
     createQueue(&antrian, 4);
 
     // masukkan 4 orang awal ke dalam queue
-    for (int i = 0; i < 4; ++i) {
+    for (int i = 6; i < 10; ++i) {
         GenericData* gd = getGDbyIdx(&globalUserDatabase, i);
         Patient* patientDalamAntrian = getPatientInGD(gd);
         LinkedListNode* orang = createLLNode(patientDalamAntrian->id, patientDalamAntrian->username);
@@ -127,40 +132,25 @@ int main(int argc, char** argv){
     }
 
     printf("NOW FOR SETTTTTTTTTTTTTTTTTT\n");
-    Set usernames;
-    createSet(&usernames, globalUserDatabase.nEff);
-    // copy usernames from globaluserdatabase to set
-    for (int i = 0; i < globalUserDatabase.nEff; ++i) {
-        // extract data from globaluserdatabase
-        GenericData* gd1 = getGDbyIdx(&globalUserDatabase, i);
-        if (gd1->type == DATA_TYPE_PATIENT) {
-            Patient* p = getPatientInGD(gd1);
-            addToSet(&usernames, p->username);
-        } else if (gd1->type == DATA_TYPE_DOCTOR) {
-            Doctor* d = getDoctorInGD(gd1);
-            addToSet(&usernames, d->username);
-        } else if (gd1->type == DATA_TYPE_MANAGER) {
-            Manager* m = getManagerInGD(gd1);
-            addToSet(&usernames, m->username);
-        }
-    }
     // print set
-    printf("%s", usernames.buffer[0]);
-    for (int i = 1; i < usernames.nEff; ++i) {
-        printf(", %s", usernames.buffer[i]);
+    printf("%s", globalUsernames.buffer[0]);
+    for (int i = 1; i < globalUsernames.nEff; ++i) {
+        printf(", %s", globalUsernames.buffer[i]);
     }
+    printf("\n");
     // check if can add duplicate value
     printf("NOW CHECK IF I CAN ADD DUPLICATE VALUE (stewart)\n");
-    GenericData* gd2 = getGDbyIdx(&globalUserDatabase, 0);
+    GenericData* gd2 = getGDbyIdx(&globalUserDatabase, 6);
     // stewart itu patient
     Patient* p = getPatientInGD(gd2);
-    expandSet(&usernames, 1);
-    addToSet(&usernames, p->username); // duplikat, maka tidak akan ditambah
+    expandSet(&globalUsernames, 1);
+    addToSet(&globalUsernames, p->username); // duplikat, maka tidak akan ditambah
     printf("THAT'S ALL FOR SET!\n");
 
     printf("CLEANING UP...\n");
     saveCSV();
     dealocateLD(&globalUserDatabase);
+    freeSet(&globalUsernames);
     printf("GOODBYE!\n");
     return 0;
 }
