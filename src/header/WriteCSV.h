@@ -7,6 +7,7 @@
 #define WRITE_CSV_H
 
 #include "Boolean.h"
+#include "ReadCSV.h"
 
 /*  KAMUS UMUM */
 /* - */
