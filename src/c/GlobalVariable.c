@@ -20,4 +20,4 @@ Patient* globalCurrentPatient = {0};
 Doctor* globalCurrentDoctor = {0};
 Manager* globalCurrentManager = {0};
 
-// extern DataTypeDenah globalDenahRumahSakit; 
+DataTypeDenah globalDenahRumahSakit; 
