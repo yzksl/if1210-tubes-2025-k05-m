@@ -24,7 +24,11 @@ void menuPasien(){
         else if (strcmp(input, "LIHAT_DENAH")==0) lihatDenah();
         else if (strcmp(input, "LIHAT_RUANGAN")==0) lihatRuangan(-1, -1);
         else if (strcmp(input, "ANTRIAN")==0) antrianSaya();
-        else if (strcmp(input, "LOGOUT")==0) break/*Logout*/;
+        else if (strcmp(input, "LOGIN")==0) login();
+        else if (strcmp(input, "LOGOUT")==0){
+            logout();
+            if (globalCurrentUserGD->type!=DATA_TYPE_PATIENT) break;
+        }
         else if (strcmp(input, "EXIT")==0) exitFromHospital();
         // Fungsi lanjutan yang belum ditulis
         else printf("\nInput tidak valid. Masukan kembali input yang valid.❌\n\n");
@@ -42,7 +46,11 @@ void menuDokter(){
         if (strcmp(input, "HELP")==0) helpDokter();
         else if (strcmp(input, "LIHAT_DENAH")==0) lihatDenah();
         else if (strcmp(input, "LIHAT_RUANGAN")==0) lihatRuangan(-1, -1);
-        else if (strcmp(input, "LOGOUT")==0) break/*Logout*/;
+        else if (strcmp(input, "LOGIN")==0) login();
+        else if (strcmp(input, "LOGOUT")==0){
+            logout();
+            if (globalCurrentUserGD->type!=DATA_TYPE_DOCTOR) break;
+        }
         else if (strcmp(input, "EXIT")==0) exitFromHospital();
         // Fungsi lanjutan yang belum ditulis
         else printf("\nInput tidak valid. Masukan kembali input yang valid.❌\n\n");
@@ -60,7 +68,11 @@ void menuManager(){
         else if (strcmp(input, "LIHAT_DENAH")==0) lihatDenah();
         else if (strcmp(input, "LIHAT_RUANGAN")==0) lihatRuangan(-1, -1);
         else if (strcmp(input, "LIHAT_SEMUA_ANTRIAN")==0) lihatSemuaAntrian();
-        else if (strcmp(input, "LOGOUT")==0) break/*Logout*/;
+        else if (strcmp(input, "LOGIN")==0) login();
+        else if (strcmp(input, "LOGOUT")==0){
+            logout();
+            if (globalCurrentUserGD->type!=DATA_TYPE_MANAGER) break;
+        }
         else if (strcmp(input, "EXIT")==0) exitFromHospital();
         // Fungsi lanjutan yang belum ditulis
         else printf("\nInput tidak valid. Masukan kembali input yang valid.❌\n\n");
@@ -80,6 +92,7 @@ void menuBelumLogin(){
             login();
             if (globalCurrentUserGD->type!=DATA_TYPE_UNKNOWN) break;
         }
+        else if (strcmp(input, "LOGOUT")==0) logout();
         else if (strcmp(input, "REGISTER")==0) break/*Register*/;
         else if (strcmp(input, "EXIT")==0) exitFromHospital();
         // Fungsi lanjutan yang belum ditulis
