@@ -1,4 +1,8 @@
 // Global variable antar file
+#include <stdlib.h>
+#include "../header/DynamicList.h"
+#include "../header/StructsInHospital.h"
+#include <string.h>
 #include "../header/GlobalVariable.h"
 
 // ... = {0} artinya mengisi seluruh komponen data dalam variabel tsb dengan nilai kosong
@@ -11,10 +15,9 @@ ObatPenyakitDatabase globalOPDatabase = {0};
 Set globalUsernames = {0};
 
 // current user
-GenericData globalNotLogin  = {NULL, DATA_TYPE_UNKNOWN};
 GenericData* globalCurrentUserGD = {0};
 Patient* globalCurrentPatient = {0};
 Doctor* globalCurrentDoctor = {0};
 Manager* globalCurrentManager = {0};
 
-DataTypeDenah globalDenahRumahSakit; 
+// extern DataTypeDenah globalDenahRumahSakit; 
