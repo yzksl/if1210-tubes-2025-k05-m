@@ -24,6 +24,7 @@ void menuPasien(){
         else if (strcmp(input, "LIHAT_DENAH")==0) lihatDenah();
         else if (strcmp(input, "LIHAT_RUANGAN")==0) lihatRuangan(-1, -1);
         else if (strcmp(input, "ANTRIAN")==0) antrianSaya();
+        else if (strcmp(input, "DAFTAR_CHECKUP")==0) daftarCheckup(globalCurrentUserGD);
         else if (strcmp(input, "LOGIN")==0) login();
         else if (strcmp(input, "LOGOUT")==0){
             logout();
