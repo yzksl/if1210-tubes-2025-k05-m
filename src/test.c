@@ -13,6 +13,7 @@
 #include "Exit.h"
 #include "MinumObat.h"
 #include "Penawar.h"
+#include "header/CTypePalsu.h"
 /* di run dengan makefile */ 
 /* ./test file */
 
@@ -20,22 +21,28 @@ int main(int argc, char** argv){
     /* di globalvariable.c ada deklarasi variable2 global, cek ya */
     /* intinya, global variable itu agar setiap fungsi dapat mengubah nilai dari variable tsb tanpa harus memanggil fungsi dengan parameter yang menerima addressnya */
     // selalu cek struktur data dari setiap tipe data ya
-    
-    loadCSV(argc, argv);
+    printf("testing\n");
+    char string[]="TestinGAJAhjag61729@@@", lowerstring[MAX_LINE_LENGTH];
+    toLowerString(string, lowerstring);
+    printf("%s\n%s\n", string, lowerstring);
+
+    printf("%d %d\n", isDigit(string[1]), isDigit(string[15]));
+
+    // loadCSV(argc, argv);
     // jika seluruh file dibaca dengan baik, maka akan lanjut programnya. jika tidak, maka akan keluar dari program
     // anggap login ke orang di index ke-2 (misal aja), dan kita tahu lebih dahulu bahwa dia pasien maka yang akan dijalankan adalah menu pasien (misal)
-    globalCurrentUserGD = getGDbyIdx(&globalUserDatabase, 11);
-    DataType currentUserType = getDataTypeGD(globalCurrentUserGD);
-    globalCurrentPatient = getPatientInGD(globalCurrentUserGD);
+    // globalCurrentUserGD = getGDbyIdx(&globalUserDatabase, 11);
+    // DataType currentUserType = getDataTypeGD(globalCurrentUserGD);
+    // globalCurrentPatient = getPatientInGD(globalCurrentUserGD);
     // globalCurrentPatient->inventory[0] = 5;
     // globalCurrentPatient->inventory[1] = 4;
     // globalCurrentPatient->inventory[2] = 3;
     // globalCurrentPatient->inventory[3] = 2;
     // createStack(&globalCurrentPatient->perut);
-    for (int i = 0; i < INVENTORY_SIZE; ++i) {
-        printf("%d ", globalCurrentPatient->inventory[i]);
-    }
-    printf("top: %d\n", globalCurrentPatient->perut.top);
+    // for (int i = 0; i < INVENTORY_SIZE; ++i) {
+    //     printf("%d ", globalCurrentPatient->inventory[i]);
+    // }
+    // printf("top: %d\n", globalCurrentPatient->perut.top);
 
     // while (true) {
     //     minumObat();
@@ -172,6 +179,6 @@ int main(int argc, char** argv){
     // printf("THAT'S ALL FOR SET!\n");
 
     // printf("CLEANING UP...\n");
-    exitFromHospital();
+    // exitFromHospital();
     return 0;
 }
