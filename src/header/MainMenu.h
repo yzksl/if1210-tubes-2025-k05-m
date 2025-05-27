@@ -12,6 +12,7 @@
 #include "GlobalVariable.h"
 #include "Exit.h"
 #include "PrintArt.h"
+#include "AntrianSaya.h"
 
 void mainMenu(); // Prosedur untuk membuka Main Menu dengan ketentuan role user
 

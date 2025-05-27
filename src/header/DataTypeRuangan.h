@@ -19,4 +19,10 @@ typedef struct {
     DataTypeRuangan Ruangan[MAX_CAPACITY][MAX_CAPACITY]; // Matriks denah
 } DataTypeDenah; // Tipe data untuk denah
 
+typedef struct{
+    int row;
+    int column;
+    int antrian;
+} Point;
+
 #endif
