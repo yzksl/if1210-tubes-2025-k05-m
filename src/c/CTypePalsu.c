@@ -1,5 +1,4 @@
 #include "../header/CTypePalsu.h"
-#include <stdio.h>
 
 char toLower(char character){
     if (character>='A' && character<='Z') return character+32;
