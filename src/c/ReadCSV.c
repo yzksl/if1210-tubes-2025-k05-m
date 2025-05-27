@@ -159,7 +159,11 @@ void processCSV(const char* folder, const char* filename) {
                     emptyInventory,
                     kondisiTubuh
                 );
-                createStack(&p->perut);
+                createStack(&p->perut); // init perut
+                // init inv
+                for (int i = 0; i < INVENTORY_SIZE; ++i) {
+                    p->inventory[i] = UNDEF_INT_DATA;
+                }
                 gd = createGD(p, DATA_TYPE_PATIENT);
             }
             /* FOR DOCTOR */

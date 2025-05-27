@@ -27,22 +27,23 @@ int main(int argc, char** argv){
     globalCurrentUserGD = getGDbyIdx(&globalUserDatabase, 11);
     DataType currentUserType = getDataTypeGD(globalCurrentUserGD);
     globalCurrentPatient = getPatientInGD(globalCurrentUserGD);
-    globalCurrentPatient->inventory[0] = 5;
-    globalCurrentPatient->inventory[1] = 4;
-    globalCurrentPatient->inventory[2] = 3;
-    globalCurrentPatient->inventory[3] = 2;
-    createStack(&globalCurrentPatient->perut);
-    for (int i = 4; i < INVENTORY_SIZE; ++i) {
-        globalCurrentPatient->inventory[i] = UNDEF_INT_DATA;
+    // globalCurrentPatient->inventory[0] = 5;
+    // globalCurrentPatient->inventory[1] = 4;
+    // globalCurrentPatient->inventory[2] = 3;
+    // globalCurrentPatient->inventory[3] = 2;
+    // createStack(&globalCurrentPatient->perut);
+    for (int i = 0; i < INVENTORY_SIZE; ++i) {
+        printf("%d ", globalCurrentPatient->inventory[i]);
     }
+    printf("top: %d\n", globalCurrentPatient->perut.top);
 
-    while (true) {
-        minumObat();
-        minumObat();
-        minumObat();
-        printf("Sekarang penawar\n");
-        minumPenawar();
-    }
+    // while (true) {
+    //     minumObat();
+    //     minumObat();
+    //     minumObat();
+    //     printf("Sekarang penawar\n");
+    //     minumPenawar();
+    // }
 
     // udah dapt gro
     // globalCurrentPatient->inventory[0] = 
