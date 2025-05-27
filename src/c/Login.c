@@ -23,24 +23,21 @@ void login() {
 
         if (gd->type == DATA_TYPE_PATIENT) {
             if ((strcmp(((Patient*)(gd->data))->username, username) == 0) && (strcmp(((Patient*)(gd->data))->password, password) == 0)) {
-                globalCurrentUserGD->type=DATA_TYPE_PATIENT;
-                globalCurrentUserGD->data=gd;
+                globalCurrentUserGD=getGDbyIdx(&globalUserDatabase, i);
                 printf("SELAMAT DATANG PASIEN %s!\n", ((Patient*)(gd->data))->username);
                 found = true;
                 break;
             }
         } else if (gd->type == DATA_TYPE_DOCTOR) {
             if (strcmp(((Doctor*)(gd->data))->username, username) == 0 && strcmp(((Doctor*)(gd->data))->password, password) == 0) {
-                globalCurrentUserGD->type=DATA_TYPE_DOCTOR;
-                globalCurrentUserGD->data=gd;
+                globalCurrentUserGD=getGDbyIdx(&globalUserDatabase, i);
                 printf("SELAMAT DATANG DOKTER %s!\n", ((Doctor*)(gd->data))->username);
                 found = true;
                 break;
             }
         } else if (gd->type == DATA_TYPE_MANAGER) {
             if (strcmp(((Manager*)(gd->data))->username, username) == 0 && strcmp(((Manager*)(gd->data))->password, password) == 0) {
-                globalCurrentUserGD->type=DATA_TYPE_MANAGER;
-                globalCurrentUserGD->data=gd;
+                globalCurrentUserGD=getGDbyIdx(&globalUserDatabase, i);
                 printf("SELAMAT DATANG MANAGER %s!\n", ((Manager*)(gd->data))->username);
                 found = true;
                 break;
