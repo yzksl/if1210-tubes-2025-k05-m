@@ -1,4 +1,7 @@
 #include "Stack.h"
+#include "StructsInHospital.h"
+#include <stdio.h>
+#include <string.h>
 /* ********** KONSTRUKTOR ********** */
 /* Konstruktor: membentuk sebuah stack */
 void createStack(Stack* s){
@@ -8,7 +11,12 @@ void createStack(Stack* s){
 /* F.S. top = IDX_UNDEF = -1 */
 /* Konstruktor: menambahkan elemen ke stack */
 void pushStack(Stack* s, Obat o){
-    if(!isStackFull(s)){
+    if (isStackEmpty(s)) {
+        s->top = 0;
+        s->obat[s->top] = o;
+    }
+    
+    else if(!isStackFull(s)){
         s->top++;
         s->obat[s->top] = o;
     }
@@ -30,8 +38,8 @@ Obat popStack(Stack* s){
     else{
         printf("STACK KOSONG\n");
         Obat temp;
-        temp.id = -1;
-        temp.name[0] = "\0";
+        temp.id = UNDEF_INT_DATA;
+        strcpy(temp.name, "");
         return temp; //keluaran kalau stack kosong
     }
 }
@@ -52,7 +60,7 @@ Obat getTopElmt(const Stack* s){
         printf("STACK KOSONG\n");
         Obat temp;
         temp.id = IDX_UNDEF;
-        temp.name[0] = "\0";
+        strcpy(temp.name, "");
         return temp;
     }
     else{
@@ -61,16 +69,23 @@ Obat getTopElmt(const Stack* s){
 }
 /* Jika s tidak kosong, mengembalikan obat top. Jika s kosong, dikeluarkan "STACK KOSONG" dan mengembalikan obat sentinel */
 Obat getElmtByIdxStack(const Stack* s, int idx){
+    Obat temp;
+    temp.id = UNDEF_INT_DATA;
+    strcpy(temp.name, "");
+
     if(isStackEmpty(s)){
         printf("STACK KOSONG\n");
+        return temp; // mengembalikan obat sentinel
     }
     else if(idx<0 || idx>s->top){
         printf("IDX DI LUAR RANGE\n");
+        return temp; // mengembalikan obat sentinel}
     }
     else{
         return s->obat[idx];
     }
 }
+
 /* Jika s tidak kosong dan 0 <= idx <= top, mengembalikan obat di index idx. Jika s kosong atau idx di luar daerah asal, dikeluarkan "STACK KOSONG" atau "IDX DI LUAR RANGE" dan mengembalikan obat sentinel */
 int stackSize(const Stack* s){
     return s->top+1;

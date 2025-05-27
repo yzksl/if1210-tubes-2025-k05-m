@@ -4,6 +4,6 @@
 #include "GlobalVariable.h"
 
 void goToLeft();
-void inumObat();
+void minumObat();
 
 #endif

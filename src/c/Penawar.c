@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "f17.h"
+#include "Penawar.h"
 #include "GlobalVariable.h"
 
 
@@ -18,17 +18,13 @@ void minumPenawar(){
     Obat backToInventory = popStack(&globalCurrentPatient->perut);
 
     //ini program agar obat kembali ke inventory
-    boolean toInventory = false;
     for (int i = 0; i < INVENTORY_SIZE; i++) {
-        if (globalCurrentPatient->inventory[i] == -1) {
+        if (globalCurrentPatient->inventory[i] == UNDEF_INT_DATA) {
             globalCurrentPatient->inventory[i] = backToInventory.id;
-            toInventory = true;
             break;
         }
     }
-    if(toInventory){
-        printf("Uwekkk!!! %s keluar dan kembali ke inventory.\n", backToInventory.name);
-    }
+    printf("Uwekkk!!! %s keluar dan kembali ke inventory.\n", backToInventory.name);
 }
 
 // int main() {
