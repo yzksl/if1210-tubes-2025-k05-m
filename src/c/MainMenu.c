@@ -21,6 +21,8 @@ void menuPasien(){
         else if (strcmp(input, "LIHAT_DENAH")==0) lihatDenah();
         else if (strcmp(input, "LIHAT_RUANGAN")==0) lihatRuangan(-1, -1);
         else if (strcmp(input, "ANTRIAN")==0) antrianSaya();
+        else if (strcmp(input, "MINUM_OBAT")==0) minumObat();
+        else if (strcmp(input, "PENAWAR")==0) minumPenawar(); //belum digabung
         else if (strcmp(input, "LOGOUT")==0) break/*Logout*/;
         else if (strcmp(input, "EXIT")==0) exitFromHospital();
         // Fungsi lanjutan yang belum ditulis

@@ -13,6 +13,8 @@
 #include "Exit.h"
 #include "PrintArt.h"
 #include "AntrianSaya.h"
+#include "Minum_Obat.h"
+#include "f17.h"
 
 void mainMenu(); // Prosedur untuk membuka Main Menu dengan ketentuan role user
 

@@ -1,8 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "Minum_Obat.h"
+#include "../header/Minum_Obat.h"
 
+Patient* p;
+p->inventory[INVENTORY_SIZE]
 //procedure ini agar inventory rata kiri
 void goToLeft(Patient* p) {
     int temp[INVENTORY_SIZE];
