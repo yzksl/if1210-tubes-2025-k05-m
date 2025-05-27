@@ -15,6 +15,8 @@
 #include "AntrianSaya.h"
 #include "Login.h"
 #include "Logout.h"
+#include "MinumObat.h"
+#include "Penawar.h"
 
 void mainMenu(); // Prosedur untuk membuka Main Menu dengan ketentuan role user
 

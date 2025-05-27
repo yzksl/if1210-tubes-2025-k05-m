@@ -4,9 +4,8 @@
 
 int scanNumber(FILE* file){
     int character, number=0, isNumber=0;
-
     while((character=fgetc(file))!=EOF){
-        if (isdigit(character)){
+        if (isDigit(character)){
             number = number * 10 + (character - '0');
             isNumber=1; // Penanda bahwa sebuah nomor
         } else break;
@@ -23,7 +22,7 @@ void readConfig(const char* path){
     snprintf(fullPath, sizeof(fullPath), "%s/%s", path, "config.txt");
     FILE *configFile = fopen(fullPath, "r"); // Membuka file config
 
-    int nRow, nColumn, maxPasien, maxAntrian; // Inisialisasi variable
+    int nRow, nColumn, maxPasien, maxAntrian, nPasienObat, nPasienPerut; // Inisialisasi variable
 
     nRow = scanNumber(configFile); // Membaca nilai baris
     nColumn = scanNumber(configFile); // Membaca nilai kolom
@@ -94,10 +93,47 @@ void readConfig(const char* path){
         }
     }
 
+    nPasienObat=scanNumber(configFile); // Membaca banyak pasien yang memiliki obat
+    fgetc(configFile); // Skip \n
 
-    // Fungsi Scan Baca Inventori belum dibuat
-    // printf("%d %d %d %d\n", nrow, ncolumn, maxpasien, iddoc);
+    for(int i=0; i<nPasienObat; i++){
+        int id=scanNumber(configFile); // Membaca id pasien
 
+        Patient* pasienObat=getAccountAddress(id); // Mendapatkan pointer akun pasien
 
-    fclose(configFile);
+        int temp=scanNumber(configFile); // Membaca id Obat
+
+        while(temp!=-1){
+            int j=0; // inisialisasi index
+
+            while(pasienObat->inventory[j]!=UNDEF_INT_DATA) j++; // Memcari index yang kosong
+
+            if (j==INVENTORY_SIZE) printf("INVENTORY %s FULL\n", pasienObat->username); // Jika inventory pasien kosong
+
+            else pasienObat->inventory[j]=temp; // Memasukan id obat ke inventory pasien
+
+            temp=scanNumber(configFile); // Membaca id Obat
+        }
+    }
+
+    nPasienPerut=scanNumber(configFile); // Membaca banyak pasien yang telah meminum obat
+    fgetc(configFile); // Skip \n
+
+    for(int i=0; i<nPasienPerut; i++){
+        int id=scanNumber(configFile); // Membaca id pasien
+
+        Patient* pasienPerut=getAccountAddress(id); // Mendapatkan pointer akun pasien
+
+        int temp=scanNumber(configFile); // Membaca id Obat
+
+        while(temp!=-1){
+            Obat obat={temp, ""}; // Inisialisasi obat
+
+            pushStack(&(pasienPerut->perut), obat); // Push obat ke perut pasien
+
+            temp=scanNumber(configFile); // Membaca id obat
+        }
+    }
+
+    fclose(configFile); // Menutup File
 }

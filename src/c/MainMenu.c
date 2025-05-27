@@ -23,6 +23,8 @@ void menuPasien(){
         if (strcmp(input, "HELP")==0) helpPasien();
         else if (strcmp(input, "LIHAT_DENAH")==0) lihatDenah();
         else if (strcmp(input, "LIHAT_RUANGAN")==0) lihatRuangan(-1, -1);
+        else if (strcmp(input, "MINUM_OBAT")==0) minumObat();
+        else if (strcmp(input, "PENAWAR")==0) minumPenawar();
         else if (strcmp(input, "ANTRIAN")==0) antrianSaya();
         else if (strcmp(input, "LOGIN")==0) login();
         else if (strcmp(input, "LOGOUT")==0){
@@ -86,8 +88,6 @@ void menuBelumLogin(){
         printf(">>> ");
         scanf("%s", input);
         if (strcmp(input, "HELP")==0) helpBelumLogin();
-        else if (strcmp(input, "LIHAT_DENAH")==0) lihatDenah();
-        else if (strcmp(input, "LIHAT_RUANGAN")==0) lihatRuangan(-1, -1);
         else if (strcmp(input, "LOGIN")==0){
             login();
             if (globalCurrentUserGD->type!=DATA_TYPE_UNKNOWN) break;
