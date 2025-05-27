@@ -68,36 +68,42 @@ void daftarCheckup(GenericData* globalCurrentUserGD) {
             printf("Trombosit harus berupa angka positif!\n");
             scanf("%f", &((Patient*)globalCurrentUserGD->data)->kondisiTubuh[9]);
         }
+
+        printf("\n");
         printf("Berikut adalah daftar dokter yang tersedia:\n");
 
         int idxtemp = 0;
-        int a[100], b[100];
+        int rowtemp[100];
+        int coltemp[100];
         char name[100][100];
         char spes[100][100];
+
         for(int row = 0; row < globalDenahRumahSakit.nRow; row++) {
             for(int col = 0; col < globalDenahRumahSakit.nColumn; col++) {
-                if(globalDenahRumahSakit.Ruangan[row][col].idAntrian.size < globalDenahRumahSakit.Ruangan[row][col].idAntrian.capacity && globalDenahRumahSakit.Ruangan[row][col].idDokter!=0) {
+                if(globalDenahRumahSakit.Ruangan[row][col].idAntrian.size < globalDenahRumahSakit.Ruangan[row][col].idAntrian.capacity && globalDenahRumahSakit.Ruangan[row][col].idDokter != 0) {
                     int idokter = globalDenahRumahSakit.Ruangan[row][col].idDokter;
-                    a[idxtemp] = row;
-                    b[idxtemp] = col;
+                    rowtemp[idxtemp] = row;
+                    coltemp[idxtemp] = col;
 
                     for(int i = 0; i < globalUserDatabase.nEff; i++) {
-                        if(globalUserDatabase.buffer[i]->type==DATA_TYPE_DOCTOR){
+                        if(globalUserDatabase.buffer[i]->type == DATA_TYPE_DOCTOR){
                             if(((Doctor*)(globalUserDatabase.buffer[i])->data)->id == idokter) {
-                                for(int j = 0; j < 100; j++) {
+                                for(int j = 0; j < MAX_CAPACITY; j++) {
                                     name[idxtemp][j] = ((Doctor*)(globalUserDatabase.buffer[i])->data)->username[j];
-                                    spes[idxtemp][j] = ((Doctor*)globalUserDatabase.buffer[i]->data)->spesialisasi[j];
+                                    spes[idxtemp][j] = ((Doctor*)(globalUserDatabase.buffer[i])->data)->spesialisasi[j];
                                 }
                             }
                         }
                     }
                     char baris = (char)(row + 65);
                     printf("%d. Dr. %s - Spesialisasi %s - Ruangan %c%d ", idxtemp + 1, name[idxtemp], spes[idxtemp], baris, col + 1);
+                    
                     if(globalDenahRumahSakit.Ruangan[row][col].nEffPasien < globalDenahRumahSakit.kapasitasRuangan) {
                         printf("(Ruangan belum penuh)\n");
                     } else {
                         printf("(Antrian: %d orang)\n", globalDenahRumahSakit.Ruangan[row][col].idAntrian.size);
                     }
+
                     idxtemp++;
                 }
             }
@@ -113,26 +119,27 @@ void daftarCheckup(GenericData* globalCurrentUserGD) {
         }
 
 
-        int apalah;
-        scanf("%d", &apalah);
+        int idx;
+        scanf("%d", &idx);
 
         printf("\n");
 
-        if(globalDenahRumahSakit.Ruangan[a[apalah - 1]][b[apalah - 1]].nEffPasien < globalDenahRumahSakit.kapasitasRuangan) {
-            globalDenahRumahSakit.Ruangan[a[apalah - 1]][b[apalah - 1]].idPasien[globalDenahRumahSakit.Ruangan[a[apalah - 1]][b[apalah - 1]].nEffPasien] = ((Patient*)globalCurrentUserGD->data)->id;
-            globalDenahRumahSakit.Ruangan[a[apalah - 1]][b[apalah - 1]].nEffPasien++;
+        if(globalDenahRumahSakit.Ruangan[rowtemp[idx - 1]][coltemp[idx - 1]].nEffPasien < globalDenahRumahSakit.kapasitasRuangan) {
+            globalDenahRumahSakit.Ruangan[rowtemp[idx - 1]][coltemp[idx - 1]].idPasien[globalDenahRumahSakit.Ruangan[rowtemp[idx - 1]][coltemp[idx - 1]].nEffPasien] = ((Patient*)globalCurrentUserGD->data)->id;
+            globalDenahRumahSakit.Ruangan[rowtemp[idx - 1]][coltemp[idx - 1]].nEffPasien++;
             
             printf("Pendaftaran check-up berhasil!\n");
-            printf("Anda terdaftar pada antrian Dr. %s di ruangan %c%d.\n", name[apalah - 1], (char)(a[apalah - 1] + 65), (b[apalah - 1] + 1));
+            printf("Anda terdaftar pada antrian Dr. %s di ruangan %c%d.\n", name[idx - 1], (char)(rowtemp[idx - 1] + 65), (coltemp[idx - 1] + 1));
             printf("Anda dapat langsung masuk ke dalam ruangan\n");
+
         } else {
             LinkedListNode* pasien = createLLNode(((Patient*)globalCurrentUserGD->data)->id, ((Patient*)globalCurrentUserGD->data)->username);
 
-            enQueue(&globalDenahRumahSakit.Ruangan[a[apalah - 1]][b[apalah - 1]].idAntrian, pasien);
+            enQueue(&globalDenahRumahSakit.Ruangan[rowtemp[idx - 1]][coltemp[idx - 1]].idAntrian, pasien);
 
             printf("Pendaftaran check-up berhasil!\n");
-            printf("Anda terdaftar pada antrian Dr. %s di ruangan %c%d.\n", name[apalah - 1], (char)(a[apalah - 1] + 65), (b[apalah - 1] + 1));
-            printf("Posisi antrian anda: %d\n", globalDenahRumahSakit.Ruangan[a[apalah - 1]][b[apalah - 1]].idAntrian.size);
+            printf("Anda terdaftar pada antrian Dr. %s di ruangan %c%d.\n", name[idx - 1], (char)(rowtemp[idx - 1] + 65), (coltemp[idx - 1] + 1));
+            printf("Posisi antrian anda: %d\n", globalDenahRumahSakit.Ruangan[rowtemp[idx - 1]][coltemp[idx - 1]].idAntrian.size);
         }
 
     } else {
