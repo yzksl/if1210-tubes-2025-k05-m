@@ -31,6 +31,8 @@ int main(int argc, char** argv){
     // jika seluruh file dibaca dengan baik, maka akan lanjut programnya. jika tidak, maka akan keluar dari program
     // anggap login ke orang di index ke-2 (misal aja), dan kita tahu lebih dahulu bahwa dia pasien maka yang akan dijalankan adalah menu pasien (misal)
     globalCurrentUserGD = getGDbyIdx(&globalUserDatabase, 17);
+    globalCurrentUserGD->type=DATA_TYPE_UNKNOWN;
+    globalCurrentUserGD->data=NULL;
     DataType currentUserType = getDataTypeGD(globalCurrentUserGD);
     readConfig(argv[1]);
     printStart();
