@@ -1,18 +1,7 @@
 #include "../header/Register.h"
+#include "../header/CTypePalsu.h"
 #include "Set.h"
 
-static struct Alphabet {
-    char lower[26];
-    char higher[26];
-} Alphabet;
-
-void lowercaseStr(char* cek, const char* userpass){
-    int i = 0;
-    while (userpass[i]){
-        cek[i] = tolower(userpass[i]);
-        i++;
-    }
-}
 void registerPasien(){
 
     char username[STR_MAX_SIZE];
@@ -24,7 +13,7 @@ void registerPasien(){
     scanf("%s", password);
 
     char usernameLower[STR_MAX_SIZE];
-    lowercaseStr(usernameLower, username);
+    toLowerString(usernameLower, username);
 
        if (idxIsValInSet(&globalUsernames, usernameLower) != -1) {
         printf("\nRegistrasi gagal! Pasien dengan nama %s sudah terdaftar.\n", username);
