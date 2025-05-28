@@ -6,4 +6,6 @@
 
 char* getAccountName(int id, DataType dataType);
 
+void* getAccountAddress(int id);
+
 #endif
