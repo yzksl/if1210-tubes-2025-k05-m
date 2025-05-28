@@ -47,11 +47,10 @@ void minumObat(){
     printf("\nPilih Obat untuk diminum: ");
     scanf("%d", &pilihan);
     
-    printf("berarti pilihan %d", pilihan);
-    if(pilihan<1 || pilihan >jlhObat){
+    while(pilihan<1 || pilihan >jlhObat){
         printf("\nPilihan nomor tidak tersedia!\n");
-        return;
     }
+    printf("berarti pilihan %d", pilihan);
     
     Obat iniObat;
     for (int i = 0; i < globalObatDatabase.nEff; ++i) {
