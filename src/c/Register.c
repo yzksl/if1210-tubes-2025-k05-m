@@ -1,5 +1,10 @@
 #include "../header/Register.h"
-#include <ctype.h>
+#include "Set.h"
+
+static struct Alphabet {
+    char lower[26];
+    char higher[26];
+} Alphabet;
 
 void lowercaseStr(char* cek, const char* userpass){
     int i = 0;
@@ -21,7 +26,7 @@ void registerPasien(){
     char usernameLower[STR_MAX_SIZE];
     lowercaseStr(usernameLower, username);
 
-       if (isInSet(&globalUsernames, usernameLower)) {
+       if (idxIsValInSet(&globalUsernames, usernameLower) != -1) {
         printf("\nRegistrasi gagal! Pasien dengan nama %s sudah terdaftar.\n", username);
         return;
     } 
@@ -61,7 +66,10 @@ void registerPasien(){
     insertLastLD(&globalUserDatabase, newGD);
 
     // Tambah username ke dalam Set (dalam bentuk lowercase)
-    insertSet(&globalUsernames, usernameLower);
+    if (isSetFull(&globalUsernames)) {
+        expandSet(&globalUsernames, 1);
+    }
+    addToSet(&globalUsernames, usernameLower);
 
     printf("\nPasien %s berhasil ditambahkan!\n", username);
 }
