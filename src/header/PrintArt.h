@@ -11,4 +11,8 @@ void printMenuDokter();
 
 void printMenuManager();
 
+void printEasterEgg1();
+
+void printEasterEgg2();
+
 #endif

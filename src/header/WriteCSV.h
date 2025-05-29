@@ -8,6 +8,7 @@
 
 #include "Boolean.h"
 #include "ReadCSV.h"
+#include "WriteCSV.h"
 
 /*  KAMUS UMUM */
 #define MAX_CMD_LENGTH 512
