@@ -39,6 +39,8 @@ void readConfig(const char* path){
 
     globalDenahRumahSakit.kapasitasRuangan = maxPasien; // Memasukan jumlah maksimal pasien
 
+    globalDenahRumahSakit.kapasitasAntrian = maxAntrian; // Memasukan jumlah maksimal antrian
+
     fgetc(configFile); // skip \n
 
     for (int row=0; row<nRow; row++){ // Mengiterasi barisan
