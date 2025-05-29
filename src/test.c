@@ -44,29 +44,29 @@ int main(int argc, char** argv){
     for(int i=0; i<stackSize(&((Patient*)(globalUserDatabase.buffer[11]->data))->perut); i++){
         printf("perut: %d\n", ((Patient*)(globalUserDatabase.buffer[11]->data))->perut.obat[i].id);
     }
-    loadCSV(argc, argv);
+    //loadCSV(argc, argv);
     // jika seluruh file dibaca dengan baik, maka akan lanjut programnya. jika tidak, maka akan keluar dari program
     // anggap login ke orang di index ke-2 (misal aja), dan kita tahu lebih dahulu bahwa dia pasien maka yang akan dijalankan adalah menu pasien (misal)
-    globalCurrentUserGD = getGDbyIdx(&globalUserDatabase, 11);
-    DataType currentUserType = getDataTypeGD(globalCurrentUserGD);
-    globalCurrentPatient = getPatientInGD(globalCurrentUserGD);
-    globalCurrentPatient->inventory[0] = 5;
-    globalCurrentPatient->inventory[1] = 4;
-    globalCurrentPatient->inventory[2] = 3;
-    globalCurrentPatient->inventory[3] = 2;
-    createStack(&globalCurrentPatient->perut);
-    for (int i = 4; i < INVENTORY_SIZE; ++i) {
-        printf("%d ", globalCurrentPatient->inventory[i]);
-    }
-    printf("top: %d\n", globalCurrentPatient->perut.top);
+    // globalCurrentUserGD = getGDbyIdx(&globalUserDatabase, 11);
+    // DataType currentUserType = getDataTypeGD(globalCurrentUserGD);
+    // globalCurrentPatient = getPatientInGD(globalCurrentUserGD);
+    // globalCurrentPatient->inventory[0] = 5;
+    // globalCurrentPatient->inventory[1] = 4;
+    // globalCurrentPatient->inventory[2] = 3;
+    // globalCurrentPatient->inventory[3] = 2;
+    // createStack(&globalCurrentPatient->perut);
+    // for (int i = 4; i < INVENTORY_SIZE; ++i) {
+    //     printf("%d ", globalCurrentPatient->inventory[i]);
+    // }
+    // printf("top: %d\n", globalCurrentPatient->perut.top);
 
-    while (true) {
-        minumObat();
-        minumObat();
-        minumObat();
-        printf("Sekarang penawar\n");
-        minumPenawar();
-    }
+    // while (true) {
+    //     minumObat();
+    //     minumObat();
+    //     minumObat();
+    //     printf("Sekarang penawar\n");
+    //     minumPenawar();
+    // }
 
     // udah dapt gro
     // globalCurrentPatient->inventory[0] = 
