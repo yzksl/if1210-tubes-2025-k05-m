@@ -55,7 +55,7 @@ int main(int argc, char** argv){
     globalCurrentPatient->inventory[2] = 3;
     globalCurrentPatient->inventory[3] = 2;
     createStack(&globalCurrentPatient->perut);
-    for (int i = 0; i < INVENTORY_SIZE; ++i) {
+    for (int i = 4; i < INVENTORY_SIZE; ++i) {
         printf("%d ", globalCurrentPatient->inventory[i]);
     }
     printf("top: %d\n", globalCurrentPatient->perut.top);
