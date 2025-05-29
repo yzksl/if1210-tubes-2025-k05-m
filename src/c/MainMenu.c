@@ -68,6 +68,7 @@ void menuManager(){
         scanf("%s", input);
         if (strcmp(input, "HELP")==0) helpManager();
         else if (strcmp(input, "LIHAT_DENAH")==0) lihatDenah();
+        else if (strcmp(input, "TAMBAH_DOKTER")) break ; 
         else if (strcmp(input, "LIHAT_RUANGAN")==0) lihatRuangan(-1, -1);
         else if (strcmp(input, "LIHAT_SEMUA_ANTRIAN")==0) lihatSemuaAntrian();
         else if (strcmp(input, "LOGIN")==0) login();
@@ -88,11 +89,14 @@ void menuBelumLogin(){
         printf(">>> ");
         scanf("%s", input);
         if (strcmp(input, "HELP")==0) helpBelumLogin();
+        else if (strcmp(input, "LIHAT_DENAH")==0) lihatDenah();
+        else if (strcmp(input, "LIHAT_RUANGAN")==0) lihatRuangan(-1, -1);
         else if (strcmp(input, "LOGIN")==0){
             login();
             if (globalCurrentUserGD->type!=DATA_TYPE_UNKNOWN) break;
         }
         else if (strcmp(input, "LOGOUT")==0) logout();
+        else if (strcmp(input, "LUPA_PASSWORD")) lupaPassword();
         else if (strcmp(input, "REGISTER")==0) registerPasien();
         else if (strcmp(input, "EXIT")==0) exitFromHospital();
         // Fungsi lanjutan yang belum ditulis

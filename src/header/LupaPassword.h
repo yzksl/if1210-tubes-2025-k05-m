@@ -8,8 +8,8 @@
 #include <string.h>
 #include <stdlib.h>
 
-void lupaPassword();
-
 void runLengthEncoding(const char* input, char* output);
+
+void lupaPassword();
 
 #endif
