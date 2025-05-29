@@ -19,6 +19,8 @@
 #include "LupaPassword.h"
 #include "MinumObat.h"
 #include "Penawar.h"
+#include "TambahDokter.h"
+#include "LihatUser.h"
 
 void mainMenu(); // Prosedur untuk membuka Main Menu dengan ketentuan role user
 

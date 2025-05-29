@@ -12,6 +12,6 @@
 
 int scanNumber(FILE* file); // Fungsi untuk mengscan nomor dalam suatu file
 
-void readConfig(); // Prosedur untuk membaca file config
+void readConfig(const char* path); // Prosedur untuk membaca file config
 
 #endif
