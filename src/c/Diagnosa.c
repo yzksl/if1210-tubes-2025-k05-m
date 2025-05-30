@@ -19,12 +19,19 @@ void F11_DIAGNOSIS(Queue* antrianPasien) {
     Patient* pasien = getPatientFromNode(pasienNode);
 
     if (pasien == NULL) {
+        printf("Pasien tidak ditemukan");
         return;
     }
 
     // 3. Cek apakah pasien sudah pernah didiagnosis
+    if (pasien->sudahDiDiagnosis){
+        printf("%s Telah Didiagnosa\n", pasien->username);
+        return;
+    }
+    
     if (strcmp(pasien->riwayatPenyakit, "") != 0) {
         printf("%s terdiagnosa penyakit %s!\n", pasien->username, pasien->riwayatPenyakit);
+        pasien->sudahDiDiagnosis = true;
         return;
     }
     
@@ -48,10 +55,12 @@ void F11_DIAGNOSIS(Queue* antrianPasien) {
         if(cocok){
             strcpy(pasien->riwayatPenyakit, penyakit.name);
             printf("%s terdiagnosa penyakit %s!\n", pasien->username, pasien->riwayatPenyakit);
+            pasien->sudahDiDiagnosis = true;
             return;
         }
 
     }
 
     printf("%s tidak terdiagnosis penyakit apapun!\n", pasien->username);
+    pasien->sudahDiDiagnosis = true;
 }

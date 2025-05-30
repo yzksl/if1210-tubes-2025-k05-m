@@ -114,7 +114,7 @@ int main(int argc, char** argv){
 
 
     // antrian sedang ditambah
-    GenericData* gd = getGDbyIdx(&globalUserDatabase, 8);
+    GenericData* gd = getGDbyIdx(&globalUserDatabase, 20);
     Patient* patientDalamAntrian = getPatientInGD(gd);
     LinkedListNode* orang = createLLNode(patientDalamAntrian->id, patientDalamAntrian->username);
     enQueue(&antrian, orang);
