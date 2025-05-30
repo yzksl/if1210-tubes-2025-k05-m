@@ -298,7 +298,18 @@ void lihatPasien(ListDin globalUserDatabase) {
 
             strcpy(printed[idxPrinted].role, "Pasien");
             strcpy(printed[idxPrinted].nama, p->username);
-            strcpy(printed[idxPrinted].penyakit, p->riwayatPenyakit);   
+            
+            int count = 0;
+            
+            while(p->riwayatPenyakit[count] == '\0' && count < STR_MAX_SIZE) {
+                count++;
+            }
+            
+            if(count != STR_MAX_SIZE) {
+                strcpy(printed[idxPrinted].penyakit, p->riwayatPenyakit);
+            } else {
+                strcpy(printed[idxPrinted].penyakit, "(Belum diperiksa dokter)");
+            }   
 
             idxPrinted++;
         }
