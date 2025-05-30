@@ -9,6 +9,8 @@
 #include "CTypePalsu.h"
 #include "FindAccount.h"
 #include "StructsInHospital.h"
+#include "Ngobatin.h"
+#include "Stack.h"
 
 int scanNumber(FILE* file); // Fungsi untuk mengscan nomor dalam suatu file
 

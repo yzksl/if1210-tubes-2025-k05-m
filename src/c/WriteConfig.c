@@ -27,15 +27,11 @@ void writeConfig(char path[]){
                 fprintf(configFile, "%c\n", 13);
             }
             else {
-                if (ruangan.nEffPasien==0) fprintf(configFile, " %d", 0);
-                else for (int i=0; i<ruangan.nEffPasien; i++) fprintf(configFile, " %d", ruangan.idPasien[i]);
-
-                if (ruangan.idAntrian.size>0){
-                    int antrianSize=ruangan.idAntrian.size;
-                    for (int i=0; i<antrianSize; i++){
-                        fprintf(configFile, " %d", ruangan.idAntrian.front->id);
-                        deQueue(&ruangan.idAntrian);
-                    }
+                int queueSize=ruangan.idAntrian.size;
+                if (isQueueEmpty(&ruangan.idAntrian)) fprintf(configFile, " %d", 0);
+                else for (int i=0; i<queueSize; i++){
+                    fprintf(configFile, " %d", ruangan.idAntrian.front->id);
+                    deQueue(&ruangan.idAntrian);
                 }
                 fprintf(configFile, "%c\n", 13);
             }
@@ -63,8 +59,9 @@ void writeConfig(char path[]){
         Patient* pasien=getAccountAddress(idPasienPerut[i]);
         fprintf(configFile, "%d", pasien->id);
         int perutSize=stackSize(&(pasien->perut));
-        for (int j=0; j<perutSize; j++){
-            fprintf(configFile, " %d", pasien->perut.obat[j].id);
+        while (perutSize--){
+            fprintf(configFile, " %d", pasien->perut.obat[pasien->perut.top].id);
+            popStack(&(pasien->perut));
         }
         fprintf(configFile, "%c\n", 13);
     }

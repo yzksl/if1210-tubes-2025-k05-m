@@ -46,12 +46,12 @@ void readConfig(const char* path){
     for (int row=0; row<nRow; row++){ // Mengiterasi barisan
         for (int column=0; column<nColumn; column++){
 
-            createQueue(&globalDenahRumahSakit.Ruangan[row][column].idAntrian, maxAntrian);
+            createQueue(&globalDenahRumahSakit.Ruangan[row][column].idAntrian, maxAntrian+maxPasien);
 
             globalDenahRumahSakit.Ruangan[row][column].idDokter = scanNumber(configFile); // Scan id dokter di ruang ngan tersebut
 
             if (globalDenahRumahSakit.Ruangan[row][column].idDokter==0){ // Jika Tidak ada dokter
-                globalDenahRumahSakit.Ruangan[row][column].nEffPasien = 0; // Menulis banyak pasien sebagai nol
+                globalDenahRumahSakit.Ruangan[row][column].idAntrian.size = 0; // Menulis banyak pasien sebagai nol
                 fgetc(configFile); // Skip \n
                 continue;
             }
@@ -63,31 +63,21 @@ void readConfig(const char* path){
                 int temp=scanNumber(configFile); // Scan id-id pasien
 
                 if (temp==0){ // Jika pasian tidak ada di ruangan
-                    globalDenahRumahSakit.Ruangan[row][column].nEffPasien = 0; // Menulis banyak pasien sebagai nol
+                    globalDenahRumahSakit.Ruangan[row][column].idAntrian.size = 0; // Menulis banyak pasien sebagai nol
                     fgetc(configFile); // Skip \n
                     break; // memutus loop karena pasien kosong
                 }
                 
                 else if (temp==-1){ // Jika jumlah pasien kurang dari kapasitas ruangan
-                    if (id<=maxPasien){
-                        globalDenahRumahSakit.Ruangan[row][column].nEffPasien = count; // Menuliskan banyak pasien
-                        globalDenahRumahSakit.Ruangan[row][column].idAntrian.size = 0; // Menulis banyak antrian
-                    }
-                    else if (id>maxPasien){
-                        globalDenahRumahSakit.Ruangan[row][column].nEffPasien = maxPasien; // Menuliskan banyak pasien
-                        globalDenahRumahSakit.Ruangan[row][column].idAntrian.size = count-maxPasien; // Menulis banyak antrian
-                    }
+                    globalDenahRumahSakit.Ruangan[row][column].idAntrian.size = count; // Menuliskan banyak pasien
                     break; // memutus loop jika sudah list semua pasien
                 }
                 else{
-                    if (id<maxPasien) globalDenahRumahSakit.Ruangan[row][column].idPasien[id] = temp; // Meletakan id pasien di list pasien
-                    else{
-                        LinkedListNode* node = createLLNode(temp, "");
-                        enQueue(&globalDenahRumahSakit.Ruangan[row][column].idAntrian, node);
-                    }
+                    LinkedListNode* node = createLLNode(temp, "");
+                    enQueue(&globalDenahRumahSakit.Ruangan[row][column].idAntrian, node); // Memasukan id pasien pada queue
                     count++; // Menghitung jumlah pasien
                     if (id==(maxPasien+maxAntrian-1)){ // Kondisi jika ini merupakan itirasi terakhir
-                        globalDenahRumahSakit.Ruangan[row][column].idAntrian.size = count-maxPasien;    // Menuliskan banyak pasien
+                        globalDenahRumahSakit.Ruangan[row][column].idAntrian.size = count;    // Menuliskan banyak pasien
                         fgetc(configFile); // Skip \n
                     }
                 }
@@ -102,6 +92,9 @@ void readConfig(const char* path){
         int id=scanNumber(configFile); // Membaca id pasien
 
         Patient* pasienObat=getAccountAddress(id); // Mendapatkan pointer akun pasien
+
+        pasienObat->sudahDiObatin=true;
+        pasienObat->sudahDiDiagnosis=true;
 
         int temp=scanNumber(configFile); // Membaca id Obat
 
@@ -126,14 +119,25 @@ void readConfig(const char* path){
 
         Patient* pasienPerut=getAccountAddress(id); // Mendapatkan pointer akun pasien
 
+        pasienPerut->sudahDiObatin=true;
+        pasienPerut->sudahDiDiagnosis=true;
+
         int temp=scanNumber(configFile); // Membaca id Obat
 
+        Stack tempStack;
+        createStack(&tempStack);
         while(temp!=-1){
-            Obat obat={temp, ""}; // Inisialisasi obat
+            Obat* obat = getObatById(temp); // Inisialisasi obat
 
-            pushStack(&(pasienPerut->perut), obat); // Push obat ke perut pasien
+            pushStack(&tempStack, *obat); // Push obat ke perut pasien
 
             temp=scanNumber(configFile); // Membaca id obat
+        }
+        int sizeStack=stackSize(&tempStack);
+
+        while (sizeStack--){
+            Obat obat=popStack(&tempStack);
+            pushStack(&(pasienPerut->perut), obat);
         }
     }
 

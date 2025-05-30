@@ -40,6 +40,13 @@ void lihatDenah(){
 }
 
 void lihatRuangan(int row, int column){
+
+    for(int row=0; row<globalDenahRumahSakit.nRow; row++){
+        for(int column=0; column<globalDenahRumahSakit.nColumn; column++){
+                
+            }
+        }
+
     char kodeRuangan[256]; // inisialisasi variable untuk membaca kode ruangan
     int rowRuangan, columnRuangan; // inisialisasi variable row ruangan dan column ruangan
 
@@ -65,19 +72,20 @@ void lihatRuangan(int row, int column){
 
 
     printf("Kapasitas  : %d\n", globalDenahRumahSakit.kapasitasRuangan);
-
     int idDokter = globalDenahRumahSakit.Ruangan[rowRuangan][columnRuangan].idDokter;
 
     if (idDokter==0) printf("Dokter     : -\n");
     else printf("Dokter     : %s\n", getAccountName(idDokter, DATA_TYPE_DOCTOR)/*Variable Sementara*/);
 
     printf("Pasien di dalam ruangan :\n");
-
-    int jumlahPasien=globalDenahRumahSakit.Ruangan[rowRuangan][columnRuangan].nEffPasien;
-
-
-    if (jumlahPasien==0) printf("  Tidak ada pasien di dalam ruangan saat ini.\n");
-    else for (int i=0; i<jumlahPasien; i++) printf("  %d. %s\n", i+1, getAccountName(globalDenahRumahSakit.Ruangan[rowRuangan][columnRuangan].idPasien[i], DATA_TYPE_PATIENT));
+    if (isQueueEmpty(&globalDenahRumahSakit.Ruangan[rowRuangan][columnRuangan].idAntrian)) printf("  Tidak ada pasien di dalam ruangan saat ini.\n");
+    else{
+        LinkedListNode* forTraverse = globalDenahRumahSakit.Ruangan[rowRuangan][columnRuangan].idAntrian.front;
+        for (int i=0; i<((globalDenahRumahSakit.Ruangan[rowRuangan][columnRuangan].idAntrian.size<globalDenahRumahSakit.kapasitasRuangan) ? globalDenahRumahSakit.Ruangan[rowRuangan][columnRuangan].idAntrian.size : globalDenahRumahSakit.kapasitasRuangan); i++){
+            printf("  %d. %s\n", i+1, getAccountName(forTraverse->id, DATA_TYPE_PATIENT));
+            forTraverse = forTraverse->next;
+        }
+    }
 
     if (row==-1||column==-1) printf("------------------------------\n");
 }
@@ -93,11 +101,15 @@ void lihatSemuaAntrian(){
 
             printf("Pasien di antrian:\n");
 
-            if (isQueueEmpty(&globalDenahRumahSakit.Ruangan[row][column].idAntrian)) printf("  Tidak ada pasien di antrian saat ini.\n");
+            if (globalDenahRumahSakit.Ruangan[row][column].idAntrian.size<=globalDenahRumahSakit.kapasitasRuangan) printf("  Tidak ada pasien di antrian saat ini.\n");
             else {
                 LinkedListNode* forTraverse = globalDenahRumahSakit.Ruangan[row][column].idAntrian.front;
                 for (int i=0; i<globalDenahRumahSakit.Ruangan[row][column].idAntrian.size; i++){
-                    printf("  %d. %s\n", i+1, getAccountName(forTraverse->id, DATA_TYPE_PATIENT));
+                    if (i<globalDenahRumahSakit.kapasitasRuangan){
+                        forTraverse = forTraverse->next;
+                        continue;
+                    }
+                    printf("  %d. %s\n", i+1-globalDenahRumahSakit.kapasitasRuangan, getAccountName(forTraverse->id, DATA_TYPE_PATIENT));
                     forTraverse = forTraverse->next;
                 }
             }

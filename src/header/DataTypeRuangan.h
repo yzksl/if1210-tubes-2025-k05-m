@@ -7,8 +7,6 @@
 
 typedef struct {
     int idDokter; // id dokter
-    int idPasien[MAX_CAPACITY]; // Array berisi id pasien
-    int nEffPasien; // Jumlah pasien
     Queue idAntrian; // Antrian Pasien
 } DataTypeRuangan; // Tipe data untuk ruangan
 

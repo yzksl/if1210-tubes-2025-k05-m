@@ -64,7 +64,7 @@ void ubahDenah(){
         int tempRow = (newRow<globalDenahRumahSakit.nRow) ? newRow : globalDenahRumahSakit.nRow;
         for (int row=0; row<tempRow; row++){
             for (int column=globalDenahRumahSakit.nColumn; column<newColumn; column++){
-                createQueue(&globalDenahRumahSakit.Ruangan[row][column].idAntrian, globalDenahRumahSakit.kapasitasAntrian);
+                createQueue(&globalDenahRumahSakit.Ruangan[row][column].idAntrian, globalDenahRumahSakit.kapasitasAntrian+globalDenahRumahSakit.kapasitasRuangan);
             }
         }
     }
@@ -72,7 +72,7 @@ void ubahDenah(){
     if (newRow>globalDenahRumahSakit.nRow){
         for (int row=globalDenahRumahSakit.nRow; row<newRow; row++){
             for (int column=0; column<newColumn; column++){
-                createQueue(&globalDenahRumahSakit.Ruangan[row][column].idAntrian, globalDenahRumahSakit.kapasitasAntrian);
+                createQueue(&globalDenahRumahSakit.Ruangan[row][column].idAntrian, globalDenahRumahSakit.kapasitasAntrian+globalDenahRumahSakit.kapasitasRuangan);
             }
         }
     }
@@ -90,8 +90,6 @@ void pindahDokter(){
     kodeRuanganKonverter(ruanganLama, &rowLama, &columnLama);
     kodeRuanganKonverter(ruanganBaru, &rowBaru, &columnBaru);
 
-    printf("2\n");
-    printf("%d %d\n%d %d\n", rowLama, columnLama, rowBaru, columnBaru);
     if(globalDenahRumahSakit.Ruangan[rowLama][columnLama].idDokter==0){
         printf("Pemindahan gagal. Ruangan %c%d Kosong.\n", rowLama+'A', columnLama+1);
         return;

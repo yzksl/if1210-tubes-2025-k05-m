@@ -9,17 +9,15 @@ Point posisiRuanganAntrianPasien(int userId){
     for (int row=0; row<globalDenahRumahSakit.nRow; row++){
         for(int column=0; column<globalDenahRumahSakit.nColumn; column++){
             LinkedListNode* transversal = globalDenahRumahSakit.Ruangan[row][column].idAntrian.front;
-            for (int i=0; i<globalDenahRumahSakit.Ruangan[row][column].nEffPasien; i++){
-                if (globalDenahRumahSakit.Ruangan[row][column].idPasien[i]==userId){
+            for (int i=0; i<globalDenahRumahSakit.Ruangan[row][column].idAntrian.size; i++){
+                if (transversal->id==userId && i<globalDenahRumahSakit.kapasitasRuangan){
                     lokasiRuangan.antrian=-2;
                     lokasiRuangan.row=row;
                     lokasiRuangan.column=column;
                     return lokasiRuangan;
                 }
-            }
-            for (int i=0; i<globalDenahRumahSakit.Ruangan[row][column].idAntrian.size; i++){
-                if (transversal->id==userId){
-                    lokasiRuangan.antrian=i+1;
+                else if (transversal->id==userId && i>=globalDenahRumahSakit.kapasitasRuangan){
+                    lokasiRuangan.antrian=i+1-globalDenahRumahSakit.kapasitasRuangan;
                     lokasiRuangan.row=row;
                     lokasiRuangan.column=column;
                     return lokasiRuangan;
@@ -44,7 +42,7 @@ void antrianSaya(){
             printf("\nStatus antrian Anda:\n");
             printf("Dokter: %s\n", getAccountName(globalDenahRumahSakit.Ruangan[lokasiRuangan.row][lokasiRuangan.column].idDokter, DATA_TYPE_DOCTOR));
             printf("Ruangan: %c%d\n", lokasiRuangan.row+'A', lokasiRuangan.column+1);
-            printf("Posisi antrian: %d dari %d\n", lokasiRuangan.antrian, globalDenahRumahSakit.Ruangan[lokasiRuangan.row][lokasiRuangan.column].idAntrian.size);
+            printf("Posisi antrian: %d dari %d\n", lokasiRuangan.antrian, globalDenahRumahSakit.Ruangan[lokasiRuangan.row][lokasiRuangan.column].idAntrian.size-globalDenahRumahSakit.kapasitasRuangan);
         }
     
 
