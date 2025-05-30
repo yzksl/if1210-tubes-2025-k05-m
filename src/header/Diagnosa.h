@@ -7,6 +7,6 @@
 #include "Boolean.h"
 
 // Fungsi diagnosis pasien terdepan dari antrian
-void F11_DIAGNOSIS(Queue* antrianPasien);
+void diagnosis(Queue* antrianPasien);
 
 #endif

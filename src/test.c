@@ -110,7 +110,7 @@ int main(int argc, char** argv){
     createQueue(&antrian, 4);
 
     // cek kasus antrian kosong
-    F11_DIAGNOSIS(&antrian);
+    diagnosis(&antrian);
 
 
     // antrian sedang ditambah
@@ -143,11 +143,11 @@ int main(int argc, char** argv){
     }
 
     // cek pasien antrien terdepan
-    F11_DIAGNOSIS(&antrian);
-    F11_DIAGNOSIS(&antrian);
-    F11_DIAGNOSIS(&antrian);
-    F11_DIAGNOSIS(&antrian);
-    F11_DIAGNOSIS(&antrian);
+    diagnosis(&antrian);
+    diagnosis(&antrian);
+    diagnosis(&antrian);
+    diagnosis(&antrian);
+    diagnosis(&antrian);
 
     // // masukkan 4 orang awal ke dalam queue
     // for (int i = 6; i < 10; ++i) {

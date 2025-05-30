@@ -6,7 +6,7 @@
 #include "DynamicList.h"
 #include "Boolean.h"
 
-void F11_DIAGNOSIS(Queue* antrianPasien) {
+void diagnosis(Queue* antrianPasien) {
 
     // 1. Cek apakah antrian kosong
     if (isQueueEmpty(antrianPasien)) {
@@ -28,7 +28,7 @@ void F11_DIAGNOSIS(Queue* antrianPasien) {
         printf("%s Telah Didiagnosa\n", pasien->username);
         return;
     }
-    
+
     if (strcmp(pasien->riwayatPenyakit, "") != 0) {
         printf("%s terdiagnosa penyakit %s!\n", pasien->username, pasien->riwayatPenyakit);
         pasien->sudahDiDiagnosis = true;
