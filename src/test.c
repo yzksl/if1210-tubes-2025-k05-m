@@ -27,7 +27,7 @@ int main(int argc, char** argv){
     loadCSV(argc, argv);
     // jika seluruh file dibaca dengan baik, maka akan lanjut programnya. jika tidak, maka akan keluar dari program
     // anggap login ke orang di index ke-2 (misal aja), dan kita tahu lebih dahulu bahwa dia pasien maka yang akan dijalankan adalah menu pasien (misal)
-    globalCurrentUserGD = getGDbyIdx(&globalUserDatabase, 6);
+    globalCurrentUserGD = getGDbyIdx(&globalUserDatabase, 19);
     DataType currentUserType = getDataTypeGD(globalCurrentUserGD);
     globalCurrentPatient = getPatientInGD(globalCurrentUserGD);
 
@@ -114,7 +114,7 @@ int main(int argc, char** argv){
 
 
     // antrian sedang ditambah
-    GenericData* gd = getGDbyIdx(&globalUserDatabase, 19);
+    GenericData* gd = getGDbyIdx(&globalUserDatabase, 8);
     Patient* patientDalamAntrian = getPatientInGD(gd);
     LinkedListNode* orang = createLLNode(patientDalamAntrian->id, patientDalamAntrian->username);
     enQueue(&antrian, orang);

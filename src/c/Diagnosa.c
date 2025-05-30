@@ -27,18 +27,18 @@ void F11_DIAGNOSIS(Queue* antrianPasien) {
         printf("%s terdiagnosa penyakit %s!\n", pasien->username, pasien->riwayatPenyakit);
         return;
     }
-
+    
     // 4. Lakukan diagnosis dengan mencocokkan kondisi tubuh terhadap threshold penyakit
     boolean cocok;
     for (int i = 0; i < globalPenyakitDatabase.nEff; i++) {
         Penyakit penyakit = globalPenyakitDatabase.contents[i];
         cocok = true;
-
+        printf("CHECKING %s\n", penyakit.name);
         // Setiap penyakit memiliki threshold min dan max untuk 11 kondisi tubuh
-        for (int j = 0; j < THRESHOLD_SIZE; j++) {
-            int nilai = pasien->kondisiTubuh[j];
-            int batasMin = penyakit.threshold[j * 2];
-            int batasMax = penyakit.threshold[j * 2 + 1];
+        for (int j = 0; j < KONDISI_TUBUH_SIZE; j++) {
+            float nilai = pasien->kondisiTubuh[j];
+            float batasMin = penyakit.threshold[j * 2];
+            float batasMax = penyakit.threshold[j * 2 + 1];
 
             if (nilai < batasMin || nilai > batasMax) {
                 cocok = false;
@@ -47,15 +47,11 @@ void F11_DIAGNOSIS(Queue* antrianPasien) {
         }
         if(cocok){
             strcpy(pasien->riwayatPenyakit, penyakit.name);
-            break;
+            printf("%s terdiagnosa penyakit %s!\n", pasien->username, pasien->riwayatPenyakit);
+            return;
         }
 
     }
-            // Jika cocok, diagnosa selesai
-    if (cocok) {
-        printf("%s terdiagnosa penyakit %s!\n", pasien->username, pasien->riwayatPenyakit);
-        return;  // Keluar dari fungsi begitu menemukan penyakit yang cocok
-    }
-    // 5. Jika tidak cocok dengan penyakit apa pun
+
     printf("%s tidak terdiagnosis penyakit apapun!\n", pasien->username);
 }
