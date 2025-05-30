@@ -14,6 +14,16 @@
 #include "PrintArt.h"
 #include "AntrianSaya.h"
 #include "Login.h"
+#include "Logout.h"
+#include "DaftarCheckup.h"
+#include "Register.h"
+#include "LupaPassword.h"
+#include "MinumObat.h"
+#include "CariUser.h"
+#include "LihatUser.h"
+#include "Penawar.h"
+#include "TambahDokter.h"
+#include "DenahDinamis.h"
 
 void mainMenu(); // Prosedur untuk membuka Main Menu dengan ketentuan role user
 

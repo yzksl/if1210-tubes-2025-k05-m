@@ -7,6 +7,7 @@
 #include "StructsInHospital.h"
 #include "Set.h"
 #include "DataTypeRuangan.h"
+#include <string.h>
 
 // databases
 extern ListDin globalUserDatabase;
@@ -16,6 +17,7 @@ extern ObatPenyakitDatabase globalOPDatabase;
 extern Set globalUsernames;
 
 // current user
+extern GenericData globalNotLogin;
 extern GenericData* globalCurrentUserGD; 
 extern Patient* globalCurrentPatient;
 extern Doctor* globalCurrentDoctor;
