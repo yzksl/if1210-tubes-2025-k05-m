@@ -18,10 +18,10 @@ Obat* getObatById(int idObat) {
 }
  
 void ngobatin(Queue* antrianPasien) {
-    
+   
     // Pastikan antrian tidak kosong
     if (isQueueEmpty(antrianPasien)) {
-        printf("Tidak ada pasien untuk diobatin!\n");
+        printf("\nTidak ada pasien untuk diobatin!\n");
         return;
     }
    
@@ -35,13 +35,13 @@ void ngobatin(Queue* antrianPasien) {
  
     // Pastikan pasien sudah didiagnosis
     if (pasien->sudahDiDiagnosis == false) {
-        printf("Pasien belum menerima diagnosis!\n");
+        printf("\nPasien belum menerima diagnosis!\n");
         return;
     }
  
     // Pastikan pasien tidak berulang-ulang diobatin
     if (pasien->sudahDiObatin == true) {
-        printf("Pasien sudah diobatin!\n");
+        printf("\nPasien sudah diobatin!\n");
         return;
     }
  
@@ -55,7 +55,7 @@ void ngobatin(Queue* antrianPasien) {
     }
  
     if (idPenyakit == -1) {
-        printf("Penyakit tidak ditemukan dalam database!\n");
+        printf("\nPenyakit tidak ditemukan dalam database!\n");
         return;
     }
  
@@ -77,7 +77,7 @@ void ngobatin(Queue* antrianPasien) {
                     // Masukkan obat ke inventory pasien
                     // traverse through inventory untuk cari index inefektif
                     int l = 0;
-                    while (l < KONDISI_TUBUH_SIZE && pasien->kondisiTubuh[l] != UNDEF_INT_DATA) {
+                    while (l < INVENTORY_SIZE && pasien->inventory[l] != UNDEF_INT_DATA) {
                         l += 1;
                     }
                     // tambahin obat di index pertama inefektif
@@ -85,15 +85,16 @@ void ngobatin(Queue* antrianPasien) {
                     // keluarannya
                     printf("%d. %s\n", j + 1, obat->name);
                 } else {
-                    printf("%d. Obat dengan ID %d tidak ditemukan!\n", j + 1, idObat);
+                    printf("\n%d. Obat dengan ID %d tidak ditemukan!\n", j + 1, idObat);
                 }
             }
         }
     }
  
     if (!found) {
-        printf("Tidak ada daftar obat untuk penyakit ini.\n");
+        printf("\nTidak ada daftar obat untuk penyakit ini.\n");
     }
     pasien->sudahDiObatin = true;
 }
+ 
  
