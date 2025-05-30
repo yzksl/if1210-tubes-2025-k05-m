@@ -9,4 +9,6 @@
 // Fungsi untuk memberikan obat kepada pasien yang sudah terdiagnosis
 void ngobatin(Queue* antrianPasien);
 
+// Fungsi Mencari dan mengembalikan data Obat dari globalObatDatabase
+Obat* getObatById(int idObat);
 #endif
