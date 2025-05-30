@@ -109,19 +109,22 @@ int main(int argc, char** argv){
     Queue antrian;
     createQueue(&antrian, 4);
 
+    // cek kasus antrian kosong
     F11_DIAGNOSIS(&antrian);
 
-    GenericData* gd = getGDbyIdx(&globalUserDatabase, 6);
+
+    // antrian sedang ditambah
+    GenericData* gd = getGDbyIdx(&globalUserDatabase, 8);
     Patient* patientDalamAntrian = getPatientInGD(gd);
     LinkedListNode* orang = createLLNode(patientDalamAntrian->id, patientDalamAntrian->username);
     enQueue(&antrian, orang);
 
-    gd = getGDbyIdx(&globalUserDatabase, 7);
+    gd = getGDbyIdx(&globalUserDatabase, 6);
     patientDalamAntrian = getPatientInGD(gd);
     orang = createLLNode(patientDalamAntrian->id, patientDalamAntrian->username);
     enQueue(&antrian, orang);
 
-    gd = getGDbyIdx(&globalUserDatabase, 8);
+    gd = getGDbyIdx(&globalUserDatabase, 7);
     patientDalamAntrian = getPatientInGD(gd);
     orang = createLLNode(patientDalamAntrian->id, patientDalamAntrian->username);
     enQueue(&antrian, orang);
@@ -139,6 +142,7 @@ int main(int argc, char** argv){
         forTraverse = forTraverse->next;
     }
 
+    // cek pasien antrien terdepan
     F11_DIAGNOSIS(&antrian);
     F11_DIAGNOSIS(&antrian);
     F11_DIAGNOSIS(&antrian);
