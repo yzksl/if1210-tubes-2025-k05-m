@@ -18,7 +18,7 @@ Obat* getObatById(int idObat) {
 }
  
 void ngobatin(Queue* antrianPasien) {
-    
+   
     // Pastikan antrian tidak kosong
     if (isQueueEmpty(antrianPasien)) {
         printf("Tidak ada pasien untuk diobatin!\n");
@@ -77,7 +77,7 @@ void ngobatin(Queue* antrianPasien) {
                     // Masukkan obat ke inventory pasien
                     // traverse through inventory untuk cari index inefektif
                     int l = 0;
-                    while (l < KONDISI_TUBUH_SIZE && pasien->kondisiTubuh[l] != UNDEF_INT_DATA) {
+                    while (l < INVENTORY_SIZE && pasien->inventory[l] != UNDEF_INT_DATA) {
                         l += 1;
                     }
                     // tambahin obat di index pertama inefektif
@@ -96,4 +96,5 @@ void ngobatin(Queue* antrianPasien) {
     }
     pasien->sudahDiObatin = true;
 }
+ 
  
