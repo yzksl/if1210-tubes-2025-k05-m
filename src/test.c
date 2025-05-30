@@ -11,6 +11,7 @@
 #include "Queue.h"
 #include "Set.h"
 #include "Exit.h"
+#include "Diagnosa.h"
 /* di run dengan makefile */ 
 /* ./test file */
 
