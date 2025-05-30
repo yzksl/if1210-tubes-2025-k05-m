@@ -17,7 +17,7 @@ Obat* getObatById(int idObat) {
     return NULL;
 }
 
-void F12_NGOBATIN(Queue* antrianPasien) {
+void ngobatin(Queue* antrianPasien) {
     printf(">>> NGOBATIN\n");
 
     // Pastikan antrian tidak kosong
