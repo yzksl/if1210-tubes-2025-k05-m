@@ -17,16 +17,7 @@ void F11_DIAGNOSIS(Queue* antrianPasien) {
 
     // 2. Ambil pasien terdepan dari antrian
     LinkedListNode* pasienNode = antrianPasien->front;
-    Patient* pasien;
-    for (int i = 0; i < globalUserDatabase.nEff; ++i) {
-        GenericData* gd = getGDbyIdx(&globalUserDatabase, i);    
-        if (gd->type == DATA_TYPE_PATIENT) {
-            pasien = getPatientInGD(gd);
-            if (pasien->id == pasienNode->id) {
-                break;
-            }
-        }
-    }
+    Patient* pasien = getPatientFromNode(pasienNode);
 
     if (pasien == NULL) {
         return;
