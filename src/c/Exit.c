@@ -13,7 +13,7 @@ void exitFromHospital() {
     char input = 'a';
     while (input != 'y' && input != 'n') {
         printf("Apakah Anda mau melakukan penyimpanan file yang sudah diubah? (y/n): ");
-        scanf("%c", &input);
+        scanf(" %c", &input);
     }
     
     if (input == 'y' || input == 'Y') {
