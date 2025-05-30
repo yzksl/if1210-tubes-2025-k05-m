@@ -7,7 +7,6 @@
 
 typedef struct {
     int idDokter; // id dokter
-    Queue idPasien; // Pasien dalam ruangan
     Queue idAntrian; // Antrian Pasien
 } DataTypeRuangan; // Tipe data untuk ruangan
 
