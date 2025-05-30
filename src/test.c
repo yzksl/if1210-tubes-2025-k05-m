@@ -28,9 +28,5 @@ int main(int argc, char** argv){
     globalCurrentUserGD = &globalNotLogin;
     DataType currentUserType = getDataTypeGD(globalCurrentUserGD);
     readConfig(argv[1]);
-
-    ubahDenah();
-
-    saveCSV();
     return 0;
 }

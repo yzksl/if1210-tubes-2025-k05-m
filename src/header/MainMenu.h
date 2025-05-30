@@ -18,6 +18,7 @@
 #include "Register.h"
 #include "LupaPassword.h"
 #include "MinumObat.h"
+#include "LihatUser.h"
 #include "Penawar.h"
 // #include "TambahDokter.h"
 #include "LihatUser.h"

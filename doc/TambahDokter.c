@@ -1,6 +1,10 @@
 #include "../header/TambahDokter.h"
+#include "StructsInHospital.h"
+#include "GlobalVariable.h"
+#include "DynamicList.h"
+#include "CTypePalsu.h"
 
-void tambahdokter(){
+void tambahDokter(){
 
     char username[STR_MAX_SIZE];
     char password[STR_MAX_SIZE];
@@ -62,7 +66,7 @@ void tambahdokter(){
   
 
 
-void assigndokter(){
+void assignDokter(){
     char username[50];
     char ruangan[256];
     printf("Username: ");
@@ -72,8 +76,8 @@ void assigndokter(){
     // Cari idDokter di globalUserDatabase berdasarkan username
     int idDokter = -1;
     Doctor* dokterPtr = NULL;
-    for (int i = 0; i < listLength(globalUserDatabase); i++) {
-        GenericData *gd = getElmt(globalUserDatabase, i);
+    for (int i = 0; i < globalUserDatabase.nEff; i++) {
+        GenericData *gd = getGDbyIdx(&globalUserDatabase, i);
         if (gd->type == DATA_TYPE_DOCTOR) {
             Doctor* d = (Doctor*) gd->data;
             if (strcmp(d->username, username) == 0) {
@@ -133,8 +137,8 @@ void assigndokter(){
         // Kasus 3
         // Cari username dokter yang sudah menempati ruangan
         char namaDokterDiRuangan[50] = "DokterLain";
-        for (int i = 0; i < listLength(globalUserDatabase); i++) {
-            GenericData *gd = getElmt(globalUserDatabase, i);
+        for (int i = 0; i < globalUserDatabase.nEff; i++) {
+            GenericData *gd = getGDbyIdx(&globalUserDatabase, i);
             if (gd->type == DATA_TYPE_DOCTOR) {
                 Doctor* d = (Doctor*) gd->data;
                 if (gd->type == idDokterDiTarget) {
@@ -149,8 +153,8 @@ void assigndokter(){
         // Kasus 4
         // Cari username dokter yang sudah menempati ruangan
         char namaDokterDiRuangan[50] = "DokterLain";
-        for (int i = 0; i < listLength(globalUserDatabase); i++) {
-            GenericData *gd = getElmt(globalUserDatabase, i);
+        for (int i = 0; i < globalUserDatabase.nEff; i++) {
+            GenericData *gd = getGDbyIdx(&globalUserDatabase, i);
             if (gd->type == DATA_TYPE_DOCTOR) {
                 Doctor* d = (Doctor*) gd->data;
                 if ((gd->type) == idDokterDiTarget) {
