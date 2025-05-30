@@ -19,7 +19,7 @@ void diagnosis(Queue* antrianPasien) {
     Patient* pasien = getPatientFromNode(pasienNode);
 
     if (pasien == NULL) {
-        printf("Pasien tidak ditemukan");
+        printf("Pasien tidak ditemukan\n");
         return;
     }
 
@@ -54,13 +54,13 @@ void diagnosis(Queue* antrianPasien) {
         }
         if(cocok){
             strcpy(pasien->riwayatPenyakit, penyakit.name);
-            printf("%s terdiagnosa penyakit %s!\n", pasien->username, pasien->riwayatPenyakit);
+            printf("\n%s terdiagnosa penyakit %s!\n", pasien->username, pasien->riwayatPenyakit);
             pasien->sudahDiDiagnosis = true;
             return;
         }
 
     }
 
-    printf("%s tidak terdiagnosis penyakit apapun!\n", pasien->username);
+    printf("\n%s tidak terdiagnosis penyakit apapun!\n", pasien->username);
     pasien->sudahDiDiagnosis = true;
 }
