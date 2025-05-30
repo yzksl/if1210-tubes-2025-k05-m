@@ -1,3 +1,5 @@
+#include "Boolean.h"
+
 #ifndef STRUCTS_IN_HOSPITAL_H
 #define STRUCTS_IN_HOSPITAL_H
 
@@ -48,6 +50,8 @@ typedef struct {
     Stack perut;
     int inventory[INVENTORY_SIZE];
     float kondisiTubuh[KONDISI_TUBUH_SIZE];
+    boolean sudahDiDiagnosis;
+    boolean sudahDiObatin;
 } Patient;
 
 /* Docter */
