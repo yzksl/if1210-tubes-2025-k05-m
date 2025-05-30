@@ -25,8 +25,6 @@ void goToLeft() {
 
 //ini dia fungsi utamanya
 void minumObat(){
-    globalCurrentPatient->sudahDiDiagnosis = true;
-    globalCurrentPatient->sudahDiObatin = false;
     if(globalCurrentPatient->sudahDiDiagnosis){ //jika sudah diagnosis
         //cek dulu sudah diobatin atau tidak
         if(globalCurrentPatient->sudahDiObatin){ //jika sudah diobatin
@@ -43,7 +41,7 @@ void minumObat(){
                 jlhObat++;
             }
             if(jlhObat == 0){ //kalau tidak ada obat
-                printf("Inventorynya udah kosong. Minum penawar dengan command PENAWAR biar ada lagi.\n");
+                printf("Inventorynya udah kosong. Minum penawar dengan command PENAWAR jika perlu mengulang minum obat.\n");
                 return;
             }
             else{ //kalau ada obat
@@ -87,11 +85,11 @@ void minumObat(){
 
         }
         else{ //sudah diagnosis tapi belum diobatin dokter
-            printf("Anda belum meminta obat dari dokter. Minta obat dengan command NGOBATIN!!!\n");
+            printf("Anda belum meminta obat dari dokter. Minta obat dengan command NGOBATIN.\n");
         }
     }
     else{ //kalau belum diagnosis
-            printf("Diagnosis penyakit dulu yah dik😸😸. Jangan kesini dulu~😘😘\n");
+            printf("Anda belum melakukan diagnosis. Lakukan diagnosis dengan command DIAGNOSIS.\n");
 
     }
 
