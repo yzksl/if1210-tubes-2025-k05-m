@@ -164,6 +164,9 @@ void processCSV(const char* folder, const char* filename) {
                 for (int i = 0; i < INVENTORY_SIZE; ++i) {
                     p->inventory[i] = UNDEF_INT_DATA;
                 }
+                // init sudah didiagnosis dan diobatin
+                p->sudahDiDiagnosis = false;
+                p->sudahDiObatin = false;
                 gd = createGD(p, DATA_TYPE_PATIENT);
             }
             /* FOR DOCTOR */

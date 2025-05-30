@@ -24,8 +24,19 @@ int main(int argc, char** argv){
     }
     // jika seluruh file dibaca dengan baik, maka akan lanjut programnya. jika tidak, maka akan keluar dari program
     // anggap login ke orang di index ke-2 (misal aja), dan kita tahu lebih dahulu bahwa dia pasien maka yang akan dijalankan adalah menu pasien (misal)
-    globalCurrentUserGD = &globalNotLogin;
-    DataType currentUserType = getDataTypeGD(globalCurrentUserGD);
+    globalCurrentUserGD = getGDbyIdx(&globalUserDatabase, 8);
+    // DataType currentUserType = getDataTypeGD(globalCurrentUserGD);
+    globalCurrentPatient = getPatientInGD(globalCurrentUserGD);
+    if (globalCurrentPatient->sudahDiDiagnosis) {
+        printf("sudah\n");
+    } else {
+        printf("belum\n");
+    }
+
+    globalCurrentPatient->sudahDiDiagnosis = true;
+    if (globalCurrentPatient->sudahDiDiagnosis) {
+        printf("sudah2");
+    }
     readConfig(argv[1]);
     return 0;
 }
