@@ -114,12 +114,12 @@ int main(int argc, char** argv){
 
 
     // antrian sedang ditambah
-    GenericData* gd = getGDbyIdx(&globalUserDatabase, 8);
+    GenericData* gd = getGDbyIdx(&globalUserDatabase, 19);
     Patient* patientDalamAntrian = getPatientInGD(gd);
     LinkedListNode* orang = createLLNode(patientDalamAntrian->id, patientDalamAntrian->username);
     enQueue(&antrian, orang);
 
-    gd = getGDbyIdx(&globalUserDatabase, 6);
+    gd = getGDbyIdx(&globalUserDatabase, 10);
     patientDalamAntrian = getPatientInGD(gd);
     orang = createLLNode(patientDalamAntrian->id, patientDalamAntrian->username);
     enQueue(&antrian, orang);
@@ -129,7 +129,7 @@ int main(int argc, char** argv){
     orang = createLLNode(patientDalamAntrian->id, patientDalamAntrian->username);
     enQueue(&antrian, orang);
 
-    gd = getGDbyIdx(&globalUserDatabase, 9);
+    gd = getGDbyIdx(&globalUserDatabase, 8);
     patientDalamAntrian = getPatientInGD(gd);
     orang = createLLNode(patientDalamAntrian->id, patientDalamAntrian->username);
     enQueue(&antrian, orang);
