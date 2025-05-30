@@ -18,8 +18,7 @@ Obat* getObatById(int idObat) {
 }
  
 void ngobatin(Queue* antrianPasien) {
-    printf(">>> NGOBATIN\n");
- 
+    
     // Pastikan antrian tidak kosong
     if (isQueueEmpty(antrianPasien)) {
         printf("Tidak ada pasien untuk diobatin!\n");
