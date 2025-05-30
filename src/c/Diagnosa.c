@@ -10,7 +10,7 @@ void diagnosis(Queue* antrianPasien) {
 
     // 1. Cek apakah antrian kosong
     if (isQueueEmpty(antrianPasien)) {
-        printf("\nTidak ada pasien untuk diperiksa!\n");
+        printf("Tidak ada pasien untuk diperiksa!\n");
         return;
     }
 
@@ -19,18 +19,18 @@ void diagnosis(Queue* antrianPasien) {
     Patient* pasien = getPatientFromNode(pasienNode);
 
     if (pasien == NULL) {
-        printf("\nPasien tidak ditemukan\n");
+        printf("Pasien tidak ditemukan\n");
         return;
     }
 
     // 3. Cek apakah pasien sudah pernah didiagnosis
     if (pasien->sudahDiDiagnosis){
-        printf("\n%s Telah Didiagnosa\n", pasien->username);
+        printf("%s Telah Didiagnosa\n", pasien->username);
         return;
     }
 
     if (strcmp(pasien->riwayatPenyakit, "") != 0) {
-        printf("\n%s terdiagnosa penyakit %s!\n", pasien->username, pasien->riwayatPenyakit);
+        printf("%s terdiagnosa penyakit %s!\n", pasien->username, pasien->riwayatPenyakit);
         pasien->sudahDiDiagnosis = true;
         return;
     }
@@ -40,7 +40,7 @@ void diagnosis(Queue* antrianPasien) {
     for (int i = 0; i < globalPenyakitDatabase.nEff; i++) {
         Penyakit penyakit = globalPenyakitDatabase.contents[i];
         cocok = true;
-        printf("\nCHECKING %s\n", penyakit.name);
+        printf("CHECKING %s\n", penyakit.name);
         // Setiap penyakit memiliki threshold min dan max untuk 11 kondisi tubuh
         for (int j = 0; j < KONDISI_TUBUH_SIZE; j++) {
             float nilai = pasien->kondisiTubuh[j];
