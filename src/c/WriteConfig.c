@@ -27,15 +27,10 @@ void writeConfig(char path[]){
                 fprintf(configFile, "%c\n", 13);
             }
             else {
-                if (ruangan.nEffPasien==0) fprintf(configFile, " %d", 0);
-                else for (int i=0; i<ruangan.nEffPasien; i++) fprintf(configFile, " %d", ruangan.idPasien[i]);
-
-                if (ruangan.idAntrian.size>0){
-                    int antrianSize=ruangan.idAntrian.size;
-                    for (int i=0; i<antrianSize; i++){
-                        fprintf(configFile, " %d", ruangan.idAntrian.front->id);
-                        deQueue(&ruangan.idAntrian);
-                    }
+                if (ruangan.idAntrian.size==0) fprintf(configFile, " %d", 0);
+                else for (int i=0; i<ruangan.idAntrian.size; i++){
+                    fprintf(configFile, " %d", ruangan.idAntrian.front->id);
+                    deQueue(&ruangan.idAntrian);
                 }
                 fprintf(configFile, "%c\n", 13);
             }
