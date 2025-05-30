@@ -6,4 +6,10 @@
 
 char* getAccountName(int id, DataType dataType);
 
+void* getAccountAddress(int id);
+
+int countBanyakPasienInventory(int arr[]);
+
+int countBanyakPasienPerut(int arr[]);
+
 #endif

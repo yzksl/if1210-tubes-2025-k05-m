@@ -7,6 +7,7 @@
 #include "../header/StructsInHospital.h"
 #include "../header/GlobalVariable.h"
 #include "Set.h"
+#include "Stack.h"
 
 void loadCSV(int argc, char** argv) {
     // create database dengan list dynamic
@@ -158,6 +159,14 @@ void processCSV(const char* folder, const char* filename) {
                     emptyInventory,
                     kondisiTubuh
                 );
+                createStack(&p->perut); // init perut
+                // init inv
+                for (int i = 0; i < INVENTORY_SIZE; ++i) {
+                    p->inventory[i] = UNDEF_INT_DATA;
+                }
+                // init sudah didiagnosis dan diobatin
+                p->sudahDiDiagnosis = false;
+                p->sudahDiObatin = false;
                 gd = createGD(p, DATA_TYPE_PATIENT);
             }
             /* FOR DOCTOR */

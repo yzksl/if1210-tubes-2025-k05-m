@@ -2,9 +2,12 @@
 #define LIHATDENAH_H
 
 #include <stdio.h>
-#include <ctype.h>
 #include "GlobalVariable.h"
 #include "FindAccount.h"
+#include "CTypePalsu.h"
+#include "PrintArt.h"
+
+void kodeRuanganKonverter(char arr[], int *rowRuangan, int *columnRuangan); // Mengkonvert kode ruangan menjadi titik baris dan kolom
 
 void lihatDenah(); // Menampilkan Denah Rumah Sakit
 

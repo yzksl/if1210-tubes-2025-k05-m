@@ -3,10 +3,10 @@
 
 void login() {
     // Cek apakah sudah ada user yang login
-    // if (!isSetEmpty(currentUser)) {
-    //     printf("ANDA SUDAH LOGIN. MOHON LOGOUT TERLEBIH DAHULU UNTUK MELAKUKAN LOGIN KEMBALI.\n");
-    //     return;
-    // }
+    if (globalCurrentUserGD->type!=DATA_TYPE_UNKNOWN) {
+        printf("ANDA SUDAH LOGIN. MOHON LOGOUT TERLEBIH DAHULU UNTUK MELAKUKAN LOGIN KEMBALI.\n\n");
+        return;
+    }
 
     char username[STR_MAX_SIZE];
     char password[STR_MAX_SIZE];
@@ -46,6 +46,6 @@ void login() {
     }
 
     if (!found) {
-        printf("USERNAME ATAU PASSWORD SALAH. SILAKAN COBA LAGI.\n");
+        printf("USERNAME ATAU PASSWORD SALAH. SILAKAN COBA LAGI.\n\n");
     }
 }

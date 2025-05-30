@@ -3,6 +3,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
+#include "StructsInHospital.h"
+#include "GlobalVariable.h"
 
 /* REALISASI FUNGSI DAN PROSEDUR */
 void createLL(LinkedList *l) {
@@ -137,4 +139,16 @@ void freeNodeLL(LinkedList* l, LinkedListNode* node) {
         free(node);
         l->size -= 1;
     }
+}
+
+Patient* getPatientFromNode(LinkedListNode* node) {
+    for (int i = 0; i < globalUserDatabase.nEff; i++) {
+        if (globalUserDatabase.buffer[i]->type == DATA_TYPE_PATIENT) {
+            Patient* p = (Patient*)(globalUserDatabase.buffer[i]->data);
+            if (p->id == node->id) {
+                return p;
+            }
+        }
+    }
+    return NULL;
 }
