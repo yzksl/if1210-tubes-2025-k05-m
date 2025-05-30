@@ -21,7 +21,7 @@ void ngobatin(Queue* antrianPasien) {
    
     // Pastikan antrian tidak kosong
     if (isQueueEmpty(antrianPasien)) {
-        printf("Tidak ada pasien untuk diobatin!\n");
+        printf("\nTidak ada pasien untuk diobatin!\n");
         return;
     }
    
@@ -35,7 +35,7 @@ void ngobatin(Queue* antrianPasien) {
  
     // Pastikan pasien sudah didiagnosis
     if (pasien->sudahDiDiagnosis == false) {
-        printf("Pasien belum menerima diagnosis!\n");
+        printf("\nPasien belum menerima diagnosis!\n");
         return;
     }
  
