@@ -63,6 +63,8 @@ LinkedListNode* getLLNodeByIdx(const LinkedList* l, int idx);
 /* Mengirimkan data node dengan ekuivalen indeks*/
 LinkedListNode* getLLNodeByName(const LinkedList* l, char name[50]);
 /* Mengirimkan data node dengan nama tertentu */
+Patient* getPatientFromNode(LinkedListNode* node);
+/* Mengirimkan pasien dalam globalUserDatabase berdasarkan id yang ada dari node */
 
 /* ********** TEST KOSONG ********** */
 boolean isLLEmpty(LinkedList l);
