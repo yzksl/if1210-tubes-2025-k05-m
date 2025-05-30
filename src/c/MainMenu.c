@@ -29,7 +29,6 @@ void menuPasien(){
         else if (strcmp(input, "DAFTAR_CHECKUP")==0) daftarCheckup(globalCurrentUserGD);
         else if (strcmp(input, "MINUM_OBAT")==0) minumObat();
         else if (strcmp(input, "PENAWAR")==0) minumPenawar();
-        else if (strcmp(input, "LUPA_PASSWORD")==0) lupaPassword();
         else if (strcmp(input, "LOGIN")==0) login();
         else if (strcmp(input, "LOGOUT")==0){
             logout();
@@ -55,7 +54,6 @@ void menuDokter(){
         else if (strcmp(input, "LIHAT_RUANGAN")==0) lihatRuangan(-1, -1);
         else if (strcmp(input, "DIAGNOSIS")==0) diagnosis(getQueueFromDoctorId(globalCurrentDoctor->id));
         else if (strcmp(input, "NGOBATIN")==0) ngobatin(getQueueFromDoctorId(globalCurrentDoctor->id));
-        else if (strcmp(input, "LUPA_PASSWORD")==0) lupaPassword();
         else if (strcmp(input, "LOGIN")==0) login();
         else if (strcmp(input, "LOGOUT")==0){
             logout();
@@ -92,7 +90,6 @@ void menuManager(){
         else if (strcmp(input, "ASSIGN_DOKTER")==0) assignDokter();
         else if (strcmp(input, "PINDAH_DOKTER")==0) pindahDokter();
         else if (strcmp(input, "UBAH_DENAH")==0) ubahDenah();
-        else if (strcmp(input, "LUPA_PASSWORD")==0) lupaPassword();
         else if (strcmp(input, "LOGIN")==0) login();
         else if (strcmp(input, "LOGOUT")==0){
             logout();
@@ -111,6 +108,7 @@ void menuBelumLogin(){
         printf(">>> ");
         scanf("%s", input);
         if (strcmp(input, "HELP")==0) helpBelumLogin();
+        else if (strcmp(input, "LUPA_PASSWORD")==0) lupaPassword();
         else if (strcmp(input, "LOGIN")==0){
             login();
             if (globalCurrentUserGD->type!=DATA_TYPE_UNKNOWN) break;
