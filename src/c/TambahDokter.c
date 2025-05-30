@@ -25,34 +25,43 @@ void tambahDokter(){
     // Cari ID terbesar dan tambah 1
     int maxId = 0;
     for (int i = 0; i < globalUserDatabase.nEff; i++) {
-        GenericData* gd = globalUserDatabase.buffer[i];
-        Doctor* d = getDoctorInGD(gd);
-        if (d->id > maxId) {
-            maxId = d->id;
+        GenericData* gd = getGDbyIdx(&globalUserDatabase,i);
+        if (gd->type== DATA_TYPE_DOCTOR){
+            Doctor* d = getDoctorInGD(gd);
+            if (d->id > maxId) {
+                maxId = d->id;
+            }
+        } else if (gd->type == DATA_TYPE_PATIENT){
+            Patient* p = getPatientInGD(gd);
+            if (p->id > maxId) {
+                maxId = p->id;
+            }
+        } else if (gd->type == DATA_TYPE_MANAGER){
+            Manager* m = getManagerInGD(gd);
+            if (m->id > maxId) {
+                maxId = m->id;
+            }
         }
     }
     int newId = maxId + 1;
 
-    // Buat data pasien baru
-      Doctor* newDoctor = createDoctor();
+    // Buat data dokter baru
+    Doctor* newDoctor = createDoctorWithData(newId, username, password, username, "");
     if (newDoctor == NULL) {
         printf("ALOKASI MEMORI GAGAL\n");
         return;
     }
 
-    newDoctor->id = newId;
-    strcpy(newDoctor->username, username);
-    strcpy(newDoctor->password, password);
-    newDoctor->type = DATA_TYPE_DOCTOR;
-    
-
-    GenericData* newGD = createGD((void*)newDoctor, DATA_TYPE_PATIENT);
+    GenericData* newGD = createGD((void*)newDoctor, DATA_TYPE_DOCTOR);
     if (newGD == NULL) {
         printf("GAGAL REALOKASI MEMORI\n");
         free(newDoctor);
         return;
     }
-
+    
+    if (isLDFull(&globalUserDatabase)){
+        expandLD(&globalUserDatabase, 1);
+    }
     insertLastLD(&globalUserDatabase, newGD);
 
     // Tambah username ke dalam Set (dalam bentuk lowercase)
