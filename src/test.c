@@ -10,6 +10,7 @@
 #include "header/ReadConfig.h"
 #include "header/ReadCSV.h"
 #include "header/PrintArt.h"
+#include "header/DenahDinamis.h"
 /* di run dengan makefile */ 
 /* ./test file */
 
@@ -27,6 +28,9 @@ int main(int argc, char** argv){
     globalCurrentUserGD = &globalNotLogin;
     DataType currentUserType = getDataTypeGD(globalCurrentUserGD);
     readConfig(argv[1]);
+
+    ubahDenah();
+
     saveCSV();
     return 0;
 }

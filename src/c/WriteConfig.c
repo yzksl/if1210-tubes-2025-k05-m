@@ -9,12 +9,14 @@ void writeConfig(char path[]){
     FILE *configFile = fopen(fullPath, "w"); // Membuka file config
     
     fprintf(configFile,
-        "%d %d\n"
-        "%d %d\n"
+        "%d %d%c\n"
+        "%d %d%c\n"
         , globalDenahRumahSakit.nRow
         , globalDenahRumahSakit.nColumn
+        , 13
         , globalDenahRumahSakit.kapasitasRuangan
         , globalDenahRumahSakit.kapasitasAntrian
+        , 13
     );
 
     for (int row=0; row<globalDenahRumahSakit.nRow; row++){
@@ -22,7 +24,7 @@ void writeConfig(char path[]){
             DataTypeRuangan ruangan=globalDenahRumahSakit.Ruangan[row][column];
             fprintf(configFile, "%d", ruangan.idDokter);
             if(ruangan.idDokter==0){
-                fprintf(configFile, "\n");
+                fprintf(configFile, "%c\n", 13);
             }
             else {
                 if (ruangan.nEffPasien==0) fprintf(configFile, " %d", 0);
@@ -35,27 +37,27 @@ void writeConfig(char path[]){
                         deQueue(&ruangan.idAntrian);
                     }
                 }
-                fprintf(configFile, "\n");
+                fprintf(configFile, "%c\n", 13);
             }
         }
     }
     int idPasienObat[globalUserDatabase.nEff];
     int nPasienObat=countBanyakPasienInventory(idPasienObat);
     
-    fprintf(configFile, "%d\n", nPasienObat);
+    fprintf(configFile, "%d%c\n", nPasienObat, 13);
 
     for (int i=0; i<nPasienObat; i++){
         Patient* pasien=getAccountAddress(idPasienObat[i]);
         fprintf(configFile, "%d", pasien->id);
         int j=0;
         while (pasien->inventory[j]!=UNDEF_INT_DATA) fprintf(configFile, " %d", pasien->inventory[j++]);
-        fprintf(configFile, "\n");
+        fprintf(configFile, "%c\n", 13);
     }
 
     int idPasienPerut[globalUserDatabase.nEff];
     int nPasienPerut=countBanyakPasienPerut(idPasienPerut);
 
-    fprintf(configFile, "%d\n", nPasienPerut);
+    fprintf(configFile, "%d%c\n", nPasienPerut, 13);
 
     for (int i=0; i<nPasienPerut; i++){
         Patient* pasien=getAccountAddress(idPasienPerut[i]);
@@ -64,7 +66,7 @@ void writeConfig(char path[]){
         for (int j=0; j<perutSize; j++){
             fprintf(configFile, " %d", pasien->perut.obat[j].id);
         }
-        fprintf(configFile, "\n");
+        fprintf(configFile, "%c\n", 13);
     }
     fclose(configFile);
 }

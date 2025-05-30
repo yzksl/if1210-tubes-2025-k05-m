@@ -1,10 +1,18 @@
 #include "../header/LihatDenah.h"
 #include "../header/GlobalVariable.h"
 
+void kodeRuanganKonverter(char kodeRuangan[], int *rowRuangan, int *columnRuangan){
+    *rowRuangan = kodeRuangan[0] - 'A'; // mendapatakan row ruangan
+    *columnRuangan = kodeRuangan[1] - '0'; // mendapatkan digit pertama column ruangan
+    if (isDigit(kodeRuangan[2])) *columnRuangan = (*columnRuangan)*10 + (kodeRuangan[2]-'0'); // jika column ruangan memiliki dua digit, ini akan mendapatkan digit kedua
+    (*columnRuangan)--;
+}
+
 void lihatDenah(){
     printf("\n "); //spasi di awal
     for (int column=0; column<globalDenahRumahSakit.nColumn; column++){ // Menulis Angka-Angka Kolom
-        printf("     %d", column+1);
+        if (column<10) printf("     %d", column+1);
+        else printf("    %d", column+1);
     }
     printf("\n"); // newline
 
@@ -32,32 +40,29 @@ void lihatDenah(){
 }
 
 void lihatRuangan(int row, int column){
-    char nomorRuangan[256]; // inisialisasi variable untuk membaca nomor ruangan
+    char kodeRuangan[256]; // inisialisasi variable untuk membaca kode ruangan
     int rowRuangan, columnRuangan; // inisialisasi variable row ruangan dan column ruangan
 
     if (row==-1||column==-1){
-        scanf(" %s", nomorRuangan);
-
-        rowRuangan = nomorRuangan[0] - 'A'; // mendapatakan row ruangan
-
-        columnRuangan = nomorRuangan[1] - '0'; // mendapatkan digit pertama column ruangan
-        if (isdigit(nomorRuangan[2])) columnRuangan = columnRuangan*10 + (nomorRuangan[2]-'0'); // jika column ruangan memiliki dua digit, ini akan mendapatkan digit kedua
-        columnRuangan--;
+        scanf(" %s", kodeRuangan);
+        if (strcmp(kodeRuangan, "UHUY!!!!!🥴")==0) printEasterEgg1();
+        if (strcmp(kodeRuangan, "jjww😘")==0) printEasterEgg2();
+        kodeRuanganKonverter(kodeRuangan, &rowRuangan, &columnRuangan);
+        
         if(rowRuangan<0 || columnRuangan<0 || rowRuangan>=globalDenahRumahSakit.nRow || columnRuangan>=globalDenahRumahSakit.nColumn){
-            printf("\nTidak ruangan dengan nomor ruangan %s\n\n", nomorRuangan);
+            printf("\nTidak ada ruangan dengan kode ruangan %s\n\n", kodeRuangan);
             return;
         }
-        printf("\n--- Detail Ruangan %s ---\n", nomorRuangan);
+        printf("\n--- Detail Ruangan %s ---\n", kodeRuangan);
     } else {
         rowRuangan = row;
         columnRuangan = column;
 
-        snprintf(nomorRuangan, sizeof(nomorRuangan), "%c%d", rowRuangan+'A', columnRuangan+1);
+        snprintf(kodeRuangan, sizeof(kodeRuangan), "%c%d", rowRuangan+'A', columnRuangan+1);
 
-        printf("============ %s ============\n", nomorRuangan);
+        printf("============ %s ============\n", kodeRuangan);
     }
 
-    
 
     printf("Kapasitas  : %d\n", globalDenahRumahSakit.kapasitasRuangan);
 
