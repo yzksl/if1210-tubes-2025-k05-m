@@ -16,6 +16,7 @@
 #include "Login.h"
 #include "Logout.h"
 #include "MinumObat.h"
+#include "LihatUser.h"
 #include "Penawar.h"
 
 void mainMenu(); // Prosedur untuk membuka Main Menu dengan ketentuan role user

@@ -68,6 +68,9 @@ void menuManager(){
         scanf("%s", input);
         if (strcmp(input, "HELP")==0) helpManager();
         else if (strcmp(input, "LIHAT_DENAH")==0) lihatDenah();
+        else if (strcmp(input, "LIHAT_USER")==0) lihatUser(globalUserDatabase);
+        else if (strcmp(input, "LIHAT_DOKTER")==0) lihatDokter(globalUserDatabase);
+        else if (strcmp(input, "LIHAT_PASIEN")==0) lihatPasien(globalUserDatabase);
         else if (strcmp(input, "LIHAT_RUANGAN")==0) lihatRuangan(-1, -1);
         else if (strcmp(input, "LIHAT_SEMUA_ANTRIAN")==0) lihatSemuaAntrian();
         else if (strcmp(input, "LOGIN")==0) login();
