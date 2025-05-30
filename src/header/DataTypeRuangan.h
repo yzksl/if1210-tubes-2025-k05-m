@@ -17,6 +17,7 @@ typedef struct {
     int nColumn; // Jumlah Colom
     int kapasitasRuangan; // Kapasitas Maksimal Pasien dalam ruangan
     DataTypeRuangan Ruangan[MAX_CAPACITY][MAX_CAPACITY]; // Matriks denah
+    int kapasitasAntrian; // Kapasitas Maksimal antrian
 } DataTypeDenah; // Tipe data untuk denah
 
 typedef struct{

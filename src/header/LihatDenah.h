@@ -2,7 +2,7 @@
 #define LIHATDENAH_H
 
 #include <stdio.h>
-#include <ctype.h>
+#include <ctype.h> 
 #include "GlobalVariable.h"
 #include "FindAccount.h"
 
