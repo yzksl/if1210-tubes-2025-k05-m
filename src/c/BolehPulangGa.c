@@ -34,42 +34,37 @@ Patient* getPatientFromNode(LinkedListNode* node) {
     return NULL;
 }
 
-void resetPatientData(Patient* pasien) {
-    strcpy(pasien->riwayatPenyakit, "");
-    deleteStack(&(pasien->perut));
+void resetPatientData(Patient* globalCurrentPatient) {
+    strcpy(globalCurrentPatient->riwayatPenyakit, "");
+    deleteStack(&(globalCurrentPatient->perut));
     for (int i = 0; i < KONDISI_TUBUH_SIZE; i++) {
-        pasien->kondisiTubuh[i] = 0.0;
+        globalCurrentPatient->kondisiTubuh[i] = UNDEF_INT_DATA;
     }
     for (int i = 0; i < INVENTORY_SIZE; i++) {
-        pasien->inventory[i] = 0;
+        globalCurrentPatient->inventory[i] = UNDEF_INT_DATA;
     }
 }
 
-void F13_PULANGDOK(Queue* antrianPasien) {
-    printf(">>> PULANGDOK\n");
+void pulangDok(Queue* antrianPasien) {
 
-    if (isQueueEmpty(antrianPasien)) {
-        printf("Tidak ada pasien dalam ruangan!\n");
-        return;
-    }
-
-    LinkedListNode* pasienNode = antrianPasien->front;
-    Patient* pasien = getPatientFromNode(pasienNode);
-
-    if (pasien == NULL) {
-        printf("Pasien tidak ditemukan dalam database!\n");
-        return;
-    }
-
-    if (strcmp(pasien->riwayatPenyakit, "") == 0) {
+    if(globalCurrentPatient->sudahDiDiagnosis == false){
         printf("Kamu belum menerima diagnosis apapun dari dokter, jangan buru-buru pulang!\n");
+        return;
+    }
+
+    if(globalCurrentPatient->sudahDiObatin == false){
+        printf("Kamu belum menerima obat dari dokter, jangan buru buru pulang!\n");
+        return;
+    }
+    if (globalCurrentPatient == NULL) {
+        printf("Pasien tidak ditemukan dalam database!\n");
         return;
     }
 
     // Temukan id penyakit
     int idPenyakit = -1;
     for (int i = 0; i < globalPenyakitDatabase.nEff; i++) {
-        if (strcmp(globalPenyakitDatabase.contents[i].name, pasien->riwayatPenyakit) == 0) {
+        if (strcmp(globalPenyakitDatabase.contents[i].name, globalCurrentPatient->riwayatPenyakit) == 0) {
             idPenyakit = globalPenyakitDatabase.contents[i].id;
             break;
         }
@@ -94,7 +89,7 @@ void F13_PULANGDOK(Queue* antrianPasien) {
         return;
     }
 
-    if (stackSize(&pasien->perut) < op->nEff) {
+    if (stackSize(&globalCurrentPatient->perut) < op->nEff) {
         printf("Masih ada obat yang belum kamu habiskan, minum semuanya dulu yukk!\n");
         return;
     }
@@ -111,7 +106,7 @@ void F13_PULANGDOK(Queue* antrianPasien) {
 
     printf("Urutan obat yang kamu minum:\n");
     for (int i = op->nEff - 1; i >= 0; i--) {
-        Obat o = popStack(&pasien->perut);
+        Obat o = globalCurrentPatient->perut.obat;
         printf("%s", o.name);
         if (i > 0) printf(" -> ");
         if (strcmp(o.name, globalObatDatabase.contents[op->idObat[i]].name) != 0) {
@@ -128,8 +123,8 @@ void F13_PULANGDOK(Queue* antrianPasien) {
     // Pasien sembuh dan boleh pulang
     printf("Selamat! Kamu sudah dinyatakan sembuh oleh dokter. Silahkan pulang dan semoga sehat selalu!\n");
 
-    // Reset data pasien
-    resetPatientData(pasien);
+    // Reset data globalCurrentPatient
+    resetPatientData(globalCurrentPatient);
 
     // Keluarkan dari antrian
     deQueue(antrianPasien);
