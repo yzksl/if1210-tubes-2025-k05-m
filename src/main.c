@@ -18,7 +18,6 @@ int main(int argc, char** argv){
     /* di globalvariable.c ada deklarasi variable2 global, cek ya */
     /* intinya, global variable itu agar setiap fungsi dapat mengubah nilai dari variable tsb tanpa harus memanggil fungsi dengan parameter yang menerima addressnya */
     // selalu cek struktur data dari setiap tipe data ya
-    
     // create database dengan list dynamic
     createLD(&globalUserDatabase, 20);
     // baca csv-csv yang ada dalam folder yang ditentukan dalam input terminal
