@@ -137,6 +137,8 @@ void lihatUser(ListDin globalUserDatabase) {
     for(int i = 0; i < tabelEff; i++) {
         printf("%-4d | %-10s | %-8s | %-12s \n", printed[i].ID, printed[i].nama, printed[i].role, printed[i].penyakit);
     }
+
+    printf("\n");
 }
  
 
@@ -247,6 +249,8 @@ void lihatDokter(ListDin globalUserDatabase) {
     for(int i = 0; i < tabelEff; i++) {
         printf("%-2d | %-10s \n", printed[i].ID, printed[i].nama);
     }
+
+    printf("\n");
 }
 
 void lihatPasien(ListDin globalUserDatabase) {
@@ -356,4 +360,6 @@ void lihatPasien(ListDin globalUserDatabase) {
     for(int i = 0; i < tabelEff; i++) {
         printf("%-4d | %-10s | %-12s \n", printed[i].ID, printed[i].nama, printed[i].penyakit);
     }
+
+    printf("\n");
 }
