@@ -7,7 +7,6 @@
 #include "Boolean.h"
 
 void F11_DIAGNOSIS(Queue* antrianPasien) {
-    printf(">>> DIAGNOSIS\n");
 
     // 1. Cek apakah antrian kosong
     if (isQueueEmpty(antrianPasien)) {
