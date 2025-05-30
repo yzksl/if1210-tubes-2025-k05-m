@@ -17,21 +17,22 @@
 #include "header/ReadCSV.h"
 #include "header/PrintArt.h"
 #include "header/DenahDinamis.h"
-/* di run dengan makefile */ 
+#include "Ngobatin.h"
+/* di run dengan makefile */
 /* ./test file */
-
+ 
 int main(int argc, char** argv){
     /* di globalvariable.c ada deklarasi variable2 global, cek ya */
     /* intinya, global variable itu agar setiap fungsi dapat mengubah nilai dari variable tsb tanpa harus memanggil fungsi dengan parameter yang menerima addressnya */
     // selalu cek struktur data dari setiap tipe data ya
-    
+   
     loadCSV(argc, argv);
     // jika seluruh file dibaca dengan baik, maka akan lanjut programnya. jika tidak, maka akan keluar dari program
     // anggap login ke orang di index ke-2 (misal aja), dan kita tahu lebih dahulu bahwa dia pasien maka yang akan dijalankan adalah menu pasien (misal)
     globalCurrentUserGD = getGDbyIdx(&globalUserDatabase, 19);
     DataType currentUserType = getDataTypeGD(globalCurrentUserGD);
     globalCurrentPatient = getPatientInGD(globalCurrentUserGD);
-
+ 
     printf("ID: %d, Nama: %s\n", globalCurrentPatient->id, globalCurrentPatient->username);
     // // ambil langsung pointer ke data pasiennya aja, gausah genericdatanya untuk simplisitas. ini yang dijadikan global
     // if (currentUserType == DATA_TYPE_PATIENT) {
@@ -64,14 +65,14 @@ int main(int argc, char** argv){
     //     }
     //     // run other functions for doctor here
     //     // menuDoctor()
-
+ 
     // } else if (currentUserType == DATA_TYPE_MANAGER) {
     //     globalCurrentManager = getManagerInGD(globalCurrentUserGD);
     //     if (globalCurrentManager) {
     //         printf("GOT CURRENT MANAGER!\n");
     //     }
     // }
-
+ 
     // // anggap kita mau ketahui neff-neff dan obat, penyakit, obat-penyakit di indeks tertentu gitu, kita bisa gini
     // // selalu cek struktur data dari setiap tipe data ya
     // printf("nEff Database obat: %d\n", globalObatDatabase.nEff);
@@ -90,7 +91,7 @@ int main(int argc, char** argv){
     //     }
     //     printf("\n");
     // }
-
+ 
     // for (int i = 0; i < globalUserDatabase.nEff; ++i) {
     //     GenericData* gd = getGDbyIdx(&globalUserDatabase, i);
     //     if (gd->type == DATA_TYPE_PATIENT) {
@@ -106,35 +107,34 @@ int main(int argc, char** argv){
     //         printf("USER ERROR\n");
     //     }
     // }
-
+ 
     Queue antrian;
     createQueue(&antrian, 4);
-
+ 
     // cek kasus antrian kosong
-    diagnosis(&antrian);
-
-
+    ngobatin(&antrian);
+ 
     // antrian sedang ditambah
-    GenericData* gd = getGDbyIdx(&globalUserDatabase, 20);
+    GenericData* gd = getGDbyIdx(&globalUserDatabase, 19);
     Patient* patientDalamAntrian = getPatientInGD(gd);
     LinkedListNode* orang = createLLNode(patientDalamAntrian->id, patientDalamAntrian->username);
     enQueue(&antrian, orang);
-
-    gd = getGDbyIdx(&globalUserDatabase, 10);
-    patientDalamAntrian = getPatientInGD(gd);
-    orang = createLLNode(patientDalamAntrian->id, patientDalamAntrian->username);
-    enQueue(&antrian, orang);
-
-    gd = getGDbyIdx(&globalUserDatabase, 7);
-    patientDalamAntrian = getPatientInGD(gd);
-    orang = createLLNode(patientDalamAntrian->id, patientDalamAntrian->username);
-    enQueue(&antrian, orang);
-
-    gd = getGDbyIdx(&globalUserDatabase, 8);
-    patientDalamAntrian = getPatientInGD(gd);
-    orang = createLLNode(patientDalamAntrian->id, patientDalamAntrian->username);
-    enQueue(&antrian, orang);
-
+ 
+    // gd = getGDbyIdx(&globalUserDatabase, 10);
+    // patientDalamAntrian = getPatientInGD(gd);
+    // orang = createLLNode(patientDalamAntrian->id, patientDalamAntrian->username);
+    // enQueue(&antrian, orang);
+ 
+    // gd = getGDbyIdx(&globalUserDatabase, 7);
+    // patientDalamAntrian = getPatientInGD(gd);
+    // orang = createLLNode(patientDalamAntrian->id, patientDalamAntrian->username);
+    // enQueue(&antrian, orang);
+ 
+    // gd = getGDbyIdx(&globalUserDatabase, 8);
+    // patientDalamAntrian = getPatientInGD(gd);
+    // orang = createLLNode(patientDalamAntrian->id, patientDalamAntrian->username);
+    // enQueue(&antrian, orang);
+ 
     // print orang2 dalam antrian
     LinkedListNode* forTraverse = antrian.front;
     printf("Orang dalam antrian:\n");
@@ -142,14 +142,36 @@ int main(int argc, char** argv){
         printf("ID %d, nama %s\n", forTraverse->id, forTraverse->name);
         forTraverse = forTraverse->next;
     }
-
+    //print inventory
+    for (int i = 0; i < INVENTORY_SIZE && patientDalamAntrian->inventory[i] != UNDEF_INT_DATA; ++i) {
+        printf("Dalam inventory jadinya:\n");
+        Obat* obat = getObatById(patientDalamAntrian->inventory[i]);
+        printf("ID: %d, Nama: %s\n", patientDalamAntrian->inventory[i], obat->name);
+    }
+ 
     // cek pasien antrien terdepan
-    diagnosis(&antrian);
-    diagnosis(&antrian);
-    diagnosis(&antrian);
-    diagnosis(&antrian);
-    diagnosis(&antrian);
-
+    // kasus belum didiagnosis:
+    ngobatin(&antrian);
+    // kasus udah didiagnosis:
+    patientDalamAntrian->sudahDiDiagnosis = true;
+    ngobatin(&antrian);
+ 
+    //print inventory
+    for (int i = 0; i < INVENTORY_SIZE && patientDalamAntrian->inventory[i] != UNDEF_INT_DATA; ++i) {
+        printf("Dalam inventory jadinya:\n");
+        Obat* obat = getObatById(patientDalamAntrian->inventory[i]);
+        printf("ID: %d, Nama: %s\n", patientDalamAntrian->inventory[i], obat->name);
+    }
+    // kasus sudah diobatin:
+    ngobatin(&antrian);
+    //print inventory
+    for (int i = 0; i < INVENTORY_SIZE && patientDalamAntrian->inventory[i] != UNDEF_INT_DATA; ++i) {
+        printf("Dalam inventory jadinya:\n");
+        Obat* obat = getObatById(patientDalamAntrian->inventory[i]);
+        printf("ID: %d, Nama: %s\n", patientDalamAntrian->inventory[i], obat->name);
+    }
+ 
+ 
     // // masukkan 4 orang awal ke dalam queue
     // for (int i = 6; i < 10; ++i) {
     //     GenericData* gd = getGDbyIdx(&globalUserDatabase, i);
@@ -180,7 +202,7 @@ int main(int argc, char** argv){
     //     printf("ID %d, nama %s\n", forTraverse->id, forTraverse->name);
     //     forTraverse = forTraverse->next;
     // }
-
+ 
     // printf("NOW FOR SETTTTTTTTTTTTTTTTTT\n");
     // // print set
     // printf("%s", globalUsernames.buffer[0]);
@@ -196,7 +218,7 @@ int main(int argc, char** argv){
     // expandSet(&globalUsernames, 1);
     // addToSet(&globalUsernames, p->username); // duplikat, maka tidak akan ditambah
     // printf("THAT'S ALL FOR SET!\n");
-
+ 
     printf("CLEANING UP...\n");
     saveCSV();
     dealocateLD(&globalUserDatabase);
