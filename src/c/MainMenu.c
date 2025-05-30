@@ -84,12 +84,12 @@ void menuManager(){
         else if (strcmp(input, "LIHAT_USER")==0) lihatUser(globalUserDatabase);
         else if (strcmp(input, "LIHAT_PASIEN")==0) lihatPasien(globalUserDatabase);
         else if (strcmp(input, "LIHAT_DOKTER")==0) lihatDokter(globalUserDatabase);
-        else if (strcmp(input, "CARI_USER")==0) ;
-        else if (strcmp(input, "CARI_PASIEN")==0) ;
-        else if (strcmp(input, "CARI_DOKTER")==0) ;
+        else if (strcmp(input, "CARI_USER")==0) cariUser(globalUserDatabase);
+        else if (strcmp(input, "CARI_PASIEN")==0) cariPasien(globalUserDatabase);
+        else if (strcmp(input, "CARI_DOKTER")==0) cariDokter(globalUserDatabase);
         else if (strcmp(input, "LIHAT_SEMUA_ANTRIAN")==0) lihatSemuaAntrian();
-        // else if (strcmp(input, "TAMBAH_DOKTER")==0) tambahDokter(); 
-        // else if (strcmp(input, "ASSIGN_DOKTER")==0) assignDokter();
+        else if (strcmp(input, "TAMBAH_DOKTER")==0) tambahDokter(); 
+        else if (strcmp(input, "ASSIGN_DOKTER")==0) assignDokter();
         else if (strcmp(input, "PINDAH_DOKTER")==0) pindahDokter();
         else if (strcmp(input, "UBAH_DENAH")==0) ubahDenah();
         else if (strcmp(input, "LUPA_PASSWORD")==0) lupaPassword();
