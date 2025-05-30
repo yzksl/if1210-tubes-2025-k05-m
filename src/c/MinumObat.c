@@ -25,8 +25,6 @@ void goToLeft() {
 
 //ini dia fungsi utamanya
 void minumObat(){
-    globalCurrentPatient->sudahDiDiagnosis = true;
-    globalCurrentPatient->sudahDiObatin = false;
     if(globalCurrentPatient->sudahDiDiagnosis){ //jika sudah diagnosis
         //cek dulu sudah diobatin atau tidak
         if(globalCurrentPatient->sudahDiObatin){ //jika sudah diobatin
