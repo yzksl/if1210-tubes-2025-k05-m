@@ -13,9 +13,12 @@ void minumPenawar(){
         printf("\nPerut kosong, belum ada obat yang diminum.\n"); //kalau ternyata tidak perlu tidak apa
         return;
     }
-
+    
     //obat yang akan dikembalikan ke inventory disimpan dalam variabel
+    //Obat backToInventory = getTopElmt(&globalCurrentPatient->perut);
+    //popStack(&globalCurrentPatient->perut);
     Obat backToInventory = popStack(&globalCurrentPatient->perut);
+    
 
     //ini program agar obat kembali ke inventory
     for (int i = 0; i < INVENTORY_SIZE; i++) {
