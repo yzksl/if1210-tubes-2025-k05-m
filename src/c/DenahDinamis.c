@@ -79,6 +79,7 @@ void ubahDenah(){
     
     globalDenahRumahSakit.nRow=newRow;
     globalDenahRumahSakit.nColumn=newColumn;
+    printf("Denah rumah sakit berhasil diubah menjadi %d baris dan %d kolom.\n", newRow, newColumn);
 
 }
 
