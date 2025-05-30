@@ -27,8 +27,9 @@ void writeConfig(char path[]){
                 fprintf(configFile, "%c\n", 13);
             }
             else {
-                if (ruangan.idAntrian.size==0) fprintf(configFile, " %d", 0);
-                else for (int i=0; i<ruangan.idAntrian.size; i++){
+                int queueSize=ruangan.idAntrian.size;
+                if (isQueueEmpty(&ruangan.idAntrian)) fprintf(configFile, " %d", 0);
+                else for (int i=0; i<queueSize; i++){
                     fprintf(configFile, " %d", ruangan.idAntrian.front->id);
                     deQueue(&ruangan.idAntrian);
                 }
