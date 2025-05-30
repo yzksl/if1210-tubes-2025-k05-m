@@ -308,7 +308,18 @@ void cariPasien(ListDin globalUserDatabase) {
 
             strcpy(printed[idxPrinted].role, "Pasien");
             strcpy(printed[idxPrinted].nama, p->username);
-            strcpy(printed[idxPrinted].penyakit, p->riwayatPenyakit);   
+            
+            int eff = 0;
+            
+            while(p->riwayatPenyakit[eff] == '\0' && eff < STR_MAX_SIZE) {
+                eff++;
+            }
+            
+            if(eff != STR_MAX_SIZE) {
+                strcpy(printed[idxPrinted].penyakit, p->riwayatPenyakit);
+            } else {
+                strcpy(printed[idxPrinted].penyakit, "(Belum diperiksa dokter)");
+            }   
 
             idxPrinted++;
         }
