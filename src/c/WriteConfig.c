@@ -59,8 +59,9 @@ void writeConfig(char path[]){
         Patient* pasien=getAccountAddress(idPasienPerut[i]);
         fprintf(configFile, "%d", pasien->id);
         int perutSize=stackSize(&(pasien->perut));
-        for (int j=0; j<perutSize; j++){
-            fprintf(configFile, " %d", pasien->perut.obat[j].id);
+        while (perutSize--){
+            fprintf(configFile, " %d", pasien->perut.obat[pasien->perut.top].id);
+            popStack(&(pasien->perut));
         }
         fprintf(configFile, "%c\n", 13);
     }

@@ -118,12 +118,20 @@ void readConfig(const char* path){
 
         int temp=scanNumber(configFile); // Membaca id Obat
 
+        Stack tempStack;
+        createStack(&tempStack);
         while(temp!=-1){
-            Obat obat={temp, ""}; // Inisialisasi obat
+            Obat* obat = getObatById(temp); // Inisialisasi obat
 
-            pushStack(&(pasienPerut->perut), obat); // Push obat ke perut pasien
-
+            pushStack(&tempStack, *obat); // Push obat ke perut pasien
+            
             temp=scanNumber(configFile); // Membaca id obat
+        }
+        int sizeStack=stackSize(&tempStack);
+
+        while (sizeStack--){
+            Obat obat=popStack(&tempStack);
+            pushStack(&(pasienPerut->perut), obat);
         }
     }
 
