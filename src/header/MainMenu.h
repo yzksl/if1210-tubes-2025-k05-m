@@ -15,6 +15,7 @@
 #include "AntrianSaya.h"
 #include "Login.h"
 #include "Logout.h"
+#include "DaftarCheckup.h"
 #include "Register.h"
 #include "LupaPassword.h"
 #include "MinumObat.h"
