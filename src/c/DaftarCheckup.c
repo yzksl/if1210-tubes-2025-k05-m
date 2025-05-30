@@ -132,6 +132,8 @@ void daftarCheckup(GenericData* globalCurrentUserGD) {
             printf("Anda terdaftar pada antrian Dr. %s di ruangan %c%d.\n", name[idx - 1], (char)(rowtemp[idx - 1] + 65), (coltemp[idx - 1] + 1));
             printf("Anda dapat langsung masuk ke dalam ruangan\n");
 
+            printf("\n");
+
         } else {
             LinkedListNode* pasien = createLLNode(((Patient*)globalCurrentUserGD->data)->id, ((Patient*)globalCurrentUserGD->data)->username);
 
@@ -140,10 +142,14 @@ void daftarCheckup(GenericData* globalCurrentUserGD) {
             printf("Pendaftaran check-up berhasil!\n");
             printf("Anda terdaftar pada antrian Dr. %s di ruangan %c%d.\n", name[idx - 1], (char)(rowtemp[idx - 1] + 65), (coltemp[idx - 1] + 1));
             printf("Posisi antrian anda: %d\n", globalDenahRumahSakit.Ruangan[rowtemp[idx - 1]][coltemp[idx - 1]].idAntrian.size);
+
+            printf("\n");
         }
 
     } else {
         printf("Anda sudah terdaftar dalam antrian check-up!\n"); 
         printf("Silakan selesaikan check-up yang sudah terdaftar terlebih dahulu.\n");
+
+        printf("\n");
     }
 }
