@@ -10,6 +10,7 @@
 #include "header/ReadConfig.h"
 #include "header/ReadCSV.h"
 #include "header/PrintArt.h"
+#include "header/DenahDinamis.h"
 /* di run dengan makefile */ 
 /* ./test file */
 

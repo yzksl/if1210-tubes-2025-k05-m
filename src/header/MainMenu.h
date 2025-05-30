@@ -20,8 +20,9 @@
 #include "MinumObat.h"
 #include "LihatUser.h"
 #include "Penawar.h"
-#include "TambahDokter.h"
+// #include "TambahDokter.h"
 #include "LihatUser.h"
+#include "DenahDinamis.h"
 
 void mainMenu(); // Prosedur untuk membuka Main Menu dengan ketentuan role user
 
