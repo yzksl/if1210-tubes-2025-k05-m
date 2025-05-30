@@ -10,6 +10,8 @@
 #include "Boolean.h"
 
 // Deklarasi fungsi utama F13
-void F13_PULANGDOK();
+void pulangDok();
+
+void resetPasienData(Patient* pasien);
 
 #endif
