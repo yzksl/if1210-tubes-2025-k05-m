@@ -12,4 +12,8 @@ int countBanyakPasienInventory(int arr[]);
 
 int countBanyakPasienPerut(int arr[]);
 
+Queue* getQueueFromDoctorId(int id);
+
+Queue* getQueueFromPatientId(int id);
+
 #endif
