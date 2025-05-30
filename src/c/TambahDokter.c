@@ -6,19 +6,19 @@
 
 void tambahDokter(){
 
-    char username[STR_MAX_SIZE];
-    char password[STR_MAX_SIZE];
+    char usernameNew[STR_MAX_SIZE];
+    char passwordNew[STR_MAX_SIZE];
 
     printf("Username: ");
-    scanf("%s", username);
+    scanf("%s", usernameNew);
     printf("Password: ");
-    scanf("%s", password);
+    scanf("%s", passwordNew);
 
     char usernameLower[STR_MAX_SIZE];
-    toLowerString(usernameLower, username);
+    toLowerString(usernameNew, usernameLower);
 
        if (idxIsValInSet(&globalUsernames, usernameLower) != -1) {
-        printf("\nSudah ada dokter bernama %s!\n", username);
+        printf("\nSudah ada dokter bernama %s!\n", usernameLower);
         return;
     } 
 
@@ -46,7 +46,7 @@ void tambahDokter(){
     int newId = maxId + 1;
 
     // Buat data dokter baru
-    Doctor* newDoctor = createDoctorWithData(newId, username, password, username, "");
+    Doctor* newDoctor = createDoctorWithData(newId, usernameNew, passwordNew, usernameNew, "");
     if (newDoctor == NULL) {
         printf("ALOKASI MEMORI GAGAL\n");
         return;
@@ -70,7 +70,7 @@ void tambahDokter(){
     }
     addToSet(&globalUsernames, usernameLower);
 
-    printf("\nDokter %s berhasil ditambahkan!\n", username);
+    printf("\nDokter %s berhasil ditambahkan!\n", usernameNew);
 }
   
 
