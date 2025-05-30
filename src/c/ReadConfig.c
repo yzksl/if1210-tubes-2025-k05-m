@@ -93,6 +93,9 @@ void readConfig(const char* path){
 
         Patient* pasienObat=getAccountAddress(id); // Mendapatkan pointer akun pasien
 
+        pasienObat->sudahDiObatin=true;
+        pasienObat->sudahDiDiagnosis=true;
+
         int temp=scanNumber(configFile); // Membaca id Obat
 
         while(temp!=-1){
@@ -116,6 +119,9 @@ void readConfig(const char* path){
 
         Patient* pasienPerut=getAccountAddress(id); // Mendapatkan pointer akun pasien
 
+        pasienPerut->sudahDiObatin=true;
+        pasienPerut->sudahDiDiagnosis=true;
+
         int temp=scanNumber(configFile); // Membaca id Obat
 
         Stack tempStack;
@@ -124,7 +130,7 @@ void readConfig(const char* path){
             Obat* obat = getObatById(temp); // Inisialisasi obat
 
             pushStack(&tempStack, *obat); // Push obat ke perut pasien
-            
+
             temp=scanNumber(configFile); // Membaca id obat
         }
         int sizeStack=stackSize(&tempStack);
