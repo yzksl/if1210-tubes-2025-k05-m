@@ -40,6 +40,12 @@ void ngobatin(Queue* antrianPasien) {
         return;
     }
  
+    // Pastikan pasien tidak berulang-ulang diobatin
+    if (pasien->sudahDiObatin == true) {
+        printf("Pasien sudah diobatin!\n");
+        return;
+    }
+ 
     // Cari ID penyakit dari database penyakit
     int idPenyakit = -1;
     for (int i = 0; i < globalPenyakitDatabase.nEff; i++) {
@@ -89,5 +95,6 @@ void ngobatin(Queue* antrianPasien) {
     if (!found) {
         printf("Tidak ada daftar obat untuk penyakit ini.\n");
     }
+    pasien->sudahDiObatin = true;
 }
  
