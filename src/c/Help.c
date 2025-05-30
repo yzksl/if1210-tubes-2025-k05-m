@@ -32,7 +32,7 @@ void helpDokter(){
         "2) LIHAT_DENAH : Memunculkan denah rumah sakit\n"
         "3) LIHAT_RUANGAN XX : Memunculkan detail ruangan XX (XX: kode ruangan)\n"
         "4) DIAGNOSIS : Mendiagnosis pasien yang berada di depan antrian\n"
-        "5) NGOBATIN : Mengobati pasien yanng berada di depan antrian\n"
+        "5) NGOBATIN : Mengobati pasien yang berada di depan antrian\n"
         "6) LOGOUT : Keluar dari akun yang sedang digunakan\n"
         "7) EXIT : Keluar dari program\n\n"
         "Footnote:\n"
