@@ -8,8 +8,8 @@
 #include "Boolean.h"
 #include "DynamicList.h"
 
-void tambahdokter();
+void tambahDokter();
 
-void assigndokter();
+void assignDokter();
 
 #endif
