@@ -243,11 +243,11 @@ void lihatDokter(ListDin globalUserDatabase) {
         }
     }
 
-    printf("ID | Nama       \n");
-    printf("----------------\n");
+    printf("ID   | Nama       \n");
+    printf("------------------\n");
 
     for(int i = 0; i < tabelEff; i++) {
-        printf("%-2d | %-10s \n", printed[i].ID, printed[i].nama);
+        printf("%-4d | %-10s \n", printed[i].ID, printed[i].nama);
     }
 
     printf("\n");
