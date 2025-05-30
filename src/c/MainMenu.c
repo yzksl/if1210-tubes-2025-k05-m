@@ -70,6 +70,9 @@ void menuManager(){
         else if (strcmp(input, "LIHAT_DENAH")==0) lihatDenah();
         else if (strcmp(input, "LIHAT_RUANGAN")==0) lihatRuangan(-1, -1);
         else if (strcmp(input, "LIHAT_SEMUA_ANTRIAN")==0) lihatSemuaAntrian();
+        else if (strcmp(input, "CARI_USER")==0) cariUser(globalUserDatabase);
+        else if (strcmp(input, "CARI_DOKTER")==0) cariDokter(globalUserDatabase);
+        else if (strcmp(input, "CARI_PASIEN")==0) cariPasien(globalUserDatabase);
         else if (strcmp(input, "LOGIN")==0) login();
         else if (strcmp(input, "LOGOUT")==0){
             logout();
