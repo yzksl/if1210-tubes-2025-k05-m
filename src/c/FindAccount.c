@@ -57,3 +57,19 @@ int countBanyakPasienPerut(int arr[]){
     }
     return count;
 }
+
+Queue* getQueueFromDoctorId(int id){
+    for(int row=0; row<globalDenahRumahSakit.nRow; row++) for (int column=0; column<globalDenahRumahSakit.nColumn; column++) if(id==globalDenahRumahSakit.Ruangan[row][column].idDokter) return &(globalDenahRumahSakit.Ruangan[row][column].idAntrian);
+}
+
+Queue* getQueueFromPatientId(int id){
+    for(int row=0; row<globalDenahRumahSakit.nRow; row++) for (int column=0; column<globalDenahRumahSakit.nColumn; column++){
+        int sizeQueue=globalDenahRumahSakit.Ruangan[row][column].idAntrian.size;
+        LinkedListNode* forTraverse = globalDenahRumahSakit.Ruangan[row][column].idAntrian.front;
+        while(sizeQueue--){
+            if(id==forTraverse->id) return &(globalDenahRumahSakit.Ruangan[row][column].idAntrian);
+            forTraverse = forTraverse->next;
+        }
+        
+    }
+}
