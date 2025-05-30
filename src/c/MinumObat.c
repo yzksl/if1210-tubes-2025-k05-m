@@ -37,21 +37,22 @@ void minumObat(){
         printf("%d. %s\n", jlhObat+1, o.name);
         jlhObat++;
     }
-    printf("jlhobat %d\n", jlhObat);
     
     if(jlhObat == 0){
         printf("Belum ada obat dalam inventory Anda. Tolong minta obat dengan command NGOBATIN!!!\n");
         return;
     }
     int pilihan;
-    printf("\nPilih Obat untuk diminum: ");
-    scanf("%d", &pilihan);
-    
-    printf("berarti pilihan %d", pilihan);
-    if(pilihan<1 || pilihan >jlhObat){
-        printf("\nPilihan nomor tidak tersedia!\n");
-        return;
+    while(pilihan<1 || pilihan > jlhObat){
+        printf("\nPilih Obat untuk diminum: ");
+        scanf("%d", &pilihan);
+        
+        if(pilihan<1 || pilihan >jlhObat){
+            printf("\nPilihan nomor tidak tersedia!\n");
+        }
+
     }
+    
     
     Obat iniObat;
     for (int i = 0; i < globalObatDatabase.nEff; ++i) {
@@ -62,21 +63,8 @@ void minumObat(){
 
     pushStack(&(globalCurrentPatient->perut), iniObat);
     globalCurrentPatient->inventory[pilihan - 1] = UNDEF_INT_DATA; //dihapus dari list inventory
-    printf("udah disini, %s\n", iniObat.name);
     
-    goToLeft();
-    printf("]");
-    printf("[%d", globalCurrentPatient->inventory[0]);
-    for (int i = 1; i < INVENTORY_SIZE; ++i) {
-        printf(",%d", globalCurrentPatient->inventory[i]);
-    }
-
+    goToLeft(); // meratakirikan printer list obat
     printf("\nGLEKGLEKGLEK... %s berhasil diminum!!!\n", iniObat.name);
-
-    printf("perutnya jadinya\n[");
-    for (int i = 0; i <= globalCurrentPatient->perut.top; ++i) {
-        printf("%d: %s, ", globalCurrentPatient->perut.obat[i].id, globalCurrentPatient->perut.obat[i].name);
-    }
-    printf("]\n\n");
 }
 

@@ -3,7 +3,7 @@
 
 char toLower(char character);
 
-void toLowerString(char string[], char loweString[]);
+void toLowerString(char string[], char lowerString[]);
 
 int isDigit(char character);
 

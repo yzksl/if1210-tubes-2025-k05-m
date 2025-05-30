@@ -39,6 +39,7 @@ void saveCSV() {
         createDir(path);
     }
 
+    writeConfig(path);
     // write to all csv
     for (int i = 0; filenameList[i] != NULL; ++i) {
         writeToCSV(path, filenameList[i]);

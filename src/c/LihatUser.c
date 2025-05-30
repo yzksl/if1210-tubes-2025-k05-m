@@ -2,10 +2,11 @@
 #include <string.h>
 
 #include "DynamicList.h"
-#include "LihatUser.h"
+#include "../header/LihatUser.h"
+#include "../header/GlobalVariable.h"
 
 
-void lihatUser(ListDin userDatabase) {
+void lihatUser(ListDin globalUserDatabase) {
 /*  I.S. userDatabase terdefinisi dan terisi */
 /*  F.S. menampilkan data dokter dan pasien yang meliputi ID, nama, role, dan penyakit dalam tabel */
     int urt, srt;
@@ -16,16 +17,20 @@ void lihatUser(ListDin userDatabase) {
     printf(">>> Pilihan: ");
     scanf("%d", &urt);
 
+    printf("\n");
+
     printf("Urutan sort?\n");
     printf("1. ASC (A-Z)\n");
     printf("2. DESC (Z-A)\n");
     printf(">>> Pilihan: ");
     scanf("%d", &srt);
 
+    printf("\n");
+
     int tabelEff = 0;
 
-    for(int i = 0; i < userDatabase.nEff; i++) {
-        GenericData* save = userDatabase.buffer[i];
+    for(int i = 0; i < globalUserDatabase.nEff; i++) {
+        GenericData* save = globalUserDatabase.buffer[i];
 
         if(save->type == DATA_TYPE_PATIENT) {
             tabelEff++;
@@ -37,27 +42,42 @@ void lihatUser(ListDin userDatabase) {
 
     tabel printed[tabelEff];
 
-    for(int i = 0; i < userDatabase.nEff; i++) {
-        GenericData* save = userDatabase.buffer[i];
+    int idxPrinted = 0;
+
+    for(int i = 0; i < globalUserDatabase.nEff; i++) {
+        GenericData* save = globalUserDatabase.buffer[i];
 
         if(save->type == DATA_TYPE_PATIENT) {
             Patient* p = (Patient*)(save->data);
 
-            printed[i].ID = p->id;
+            printed[idxPrinted].ID = p->id;
 
-            strcpy(printed[i].role, "Pasien");
-            strcpy(printed[i].nama, p->username);
-            strcpy(printed[i].penyakit, p->riwayatPenyakit);
-
+            strcpy(printed[idxPrinted].role, "Pasien");
+            strcpy(printed[idxPrinted].nama, p->username);
             
+            int count = 0;
+            
+            while(p->riwayatPenyakit[count] == '\0' && count < STR_MAX_SIZE) {
+                count++;
+            }
+            
+            if(count != STR_MAX_SIZE) {
+                strcpy(printed[idxPrinted].penyakit, p->riwayatPenyakit);
+            } else {
+                strcpy(printed[idxPrinted].penyakit, "(Belum diperiksa dokter)");
+            }
+            idxPrinted++;
+
         }else if(save->type == DATA_TYPE_DOCTOR) {
             Doctor* d = (Doctor*)(save->data);
 
-            printed[i].ID = d->id;
+            printed[idxPrinted].ID = d->id;
 
-            strcpy(printed[i].nama, d->name);
-            strcpy(printed[i].penyakit, "-");
-            strcpy(printed[i].role, "Dokter");
+            strcpy(printed[idxPrinted].nama, d->username);
+            strcpy(printed[idxPrinted].penyakit, "-");
+            strcpy(printed[idxPrinted].role, "Dokter");
+
+            idxPrinted++;
         }
     }
 
@@ -111,16 +131,18 @@ void lihatUser(ListDin userDatabase) {
         }
     }
 
-    printf("ID | Nama     | Role     | Penyakit  \n");
-    printf("-------------------------------------\n");
+    printf("ID   | Nama       | Role     | Penyakit    \n");
+    printf("-------------------------------------------\n");
 
     for(int i = 0; i < tabelEff; i++) {
-        printf("%-2d | %-8s | %-8s | %-10s \n", printed[i].ID, printed[i].nama, printed[i].role, printed[i].penyakit);
+        printf("%-4d | %-10s | %-8s | %-12s \n", printed[i].ID, printed[i].nama, printed[i].role, printed[i].penyakit);
     }
+
+    printf("\n");
 }
  
 
-void lihatDokter(ListDin userDatabase) {
+void lihatDokter(ListDin globalUserDatabase) {
 /*  I.S. userDatabase terdefinisi dan terisi */
 /*  F.S. menampilkan data seluruh dokter pada database yang meliputi ID dan nama dalam tabel  */
     int urt, srt;
@@ -131,16 +153,20 @@ void lihatDokter(ListDin userDatabase) {
     printf(">>> Pilihan: ");
     scanf("%d", &urt);
 
+    printf("\n");
+
     printf("Urutan sort?\n");
     printf("1. ASC (A-Z)\n");
     printf("2. DESC (Z-A)\n");
     printf(">>> Pilihan: ");
     scanf("%d", &srt);
 
+    printf("\n");
+
     int tabelEff = 0;
 
-    for(int i = 0; i < userDatabase.nEff; i++) {
-        GenericData* save = userDatabase.buffer[i];
+    for(int i = 0; i < globalUserDatabase.nEff; i++) {
+        GenericData* save = globalUserDatabase.buffer[i];
 
         if(save->type == DATA_TYPE_DOCTOR) {
             tabelEff++;
@@ -149,17 +175,21 @@ void lihatDokter(ListDin userDatabase) {
 
     tabel printed[tabelEff];
 
-    for(int i = 0; i < userDatabase.nEff; i++) {
-        GenericData* save = userDatabase.buffer[i];
+    int idxPrinted = 0;
+
+    for(int i = 0; i < globalUserDatabase.nEff; i++) {
+        GenericData* save = globalUserDatabase.buffer[i];
         
         if(save->type == DATA_TYPE_DOCTOR) {
             Doctor* d = (Doctor*)(save->data);
 
-            printed[i].ID = d->id;
+            printed[idxPrinted].ID = d->id;
 
-            strcpy(printed[i].nama, d->name);
-            strcpy(printed[i].penyakit, "-");
-            strcpy(printed[i].role, "Dokter");
+            strcpy(printed[idxPrinted].nama, d->username);
+            strcpy(printed[idxPrinted].penyakit, "-");
+            strcpy(printed[idxPrinted].role, "Dokter");
+
+            idxPrinted++;
         }
     }
 
@@ -213,15 +243,17 @@ void lihatDokter(ListDin userDatabase) {
         }
     }
 
-    printf("ID | Nama     \n");
-    printf("--------------\n");
+    printf("ID | Nama       \n");
+    printf("----------------\n");
 
     for(int i = 0; i < tabelEff; i++) {
-        printf("%-2d | %-8s \n", printed[i].ID, printed[i].nama);
+        printf("%-2d | %-10s \n", printed[i].ID, printed[i].nama);
     }
+
+    printf("\n");
 }
 
-void lihatPasien(ListDin userDatabase) {
+void lihatPasien(ListDin globalUserDatabase) {
 /*  I.S. userDatabase terdefinisi dan terisi */
 /*  F.S. menampilkan data seluruh pasien pada database yang meliputi ID, nama dan penyakit dalam tabel */
     int urt, srt;
@@ -232,16 +264,20 @@ void lihatPasien(ListDin userDatabase) {
     printf(">>> Pilihan: ");
     scanf("%d", &urt);
 
+    printf("\n");
+
     printf("Urutan sort?\n");
     printf("1. ASC (A-Z)\n");
     printf("2. DESC (Z-A)\n");
     printf(">>> Pilihan: ");
     scanf("%d", &srt);
 
+    printf("\n");
+
     int tabelEff = 0;
 
-    for(int i = 0; i < userDatabase.nEff; i++) {
-        GenericData* save = userDatabase.buffer[i];
+    for(int i = 0; i < globalUserDatabase.nEff; i++) {
+        GenericData* save = globalUserDatabase.buffer[i];
 
         if(save->type == DATA_TYPE_PATIENT) {
             tabelEff++;   
@@ -250,17 +286,21 @@ void lihatPasien(ListDin userDatabase) {
 
     tabel printed[tabelEff];
 
-    for(int i = 0; i < userDatabase.nEff; i++) {
-        GenericData* save = userDatabase.buffer[i];
+    int idxPrinted = 0;
+
+    for(int i = 0; i < globalUserDatabase.nEff; i++) {
+        GenericData* save = globalUserDatabase.buffer[i];
 
         if(save->type == DATA_TYPE_PATIENT) {
             Patient* p = (Patient*)(save->data);
 
-            printed[i].ID = p->id;
+            printed[idxPrinted].ID = p->id;
 
-            strcpy(printed[i].role, "Pasien");
-            strcpy(printed[i].nama, p->username);
-            strcpy(printed[i].penyakit, p->riwayatPenyakit);   
+            strcpy(printed[idxPrinted].role, "Pasien");
+            strcpy(printed[idxPrinted].nama, p->username);
+            strcpy(printed[idxPrinted].penyakit, p->riwayatPenyakit);   
+
+            idxPrinted++;
         }
     }
 
@@ -314,10 +354,12 @@ void lihatPasien(ListDin userDatabase) {
         }
     }
 
-    printf("ID | Nama     | Penyakit  \n");
-    printf("--------------------------\n");
+    printf("ID   | Nama       | Penyakit    \n");
+    printf("--------------------------------\n");
 
     for(int i = 0; i < tabelEff; i++) {
-        printf("%-2d | %-8s | %-10s \n", printed[i].ID, printed[i].nama, printed[i].penyakit);
+        printf("%-4d | %-10s | %-12s \n", printed[i].ID, printed[i].nama, printed[i].penyakit);
     }
+
+    printf("\n");
 }

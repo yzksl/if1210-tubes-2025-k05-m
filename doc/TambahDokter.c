@@ -1,0 +1,172 @@
+#include "../header/TambahDokter.h"
+#include "StructsInHospital.h"
+#include "GlobalVariable.h"
+#include "DynamicList.h"
+#include "CTypePalsu.h"
+
+void tambahDokter(){
+
+    char username[STR_MAX_SIZE];
+    char password[STR_MAX_SIZE];
+
+    printf("Username: ");
+    scanf("%s", username);
+    printf("Password: ");
+    scanf("%s", password);
+
+    char usernameLower[STR_MAX_SIZE];
+    toLowerString(usernameLower, username);
+
+       if (idxIsValInSet(&globalUsernames, usernameLower) != -1) {
+        printf("\nSudah ada dokter bernama %s!\n", username);
+        return;
+    } 
+
+    // Cari ID terbesar dan tambah 1
+    int maxId = 0;
+    for (int i = 0; i < globalUserDatabase.nEff; i++) {
+        GenericData* gd = globalUserDatabase.buffer[i];
+        Doctor* d = getDoctorInGD(gd);
+        if (d->id > maxId) {
+            maxId = d->id;
+        }
+    }
+    int newId = maxId + 1;
+
+    // Buat data pasien baru
+      Doctor* newDoctor = createDoctor();
+    if (newDoctor == NULL) {
+        printf("ALOKASI MEMORI GAGAL\n");
+        return;
+    }
+
+    newDoctor->id = newId;
+    strcpy(newDoctor->username, username);
+    strcpy(newDoctor->password, password);
+    newDoctor->type = DATA_TYPE_DOCTOR;
+    
+
+    GenericData* newGD = createGD((void*)newDoctor, DATA_TYPE_PATIENT);
+    if (newGD == NULL) {
+        printf("GAGAL REALOKASI MEMORI\n");
+        free(newDoctor);
+        return;
+    }
+
+    insertLastLD(&globalUserDatabase, newGD);
+
+    // Tambah username ke dalam Set (dalam bentuk lowercase)
+    if (isSetFull(&globalUsernames)) {
+        expandSet(&globalUsernames, 1);
+    }
+    addToSet(&globalUsernames, usernameLower);
+
+    printf("\nDokter %s berhasil ditambahkan!\n", username);
+}
+  
+
+
+void assignDokter(){
+    char username[50];
+    char ruangan[256];
+    printf("Username: ");
+    scanf("%s", username);
+    printf("\n");
+
+    // Cari idDokter di globalUserDatabase berdasarkan username
+    int idDokter = -1;
+    Doctor* dokterPtr = NULL;
+    for (int i = 0; i < globalUserDatabase.nEff; i++) {
+        GenericData *gd = getGDbyIdx(&globalUserDatabase, i);
+        if (gd->type == DATA_TYPE_DOCTOR) {
+            Doctor* d = (Doctor*) gd->data;
+            if (strcmp(d->username, username) == 0) {
+                idDokter = gd->type;
+                dokterPtr = d;
+                break;
+            }
+        }
+    }
+
+    if (idDokter == -1) {
+        printf("Dokter dengan username %s tidak ditemukan.\n", username);
+        return;
+    }
+
+    printf("Ruangan: ");
+    scanf("%s", ruangan);
+    printf("\n");
+
+    // Konversi ruangan string (misal A2) ke index baris dan kolom
+    int row = ruangan[0] - 'A';
+    int col = atoi(ruangan + 1) - 1;
+
+    if (row < 0 || row >= globalDenahRumahSakit.nRow || col < 0 || col >= globalDenahRumahSakit.nColumn) {
+        printf("Ruangan %s tidak valid.\n", ruangan);
+        return;
+    }
+
+    // Cek apakah dokter sudah menempati ruangan
+    boolean dokterSudahDiassign = false;
+    int rowAssigned = -1, colAssigned = -1;
+    for (int i = 0; i < globalDenahRumahSakit.nRow; i++) {
+        for (int j = 0; j < globalDenahRumahSakit.nColumn; j++) {
+            if (globalDenahRumahSakit.Ruangan[i][j].idDokter == idDokter) {
+                dokterSudahDiassign = true;
+                rowAssigned = i;
+                colAssigned = j;
+                break;
+            }
+        }
+        if (dokterSudahDiassign) break;
+    }
+
+    // Cek apakah ruangan target kosong
+    int idDokterDiTarget = globalDenahRumahSakit.Ruangan[row][col].idDokter;
+
+    if (!dokterSudahDiassign && idDokterDiTarget == -1) {
+        // Kasus 1
+        globalDenahRumahSakit.Ruangan[row][col].idDokter = idDokter;
+        printf("Dokter %s berhasil diassign ke ruangan %s!\n", dokterPtr->username, ruangan);
+    } else if (dokterSudahDiassign && idDokterDiTarget == -1) {
+        // Kasus 2
+        printf("Dokter %s sudah diassign ke ruangan %c%d!\n",
+               dokterPtr->username,
+               'A' + rowAssigned, colAssigned + 1);
+    } else if (!dokterSudahDiassign && idDokterDiTarget != -1) {
+        // Kasus 3
+        // Cari username dokter yang sudah menempati ruangan
+        char namaDokterDiRuangan[50] = "DokterLain";
+        for (int i = 0; i < globalUserDatabase.nEff; i++) {
+            GenericData *gd = getGDbyIdx(&globalUserDatabase, i);
+            if (gd->type == DATA_TYPE_DOCTOR) {
+                Doctor* d = (Doctor*) gd->data;
+                if (gd->type == idDokterDiTarget) {
+                    strcpy(namaDokterDiRuangan, d->username);
+                    break;
+                }
+            }
+        }
+        printf("Dokter %s sudah menempati ruangan %s!\n", namaDokterDiRuangan, ruangan);
+        printf("Silakan cari ruangan lain untuk dokter %s.\n", dokterPtr->username);
+    } else {
+        // Kasus 4
+        // Cari username dokter yang sudah menempati ruangan
+        char namaDokterDiRuangan[50] = "DokterLain";
+        for (int i = 0; i < globalUserDatabase.nEff; i++) {
+            GenericData *gd = getGDbyIdx(&globalUserDatabase, i);
+            if (gd->type == DATA_TYPE_DOCTOR) {
+                Doctor* d = (Doctor*) gd->data;
+                if ((gd->type) == idDokterDiTarget) {
+                    strcpy(namaDokterDiRuangan, d->username);
+                    break;
+                }
+            }
+        }
+        printf("Dokter %s sudah menempati ruangan %c%d!\n", dokterPtr->username, 'A' + rowAssigned, colAssigned + 1);
+        printf("Ruangan %s juga sudah ditempati dokter %s!\n", ruangan, namaDokterDiRuangan);
+    }
+}
+
+
+
