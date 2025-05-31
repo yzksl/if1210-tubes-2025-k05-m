@@ -112,14 +112,16 @@ void cariUser(ListDin globalUserDatabase) {
 
         if(idx != -1) {
             printf("Menampilkan pengguna dengan nomor ID %d...\n", search);
-            printf("ID   | Nama       | Role     | Penyakit    \n");
-            printf("-------------------------------------------\n");
+            printf("+------+--------------+----------+---------------------------+\n");
+            printf("| ID   | Nama         | Role     | Penyakit                  |\n");
+            printf("+------+--------------+----------+---------------------------+\n");
 
-            printf("%-4d | %-10s | %-8s | %-12s \n", printed[idx].ID, printed[idx].nama, printed[idx].role, printed[idx].penyakit);
+            printf("| %-4d | %-12s | %-8s | %-25s |\n", printed[idx].ID, printed[idx].nama, printed[idx].role, printed[idx].penyakit);
+        
+            printf("+------+--------------+----------+---------------------------+\n");
         } else {        
             printf("Tidak ditemukan pengguna dengan nomor ID %d!\n", search);
         }
-
         printf("\n");
 
     } else if(src == 2) {
@@ -131,6 +133,8 @@ void cariUser(ListDin globalUserDatabase) {
 
         scanf("%s", &search);
 
+        printf("\n");
+
         for(int i = 0; i < tabelEff; i++) {
             if(strcmp(printed[i].nama, search) == 0) {
                 idx = i;
@@ -140,15 +144,16 @@ void cariUser(ListDin globalUserDatabase) {
 
         if(count == 1) {
             printf("Menampilkan pengguna dengan nama %s...\n", search);
-            printf("ID   | Nama       | Role     | Penyakit    \n");
-            printf("-------------------------------------------\n");
+            printf("+------+--------------+----------+---------------------------+\n");
+            printf("| ID   | Nama         | Role     | Penyakit                  |\n");
+            printf("+------+--------------+----------+---------------------------+\n");
 
-            printf("%-4d | %-10s | %-8s | %-12s \n", printed[idx].ID, printed[idx].nama, printed[idx].role, printed[idx].penyakit);
+            printf("| %-4d | %-12s | %-8s | %-25s |\n", printed[idx].ID, printed[idx].nama, printed[idx].role, printed[idx].penyakit);
 
+            printf("+------+--------------+----------+---------------------------+\n");
         } else {
             printf("Tidak ditemukan pengguna dengan nama %s!\n", search);
         }
-
         printf("\n");
     }
 }
@@ -239,14 +244,16 @@ void cariDokter(ListDin globalUserDatabase) {
 
         if(idx != -1) {
             printf("Menampilkan dokter dengan nomor ID %d...\n", search);
-            printf("ID   | Nama       \n");
-            printf("------------------\n");
+            printf("+------+--------------+\n");
+            printf("| ID   | Nama         |\n");
+            printf("+------+--------------+\n");
 
-            printf("%-4d | %-10s \n", printed[idx].ID, printed[idx].nama);
+            printf("| %-4d | %-12s |\n", printed[idx].ID, printed[idx].nama);
+
+            printf("+------+--------------+\n");
         } else {        
             printf("Tidak ditemukan dokter dengan nomor ID %d!\n", search);
         }
-
         printf("\n");
 
     } else if(src == 2) {
@@ -258,6 +265,8 @@ void cariDokter(ListDin globalUserDatabase) {
 
         scanf("%s", &search);
 
+        printf("\n");
+
         for(int i = 0; i < tabelEff; i++) {
             if(strcmp(printed[i].nama, search) == 0) {
                 idx = i;
@@ -267,15 +276,16 @@ void cariDokter(ListDin globalUserDatabase) {
 
         if(count == 1) {
             printf("Menampilkan dokter dengan nama %s...\n", search);
-            printf("ID   | Nama       \n");
-            printf("------------------\n");
+            printf("+------+--------------+\n");
+            printf("| ID   | Nama         |\n");
+            printf("+------+--------------+\n");
 
-            printf("%-4d | %-10s  \n", printed[idx].ID, printed[idx].nama);
+            printf("| %-4d | %-12s |\n", printed[idx].ID, printed[idx].nama);
 
+            printf("+------+--------------+\n");
         } else {
             printf("Tidak ditemukan dokter dengan nama %s!\n", search);
         }
-
         printf("\n");
     }
 }
@@ -377,14 +387,16 @@ void cariPasien(ListDin globalUserDatabase) {
 
         if(idx != -1) {
             printf("Menampilkan pasien dengan nomor ID %d...\n", search);
-            printf("ID   | Nama       | Penyakit    \n");
-            printf("--------------------------------\n");
+            printf("+------+--------------+---------------------------+\n");
+            printf("| ID   | Nama         | Penyakit                  |\n");
+            printf("+------+--------------+---------------------------+\n");
 
-            printf("%-4d | %-10s | %-8s | %-12s \n", printed[idx].ID, printed[idx].nama, printed[idx].role, printed[idx].penyakit);
+            printf("| %-4d | %-12s | %-25s |\n", printed[idx].ID, printed[idx].nama, printed[idx].penyakit);
+        
+            printf("+------+--------------+---------------------------+\n");
         } else {        
             printf("Tidak ditemukan pasien dengan nomor ID %d!\n", search);
         }
-
         printf("\n");
 
     } else if(src == 2) {
@@ -407,15 +419,16 @@ void cariPasien(ListDin globalUserDatabase) {
 
         if(count == 1) {
             printf("Menampilkan pasien dengan nama %s...\n", search);
-            printf("ID   | Nama       | Penyakit    \n");
-            printf("--------------------------------\n");
+            printf("+------+--------------+---------------------------+\n");
+            printf("| ID   | Nama         | Penyakit                  |\n");
+            printf("+------+--------------+---------------------------+\n");
 
-            printf("%-4d | %-10s | %-12s \n", printed[idx].ID, printed[idx].nama, printed[idx].penyakit);
+            printf("| %-4d | %-12s | %-25s |\n", printed[idx].ID, printed[idx].nama, printed[idx].penyakit);
 
+            printf("+------+--------------+---------------------------+\n");
         } else {
             printf("Tidak ditemukan pasien dengan nama %s!\n", search);
         }
-
         printf("\n");
 
     } else if(src == 3) {
@@ -527,25 +540,28 @@ void cariPasien(ListDin globalUserDatabase) {
                 }
             }
 
-            printf("Menampilkan pasien dengan penyakit %s...", search);
-            printf("ID   | Nama       | Penyakit    \n");
-            printf("--------------------------------\n");
+            printf("Menampilkan pasien dengan penyakit %s...\n", search);
+            printf("+------+--------------+---------------------------+\n");
+            printf("| ID   | Nama         | Penyakit                  |\n");
+            printf("+------+--------------+---------------------------+\n");
 
             for(int i = 0; i < count; i++) {
-                printf("%-4d | %-10s | %-12s \n", arr[i].ID, arr[i].nama, arr[i].penyakit);
+                printf("| %-4d | %-12s | %-25s |\n", arr[i].ID, arr[i].nama, arr[i].penyakit);
             }
+            printf("+------+--------------+---------------------------+\n\n");
 
         } else if(count == 1) {
             printf("Menampilkan pasien dengan penyakit %s...\n", search);
-            printf("ID   | Nama       | Penyakit    \n");
-            printf("--------------------------------\n");
+            printf("+------+--------------+---------------------------+\n");
+            printf("| ID   | Nama         | Penyakit                  |\n");
+            printf("+------+--------------+---------------------------+\n");
 
-            printf("%-4d | %-10s | %-12s \n", printed[idx].ID, printed[idx].nama, printed[idx].penyakit);
+            printf("| %-4d | %-12s | %-25s |\n", printed[idx].ID, printed[idx].nama, printed[idx].penyakit);
 
+            printf("+------+--------------+---------------------------+\n");
         } else {
             printf("Tidak ditemukan pasien dengan penyakit %s!\n", search);
         }
-
         printf("\n");
     }
 }
