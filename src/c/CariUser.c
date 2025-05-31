@@ -425,7 +425,7 @@ void cariPasien(ListDin globalUserDatabase) {
 
         printf(">>> Masukkan nama penyakit: ");
 
-        scanf("%s", &search);
+        scanf(" %[^\n]", &search);
 
         printf("\n");
 
