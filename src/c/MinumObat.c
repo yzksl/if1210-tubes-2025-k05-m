@@ -49,13 +49,13 @@ void minumObat(){
                 printf("\n============ DAFTAR OBAT ============\n");
                 for(int i = 0; i<INVENTORY_SIZE && globalCurrentPatient->inventory[i] != UNDEF_INT_DATA;++i){
                     Obat o;
-                for (int j = 0; j < globalObatDatabase.nEff; ++j) {
-                    if (globalObatDatabase.contents[j].id == globalCurrentPatient->inventory[i]) {
-                        o = globalObatDatabase.contents[j];
-                        break;
+                    for (int j = 0; j < globalObatDatabase.nEff; ++j) {
+                        if (globalObatDatabase.contents[j].id == globalCurrentPatient->inventory[i]) {
+                            o = globalObatDatabase.contents[j];
+                            break;
+                            }
                         }
-                    }
-                    printf("%d. %s\n", i+1, o.name);
+                        printf("%d. %s\n", i+1, o.name);
                 }
                 //pasien pilih obat untuk diminum
                 int pilihan = UNDEF_INT_DATA;
