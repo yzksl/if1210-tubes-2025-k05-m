@@ -102,6 +102,5 @@ void pindahDokter(){
     DataTypeRuangan temp=globalDenahRumahSakit.Ruangan[rowBaru][columnBaru];
     globalDenahRumahSakit.Ruangan[rowBaru][columnBaru]=globalDenahRumahSakit.Ruangan[rowLama][columnLama];
     globalDenahRumahSakit.Ruangan[rowLama][columnLama]=temp;
-    printf("4\n");
     printf("Dr. %s berhasil dipindahkan dari ruangan %c%d ke ruangan %c%d.\n", getAccountName(globalDenahRumahSakit.Ruangan[rowBaru][columnBaru].idDokter, DATA_TYPE_DOCTOR), rowLama+'A', columnLama+1, rowBaru+'A', columnBaru+1);
 }
