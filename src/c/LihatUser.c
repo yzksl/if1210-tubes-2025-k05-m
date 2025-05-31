@@ -81,8 +81,15 @@ void lihatUser(ListDin globalUserDatabase) {
         }
     }
 
+    char urutan[10];
+    char sortin[10];
+
     if(urt == 1) {
+        strcpy(urutan, "ID");
+
         if(srt == 1) {
+            strcpy(sortin, "ascending");
+
             for(int i = 0; i < (tabelEff - 1); i++) {
                 for(int j = 0; j < (tabelEff - i - 1); j++) {
                     if(printed[j].ID > printed[j + 1].ID) {
@@ -94,6 +101,8 @@ void lihatUser(ListDin globalUserDatabase) {
                 }
             }
         } else if(srt == 2) {
+            strcpy(sortin, "descending");
+
             for(int i = 0; i < (tabelEff - 1); i++) {
                 for(int j = 0; j < (tabelEff - i - 1); j++) {
                     if(printed[j].ID < printed[j + 1].ID) {
@@ -106,7 +115,11 @@ void lihatUser(ListDin globalUserDatabase) {
             }
         }
     } else if(urt == 2){
+        strcpy(urutan, "nama");
+
         if(srt == 1) {
+            strcpy(sortin, "ascending");
+
             for(int i = 0; i < (tabelEff - 1); i++) {
                 for(int j = 0; j < (tabelEff - i - 1); j++) {
                     if(strcmp(printed[j].nama, printed[j + 1].nama) > 0) {
@@ -118,6 +131,8 @@ void lihatUser(ListDin globalUserDatabase) {
                 }
             }
         } else if(srt == 2){
+            strcpy(sortin, "descending");
+
             for(int i = 0; i < (tabelEff - 1); i++) {
                 for(int j = 0; j < (tabelEff - i - 1); j++) {
                     if(strcmp(printed[j].nama, printed[j + 1].nama) < 0) {
@@ -130,6 +145,7 @@ void lihatUser(ListDin globalUserDatabase) {
             }
         }
     }
+    printf("Menampilkan data seluruh user berdasarkan %s terurut %s...\n", urutan, sortin);
 
     printf("ID   | Nama       | Role     | Penyakit    \n");
     printf("-------------------------------------------\n");
@@ -193,8 +209,15 @@ void lihatDokter(ListDin globalUserDatabase) {
         }
     }
 
+    char urutan[10];
+    char sortin[10];
+
     if(urt == 1) {
+        strcpy(urutan, "ID");
+
         if(srt == 1) {
+            strcpy(sortin, "ascending");
+
             for(int i = 0; i < (tabelEff - 1); i++) {
                 for(int j = 0; j < (tabelEff - i - 1); j++) {
                     if(printed[j].ID > printed[j + 1].ID) {
@@ -206,6 +229,8 @@ void lihatDokter(ListDin globalUserDatabase) {
                 }
             }
         } else if(srt == 2) {
+            strcpy(sortin, "descending");
+
             for(int i = 0; i < (tabelEff - 1); i++) {
                 for(int j = 0; j < (tabelEff - i - 1); j++) {
                     if(printed[j].ID < printed[j + 1].ID) {
@@ -218,7 +243,11 @@ void lihatDokter(ListDin globalUserDatabase) {
             }
         }
     } else if(urt == 2){
+        strcpy(urutan, "nama");
+
         if(srt == 1) {
+            strcpy(sortin, "ascending");
+
             for(int i = 0; i < (tabelEff - 1); i++) {
                 for(int j = 0; j < (tabelEff - i - 1); j++) {
                     if(strcmp(printed[j].nama, printed[j + 1].nama) > 0) {
@@ -230,6 +259,8 @@ void lihatDokter(ListDin globalUserDatabase) {
                 }
             }
         } else if(srt == 2){
+            strcpy(sortin, "descending");
+            
             for(int i = 0; i < (tabelEff - 1); i++) {
                 for(int j = 0; j < (tabelEff - i - 1); j++) {
                     if(strcmp(printed[j].nama, printed[j + 1].nama) < 0) {
@@ -242,6 +273,7 @@ void lihatDokter(ListDin globalUserDatabase) {
             }
         }
     }
+    printf("Menampilkan data dokter berdasarkan %s terurut %s...\n", urutan, sortin);
 
     printf("ID   | Nama       \n");
     printf("------------------\n");
@@ -315,8 +347,15 @@ void lihatPasien(ListDin globalUserDatabase) {
         }
     }
 
+    char urutan[10];
+    char sortin[10];
+
     if(urt == 1) {
+        strcpy(urutan, "ID");
+
         if(srt == 1) {
+            strcpy(sortin, "ascending");
+
             for(int i = 0; i < (tabelEff - 1); i++) {
                 for(int j = 0; j < (tabelEff - i - 1); j++) {
                     if(printed[j].ID > printed[j + 1].ID) {
@@ -328,6 +367,8 @@ void lihatPasien(ListDin globalUserDatabase) {
                 }
             }
         } else if(srt == 2) {
+            strcpy(sortin, "descending");
+
             for(int i = 0; i < (tabelEff - 1); i++) {
                 for(int j = 0; j < (tabelEff - i - 1); j++) {
                     if(printed[j].ID < printed[j + 1].ID) {
@@ -340,7 +381,11 @@ void lihatPasien(ListDin globalUserDatabase) {
             }
         }
     } else if(urt == 2){
+        strcpy(urutan, "nama");
+
         if(srt == 1) {
+            strcpy(sortin, "ascending");
+
             for(int i = 0; i < (tabelEff - 1); i++) {
                 for(int j = 0; j < (tabelEff - i - 1); j++) {
                     if(strcmp(printed[j].nama, printed[j + 1].nama) > 0) {
@@ -352,6 +397,8 @@ void lihatPasien(ListDin globalUserDatabase) {
                 }
             }
         } else if(srt == 2){
+            strcpy(sortin, "descending");
+            
             for(int i = 0; i < (tabelEff - 1); i++) {
                 for(int j = 0; j < (tabelEff - i - 1); j++) {
                     if(strcmp(printed[j].nama, printed[j + 1].nama) < 0) {
@@ -364,6 +411,7 @@ void lihatPasien(ListDin globalUserDatabase) {
             }
         }
     }
+    printf("Menampilkan data pasien berdasarkan %s terurut %s...\n", urutan, sortin);
 
     printf("ID   | Nama       | Penyakit    \n");
     printf("--------------------------------\n");
