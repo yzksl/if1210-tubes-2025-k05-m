@@ -25,6 +25,7 @@
 #include "DenahDinamis.h"
 #include "Ngobatin.h"
 #include "BolehPulangGa.h"
+#include "MaininAntrian.h"
 
 void mainMenu(); // Prosedur untuk membuka Main Menu dengan ketentuan role user
 
