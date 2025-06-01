@@ -12,6 +12,6 @@
 // Deklarasi fungsi utama F13
 void pulangDok(Queue* antrianPasien);
 
-void resetPasienData(Patient* pasien);
+void resetPatientData();
 
 #endif
