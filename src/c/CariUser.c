@@ -472,6 +472,9 @@ void cariPasien(ListDin globalUserDatabase) {
 
             printf("\n");
 
+            char urutan[12];
+            char sortin[12];
+
             if(urt == 1) {
                 printf("Urutan sort ID?\n");
                 printf("1. ASC (A-Z)\n");
@@ -482,7 +485,10 @@ void cariPasien(ListDin globalUserDatabase) {
 
                 printf("\n");
 
+                strcpy(urutan, "ID");
+
                 if(srt == 1) {
+                    strcpy(sortin, "ascending");
                     for(int i = 0; i < (count - 1); i++) {
                         for(int j = 0; j < (count - i - 1); j++) {
                             if(arr[j].ID > arr[j + 1].ID) {
@@ -494,6 +500,7 @@ void cariPasien(ListDin globalUserDatabase) {
                         }
                     }
                 } else if(srt == 2) {
+                    strcpy(sortin, "descending");
                     for(int i = 0; i < (count - 1); i++) {
                         for(int j = 0; j < (count - i - 1); j++) {
                             if(arr[j].ID < arr[j + 1].ID) {
@@ -515,7 +522,10 @@ void cariPasien(ListDin globalUserDatabase) {
 
                 printf("\n");
 
+                strcpy(urutan, "nama");
+
                 if(srt == 1) {
+                    strcpy(sortin, "ascending");
                     for(int i = 0; i < (count - 1); i++) {
                         for(int j = 0; j < (count - i - 1); j++) {
                             if(strcmp(arr[j].nama, arr[j + 1].nama) > 0) {
@@ -527,6 +537,7 @@ void cariPasien(ListDin globalUserDatabase) {
                         }
                     }
                 } else if(srt == 2) {
+                    strcpy(sortin, "descending");
                     for(int i = 0; i < (count - 1); i++) {
                         for(int j = 0; j < (count - i - 1); j++) {
                             if(strcmp(arr[j].nama, arr[j + 1].nama) < 0) {
@@ -540,7 +551,7 @@ void cariPasien(ListDin globalUserDatabase) {
                 }
             }
 
-            printf("Menampilkan pasien dengan penyakit %s...\n", search);
+            printf("Menampilkan pasien dengan penyakit %s berdasarkan %s terurut %s...\n", search, urutan, sortin);
             printf("+------+--------------+---------------------------+\n");
             printf("| ID   | Nama         | Penyakit                  |\n");
             printf("+------+--------------+---------------------------+\n");
