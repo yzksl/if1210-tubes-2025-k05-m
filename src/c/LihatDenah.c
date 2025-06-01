@@ -2,6 +2,11 @@
 #include "../header/GlobalVariable.h"
 
 void kodeRuanganKonverter(char kodeRuangan[], int *rowRuangan, int *columnRuangan){
+    if (strlen(kodeRuangan)>3 || kodeRuangan[0]<'A' || kodeRuangan[0]>'Z'|| !isDigit(kodeRuangan[1]) || (!isDigit(kodeRuangan[2]) && strlen(kodeRuangan)==3)){
+        *rowRuangan=-1;
+        *columnRuangan=-1;
+        return;
+    }
     *rowRuangan = kodeRuangan[0] - 'A'; // mendapatakan row ruangan
     *columnRuangan = kodeRuangan[1] - '0'; // mendapatkan digit pertama column ruangan
     if (isDigit(kodeRuangan[2])) *columnRuangan = (*columnRuangan)*10 + (kodeRuangan[2]-'0'); // jika column ruangan memiliki dua digit, ini akan mendapatkan digit kedua
@@ -35,17 +40,11 @@ void lihatDenah(){
         for (int column=0; column<globalDenahRumahSakit.nColumn; column++) { //Menulis batasan antara angka-angka kolom
             printf("+-----");
         }
-        printf("+\n"); // + diakhir dan newline
+        printf("+\n\n"); // + diakhir dan newline
     }
 }
 
 void lihatRuangan(int row, int column){
-
-    for(int row=0; row<globalDenahRumahSakit.nRow; row++){
-        for(int column=0; column<globalDenahRumahSakit.nColumn; column++){
-                
-            }
-        }
 
     char kodeRuangan[256]; // inisialisasi variable untuk membaca kode ruangan
     int rowRuangan, columnRuangan; // inisialisasi variable row ruangan dan column ruangan
@@ -87,7 +86,7 @@ void lihatRuangan(int row, int column){
         }
     }
 
-    if (row==-1||column==-1) printf("------------------------------\n");
+    if (row==-1||column==-1) printf("------------------------------\n\n");
 }
 
 void lihatSemuaAntrian(){

@@ -6,8 +6,8 @@ void ubahDenah(){
     Point bisaUbahDenah={-1, -1, 1};
     scanf(" %d %d", &newRow, &newColumn);
 
-    if (newRow>26 || newColumn>26) {
-        printf("Banyak baris atau kolom tidak boleh lebih dari 26\n");
+    if (newRow>26 || newColumn>26 || newRow<1 || newColumn<1) {
+        printf("Banyak baris atau kolom tidak boleh lebih dari 26 atau kurang dari 1\n");
         return;
     }
     
@@ -90,6 +90,15 @@ void pindahDokter(){
     int rowLama, columnLama, rowBaru, columnBaru;
     kodeRuanganKonverter(ruanganLama, &rowLama, &columnLama);
     kodeRuanganKonverter(ruanganBaru, &rowBaru, &columnBaru);
+
+    if(rowLama<0 || columnLama<0 || rowLama>=globalDenahRumahSakit.nRow || columnLama>=globalDenahRumahSakit.nColumn){
+        printf("\nTidak ada ruangan dengan kode ruangan %s\n\n", ruanganLama);
+        return;
+    }
+    if(rowBaru<0 || columnBaru<0 || rowBaru>=globalDenahRumahSakit.nRow || columnBaru>=globalDenahRumahSakit.nColumn){
+        printf("\nTidak ada ruangan dengan kode ruangan %s\n\n", ruanganBaru);
+        return;
+    }     
 
     if(globalDenahRumahSakit.Ruangan[rowLama][columnLama].idDokter==0){
         printf("Pemindahan gagal. Ruangan %c%d Kosong.\n", rowLama+'A', columnLama+1);
