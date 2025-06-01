@@ -3,6 +3,7 @@
 #include "GlobalVariable.h"
 #include "DynamicList.h"
 #include "CTypePalsu.h"
+#include "LihatDenah.h"
 
 void tambahDokter(){
 
@@ -90,7 +91,7 @@ void assignDokter(){
         if (gd->type == DATA_TYPE_DOCTOR) {
             Doctor* d = (Doctor*) gd->data;
             if (strcmp(d->username, username) == 0) {
-                idDokter = gd->type;
+                idDokter = d->id;
                 dokterPtr = d;
                 break;
             }
@@ -107,8 +108,8 @@ void assignDokter(){
     printf("\n");
 
     // Konversi ruangan string (misal A2) ke index baris dan kolom
-    int row = ruangan[0] - 'A';
-    int col = atoi(ruangan + 1) - 1;
+    int row, col;
+    kodeRuanganKonverter(ruangan, &row, &col);
 
     if (row < 0 || row >= globalDenahRumahSakit.nRow || col < 0 || col >= globalDenahRumahSakit.nColumn) {
         printf("Ruangan %s tidak valid.\n", ruangan);
@@ -133,16 +134,18 @@ void assignDokter(){
     // Cek apakah ruangan target kosong
     int idDokterDiTarget = globalDenahRumahSakit.Ruangan[row][col].idDokter;
 
-    if (!dokterSudahDiassign && idDokterDiTarget == -1) {
+    if (!dokterSudahDiassign && idDokterDiTarget == 0) {
         // Kasus 1
         globalDenahRumahSakit.Ruangan[row][col].idDokter = idDokter;
         printf("Dokter %s berhasil diassign ke ruangan %s!\n", dokterPtr->username, ruangan);
-    } else if (dokterSudahDiassign && idDokterDiTarget == -1) {
-        // Kasus 2
-        printf("Dokter %s sudah diassign ke ruangan %c%d!\n",
-               dokterPtr->username,
-               'A' + rowAssigned, colAssigned + 1);
-    } else if (!dokterSudahDiassign && idDokterDiTarget != -1) {
+    } 
+    /* Kasus 2 ini sebenarnya PINDAH_DOKTER ya */
+    // else if (dokterSudahDiassign && idDokterDiTarget == -1) {
+    //     // Kasus 2
+    //     printf("Dokter %s sudah diassign ke ruangan %c%d!\n",
+    //            dokterPtr->username,
+    //            'A' + rowAssigned, colAssigned + 1); }
+    else if (!dokterSudahDiassign && idDokterDiTarget != 0) {
         // Kasus 3
         // Cari username dokter yang sudah menempati ruangan
         char namaDokterDiRuangan[50] = "DokterLain";
@@ -173,7 +176,7 @@ void assignDokter(){
             }
         }
         printf("Dokter %s sudah menempati ruangan %c%d!\n", dokterPtr->username, 'A' + rowAssigned, colAssigned + 1);
-        printf("Ruangan %s juga sudah ditempati dokter %s!\n", ruangan, namaDokterDiRuangan);
+        // printf("Ruangan %s juga sudah ditempati dokter %s!\n", ruangan, namaDokterDiRuangan);
     }
 }
 
