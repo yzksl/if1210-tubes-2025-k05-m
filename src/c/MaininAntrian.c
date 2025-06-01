@@ -19,6 +19,8 @@ void skipAntrian(){
         pasienTerakhirDalamRuangan->next=pasienSebelumYangSkip->next;
         pasienSebelumYangSkip->next=temp;
 
+        if (lokasiRuangan.antrian==globalDenahRumahSakit.Ruangan[lokasiRuangan.row][lokasiRuangan.column].idAntrian.size-globalDenahRumahSakit.kapasitasRuangan) globalDenahRumahSakit.Ruangan[lokasiRuangan.row][lokasiRuangan.column].idAntrian.rear = pasienSebelumYangSkip;
+
         printf("\nAnda berhasil maju ke depan antrian Dr. %s di ruangan %c%d!\nPosisi antrian Anda sebelumnya: %d\nPosisi antrian Anda sekarang: 1\n\n", getAccountName(globalDenahRumahSakit.Ruangan[lokasiRuangan.row][lokasiRuangan.column].idDokter, DATA_TYPE_DOCTOR), lokasiRuangan.row+'A', lokasiRuangan.column+1, lokasiRuangan.antrian);
     }
 }
