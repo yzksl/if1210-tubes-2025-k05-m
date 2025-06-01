@@ -26,6 +26,8 @@ void menuPasien(){
         else if (strcmp(input, "LIHAT_RUANGAN")==0) lihatRuangan(-1, -1);
         else if (strcmp(input, "PULANGDOK")==0) pulangDok(getQueueFromPatientId(globalCurrentPatient->id));
         else if (strcmp(input, "ANTRIAN")==0) antrianSaya();
+        else if (strcmp(input, "SKIP_ANTRIAN")==0) skipAntrian();
+        else if (strcmp(input, "CANCEL_ANTRIAN")==0) cancelAntrian();
         else if (strcmp(input, "DAFTAR_CHECKUP")==0) daftarCheckup(globalCurrentUserGD);
         else if (strcmp(input, "MINUM_OBAT")==0) minumObat();
         else if (strcmp(input, "PENAWAR")==0) minumPenawar();

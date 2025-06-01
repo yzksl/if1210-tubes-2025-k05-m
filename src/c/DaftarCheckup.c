@@ -6,75 +6,77 @@ void daftarCheckup(GenericData* globalCurrentUserGD) {
     Point lokasiRuangan = posisiRuanganAntrianPasien((*(Patient*)globalCurrentUserGD->data).id);
 
     if(lokasiRuangan.antrian == -1) {
-        printf("Silahkan masukkan data checkup Anda:\n");
+        if((*(Patient*)globalCurrentUserGD->data).kondisiTubuh[0]==UNDEF_INT_DATA){
+            printf("Silahkan masukkan data checkup Anda:\n");
 
-        printf("Suhu tubuh (celecius): ");
-        scanf("%f", &((Patient*)globalCurrentUserGD->data)->kondisiTubuh[0]);
-        while(((Patient*)globalCurrentUserGD->data)->kondisiTubuh[0] < 1) {
-            printf("Suhu tubuh harus berupa angka positif!\n");
             printf("Suhu tubuh (celecius): ");
             scanf("%f", &((Patient*)globalCurrentUserGD->data)->kondisiTubuh[0]);
-        }     
-        printf("Tekanan darah (sistol/diastol, contoh 120 80): ");
-        scanf("%f %f", &((Patient*)globalCurrentUserGD->data)->kondisiTubuh[1], &((Patient*)globalCurrentUserGD->data)->kondisiTubuh[2]);
-        while(((Patient*)globalCurrentUserGD->data)->kondisiTubuh[1] < 1 || ((Patient*)globalCurrentUserGD->data)->kondisiTubuh[2] < 1) {
-            printf("Tekanan darah harus berupa angka positif!\n");
+            while(((Patient*)globalCurrentUserGD->data)->kondisiTubuh[0] < 1) {
+                printf("Suhu tubuh harus berupa angka positif!\n");
+                printf("Suhu tubuh (celecius): ");
+                scanf("%f", &((Patient*)globalCurrentUserGD->data)->kondisiTubuh[0]);
+            }     
             printf("Tekanan darah (sistol/diastol, contoh 120 80): ");
             scanf("%f %f", &((Patient*)globalCurrentUserGD->data)->kondisiTubuh[1], &((Patient*)globalCurrentUserGD->data)->kondisiTubuh[2]);
-        }
-        while(((Patient*)globalCurrentUserGD->data)->kondisiTubuh[2] > ((Patient*)globalCurrentUserGD->data)->kondisiTubuh[1]) {
-            printf("Tekanan sistolik harus lebih besar dibanding diastolik!\n");
-            printf("Tekanan darah (sistol/diastol, contoh 120 80): ");
-            scanf("%f %f", &((Patient*)globalCurrentUserGD->data)->kondisiTubuh[1], &((Patient*)globalCurrentUserGD->data)->kondisiTubuh[2]);
-        }
-        printf("Detak jantung (bpm): ");
-        scanf("%f", &((Patient*)globalCurrentUserGD->data)->kondisiTubuh[3]);
-        while(((Patient*)globalCurrentUserGD->data)->kondisiTubuh[3] < 1) {
-            printf("Detak jantung harus berupa angka positif!\n");
+            while(((Patient*)globalCurrentUserGD->data)->kondisiTubuh[1] < 1 || ((Patient*)globalCurrentUserGD->data)->kondisiTubuh[2] < 1) {
+                printf("Tekanan darah harus berupa angka positif!\n");
+                printf("Tekanan darah (sistol/diastol, contoh 120 80): ");
+                scanf("%f %f", &((Patient*)globalCurrentUserGD->data)->kondisiTubuh[1], &((Patient*)globalCurrentUserGD->data)->kondisiTubuh[2]);
+            }
+            while(((Patient*)globalCurrentUserGD->data)->kondisiTubuh[2] > ((Patient*)globalCurrentUserGD->data)->kondisiTubuh[1]) {
+                printf("Tekanan sistolik harus lebih besar dibanding diastolik!\n");
+                printf("Tekanan darah (sistol/diastol, contoh 120 80): ");
+                scanf("%f %f", &((Patient*)globalCurrentUserGD->data)->kondisiTubuh[1], &((Patient*)globalCurrentUserGD->data)->kondisiTubuh[2]);
+            }
             printf("Detak jantung (bpm): ");
             scanf("%f", &((Patient*)globalCurrentUserGD->data)->kondisiTubuh[3]);
-        }
-        printf("Saturasi oksigen: ");
-        scanf("%f", &((Patient*)globalCurrentUserGD->data)->kondisiTubuh[4]);
-        while(((Patient*)globalCurrentUserGD->data)->kondisiTubuh[4] < 1 || ((Patient*)globalCurrentUserGD->data)->kondisiTubuh[3] > 100) {
-            printf("Saturasi oksigen harus dalam rentang 1 - 100!\n");
+            while(((Patient*)globalCurrentUserGD->data)->kondisiTubuh[3] < 1) {
+                printf("Detak jantung harus berupa angka positif!\n");
+                printf("Detak jantung (bpm): ");
+                scanf("%f", &((Patient*)globalCurrentUserGD->data)->kondisiTubuh[3]);
+            }
             printf("Saturasi oksigen: ");
             scanf("%f", &((Patient*)globalCurrentUserGD->data)->kondisiTubuh[4]);
-        }
-        printf("Kadar gula darah (mg/dL): ");
-        scanf("%f", &((Patient*)globalCurrentUserGD->data)->kondisiTubuh[5]);
-        while(((Patient*)globalCurrentUserGD->data)->kondisiTubuh[5] < 1) {
-            printf("Kadar gula darah harus berupa angka positif!\n");
+            while(((Patient*)globalCurrentUserGD->data)->kondisiTubuh[4] < 1 || ((Patient*)globalCurrentUserGD->data)->kondisiTubuh[3] > 100) {
+                printf("Saturasi oksigen harus dalam rentang 1 - 100!\n");
+                printf("Saturasi oksigen: ");
+                scanf("%f", &((Patient*)globalCurrentUserGD->data)->kondisiTubuh[4]);
+            }
             printf("Kadar gula darah (mg/dL): ");
             scanf("%f", &((Patient*)globalCurrentUserGD->data)->kondisiTubuh[5]);
-        }
-        printf("Berat badan (kg): ");
-        scanf("%f", &((Patient*)globalCurrentUserGD->data)->kondisiTubuh[6]);
-        while(((Patient*)globalCurrentUserGD->data)->kondisiTubuh[6] < 1) {
-            printf("Berat badan harus berupa angka positif!\n");
+            while(((Patient*)globalCurrentUserGD->data)->kondisiTubuh[5] < 1) {
+                printf("Kadar gula darah harus berupa angka positif!\n");
+                printf("Kadar gula darah (mg/dL): ");
+                scanf("%f", &((Patient*)globalCurrentUserGD->data)->kondisiTubuh[5]);
+            }
             printf("Berat badan (kg): ");
             scanf("%f", &((Patient*)globalCurrentUserGD->data)->kondisiTubuh[6]);
-        }
-        printf("Tinggi badan (cm): ");
-        scanf("%f", &((Patient*)globalCurrentUserGD->data)->kondisiTubuh[7]);
-        while(((Patient*)globalCurrentUserGD->data)->kondisiTubuh[7] < 1) {
-            printf("Tinggi badan harus berupa angka positif!\n");
+            while(((Patient*)globalCurrentUserGD->data)->kondisiTubuh[6] < 1) {
+                printf("Berat badan harus berupa angka positif!\n");
+                printf("Berat badan (kg): ");
+                scanf("%f", &((Patient*)globalCurrentUserGD->data)->kondisiTubuh[6]);
+            }
             printf("Tinggi badan (cm): ");
             scanf("%f", &((Patient*)globalCurrentUserGD->data)->kondisiTubuh[7]);
-        }
-        printf("Kadar kolestrol (mg/dL): ");
-        scanf("%f", &((Patient*)globalCurrentUserGD->data)->kondisiTubuh[8]);
-        while(((Patient*)globalCurrentUserGD->data)->kondisiTubuh[8] < 1) {
-            printf("Kadar kolestrol harus berupa angka positif!\n");
+            while(((Patient*)globalCurrentUserGD->data)->kondisiTubuh[7] < 1) {
+                printf("Tinggi badan harus berupa angka positif!\n");
+                printf("Tinggi badan (cm): ");
+                scanf("%f", &((Patient*)globalCurrentUserGD->data)->kondisiTubuh[7]);
+            }
             printf("Kadar kolestrol (mg/dL): ");
             scanf("%f", &((Patient*)globalCurrentUserGD->data)->kondisiTubuh[8]);
-        }
-        printf("Trombosit (ribu/μL): ");
-        scanf("%f", &((Patient*)globalCurrentUserGD->data)->kondisiTubuh[9]);
-        while(((Patient*)globalCurrentUserGD->data)->kondisiTubuh[9] < 1) {
-            printf("Trombosit harus berupa angka positif!\n");
+            while(((Patient*)globalCurrentUserGD->data)->kondisiTubuh[8] < 1) {
+                printf("Kadar kolestrol harus berupa angka positif!\n");
+                printf("Kadar kolestrol (mg/dL): ");
+                scanf("%f", &((Patient*)globalCurrentUserGD->data)->kondisiTubuh[8]);
+            }
             printf("Trombosit (ribu/μL): ");
             scanf("%f", &((Patient*)globalCurrentUserGD->data)->kondisiTubuh[9]);
+            while(((Patient*)globalCurrentUserGD->data)->kondisiTubuh[9] < 1) {
+                printf("Trombosit harus berupa angka positif!\n");
+                printf("Trombosit (ribu/μL): ");
+                scanf("%f", &((Patient*)globalCurrentUserGD->data)->kondisiTubuh[9]);
+            }
         }
 
         int count = 0;
