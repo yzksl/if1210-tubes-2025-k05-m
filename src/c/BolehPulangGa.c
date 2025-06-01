@@ -6,6 +6,7 @@
 #include "Stack.h"
 #include "DynamicList.h"
 #include "Boolean.h"
+#include "Ngobatin.h"
  
 void resetPatientData() {
     strcpy(globalCurrentPatient->riwayatPenyakit, "");
@@ -85,10 +86,10 @@ void pulangDok(Queue* antrianPasien) {
  
     // urutan salah
     printf("\nMaaf, tapi kamu masih belum bisa pulang!\n");
- 
     printf("Urutan peminuman obat yang diharapkan:\n");
     for (int i = 0; i < op->nEff; i++) {
-        printf("%s", globalObatDatabase.contents[op->idObat[i]].name);
+        Obat* o = getObatById(op->idObat[i]);
+        printf("%s", o->name);
         if (i < op->nEff - 1) printf(" -> ");
     }
     printf("\n");
