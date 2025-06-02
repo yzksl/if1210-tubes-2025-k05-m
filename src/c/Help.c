@@ -3,9 +3,10 @@
 // Realisasi Header Help
 
 void helpPasien(){
-    printf("==============================\n\n==============================\n");
+    printf("\n");
+    printHelp();
     printf(
-        "Terimakasih telah memanggil fungsi Help\n"
+        "\nTerimakasih telah memanggil fungsi Help\n"
         "Berikut merupakan fungsi-fungsi yang dapat anda gunakan\n"
         "1) HELP : Memunculkan list fungsi-fungsi yang dapat digunakan beserta penjelasannya\n"
         "2) LIHAT_DENAH : Memunculkan denah rumah sakit\n"
@@ -21,14 +22,15 @@ void helpPasien(){
         "12) EXIT : Keluar dari program\n\n"
         "Footnote:\n"
         "1) Untuk menggunakan aplikasi, silahkan masukkan nama fungsi yang terdaftar\n"
-        "2) Jangan lupa untuk memasukkan input yang valid\n"
+        "2) Jangan lupa untuk memasukkan input yang valid\n\n"
     );
 }
 
 void helpDokter(){
-    printf("==============================\n\n==============================\n");
+    printf("\n");
+    printHelp();
     printf(
-        "Terimakasih telah memanggil fungsi Help\n"
+        "\nTerimakasih telah memanggil fungsi Help\n"
         "Berikut merupakan fungsi-fungsi yang dapat anda gunakan\n"
         "1) HELP : Memunculkan list fungsi-fungsi yang dapat digunakan beserta penjelasannya\n"
         "2) LIHAT_DENAH : Memunculkan denah rumah sakit\n"
@@ -39,14 +41,15 @@ void helpDokter(){
         "7) EXIT : Keluar dari program\n\n"
         "Footnote:\n"
         "1) Untuk menggunakan aplikasi, silahkan masukkan nama fungsi yang terdaftar\n"
-        "2) Jangan lupa untuk memasukkan input yang valid\n"
+        "2) Jangan lupa untuk memasukkan input yang valid\n\n"
     );
 }
 
 void helpManager(){
-    printf("==============================\n\n==============================\n");
+    printf("\n");
+    printHelp();
     printf(
-        "Terimakasih telah memanggil fungsi Help\n"
+        "\nTerimakasih telah memanggil fungsi Help\n"
         "Berikut merupakan fungsi-fungsi yang dapat anda gunakan\n"
         "1) HELP : Memunculkan list fungsi-fungsi yang dapat digunakan beserta penjelasannya\n"
         "2) LIHAT_DENAH : Memunculkan denah rumah sakit\n"
@@ -66,14 +69,15 @@ void helpManager(){
         "16) EXIT : Keluar dari program\n\n"
         "Footnote:\n"
         "1) Untuk menggunakan aplikasi, silahkan masukkan nama fungsi yang terdaftar\n"
-        "2) Jangan lupa untuk memasukkan input yang valid\n"
+        "2) Jangan lupa untuk memasukkan input yang valid\n\n"
     );
 }
 
 void helpBelumLogin(){
-    printf("==============================\n\n==============================\n");
+    printf("\n");
+    printHelp();
     printf(
-        "Terimakasih telah memanggil fungsi Help\n"
+        "\nTerimakasih telah memanggil fungsi Help\n"
         "Berikut merupakan fungsi-fungsi yang dapat anda gunakan\n"
         "1) HELP : Memunculkan list fungsi-fungsi yang dapat digunakan beserta penjelasannya\n"
         "2) LOGIN : Masuki suatu akun\n"
@@ -82,6 +86,6 @@ void helpBelumLogin(){
         "5) EXIT : Keluar dari program\n\n"
         "Footnote:\n"
         "1) Untuk menggunakan aplikasi, silahkan masukkan nama fungsi yang terdaftar\n"
-        "2) Jangan lupa untuk memasukkan input yang valid\n"
+        "2) Jangan lupa untuk memasukkan input yang valid\n\n"
     );
 }

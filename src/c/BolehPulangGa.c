@@ -21,17 +21,17 @@ void resetPatientData() {
  
 void pulangDok(Queue* antrianPasien) {
     if (globalCurrentPatient == NULL) {
-            printf("\nPasien tidak ditemukan dalam database!\n");
+            printf("\nPasien tidak ditemukan dalam database!\n\n");
             return;
     }
  
     if(globalCurrentPatient->sudahDiDiagnosis == false){
-        printf("\nKamu belum menerima diagnosis apapun dari dokter, jangan buru-buru pulang!\n");
+        printf("\nKamu belum menerima diagnosis apapun dari dokter, jangan buru-buru pulang!\n\n");
         return;
     }
  
     if(globalCurrentPatient->sudahDiObatin == false){
-        printf("\nKamu belum menerima obat dari dokter, jangan buru buru pulang!\n");
+        printf("\nKamu belum menerima obat dari dokter, jangan buru buru pulang!\n\n");
         return;
     }
    
@@ -46,7 +46,7 @@ void pulangDok(Queue* antrianPasien) {
     }
  
     if (idPenyakit == -1) {
-        printf("Penyakit tidak ditemukan dalam database!\n");
+        printf("Penyakit tidak ditemukan dalam database!\n\n");
         return;
     }
  
@@ -60,12 +60,12 @@ void pulangDok(Queue* antrianPasien) {
     }
  
     if (op == NULL) {
-        printf("Data obat tidak ditemukan untuk penyakit ini!\n");
+        printf("Data obat tidak ditemukan untuk penyakit ini!\n\n");
         return;
     }
  
     if (stackSize(&globalCurrentPatient->perut) < op->nEff) {
-        printf("\nMasih ada obat yang belum kamu habiskan, minum semuanya dulu yukk!\n");
+        printf("\nMasih ada obat yang belum kamu habiskan, minum semuanya dulu yukk!\n\n");
         return;
     }
  
@@ -78,7 +78,7 @@ void pulangDok(Queue* antrianPasien) {
     }
  
     if (urutanBenar) {
-        printf("\nSelamat! Kamu sudah dinyatakan sembuh oleh dokter. Silahkan pulang dan semoga sehat selalu!\n");
+        printf("\nSelamat! Kamu sudah dinyatakan sembuh oleh dokter. Silahkan pulang dan semoga sehat selalu!\n\n");
         resetPatientData();
         deQueue(antrianPasien);
         return;
@@ -107,7 +107,7 @@ void pulangDok(Queue* antrianPasien) {
     printf("\n");
  
    
-    printf("\nSilahkan kunjungi dokter untuk meminta penawar yang sesuai!\n");
+    printf("\nSilahkan kunjungi dokter untuk meminta penawar yang sesuai!\n\n");
     return;
 }
  

@@ -2,7 +2,7 @@
 
 void logout() {
     if (globalCurrentUserGD->type!=DATA_TYPE_UNKNOWN) {
-       printf("Sampai jumpa\n==========\n\n");
+       printf("Sampai jumpa\n\n");
     globalCurrentUserGD=&globalNotLogin;
 
     } else {

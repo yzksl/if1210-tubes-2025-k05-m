@@ -34,15 +34,15 @@ void antrianSaya(){
     Point lokasiRuangan=posisiRuanganAntrianPasien((*(Patient*)globalCurrentUserGD->data).id);
     if(lokasiRuangan.antrian==-1){
         printf("\nAnda belum terdaftar dalam antrian check-up!\n");
-        printf("Silakan daftar terlebih dahulu dengan command DAFTAR_CHECKUP.\n");
+        printf("Silakan daftar terlebih dahulu dengan command DAFTAR_CHECKUP.\n\n");
     }else if (lokasiRuangan.antrian==-2){
-        printf("\nAnda sedang berada di dalam ruangan dokter!\n");
+        printf("\nAnda sedang berada di dalam ruangan dokter!\n\n");
     }
     else {
             printf("\nStatus antrian Anda:\n");
             printf("Dokter: %s\n", getAccountName(globalDenahRumahSakit.Ruangan[lokasiRuangan.row][lokasiRuangan.column].idDokter, DATA_TYPE_DOCTOR));
             printf("Ruangan: %c%d\n", lokasiRuangan.row+'A', lokasiRuangan.column+1);
-            printf("Posisi antrian: %d dari %d\n", lokasiRuangan.antrian, globalDenahRumahSakit.Ruangan[lokasiRuangan.row][lokasiRuangan.column].idAntrian.size-globalDenahRumahSakit.kapasitasRuangan);
+            printf("Posisi antrian: %d dari %d\n\n", lokasiRuangan.antrian, globalDenahRumahSakit.Ruangan[lokasiRuangan.row][lokasiRuangan.column].idAntrian.size-globalDenahRumahSakit.kapasitasRuangan);
         }
     
 
