@@ -19,7 +19,7 @@ void tambahDokter(){
     toLowerString(usernameNew, usernameLower);
 
        if (idxIsValInSet(&globalUsernames, usernameLower) != -1) {
-        printf("\nSudah ada dokter bernama %s!\n", usernameLower);
+        printf("\nSudah ada dokter bernama %s!\n\n", usernameLower);
         return;
     } 
 
@@ -71,7 +71,7 @@ void tambahDokter(){
     }
     addToSet(&globalUsernames, usernameLower);
 
-    printf("\nDokter %s berhasil ditambahkan!\n", usernameNew);
+    printf("\nDokter %s berhasil ditambahkan!\n\n", usernameNew);
 }
   
 
@@ -99,7 +99,7 @@ void assignDokter(){
     }
 
     if (idDokter == -1) {
-        printf("Dokter dengan username %s tidak ditemukan.\n", username);
+        printf("Dokter dengan username %s tidak ditemukan.\n\n", username);
         return;
     }
 
@@ -112,7 +112,7 @@ void assignDokter(){
     kodeRuanganKonverter(ruangan, &row, &col);
 
     if (row < 0 || row >= globalDenahRumahSakit.nRow || col < 0 || col >= globalDenahRumahSakit.nColumn) {
-        printf("Ruangan %s tidak valid.\n", ruangan);
+        printf("Ruangan %s tidak valid.\n\n", ruangan);
         return;
     }
 
@@ -137,7 +137,7 @@ void assignDokter(){
     if (!dokterSudahDiassign && idDokterDiTarget == 0) {
         // Kasus 1
         globalDenahRumahSakit.Ruangan[row][col].idDokter = idDokter;
-        printf("Dokter %s berhasil diassign ke ruangan %s!\n", dokterPtr->username, ruangan);
+        printf("Dokter %s berhasil diassign ke ruangan %s!\n\n", dokterPtr->username, ruangan);
     } 
     /* Kasus 2 ini sebenarnya PINDAH_DOKTER ya */
     // else if (dokterSudahDiassign && idDokterDiTarget == -1) {
@@ -160,7 +160,7 @@ void assignDokter(){
             }
         }
         printf("Dokter %s sudah menempati ruangan %s!\n", namaDokterDiRuangan, ruangan);
-        printf("Silakan cari ruangan lain untuk dokter %s.\n", dokterPtr->username);
+        printf("Silakan cari ruangan lain untuk dokter %s.\n\n", dokterPtr->username);
     } else {
         // Kasus 4
         // Cari username dokter yang sudah menempati ruangan
@@ -175,7 +175,7 @@ void assignDokter(){
                 }
             }
         }
-        printf("Dokter %s sudah menempati ruangan %c%d!\n", dokterPtr->username, 'A' + rowAssigned, colAssigned + 1);
+        printf("Dokter %s sudah menempati ruangan %c%d!\n\n", dokterPtr->username, 'A' + rowAssigned, colAssigned + 1);
         // printf("Ruangan %s juga sudah ditempati dokter %s!\n", ruangan, namaDokterDiRuangan);
     }
 }

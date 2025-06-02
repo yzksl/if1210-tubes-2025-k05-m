@@ -11,6 +11,16 @@ void printMenuDokter();
 
 void printMenuManager();
 
+void printHello();
+
+void printBelumLogin();
+
+void printGoodbye();
+
+void printHelp();
+
+void printK05M();
+
 void printEasterEgg1();
 
 void printEasterEgg2();

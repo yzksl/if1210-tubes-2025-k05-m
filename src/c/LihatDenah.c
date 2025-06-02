@@ -40,8 +40,9 @@ void lihatDenah(){
         for (int column=0; column<globalDenahRumahSakit.nColumn; column++) { //Menulis batasan antara angka-angka kolom
             printf("+-----");
         }
-        printf("+\n\n"); // + diakhir dan newline
+        printf("+\n"); // + diakhir dan newline
     }
+    printf("\n");
 }
 
 void lihatRuangan(int row, int column){

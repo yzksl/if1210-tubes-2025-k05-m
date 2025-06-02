@@ -7,6 +7,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "PrintArt.h"
 
 void exitFromHospital() {
     // tanya jika ingin save. input diulang hingga valid
@@ -21,7 +22,8 @@ void exitFromHospital() {
         // saveConfig; // txt save here
     }
 
-    printf("Sampai jumpa, Niemons!\n");
+    printf("Sampai jumpa, Niemons!\n\n");
+    printGoodbye();
     // free semua disini
     // JANGAN LUPA YANG QUEUE
     dealocateLD(&globalUserDatabase);

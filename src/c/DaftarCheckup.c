@@ -7,7 +7,7 @@ void daftarCheckup(GenericData* globalCurrentUserGD) {
 
     if(lokasiRuangan.antrian == -1) {
         if((*(Patient*)globalCurrentUserGD->data).kondisiTubuh[0]==UNDEF_INT_DATA){
-            printf("Silahkan masukkan data checkup Anda:\n");
+            printf("\nSilahkan masukkan data checkup Anda:\n");
 
             printf("Suhu tubuh (celecius): ");
             scanf("%f", &((Patient*)globalCurrentUserGD->data)->kondisiTubuh[0]);
@@ -162,7 +162,7 @@ void daftarCheckup(GenericData* globalCurrentUserGD) {
         }
 
     } else {
-        printf("Anda sudah terdaftar dalam antrian check-up!\n"); 
+        printf("\nAnda sudah terdaftar dalam antrian check-up!\n"); 
         printf("Silakan selesaikan check-up yang sudah terdaftar terlebih dahulu.\n\n");
     }
 }

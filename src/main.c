@@ -32,7 +32,13 @@ int main(int argc, char** argv){
     globalCurrentUserGD = &globalNotLogin;
     DataType currentUserType = getDataTypeGD(globalCurrentUserGD);
     readConfig(argv[1]);
+    printf("\n");
+    printK05M();
+    printf("\n");
     printStart();
+    printf("\n");
+    printHello();
+    printf("\n");
     mainMenu();
     printf("====================\n\n====================\n");
     printf("CLEANING UP...\n");

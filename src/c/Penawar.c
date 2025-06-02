@@ -10,7 +10,7 @@
 
 void minumPenawar(){
     if(isStackEmpty(&globalCurrentPatient->perut)){
-        printf("\nPerut kosong, belum ada obat yang diminum.\n"); //kalau ternyata tidak perlu tidak apa
+        printf("\nPerut kosong, belum ada obat yang diminum.\n\n"); //kalau ternyata tidak perlu tidak apa
         return;
     }
     
@@ -27,7 +27,7 @@ void minumPenawar(){
             break;
         }
     }
-    printf("Uwekkk!!! %s keluar dan kembali ke inventory.\n", backToInventory.name);
+    printf("\nUwekkk!!! %s keluar dan kembali ke inventory.\n\n", backToInventory.name);
 }
 
 // int main() {

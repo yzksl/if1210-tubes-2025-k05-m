@@ -18,7 +18,7 @@ void registerPasien(){
     toLowerString(username, usernameLower);
 
        if (idxIsValInSet(&globalUsernames, usernameLower) != -1) {
-        printf("\nRegistrasi gagal! Pasien dengan nama %s sudah terdaftar.\n", usernameLower);
+        printf("\nRegistrasi gagal! Pasien dengan nama %s sudah terdaftar.\n\n", usernameLower);
         return;
     } 
 
@@ -82,6 +82,6 @@ void registerPasien(){
     }
     addToSet(&globalUsernames, usernameLower);
 
-    printf("\nPasien %s berhasil ditambahkan!\n", username);
+    printf("\nPasien %s berhasil ditambahkan!\n\n", username);
 }
   

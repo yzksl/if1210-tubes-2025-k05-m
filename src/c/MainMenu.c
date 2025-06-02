@@ -17,7 +17,7 @@ void menuPasien(){
     char input[20]; // variable yang menyimpan input user
     printMenuPasien();
     globalCurrentPatient = (Patient*)(globalCurrentUserGD->data);
-    printf("Halo %s\nSilahkan masukan fungsi yang anda ingin jalankan\nMasukan HELP untuk memunculkan list fungsi-fungsi yang valid\n\n", (*(Patient*)globalCurrentUserGD->data).username/*Nama*/);
+    printf("Halo %s.Silahkan masukan fungsi yang anda ingin jalankan\nMasukan HELP untuk memunculkan list fungsi-fungsi yang valid\n\n", (*(Patient*)globalCurrentUserGD->data).username/*Nama*/);
     while(1){
         printf(">>> ");
         scanf("%s", input);
@@ -102,6 +102,7 @@ void menuManager(){
 
 void menuBelumLogin(){
     char input[20]; // variable yang menyimpan input user
+    printBelumLogin();
     printf("Anda belum masuk ke suatu akun.\nMasukan HELP untuk memunculkan list fungsi-fungsi yang valid.\n\n");
     while(1){
         printf(">>> ");
