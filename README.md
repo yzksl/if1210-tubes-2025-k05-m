@@ -1,2 +1,9 @@
 # IF1210-Tubes-01
-This repository is created as a template for Algorithm and Programming 1 Project
+![{F8EEDEC2-6016-4148-A9F8-2A66C67FE646}](https://github.com/user-attachments/assets/edd1456b-da94-4435-8bae-46eddc4a9df6)
+
+Gro kini hidup normal bersama keluarganya, namun rumahnya selalu kacau karena ulah para Nimon. Dr. Neroifa, ilmuwan Gro, merasa jenuh dengan rutinitas dan melihat para Nimon sering mengalami insiden medis kecil yang ditangani seadanya. Ia pun berinisiatif membangun Rumah Sakit Nimon yang canggih.
+Masalah muncul saat Dr. Neroifa sadar ia tidak mampu membuat sistem manajemen untuk rumah sakit tersebut. Pengelolaan pasien, dokter, antrian, stok obat, dan data medis menjadi kacau. Ia membutuhkan bantuan untuk merancang jantung digital rumah sakit ini.
+Di sinilah peran kami, mahasiswa IF1210. Tugas kami adalah mengubah kekacauan ini menjadi sistem manajemen rumah sakit yang terorganisir, memastikan setiap Nimon mendapat perawatan, dan membantu Dr. Neroifa mewujudkan visinya.
+Kami akan membangun sistem manajemen Rumah Sakit Nimon. Proyek ini dimulai dengan F00 - Rencana Implementasi. Sistem akan memiliki fitur dasar seperti F01 - Login, F02 - Register Pasien (dengan validasi keunikan username menggunakan Set), F03 - Logout, F04 - Lupa Password (validasi dengan Run-Length Encoding), dan F05 - Menu & Help.
+Kami akan mengimplementasikan F06 - Denah Rumah Sakit dan F09 - Lihat Antrian, yang detailnya akan disesuaikan. Untuk manajemen pengguna dan data, kami akan membuat F07 - Lihat User, F08 - Cari User (menggunakan binary search untuk ID dan sequential search untuk nama), dan F10 - Tambah Dokter beserta fungsi assign ruangan. Dokter dapat melakukan F11 - Diagnosis otomatis berdasarkan data pasien dan file penyakit.csv, serta F12 - Ngobatin sesuai urutan dari file obat_penyakit.csv.
+Pasien akan memiliki fitur F13 - Aku boleh pulang ga, dok?, F14 - Daftar Check-Up, F15 - Antrian Saya!, F16 - Minum Obat (disimpan dalam struktur data stack "perut"), dan F17 - Minum Penawar. Program akan ditutup dengan F18 - Exit, yang juga akan mencakup mekanisme penyimpanan dan pemuatan data jika diperlukan oleh spesifikasi.
