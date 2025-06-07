@@ -1,4 +1,3 @@
-<!-- THIS IS A TEMPLATE DIRECTORY -->
-<!-- DELETE THIS README.md IF IT IS NO LONGER NEEDED -->
-
-Use this directory to store your header implementation files. 
+# ⚙️ Implementasi Fungsi
+Implementasi dari seluruh fungsi yang digunakan dibuat dalam folder ini.
+File-file ini akan di-compile bersama dengan main.c saat compile menggunakan make.
