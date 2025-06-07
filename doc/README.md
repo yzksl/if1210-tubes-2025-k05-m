@@ -1,4 +1,15 @@
-<!-- THIS IS A TEMPLATE DIRECTORY -->
-<!-- DELETE THIS README.md IF IT IS NO LONGER NEEDED -->
+# 📚 Dokumentasi Rumah Sakit Nimon
+Dokumentasi ini mendukung pengembangan dan pemeliharaan sistem manajemen Rumah Sakit Nimon.
+Dokumen-dokumen di dalam folder ini mencakup:
 
-Use this directory to store your documents.
+- **Laporan**  
+  Penjelasan detail untuk setiap fitur (F01–F18), termasuk deskripsi, input/output, dan struktur data yang digunakan.
+
+- **MoM Asistensi**  
+  Hasil asistensi dengan asisten kami.
+
+- **Panduan Struktur Data**  
+  Panduan ADT dan Struktur Data yang digunakan dalam program.
+
+- **Dekomposisi Program (Flowchart)**  
+  Flowchart untuk mengerti alur program.
