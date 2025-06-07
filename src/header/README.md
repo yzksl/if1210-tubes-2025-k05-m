@@ -1,4 +1,2 @@
-<!-- THIS IS A TEMPLATE DIRECTORY -->
-<!-- DELETE THIS README.md IF IT IS NO LONGER NEEDED -->
-
-Use this directory to store your header files. 
+# ⚙️ Deklarasi Fungsi dan ADT
+Deklarasi dari seluruh fungsi dan ADT yang digunakan.
