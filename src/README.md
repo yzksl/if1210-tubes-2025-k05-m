@@ -4,7 +4,7 @@ Folder `src/` merupakan inti dari program. Berikut struktur utamanya:
 
 - `main.c` — Program utama yang dijalankan
 - `test.c` — Program pengujian fungsi dan modul
-- `Makefile` — Skrip untuk melakukan kompilasi
+- `makefile` — Skrip untuk melakukan kompilasi
 
 ### 📁 Subfolder
 
