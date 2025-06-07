@@ -2,7 +2,7 @@
 ![Build Status](https://img.shields.io/badge/build-passing-brightgreen)
 ![Language](https://img.shields.io/badge/language-C-lightgrey)
 ![Project Status](https://img.shields.io/badge/status-maintenance-lightgrey)
-[![Release](https://img.shields.io/badge/release-1.2.0-blue)](https://github.com/Labpro-22/if1210-tubes-2025-k05-m/releases/tag/1.2.0)
+[![Release](https://img.shields.io/badge/release-1.2.0-blue)](https://github.com/Labpro-22/if1210-tubes-2025-k05-m/releases/tag/1.2.1)
 
 Hasil tugas besar oleh Kelompok 05-M untuk mata kuliah IF1210, yaitu membangun sebuah sistem hospital canggih untuk para Niemons tercinta!
 
